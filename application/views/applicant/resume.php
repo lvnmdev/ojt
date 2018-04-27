@@ -29,7 +29,7 @@
 							<div class="card-block">
 								<p>QUALIFICATIONS</p>
 								<p>
-									<ul id='resume_qualifications'>
+									<ul id='resume_skills'>
 
 									</ul>
 								</p>
@@ -37,7 +37,7 @@
 
 								<p>WORK EXPERIENCE</p>
 								<p>
-									<ul id='resume_experience'>
+									<ul id='resume_xp'>
 										
 									</ul>
 								</p>
