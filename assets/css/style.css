@@ -1,0 +1,198 @@
+body {
+	background-color: lightgrey;
+}
+
+/* Login */
+
+.index-bg {
+	background-image: url('../img/bg/ustp.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	position: absolute;
+}
+
+*:active,
+*:focus {
+	outline: none;
+}
+
+.mid-container {
+	margin: auto;
+	width: 50%;
+	position: relative;
+	top: 30%;
+}
+
+.mid-container2 {
+	margin: auto;
+	width: 50%;
+	position: relative;
+	top: 20%;
+}
+
+.main-container {
+	margin: 0 20%;
+}
+
+.card-container {
+	padding: 1.2em;
+	background-color: #fbb414;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	overflow: auto;
+}
+
+.title-header {
+	background-color: #1a1751;
+	padding: 1.2em;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.title-header h1 {
+	font-weight: bold;
+}
+
+.min-form {
+	background-color: transparent;
+	-webkit-text-fill-color: #1a1751;
+	border: none;
+	border-bottom: 2px solid whitesmoke;
+	padding: 5px 10px;
+	width: 100%;
+	font-size: 1.25em;
+}
+
+.min-form:focus {
+	outline: none;
+}
+
+.min-btn {
+	border: 2px solid #1a1751;
+	border-radius: 5px;
+	color: white;
+	background-color: #1a1751;
+	padding: 8px 15px;
+	font-size: 1.25em;
+}
+
+.min-btn:active {
+	border: 2px solid white;
+	background-color: white;
+	color: #fbb414;
+}
+
+/* Navbar */
+
+.top-navbar {
+	background-color: #fbb414;
+	min-height: 100px;
+	padding: 0;
+	left: 0;
+}
+
+.ustp-logo {
+	height: 100px;
+	width: 100%;
+	padding-left: 20px;
+	float: left;
+	background-color: darkgoldenrod;
+}
+
+.ustp-logo img {
+	height: 100px;
+	width: 100px;
+}
+
+.user-profile {
+	float: right;
+	margin: 20px 30px 0 0;
+}
+
+.user-profile a {
+	font-size: 1.5em;
+	text-decoration: none;
+	color: #1a1751;
+}
+
+.user-profile img {
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	margin-right: 10px;
+}
+
+.side-navbar-container {
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.side-navbar {
+	background-color: white;
+	height: calc(100vh - 100px);
+	padding: 20px 0 0 0;
+	list-style: none;
+	position: relative;
+	margin: 0;
+	box-shadow: 0px 10px 10px black;
+}
+
+.side-navbar a {
+	text-decoration: none;
+}
+
+.side-navbar li:hover {
+	background-color: lightgrey;
+}
+
+.side-navbar li {
+	padding: 20px 10px;
+}
+
+.nav-icon {
+	font-size: 2em;
+	margin: 0 20px 0 10px;
+}
+
+/* Content */
+
+.btn-icon {
+	margin: 0 10px 0 0;
+}
+
+.path-nav {
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.card-content {
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+/*MODAL BODY OVERRIDE */
+.modal-form {
+	width: 80% !important;
+}
+
+.modal-header {
+	background-color: #fbb414 !important;
+	border-radius: 5px 5px 0 0;
+}
+
+.modal-title {
+	color: #1a1751 !important;
+}
