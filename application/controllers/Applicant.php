@@ -55,4 +55,9 @@ class Applicant extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+
+	public function to_pdf(){
+		$this->load->library('Pdf');
+		$this->load->view('templates/applicant/to_resume');
+	}
 }

@@ -1,6 +1,6 @@
 $(function () {
 	show_bio_data();
-
+//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -89,5 +89,43 @@ $(function () {
 			}
 		});
 	});
+//For Biodata Functions End HERE!
+//For Resume Functions Start HERE!
+
+
+	$('#btnedit_res').click(function () {
+
+		$('#resume_dropdown').css({'display':'block'});
+	});
+
+	$('#addqual').click(function(){
+		
+		$('#edit_resume').modal('show');
+		$('.modal-title').text('Add Qualifications/Skills');
+		$('#form_resume').html();
+	})
+
+	$('#addwork').click(function(){
+
+		$('#edit_resume').modal('show');
+		$('.modal-title').text('Add Working Experience');
+	})
+	$('#addacco').click(function(){
+
+		$('#edit_resume').modal('show');
+		$('.modal-title').text('Add Accomplishments');
+	})	
+	$('#addeduc').click(function(){
+
+		$('#edit_resume').modal('show');
+		$('.modal-title').text('Add Educational Background');
+	})
+
+	$('#addsemi').click(function(){
+
+		$('#edit_resume').modal('show');
+		$('.modal-title').text('Add Seminars Attended');
+	})
+
 
 })
