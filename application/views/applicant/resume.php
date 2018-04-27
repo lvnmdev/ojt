@@ -56,6 +56,14 @@
 									<ul id='resume_education'>
 									
 									</ul>
+                                </p>
+								<br>
+                                
+                                <p>SEMINARS ATTENDED</p>
+								<p>
+									<ul id='resume_seminar'>
+									
+									</ul>
 								</p>
 							</div>
 						</div>
@@ -84,12 +92,12 @@
 				<h1 class="modal-title"></h1>
 			</div>
 			<div class="modal-body">
-				<form id="form_resume" class="form-horizontal">
+                <form id="form_resume" class="form-horizontal">
 				</form>
 			</div>
 			<div class="modal-footer">
+				<button type="button" id="btnsubmit_resume" class="btn btn-primary"><i class='fa fa-save btn-icon'></i>Save</button>
 				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class='fa fa-times btn-icon'></i>Cancel</button>
-				<button type="button" id="btnsubmit_bio" class="btn btn-primary"><i class='fa fa-save btn-icon'></i>Save</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

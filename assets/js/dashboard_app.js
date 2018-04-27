@@ -1,6 +1,6 @@
 $(function () {
 	show_bio_data();
-//For Biodata Functions Start HERE!
+	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -89,42 +89,140 @@ $(function () {
 			}
 		});
 	});
-//For Biodata Functions End HERE!
-//For Resume Functions Start HERE!
+	//For Biodata Functions End HERE!
+	//For Resume Functions Start HERE!
 
+	var form =  '<div class="form-group">' +
+				'<label id="super_input" class="label-control col-md-2"></label>' +
+					'<div class="col-md-3">' +
+						'<input id="input" type="text" name="" class="form-control">' +
+					'</div>' +
+				'</div>'+
+
+				'<div class="form-group">' +
+				'<label id="super_input1" class="label-control col-md-2"></label>' +
+					'<div class="col-md-3">' +
+						'<input id="input1" type="hidden" name="" class="form-control">' +
+					'</div>' +
+				'</div>' +
+
+				'<div class="form-group">' +
+				'<label id="super_input2" class="label-control col-md-2"></label>' +
+					'<div class="col-md-3">' +
+						'<input id="input2" type="hidden" name="" class="form-control">' +
+					'</div>' +
+				'</div>' +
+
+				'<div class="form-group">' +
+				'<label id="super_input3" class="label-control col-md-2"></label>' +
+					'<div class="col-md-3">' +
+						'<input id="input3" type="hidden" name="" class="form-control">' +
+					'</div>' +
+				'</div>'	
 
 	$('#btnedit_res').click(function () {
 
-		$('#resume_dropdown').css({'display':'block'});
+		$('#resume_dropdown').css({
+			'display': 'block'
+		});
 	});
 
-	$('#addqual').click(function(){
-		
+	$('#addqual').click(function () {
+		var i = 0;
+		data_input='skill';
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Qualifications/Skills');
-		$('#form_resume').html();
+		$('#form_resume').html(form);
+		$('#super_input').text('Add Skill');
+
+		$('#input').attr('name','skill');
+		$('#input1').css({'display':'none'});
+		$('#input2').css({'display':'none'});
+		$('#input3').css({'display':'none'});	
+
+		$('#super_input1').css({'display':'none'});
+		$('#super_input2').css({'display':'none'});
+		$('#super_input3').css({'display':'none'});	
 	})
 
-	$('#addwork').click(function(){
+	$('#addwork').click(function () {
 
 		$('#edit_resume').modal('show');
-		$('.modal-title').text('Add Working Experience');
+		$('.modal-title').text('Add Working Experience');	
+		$('#form_resume').html(form);
+
+		$('#super_input').text('Position');	
+		$('#super_input1').text('Company');
+		$('#super_input2').text('Date Started');	
+		$('#super_input3').text('Date Ended');
+
+		$('#input1').attr('type','text');
+		$('#input2').attr('type','date');
+		$('#input3').attr('type','date');
+
+		$('#input').attr('name','position');
+		$('#input1').attr('name','company');
+		$('#input2').attr('name','date_start');
+		$('#input3').attr('name','date_end');
+		
 	})
-	$('#addacco').click(function(){
+	$('#addacco').click(function () {
 
 		$('#edit_resume').modal('show');
-		$('.modal-title').text('Add Accomplishments');
-	})	
-	$('#addeduc').click(function(){
+		$('.modal-title').text('Add Accomplishments');	
+		$('#form_resume').html(form);
+
+		$('#super_input').text('Accomplishment');	
+		$('#super_input1').text('Affiliation');
+
+		$('#input1').attr('type','text');
+
+		$('#input').attr('name','accomplishment');
+		$('#input1').attr('name','affiliation');
+	})
+	$('#addeduc').click(function () {
 
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Educational Background');
+		$('#form_resume').html(form);
+		
+		$('#super_input').text('Level');	
+		$('#super_input1').text('Name of School');
+		$('#super_input2').text('Date Started');	
+		$('#super_input3').text('Date Graduated');
+
+		$('#input1').attr('type','text');
+		$('#input2').attr('type','date');
+		$('#input3').attr('type','date');
+
+		$('#input').attr('name','level');
+		$('#input1').attr('name','school');
+		$('#input2').attr('name','date_start');
+		$('#input3').attr('name','date_graduate');
+
+		
 	})
 
-	$('#addsemi').click(function(){
-
+	$('#addsemi').click(function () {
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Seminars Attended');
+		$('#form_resume').html(form);
+
+		$('#super_input').text('Name of Seminar');	
+		$('#super_input1').text('Date');
+		$('#super_input2').text('Conducted by');	
+
+		$('#input1').attr('type','date');
+		$('#input2').attr('type','text');
+
+		$('#input').attr('name','seminar');
+		$('#input1').attr('name','seminar_date');
+		$('#input2').attr('name','conductedby');
+	})
+
+	$('#btnsubmit_resume').click(function(){
+		var formData = $('#form_resume').serialize();
+		console.log(formData);
 	})
 
 
