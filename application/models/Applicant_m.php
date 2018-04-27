@@ -60,4 +60,36 @@ class Applicant_m extends CI_Model {
             return $result;
             }
         }
+
+
+    public function insert_skill(){
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'skill' => $this->input->post('skill')
+        );
+            $this->db->insert('tbl_resume_skills',$field);
+
+            if($this->db->affected_rows > 0){
+                return true;
+            }else{
+                return false;                
+            }
+
     }
+
+    public function insert_accomplisment(){
+        
+    }
+
+    public function insert_workingxp(){
+        
+    }
+
+    public function insert_education(){
+        
+    }
+
+    public function insert_seminar(){
+        
+    }
+}

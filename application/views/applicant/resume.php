@@ -22,6 +22,7 @@
 				<p>
 					<ul id='resume_experience'>
 
+<<<<<<< HEAD
 					</ul>
 				</p>
 				<br>
@@ -61,6 +62,24 @@
 								<a id='addsemi' type='button' class='btn btn-primary'>Add Seminars Attended</a>
 							</li>
 						</ul>
+=======
+								<p>EDUCATION</p>
+								<p>
+									<ul id='resume_education'>
+									
+									</ul>
+                                </p>
+								<br>
+                                
+                                <p>SEMINARS ATTENDED</p>
+								<p>
+									<ul id='resume_seminar'>
+									
+									</ul>
+								</p>
+							</div>
+						</div>
+>>>>>>> 2775483a19b0b82b5591b9f80aaa249ac206a540
 					</div>
 				</div>
 
@@ -68,6 +87,7 @@
 
 		</div>
 
+<<<<<<< HEAD
 		<div id="edit_resume" class="modal fade" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-form" role="document">
 				<div class="modal-content">
@@ -89,8 +109,34 @@
 					</div>
 				</div>
 				<!-- /.modal-content -->
+=======
+    <div id="edit_resume" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-form" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title"></h1>
+			</div>
+			<div class="modal-body">
+                <form id="form_resume" class="form-horizontal">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btnsubmit_resume" class="btn btn-primary"><i class='fa fa-save btn-icon'></i>Save</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class='fa fa-times btn-icon'></i>Cancel</button>
+>>>>>>> 2775483a19b0b82b5591b9f80aaa249ac206a540
 			</div>
 			<!-- /.modal-dialog -->
 		</div>
 
 	</div>
+<<<<<<< HEAD
+=======
+	<!-- /.modal-dialog -->
+</div>
+<script>
+	var page_info = 'nobiodata';
+</script>
+>>>>>>> 2775483a19b0b82b5591b9f80aaa249ac206a540

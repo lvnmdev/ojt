@@ -205,3 +205,7 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+
+<script>
+	var page_info = 'biodata';
+</script>
