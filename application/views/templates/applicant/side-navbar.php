@@ -1,4 +1,12 @@
-<nav class='col-xs-5 col-sm-4 col-md-2 col-ls-3' style='padding:0;'>
+<nav class='side-navbar-container' style='padding:0;'>
+	<div class='ustp-menu'>
+		<div class='watermark'>
+			<h1>USTP</h1>
+		</div>
+		<div class='side-nav-close'>
+			<a type='button' id='closeNav'><i class='fa fa-times'></i></a>
+		</div>
+	</div>
 	<ul class='side-navbar'>
 		<a href="<?= base_url('Applicant/dashboard');?>">
 			<li><i class='fa fa-clipboard nav-icon'></i>Dashboard</li>

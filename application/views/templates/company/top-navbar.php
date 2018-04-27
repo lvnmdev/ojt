@@ -12,20 +12,14 @@
 	<script type="text/javascript" src="<?= base_url('assets/js/jquery.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/fontawesome-all.min.js')?>"></script>
-	<script type="text/javascript" src="<?= base_url('assets/js/dashboard_comp.js')?>"></script>
+	<script src="<?= base_url('assets/js/dashboard_app.js');?>"></script>
 </head>
 
 <body>
 	<header class='top-navbar container-fluid'>
-		<div class='col-xs-5 col-sm-4 col-md-3 col-ls-3' style='padding:0;'>
-			<div class='ustp-logo '>
-				<img src="<?= base_url('assets/img/logo/ustp.jpg') ?>" alt="USTP">
-			</div>
-		</div>
-
 		<div class='user-profile'>
 			<div class="dropdown show">
-				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="dropdown-toggle user-info" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="">
 					<?= $this->session->userdata('username')?>
 						<span class="caret"></span>
@@ -36,5 +30,8 @@
 					</a>
 				</div>
 			</div>
+		</div>
+		<div class='side-nav-close'>
+			<a><i class='fa fa-bars'></i></a>
 		</div>
 	</header>

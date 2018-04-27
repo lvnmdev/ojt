@@ -6,8 +6,26 @@ class Company extends CI_Controller {
 		parent::__constructor();
 	}
 
-	public function dashboard(){
+	public function dashboard() {
         $data['content'] = 'company/dashboard';
+        
+		$this->load->view('templates/company/content', $data);
+	}
+	
+	public function worker() {
+		$data['content'] = 'company/worker';
+        
+		$this->load->view('templates/company/content', $data);
+	}
+
+	public function post_job() {
+		$data['content'] = 'company/post_job';
+        
+		$this->load->view('templates/company/content', $data);
+	}
+
+	public function pending_apps() {
+		$data['content'] = 'company/pending_apps';
         
 		$this->load->view('templates/company/content', $data);
 	}
