@@ -31,7 +31,7 @@ class Applicant extends CI_Controller {
 	}
 
 
-	//Functionals
+	//Functionals (Biodata)
 
 	public function show_bio(){
 		$result = $this->applicant->show_bio();
@@ -54,6 +54,32 @@ class Applicant extends CI_Controller {
 			$msg['operation'] = $result[1];
 		}
 		echo json_encode($msg);
+	}
+
+	//Functionals (Resume)
+
+	public function edit_resume(){
+		$data_input = $this->input->post('data_input');
+		$msg['success'] = false;
+
+		switch ($data_input){
+			case 'skill':
+				$result = $this->applicant->insert_skill();
+
+				if($result[0]){
+					$msg['success'] = true;
+					$msg['operation'] = $result[1];
+				}
+				break;
+	
+			default:
+				$msg['operation'] = 'failed';
+				
+       
+		}
+		echo json_encode($msg);		
+
+
 	}
 
 	public function to_pdf(){

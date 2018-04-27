@@ -104,3 +104,6 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+<script>
+	var page_info = 'nobiodata';
+</script>

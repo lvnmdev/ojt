@@ -1,5 +1,9 @@
 $(function () {
-	show_bio_data();
+	if(page_info=='biodata'){
+		show_bio_data();
+	}else{
+		
+	}
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
@@ -91,8 +95,9 @@ $(function () {
 	});
 	//For Biodata Functions End HERE!
 	//For Resume Functions Start HERE!
-
 	var form =  '<div class="form-group">' +
+				'<input id="data_input" type="hidden" name="data_input" class="form-control">' +
+	
 				'<label id="super_input" class="label-control col-md-2"></label>' +
 					'<div class="col-md-3">' +
 						'<input id="input" type="text" name="" class="form-control">' +
@@ -129,7 +134,6 @@ $(function () {
 
 	$('#addqual').click(function () {
 		var i = 0;
-		data_input='skill';
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Qualifications/Skills');
 		$('#form_resume').html(form);
@@ -143,10 +147,11 @@ $(function () {
 		$('#super_input1').css({'display':'none'});
 		$('#super_input2').css({'display':'none'});
 		$('#super_input3').css({'display':'none'});	
+
+		$('#data_input').val('skill');
 	})
 
 	$('#addwork').click(function () {
-
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Working Experience');	
 		$('#form_resume').html(form);
@@ -164,10 +169,12 @@ $(function () {
 		$('#input1').attr('name','company');
 		$('#input2').attr('name','date_start');
 		$('#input3').attr('name','date_end');
+
+		$('#data_input').val('work');
+		
 		
 	})
 	$('#addacco').click(function () {
-
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Accomplishments');	
 		$('#form_resume').html(form);
@@ -179,9 +186,11 @@ $(function () {
 
 		$('#input').attr('name','accomplishment');
 		$('#input1').attr('name','affiliation');
+
+		$('#data_input').val('accomplishment');
+		
 	})
 	$('#addeduc').click(function () {
-
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Educational Background');
 		$('#form_resume').html(form);
@@ -200,7 +209,8 @@ $(function () {
 		$('#input2').attr('name','date_start');
 		$('#input3').attr('name','date_graduate');
 
-		
+		$('#data_input').val('education');		
+
 	})
 
 	$('#addsemi').click(function () {
@@ -218,11 +228,35 @@ $(function () {
 		$('#input').attr('name','seminar');
 		$('#input1').attr('name','seminar_date');
 		$('#input2').attr('name','conductedby');
+
+		$('#data_input').val('seminar');		
+		
 	})
 
 	$('#btnsubmit_resume').click(function(){
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'edit_resume',
+			data: formData,
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.operation == 'insert') {
+					alert('data inserted');
+				} else if (response.operation == 'update') {
+					alert('data updated');
+				}
+				location.reload();
+
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
 	})
 
 
