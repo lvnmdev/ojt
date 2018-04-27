@@ -1,40 +1,29 @@
-<!-- Page wrapper  -->
-<div class="page-wrapper">
-	<!-- Container fluid  -->
-	<div class="container-fluid">
-		<!-- Bread crumb and right sidebar toggle -->
-		<div class="row page-titles">
-			<div class="col-md-6 col-8 align-self-center">
-				<h3 class="text-themecolor m-b-0 m-t-0">
-					<a id="btnedit_info" type="button" class="btn btn-success">EDIT COMPANY INFO</a>
-				</h3>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-						<a href="javascript:void(0)">Home</a>
-					</li>
-					<li class="breadcrumb-item active">Company Information</li>
-				</ol>
+<div class='main-container'>
+	<!-- Page wrapper  -->
+	<div class="page-wrapper">
+		<!-- Container fluid  -->
+		<div class="container-fluid">
+			<!-- Bread crumb and right sidebar toggle -->
+			<div class='card-content'>
+				<p class='path-nav'>Home
+					<i class="fa fa-chevron-right"></i> Company Info</p>
 			</div>
-			<div class="col-md-6 col-4 align-self-center">
-				<div class="row">
-					<div class='col-xs-7 col-sm-8 col-md-9 col-ls-9'>
-						<div class="col-lg-8 col-xlg-8 col-md-7">
-							<div id="comp_info_field" class="card">
-								<div class="card-block">
-									<h1>Company name:</h1>
-									<p>Company Description:</p>
-									<p>HR Manager:</p>
-									<p>Contact No: </p>
-									<p>Company TIN(BIR): </p>
-									<p>Business Permit: </p>
-									<p>Operational Date:</p>
-									<p>Street:</p>
-									<p>Barangay:</p>
-									<p>Postal Code:</p>
-								</div>
-							</div>
-						</div>
-					</div>
+
+			<div class="card-content">
+				<div id="comp_info_field">
+					<h1>Company name:</h1>
+					<p>Company Description:</p>
+					<p>HR Manager:</p>
+					<p>Contact No: </p>
+					<p>Company TIN(BIR): </p>
+					<p>Business Permit: </p>
+					<p>Operational Date:</p>
+					<p>Street:</p>
+					<p>Barangay:</p>
+					<p>Postal Code:</p>
+				</div>
+				<div>
+					<a id="btnedit_info" type="button" class="btn btn-success"><i class='fa fa-edit btn-icon'></i>EDIT COMPANY INFO</a>
 				</div>
 			</div>
 		</div>
@@ -122,3 +111,5 @@
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
+
+</div>

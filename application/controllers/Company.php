@@ -12,8 +12,8 @@ class Company extends CI_Controller {
 		$this->load->view('templates/company/content', $data);
 	}
 	
-	public function worker() {
-		$data['content'] = 'company/worker';
+	public function employees() {
+		$data['content'] = 'company/employees';
         
 		$this->load->view('templates/company/content', $data);
 	}

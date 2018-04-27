@@ -4,7 +4,9 @@
 			<h1>USTP</h1>
 		</div>
 		<div class='side-nav-close'>
-			<a type='button' id='closeNav'><i class='fa fa-times'></i></a>
+			<a type='button' id='closeNav'>
+				<i class='fa fa-times'></i>
+			</a>
 		</div>
 	</div>
 	<ul class='side-navbar'>

@@ -17,17 +17,19 @@ $(function () {
 				var html = '';
 				console.log(response);
 				if (response.success) {
-					html += '<div class="card-block">' +
-						'<p>Fullname: ' + response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname + ' | Sex: ' + response.data.sex + ' | ' + ' Birthdate: ' + response.data.birthdate + ' </p>' +
-						'<p>Nationality: ' + response.data.nationality + ' | ' + 'Religion: ' + response.data.religion + '</p>' +
-						'<p>Home Address: ' + response.data.haddress + ' | Current Address: ' + response.data.caddress + '</p>' +
-						'<br>' +
-						'<p>MOTHER/GUARDIAN</p>' +
-						'<p>Fullname: ' + response.data.momfname + ' | Birthdate: ' + response.data.mombday + ' | Occupation: ' + response.data.momwork + '</p>' +
-						'<p>FATHER/GUARDIAN</p>' +
-						'<p>Fullname: ' + response.data.dadfname + ' | Birthdate: ' + response.data.dadbday + ' | Occupation: ' + response.data.dadwork + '</p>' +
-						'</div>'
-					$('#bio_field').html(html);
+					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
+					$("#user_sex").val(response.data.sex);
+					$("#user_birthdate").val(response.data.birthdate);
+					$("#user_nationality").val(response.data.nationality);
+					$("#user_religion").val(response.data.religion);
+					$("#user_home_address").val(response.data.haddress);
+					$("#user_current_address").val(response.data.caddress);
+					$("#mother_fullname").val(response.data.momfname);
+					$("#mother_birthdate").val(response.data.mombday);
+					$("#mother_occupation").val(response.data.momwork);
+					$("#father_fullname").val(response.data.dadfname);
+					$("#father_birthdate").val(response.data.dadbday);
+					$("#father_occupation").val(response.data.dadwork);	
 				}
 
 			},
