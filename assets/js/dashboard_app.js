@@ -2,6 +2,7 @@ $(function () {
 	if(page_info=='biodata'){
 		show_bio_data();
 	}else{
+		show_resume();
 		
 	}
 	//For Biodata Functions Start HERE!
@@ -208,8 +209,8 @@ $(function () {
 
 		$('#input').attr('name','level');
 		$('#input1').attr('name','school');
-		$('#input2').attr('name','date_start');
-		$('#input3').attr('name','date_graduate');
+		$('#input2').attr('name','start');
+		$('#input3').attr('name','graduate');
 
 		$('#data_input').val('education');		
 
@@ -247,13 +248,10 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if (response.operation == 'insert') {
-					alert('data inserted');
-				} else if (response.operation == 'update') {
-					alert('data updated');
+				if(response.success){
+					alert('inserted');
+					location.reload();					
 				}
-				location.reload();
-
 			},
 			error: function () {
 				alert('Error');
@@ -261,5 +259,68 @@ $(function () {
 		});
 	})
 
+	function show_resume() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data);
+				var skills = '';
+				var xp = '';
+				var accomplishments = '';
+				var seminar = '';
+				var education = '';
+				var i;
+				if (data.seminars){
+					for (i = 0; i < data.seminars.length; i++) {
+						seminar += '<li>'+data.seminars[i].seminar+'</li>'+
+									'<li>'+data.seminars[i].seminar_date+'</li>'+
+									'<li>'+data.seminars[i].conductedby+'</li>';
+					}
+					$('#resume_seminar').html(seminar);
+				}
+				if (data.accomplishment){
+					for (i = 0; i < data.accomplishment.length; i++) {
+						accomplishments += '<li>'+data.accomplishment[i].accomplishment+'</li>'+
+											'<li>'+data.accomplishment[i].affiliation+'</li>';
+					}
+					$('#resume_accomplishments').html(accomplishments);
+				}
+				if (data.skills){
+					for (i = 0; i < data.skills.length; i++) {
+						skills += '<li>'+data.skills[i].skill+'</li>';
+					}
+					$('#resume_skills').html(skills);
+				}
+				if (data.workxp){
+					for (i = 0; i < data.workxp.length; i++) {
+						xp += '<li>'+data.workxp[i].position+'</li>'+
+								'<li>'+data.workxp[i].company+'</li>'+
+								'<li>'+data.workxp[i].date_start+'</li>'+
+								'<li>'+data.workxp[i].date_end+'</li>';
+					}
+					$('#resume_xp').html(xp);
+				}
 
+				if (data.education){
+					for (i = 0; i < data.education.length; i++) {
+						education += '<li>'+data.education[i].level+'</li>'+
+										'<li>'+data.education[i].school+'</li>'+
+										'<li>'+data.education[i].start+'</li>'+
+										'<li>'+data.education[i].graduated+'</li>';
+					}
+					$('#resume_education').html(education);
+				}
+				
+
+				
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
 })

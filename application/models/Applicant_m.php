@@ -68,28 +68,92 @@ class Applicant_m extends CI_Model {
             'skill' => $this->input->post('skill')
         );
             $this->db->insert('tbl_resume_skills',$field);
-
-            if($this->db->affected_rows > 0){
-                return true;
-            }else{
-                return false;                
-            }
+            return true;
+           
 
     }
 
-    public function insert_accomplisment(){
-        
+    public function insert_accomplishment(){
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'accomplishment' => $this->input->post('accomplishment'),
+            'affiliation' => $this->input->post('affiliation')
+        );
+            $this->db->insert('tbl_resume_accomplishment',$field);
+            return true;       
     }
 
-    public function insert_workingxp(){
-        
+    public function insert_workxp(){
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'position' => $this->input->post('position'),
+            'company' => $this->input->post('company'),
+            'date_start' => $this->input->post('date_start'),
+            'date_end' => $this->input->post('date_end')
+        );
+            $this->db->insert('tbl_resume_workxp',$field);
+            return true;       
     }
 
     public function insert_education(){
-        
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'level' => $this->input->post('level'),
+            'school' => $this->input->post('school'),
+            'start' => $this->input->post('start'),
+            'graduated' => $this->input->post('graduate')
+        );
+            $this->db->insert('tbl_resume_education',$field);
+            return true;       
     }
 
-    public function insert_seminar(){
-        
+    public function insert_seminars(){
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'seminar' => $this->input->post('seminar'),
+            'seminar_date' => $this->input->post('seminar_date'),
+            'conductedby' => $this->input->post('conductedby'),
+        );
+            $this->db->insert('tbl_resume_seminars',$field);
+            return true;       
+    }
+
+    public function show_resume(){
+        $user = $this->session->userdata('username');
+        $query1 = $this->db->select('*')->from('tbl_resume_skills')->where('user_name',$user)->get();
+        $query2 = $this->db->select('*')->from('tbl_resume_accomplishment')->where('user_name',$user)->get();
+        $query3 = $this->db->select('*')->from('tbl_resume_education')->where('user_name',$user)->get();
+        $query4 = $this->db->select('*')->from('tbl_resume_seminars')->where('user_name',$user)->get();
+        $query5 = $this->db->select('*')->from('tbl_resume_workxp')->where('user_name',$user)->get();
+
+        $result[0] = false;
+        $result[1] = '';
+        $result[2] = '';
+        $result[3] = '';
+        $result[4] = '';
+        $result[5] = '';
+
+        if($query1->num_rows()>0){
+            $result[0] = true;
+            $result[1] = $query1->result();
+
+        }
+        if($query2->num_rows()>0){
+            $result[2] = $query2->result();
+
+        }
+        if($query3->num_rows()>0){
+            $result[3] = $query3->result();
+
+        }
+        if($query4->num_rows()>0){
+            $result[4] = $query4->result();
+
+        }
+        if($query5->num_rows()>0){
+            $result[5] = $query5->result();
+
+        }
+        return $result;
     }
 }

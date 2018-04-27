@@ -57,6 +57,21 @@ class Applicant extends CI_Controller {
 	}
 
 	//Functionals (Resume)
+	public function show_resume(){
+		$result = $this->applicant->show_resume();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['skills'] = $result[1];
+			$msg['accomplishment'] = $result[2];
+			$msg['education'] = $result[3];
+			$msg['seminars'] = $result[4];
+			$msg['workxp'] = $result[5];
+		}
+
+		echo json_encode($msg);
+		
+	}
 
 	public function edit_resume(){
 		$data_input = $this->input->post('data_input');
@@ -66,12 +81,38 @@ class Applicant extends CI_Controller {
 			case 'skill':
 				$result = $this->applicant->insert_skill();
 
-				if($result[0]){
+				if($result){
 					$msg['success'] = true;
-					$msg['operation'] = $result[1];
 				}
 				break;
-	
+			case 'work':
+				$result = $this->applicant->insert_workxp();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'education':
+				$result = $this->applicant->insert_education();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'accomplishment':
+				$result = $this->applicant->insert_accomplishment();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'seminar':
+				$result = $this->applicant->insert_seminars();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;	
 			default:
 				$msg['operation'] = 'failed';
 				
