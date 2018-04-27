@@ -9,22 +9,79 @@
 					<i class="fa fa-chevron-right"></i> Biodata</p>
 			</div>
 
-			<div class="card-content">
-				<div id="bio_field">
-					<p>Fullname: | Sex: | Birthdate: </p>
-					<p> Nationality: | Religion: </p>
-					<p>Home Address: | Current Address: </p>
-
-					<br>
-					<p>MOTHER/GUARDIAN</p>
-					<p>Fullname: | Birthdate: | Occupation:</p>
-
-					<br>
-					<p>FATHER/GUARDIAN</p>
-					<p>Fullname: | Birthdate: | Occupation:</p>
+			<div class="card-content" style='overflow:auto;'>
+				<div>
+					<h1>Biodata</h1>
 				</div>
-				<a id="btnedit_bio" type="button" class="btn btn-success">
+				<div class="bio_field">
+					<div class='col-md-4'>
+						<p>Name:</p>
+						<input class='form-control' id='user_fullname' type="text" readonly>
+					</div>
+					<div class='col-md-2'>
+						<p>Sex:</p>
+						<input class='form-control' id='user_sex' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Birthdate:</p>
+						<input class='form-control' id='user_birthdate' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Nationality:</p>
+						<input class='form-control' id='user_nationality' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Religion:</p>
+						<input class='form-control' id='user_religion' type="text" readonly>
+					</div>
+					<div class='col-md-12'>
+						<p>Home Address:</p>
+						<input class='form-control' id='user_home_address' type="text" readonly>
+					</div>
+					<div class='col-md-12'>
+						<p>Current Address:</p>
+						<input class='form-control' id='user_current_address' type="text" readonly>
+					</div>
+				</div>
+				<div>
+					<div class='col-md-12'>
+						<h3>Mother / Guardian</h3>
+					</div>
+					<div class='col-md-4'>
+						<p>Name:</p>
+						<input class='form-control' id='mother_fullname' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Birthdate:</p>
+						<input class='form-control' id='mother_birthdate' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Occupation:</p>
+						<input class='form-control' id='mother_occupation' type="text" readonly>
+					</div>
+				</div>
+				<div>
+					<div class='col-md-12'>
+						<h3>Father / Guardian</h3>
+					</div>
+					<div class='col-md-4'>
+						<p>Name:</p>
+						<input class='form-control' id='father_fullname' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Birthdate:</p>
+						<input class='form-control' id='father_birthdate' type="text" readonly>
+					</div>
+					<div class='col-md-3'>
+						<p>Occupation:</p>
+						<input class='form-control' id='father_occupation' type="text" readonly>
+					</div>
+				</div>
+				<div class='col-md-12'>
+					<hr>
+					<a id="btnedit_bio" type="button" class="btn btn-success">
 					<i class='fa fa-edit btn-icon'></i>Edit</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -40,7 +97,7 @@
 				<h1 class="modal-title">Biodata</h1>
 			</div>
 			<div class="modal-body">
-				<form id="form_bio" class="form-horizontal">
+				<form id="form_bio">
 					<input type="hidden" name="txtId" value="0">
 					<div class='col-sm-4 col-md-4'>
 						<div class="form-group ">

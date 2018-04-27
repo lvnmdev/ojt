@@ -12,7 +12,8 @@
 	<script type="text/javascript" src="<?= base_url('assets/js/jquery.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/fontawesome-all.min.js')?>"></script>
-	<script src="<?= base_url('assets/js/dashboard_app.js');?>"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/dashboard_comp.js');?>"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/style.js');?>"></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='side-nav-close'>
-			<a><i class='fa fa-bars'></i></a>
+		<div class='side-nav-open'>
+			<a type='button' id='openNav'><i class='fa fa-bars'></i></a>
 		</div>
 	</header>

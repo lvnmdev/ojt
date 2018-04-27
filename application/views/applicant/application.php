@@ -4,9 +4,11 @@
 		<!-- Container fluid  -->
 		<div class="container-fluid">
 			<div class='card-content'>
-				<h1>Company List</h1>
+				<p class='path-nav'>Home
+					<i class="fa fa-chevron-right"></i> Application</p>
 			</div>
 			<div class='card-content'>
+				<h1>Application</h1>
 				<div class="table-responsive">
 					<table class='table table-striped table-hover'>
 						<thead>
