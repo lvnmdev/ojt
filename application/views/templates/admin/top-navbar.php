@@ -30,7 +30,7 @@
 						<span class="caret"></span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a href="<?php echo base_url("index.php/Main/logout ")?>">
+					<a href="<?php echo base_url("Main/logout ")?>">
 						<i class="fa fa-sign-out-alt"></i> Logout
 					</a>
 				</div>

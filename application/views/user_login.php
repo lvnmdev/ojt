@@ -2,11 +2,11 @@
 
     if (isset($_SESSION['username'])){
         if ($_SESSION['usertype']==0){
-            redirect('index.php/Admin/dashboard');
+            redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==1){
-            redirect('index.php/Company/dashboard');
+            redirect('Company/dashboard');
         }else{
-            redirect('index.php/Applicant/dashboard');
+            redirect('Applicant/dashboard');
         }
     }
 
