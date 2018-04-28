@@ -156,6 +156,7 @@
 							<input id='bio_c' type="text" name="caddress" class="form-control" value="">
 						</div>
 					</div>
+					<hr style='width:100%;'>
 					<div class='col-sm-12 col-md-12'>
 						<div class="form-group">
 							<label for="name" class="label-control">Mother Maiden Name</label>

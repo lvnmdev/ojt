@@ -1,9 +1,10 @@
 $(function () {
-	if(page_info=='biodata'){
+	if (page_info == 'biodata') {
 		show_bio_data();
-	}else{
+	} else if (page_info == 'nobiodata') {
 		show_resume();
-		
+	} else {
+
 	}
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
@@ -29,7 +30,7 @@ $(function () {
 					$("#mother_occupation").val(response.data.momwork);
 					$("#father_fullname").val(response.data.dadfname);
 					$("#father_birthdate").val(response.data.dadbday);
-					$("#father_occupation").val(response.data.dadwork);	
+					$("#father_occupation").val(response.data.dadwork);
 				}
 
 			},
@@ -98,35 +99,35 @@ $(function () {
 	});
 	//For Biodata Functions End HERE!
 	//For Resume Functions Start HERE!
-	var form =  '<div class="form-group">' +
-				'<input id="data_input" type="hidden" name="data_input" class="form-control">' +
-	
-				'<label id="super_input" class="label-control col-md-2"></label>' +
-					'<div class="col-md-3">' +
-						'<input id="input" type="text" name="" class="form-control">' +
-					'</div>' +
-				'</div>'+
+	var form = '<div class="form-group">' +
+		'<input id="data_input" type="hidden" name="data_input" class="form-control">' +
 
-				'<div class="form-group">' +
-				'<label id="super_input1" class="label-control col-md-2"></label>' +
-					'<div class="col-md-3">' +
-						'<input id="input1" type="hidden" name="" class="form-control">' +
-					'</div>' +
-				'</div>' +
+		'<label id="super_input" class="label-control col-md-2"></label>' +
+		'<div class="col-md-3">' +
+		'<input id="input" type="text" name="" class="form-control">' +
+		'</div>' +
+		'</div>' +
 
-				'<div class="form-group">' +
-				'<label id="super_input2" class="label-control col-md-2"></label>' +
-					'<div class="col-md-3">' +
-						'<input id="input2" type="hidden" name="" class="form-control">' +
-					'</div>' +
-				'</div>' +
+		'<div class="form-group">' +
+		'<label id="super_input1" class="label-control col-md-2"></label>' +
+		'<div class="col-md-3">' +
+		'<input id="input1" type="hidden" name="" class="form-control">' +
+		'</div>' +
+		'</div>' +
 
-				'<div class="form-group">' +
-				'<label id="super_input3" class="label-control col-md-2"></label>' +
-					'<div class="col-md-3">' +
-						'<input id="input3" type="hidden" name="" class="form-control">' +
-					'</div>' +
-				'</div>'	
+		'<div class="form-group">' +
+		'<label id="super_input2" class="label-control col-md-2"></label>' +
+		'<div class="col-md-3">' +
+		'<input id="input2" type="hidden" name="" class="form-control">' +
+		'</div>' +
+		'</div>' +
+
+		'<div class="form-group">' +
+		'<label id="super_input3" class="label-control col-md-2"></label>' +
+		'<div class="col-md-3">' +
+		'<input id="input3" type="hidden" name="" class="form-control">' +
+		'</div>' +
+		'</div>'
 
 	$('#btnedit_res').click(function () {
 
@@ -142,77 +143,89 @@ $(function () {
 		$('#form_resume').html(form);
 		$('#super_input').text('Add Skill');
 
-		$('#input').attr('name','skill');
-		$('#input1').css({'display':'none'});
-		$('#input2').css({'display':'none'});
-		$('#input3').css({'display':'none'});	
+		$('#input').attr('name', 'skill');
+		$('#input1').css({
+			'display': 'none'
+		});
+		$('#input2').css({
+			'display': 'none'
+		});
+		$('#input3').css({
+			'display': 'none'
+		});
 
-		$('#super_input1').css({'display':'none'});
-		$('#super_input2').css({'display':'none'});
-		$('#super_input3').css({'display':'none'});	
+		$('#super_input1').css({
+			'display': 'none'
+		});
+		$('#super_input2').css({
+			'display': 'none'
+		});
+		$('#super_input3').css({
+			'display': 'none'
+		});
 
 		$('#data_input').val('skill');
 	})
 
 	$('#addwork').click(function () {
 		$('#edit_resume').modal('show');
-		$('.modal-title').text('Add Working Experience');	
+		$('.modal-title').text('Add Working Experience');
 		$('#form_resume').html(form);
 
-		$('#super_input').text('Position');	
+		$('#super_input').text('Position');
 		$('#super_input1').text('Company');
-		$('#super_input2').text('Date Started');	
+		$('#super_input2').text('Date Started');
 		$('#super_input3').text('Date Ended');
 
-		$('#input1').attr('type','text');
-		$('#input2').attr('type','date');
-		$('#input3').attr('type','date');
+		$('#input1').attr('type', 'text');
+		$('#input2').attr('type', 'date');
+		$('#input3').attr('type', 'date');
 
-		$('#input').attr('name','position');
-		$('#input1').attr('name','company');
-		$('#input2').attr('name','date_start');
-		$('#input3').attr('name','date_end');
+		$('#input').attr('name', 'position');
+		$('#input1').attr('name', 'company');
+		$('#input2').attr('name', 'date_start');
+		$('#input3').attr('name', 'date_end');
 
 		$('#data_input').val('work');
-		
-		
+
+
 	})
 	$('#addacco').click(function () {
 		$('#edit_resume').modal('show');
-		$('.modal-title').text('Add Accomplishments');	
+		$('.modal-title').text('Add Accomplishments');
 		$('#form_resume').html(form);
 
-		$('#super_input').text('Accomplishment');	
+		$('#super_input').text('Accomplishment');
 		$('#super_input1').text('Affiliation');
 
-		$('#input1').attr('type','text');
+		$('#input1').attr('type', 'text');
 
-		$('#input').attr('name','accomplishment');
-		$('#input1').attr('name','affiliation');
+		$('#input').attr('name', 'accomplishment');
+		$('#input1').attr('name', 'affiliation');
 
 		$('#data_input').val('accomplishment');
-		
+
 	})
 	$('#addeduc').click(function () {
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Educational Background');
 		$('#form_resume').html(form);
-		
-		$('#super_input').text('Level');	
+
+		$('#super_input').text('Level');
 		$('#super_input1').text('Name of School');
-		$('#super_input2').text('Date Started');	
+		$('#super_input2').text('Date Started');
 		$('#super_input3').text('Date Graduated');
 
-		$('#input1').attr('type','text');
-		$('#input2').attr('type','date');
-		$('#input3').attr('type','date');
+		$('#input1').attr('type', 'text');
+		$('#input2').attr('type', 'date');
+		$('#input3').attr('type', 'date');
 
-		$('#input').attr('name','level');
-		$('#input1').attr('name','school');
-		$('#input2').attr('name','start');
-		$('#input3').attr('name','graduate');
+		$('#input').attr('name', 'level');
+		$('#input1').attr('name', 'school');
+		$('#input2').attr('name', 'start');
+		$('#input3').attr('name', 'graduate');
 
-		$('#data_input').val('education');		
+		$('#data_input').val('education');
 
 	})
 
@@ -221,22 +234,22 @@ $(function () {
 		$('.modal-title').text('Add Seminars Attended');
 		$('#form_resume').html(form);
 
-		$('#super_input').text('Name of Seminar');	
+		$('#super_input').text('Name of Seminar');
 		$('#super_input1').text('Date');
-		$('#super_input2').text('Conducted by');	
+		$('#super_input2').text('Conducted by');
 
-		$('#input1').attr('type','date');
-		$('#input2').attr('type','text');
+		$('#input1').attr('type', 'date');
+		$('#input2').attr('type', 'text');
 
-		$('#input').attr('name','seminar');
-		$('#input1').attr('name','seminar_date');
-		$('#input2').attr('name','conductedby');
+		$('#input').attr('name', 'seminar');
+		$('#input1').attr('name', 'seminar_date');
+		$('#input2').attr('name', 'conductedby');
 
-		$('#data_input').val('seminar');		
-		
+		$('#data_input').val('seminar');
+
 	})
 
-	$('#btnsubmit_resume').click(function(){
+	$('#btnsubmit_resume').click(function () {
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
 		$.ajax({
@@ -248,9 +261,9 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if(response.success){
+				if (response.success) {
 					alert('inserted');
-					location.reload();					
+					location.reload();
 				}
 			},
 			error: function () {
@@ -274,49 +287,59 @@ $(function () {
 				var seminar = '';
 				var education = '';
 				var i;
-				if (data.seminars){
+				if (data.seminars) {
 					for (i = 0; i < data.seminars.length; i++) {
-						seminar += '<li>'+data.seminars[i].seminar+'</li>'+
-									'<li>'+data.seminars[i].seminar_date+'</li>'+
-									'<li>'+data.seminars[i].conductedby+'</li>';
+						seminar += '<ul class="resume-list">' +
+							'<li>' + data.seminars[i].seminar + '</li>' +
+							'<li>' + data.seminars[i].seminar_date + '</li>' +
+							'<li>' + data.seminars[i].conductedby + '</li>' +
+							'</ul>';
 					}
 					$('#resume_seminar').html(seminar);
 				}
-				if (data.accomplishment){
+				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
-						accomplishments += '<li>'+data.accomplishment[i].accomplishment+'</li>'+
-											'<li>'+data.accomplishment[i].affiliation+'</li>';
+						accomplishments += '<ul class="resume-list">' +
+								'<li>' + data.accomplishment[i].accomplishment + '</li>' +
+								'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'</ul>';
 					}
 					$('#resume_accomplishments').html(accomplishments);
 				}
-				if (data.skills){
+				if (data.skills) {
 					for (i = 0; i < data.skills.length; i++) {
-						skills += '<li>'+data.skills[i].skill+'</li>';
+						skills += '<ul class="resume-list">' +
+								'<li>' + data.skills[i].skill + '</li>' +
+							'</ul>';
 					}
 					$('#resume_skills').html(skills);
 				}
-				if (data.workxp){
+				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
-						xp += '<li>'+data.workxp[i].position+'</li>'+
-								'<li>'+data.workxp[i].company+'</li>'+
-								'<li>'+data.workxp[i].date_start+'</li>'+
-								'<li>'+data.workxp[i].date_end+'</li>';
+						xp += '<ul class="resume-list">' +
+								'<li>' + data.workxp[i].position + '</li>' +
+								'<li>' + data.workxp[i].company + '</li>' +
+								'<li>' + data.workxp[i].date_start + '</li>' +
+								'<li>' + data.workxp[i].date_end + '</li>' +
+							'</ul>';
 					}
 					$('#resume_xp').html(xp);
 				}
 
-				if (data.education){
+				if (data.education) {
 					for (i = 0; i < data.education.length; i++) {
-						education += '<li>'+data.education[i].level+'</li>'+
-										'<li>'+data.education[i].school+'</li>'+
-										'<li>'+data.education[i].start+'</li>'+
-										'<li>'+data.education[i].graduated+'</li>';
+						education += '<ul class="resume-list">' +
+							'<li>' + data.education[i].level + '</li>' +
+							'<li>' + data.education[i].school + '</li>' +
+							'<li>' + data.education[i].start + '</li>' +
+							'<li>' + data.education[i].graduated + '</li>' +
+							'</ul>';
 					}
 					$('#resume_education').html(education);
 				}
-				
 
-				
+
+
 			},
 			error: function () {
 				alert('Error');

@@ -10,41 +10,43 @@
 			</div>
 
 			<div class="card-content">
-				<p>QUALIFICATIONS</p>
+				<h4 class='resume-title'>QUALIFICATIONS</h4>
 				<p>
-					<ul id='resume_skills'>
+					<div id='resume_skills'>
 
-					</ul>
+					</div>
 				</p>
 				<br>
 
-				<p>WORK EXPERIENCE</p>
+				<h4 class='resume-title'>WORK EXPERIENCE</h4>
 				<p>
-					<ul id='resume_xp'>
+					<div id='resume_xp'>
 
-					</ul>
+					</div>
 				</p>
 				<br>
 
-				<p>ACCOMPLISHMENTS</p>
+				<h4 class='resume-title'>ACCOMPLISHMENTS</h4>
 				<p>
-					<ul id='resume_accomplishments'>
+					<div id='resume_accomplishments'>
 
-					</ul>
+					</div>
 				</p>
 				<br>
 
-				<p>EDUCATION</p>
+				<h4 class='resume-title'>EDUCATION</h4>
 				<p>
-					<ul id='resume_education'>
+					<div id='resume_education'>
 
-					</ul>
+					</div>
 				</p>
 
 				<div class='resume-edit'>
-					<div class="row page-titles">
-						<a type="button" class="btn btn-success" id="btnedit_res">EDIT RESUME</a>
-						<ul id="resume_dropdown" style='display:none;'>
+					<div class="dropdown">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Edit Resume
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
 							<li>
 								<a id='addqual' type='button' class='btn btn-primary'>Add Qualifications/Skills</a>
 							</li>
@@ -63,7 +65,6 @@
 						</ul>
 					</div>
 				</div>
-
 			</div>
 
 		</div>

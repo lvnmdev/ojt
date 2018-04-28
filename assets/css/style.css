@@ -157,11 +157,14 @@ body {
 	font-size: 2.25em;
 }
 
-.side-nav-close a:hover{
+.side-nav-close a:hover
+.side-nav-open a:hover {
 	color: lightgrey;
+	transition: 1s ease-in-out;
 }
 
-.side-nav-close a:active {
+.side-nav-close a:active,
+.side-nav-open a:active {
 	color: grey;
 }
 
@@ -169,14 +172,7 @@ body {
 	left: 0;
 	font-size: 2.5em;
 	padding: 15px;
-}
-
-.side-nav-open a:hover {
-	color: lightgrey;
-}
-
-.side-nav-open a:active {
-	color: grey;
+	transition: 1s ease-in-out;
 }
 
 .side-nav-close a,
@@ -191,6 +187,7 @@ body {
 	color: #1a1751;
 }
 
+
 .side-navbar a {
 	text-decoration: none;
 	color: #1a1751;
@@ -198,6 +195,12 @@ body {
 
 .side-navbar li:hover {
 	background-color: rgba(0, 0, 0, .2);
+	transition: .25s ease-in-out;
+	font-size: 1.25em;
+}
+
+.side-navbar li:active {
+	background-color: rgb(160, 160, 160);
 }
 
 .side-navbar li {
@@ -270,4 +273,15 @@ body {
 
 .scrollup-btn:hover {
   background-color: #d89c13;
+}
+
+/* Resume */
+
+.resume-list {
+	list-style: none;
+	border-left: 2px solid #1a1751;
+}
+
+.resume-title {
+	border-bottom: 1px solid #333;
 }
