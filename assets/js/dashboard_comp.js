@@ -1,4 +1,6 @@
 $(function () {
+
+//Company Info Functions
 	show_comp_info();
 
 	function show_comp_info() {
@@ -89,4 +91,11 @@ $(function () {
 			}
 		});
 	});
+
+	//Job Posting Functionals
+
+	$('#btnpost_job').click(function(){
+		$('#add_job').modal('show');
+		$('.modal-title').text('Add Job Post');
+	})
 })
