@@ -1,3 +1,14 @@
+<?php
+
+    if (isset($_SESSION['username'])){
+        if ($_SESSION['usertype']==0){
+            redirect('Admin/dashboard');
+        }else if($_SESSION['usertype']==2){
+            redirect('Applicant/dashboard');
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 
