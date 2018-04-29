@@ -59,4 +59,28 @@ class Company extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+
+	//Job Posting Functionals
+	public function show_jobs(){
+		$result = $this->company->show_jobs();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+
+		echo json_encode($msg);
+		
+	}
+
+	public function post_job_hiring(){
+		$result = $this->company->post_job();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['operation'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
 }

@@ -1,7 +1,8 @@
 $(function () {
 
-//Company Info Functions
+	//Company Info Functions
 	show_comp_info();
+	show_job_postings();
 
 	function show_comp_info() {
 		$.ajax({
@@ -15,16 +16,16 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 					html += '<div class="card-block">' +
-						'<h3>Company name: ' +response.data.comp_name+'</h3>' +
-						'<p>Company Description: ' +response.data.comp_desc +'</p>' +
-						'<p>HR Manager: ' +response.data.comp_hr +'</p>' +
-						'<p>Contact No: ' + response.data.comp_contact+' </p>' +
-						'<p>Company TIN(BIR): ' + response.data.comp_tin+' </p>' +
-						'<p>Business Permit: ' +response.data.comp_permit +' </p>' +
-						'<p>Operational Date: ' + response.data.comp_opdate+'</p>' +
-						'<p>Street: ' +response.data.comp_addst +'</p>' +
-						'<p>Barangay: ' + response.data.comp_addbrgy+'</p>' +
-						'<p>Postal Code: ' + response.data.comp_postcode+'</p>' +
+						'<h3>Company name: ' + response.data.comp_name + '</h3>' +
+						'<p>Company Description: ' + response.data.comp_desc + '</p>' +
+						'<p>HR Manager: ' + response.data.comp_hr + '</p>' +
+						'<p>Contact No: ' + response.data.comp_contact + ' </p>' +
+						'<p>Company TIN(BIR): ' + response.data.comp_tin + ' </p>' +
+						'<p>Business Permit: ' + response.data.comp_permit + ' </p>' +
+						'<p>Operational Date: ' + response.data.comp_opdate + '</p>' +
+						'<p>Street: ' + response.data.comp_addst + '</p>' +
+						'<p>Barangay: ' + response.data.comp_addbrgy + '</p>' +
+						'<p>Postal Code: ' + response.data.comp_postcode + '</p>' +
 						'</div>'
 					$('#comp_info_field').html(html);
 				}
@@ -93,9 +94,67 @@ $(function () {
 	});
 
 	//Job Posting Functionals
+	function show_job_postings() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_jobs',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				var html = '';
+				var i;
+				console.log(response.data[0].position);
+				if (response.data) {
+					for (i = 0; i < response.data.length; i++) {
+						html += '<tr>'+
+									'<td>'+response.data[i].position+'</td>'+
+									'<td>'+response.data[i].no_applicants+'</td>'+
+									'<td>'+response.data[i].pref_sex+'</td>'+
+									'<td>'+response.data[i].pref_civstat+'</td>'+
+									'<td>'+response.data[i].pref_educ+'</td>'+
+									'<td>'+response.data[i].requirements+'</td>'+
+									'<td>'+response.data[i].date_posted+'</td>'+
+									'<td><button class="btn btn-success">Edit</button><button class="btn btn-danger">END</button></td>'+
+								'</tr>'
+					}
+				console.log(html);
+				$('#show_jobs').html(html)
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
 
-	$('#btnpost_job').click(function(){
+	$('#btnpost_job').click(function () {
 		$('#add_job').modal('show');
 		$('.modal-title').text('Add Job Post');
-	})
+	});
+
+	$('#btnsubmit_post').click(function () {
+		var formData = $('#form_add_job').serialize();
+		console.log(formData);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'post_job_hiring',
+			data: formData,
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				alert('inserted');
+				location.reload();
+
+			},
+			error: function () {
+				alert('Error');
+				
+			}
+		});
+	});
+
+
 })

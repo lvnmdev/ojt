@@ -53,6 +53,41 @@ class Company_m extends CI_Model {
             return $result;
             }
         }
+//Functionals for Job Posting
+        public function show_jobs(){
+            $user = $this->session->userdata('username');
+            $query = $this->db->select('*')->from('tbl_job_posting')->where('user_name',$user)->get();
+
+            if($query->num_rows()>0){
+                $result[0] = true;
+                $result[1] = $query->result();
+
+                return $result;
+            }else {
+                $result[0] = false;
+                $result[1] = "";
+                
+                return $result;
+            }
+            
+        }
+
+        public function post_job(){
+            $field = array(
+                'user_name' => $this->session->userdata('username'),
+                'position' => $this->input->post('position'),
+                'no_applicants' => $this->input->post('no_applicants'),
+                'pref_sex' => $this->input->post('pref_sex'),
+                'pref_civstat' => $this->input->post('pref_civstat'),
+                'pref_educ' => $this->input->post('pref_educ'),
+                'requirements' => $this->input->post('requirements')
+            );
+    
+            $this->db->insert('tbl_job_posting',$field);
+            $result[1] = 'insert';
+            $result[0] = true;
+            return $result;
+            }
 
 
 

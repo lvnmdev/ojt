@@ -25,7 +25,7 @@
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
-						<tbody id="showempdata">
+						<tbody id="show_jobs">
 						</tbody>
 					</table>
 
@@ -49,51 +49,51 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Position</label>
-									<input type="text" name="caddress" class="form-control" >
+									<input type="text" name="position" class="form-control">
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
-									<label for="name" class="label-control">No of Applicants Needed</label>
-									<input type="text" name="caddress" class="form-control" >
+									<label for="name" class="label-control">No. of Applicants Needed</label>
+									<input type="text" name="no_applicants" class="form-control">
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Sex</label>
-									<select name="" id="">
-										<option value="">Male</option>
-										<option value="">Female</option>
+									<select name="pref_sex" id="">
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
 									</select>
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Civil Status</label>
-									<select name="" id="">
-										<option value="">Single</option>
-										<option value="">Married</option>
-										<option value="">Either</option>
+									<select name="pref_civstat" id="">
+										<option value="Single">Single</option>
+										<option value="Married">Married</option>
+										<option value="Either">Either</option>
 									</select>
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Education</label>
-									<select name="" id="">
-										<option value="">Elementary Graduate</option>
-										<option value="">Highschool Level</option>
-										<option value="">Highschool Graduate</option>
-										<option value="">College Level</option>
-										<option value="">College Graduate</option>
-										<option value="">Vocational</option>
+									<select name="pref_educ" id="">
+										<option value="College Graduate">College Graduate</option>
+										<option value="College Level">College Level</option>
+										<option value="Highschool Graduate">Highschool Graduate</option>
+										<option value="Highschool Level">Highschool Level</option>
+										<option value="Vocational">Vocational</option>
+										<option value="Elementary Graduate">Elementary Graduate</option>
 									</select>
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Requirements</label>
-									<input type="text" name="caddress" class="form-control" >
+									<input placeholder="Separate multiple requirements with a comma (,)" type="text" name="requirements" class="form-control">
 								</div>
 							</div>
 						</form>
@@ -101,7 +101,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">
 							<i class='fa fa-times btn-icon'></i>Cancel</button>
-						<button type="button" id="btnsubmit_bio" class="btn btn-primary">
+						<button type="button" id="btnsubmit_post" class="btn btn-primary">
 							<i class='fa fa-save btn-icon'></i>Save</button>
 					</div>
 				</div>
