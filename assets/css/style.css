@@ -223,15 +223,24 @@ body {
 }
 
 .card-title {
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #eee;
+}
+
+.card-title h1 {
+	margin-top: 0;
 }
 
 .card-body {
 	margin-top: 15px;
+	overflow: auto;
 }
 
 .card-footer {
 	width: 100%;
+	margin-top: 15px;
+	overflow: auto;
+	padding: 15px;
+	border-top: 1px solid #eee;
 }
 
 .card-content {
