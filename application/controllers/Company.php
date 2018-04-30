@@ -72,6 +72,17 @@ class Company extends CI_Controller {
 		echo json_encode($msg);
 		
 	}
+	public function show_job_edit(){
+		$result = $this->company->show_edit_job();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+			
+		}
+		echo json_encode($msg);
+	}
 
 	public function post_job_hiring(){
 		$result = $this->company->post_job();
@@ -80,6 +91,27 @@ class Company extends CI_Controller {
 		if($result[0]){
 			$msg['success'] = true;
 			$msg['operation'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function edit_job(){
+		$result = $this->company->edit_job();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
+
+
+	public function end_job(){
+		$result = $this->company->end_job();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
 		}
 		echo json_encode($msg);
 	}

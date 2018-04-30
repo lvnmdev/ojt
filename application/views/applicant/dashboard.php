@@ -55,3 +55,6 @@
 		</div>
 	</div>
 </div>
+<script>
+	var page_info = 'dashboard';
+</script>
