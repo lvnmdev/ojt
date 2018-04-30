@@ -127,4 +127,17 @@ class Applicant extends CI_Controller {
 		$this->load->library('Pdf');
 		$this->load->view('templates/applicant/to_resume');
 	}
+
+	
+	public function show_available_jobs(){
+		$result = $this->applicant->show_available_jobs();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+
+		echo json_encode($msg);
+		
+	}
 }

@@ -1,10 +1,11 @@
 $(function () {
+	show_available_jobs();
 	if (page_info == 'biodata') {
 		show_bio_data();
 	} else if (page_info == 'nobiodata') {
 		show_resume();
-	} else {
-
+	} else if (page_info == 'application') {
+		
 	}
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
@@ -300,8 +301,8 @@ $(function () {
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
 						accomplishments += '<ul class="resume-list">' +
-								'<li>' + data.accomplishment[i].accomplishment + '</li>' +
-								'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'<li>' + data.accomplishment[i].accomplishment + '</li>' +
+							'<li>' + data.accomplishment[i].affiliation + '</li>' +
 							'</ul>';
 					}
 					$('#resume_accomplishments').html(accomplishments);
@@ -309,7 +310,7 @@ $(function () {
 				if (data.skills) {
 					for (i = 0; i < data.skills.length; i++) {
 						skills += '<ul class="resume-list">' +
-								'<li>' + data.skills[i].skill + '</li>' +
+							'<li>' + data.skills[i].skill + '</li>' +
 							'</ul>';
 					}
 					$('#resume_skills').html(skills);
@@ -317,10 +318,10 @@ $(function () {
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
 						xp += '<ul class="resume-list">' +
-								'<li>' + data.workxp[i].position + '</li>' +
-								'<li>' + data.workxp[i].company + '</li>' +
-								'<li>' + data.workxp[i].date_start + '</li>' +
-								'<li>' + data.workxp[i].date_end + '</li>' +
+							'<li>' + data.workxp[i].position + '</li>' +
+							'<li>' + data.workxp[i].company + '</li>' +
+							'<li>' + data.workxp[i].date_start + '</li>' +
+							'<li>' + data.workxp[i].date_end + '</li>' +
 							'</ul>';
 					}
 					$('#resume_xp').html(xp);
@@ -340,6 +341,42 @@ $(function () {
 
 
 
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
+
+
+
+	function show_available_jobs() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_available_jobs',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response.data);
+				var html = '';
+				var i;
+				if (response.data) {
+					for (i = 0; i < response.data.length; i++) {
+						html += '<tr>' +
+							'<td>'+ response.data[i].comp_name+'</td>' +
+							'<td>' + response.data[i].position + '</td>' +
+							'<td>' + response.data[i].no_applicants + '</td>' +
+							'<td>' + response.data[i].pref_sex + '</td>' +
+							'<td>' + response.data[i].pref_civstat + '</td>' +
+							'<td>' + response.data[i].pref_educ + '</td>' +
+							'<td>' + response.data[i].requirements + '</td>' +
+							'<td>' + response.data[i].date_posted + '</td>' +
+							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '">Apply</button></td>' +
+							'</tr>'
+					}
+					$('#show_jobs').html(html)
+				}
 			},
 			error: function () {
 				alert('Error');

@@ -156,4 +156,25 @@ class Applicant_m extends CI_Model {
         }
         return $result;
     }
+
+
+
+
+        public function show_available_jobs(){
+           $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name;';
+           $query = $this->db->query($sql);
+
+            if($query){
+                $result[0] = true;
+                $result[1] = $query->result();
+
+                return $result;
+            }else {
+                $result[0] = false;
+                $result[1] = "";
+                
+                return $result;
+            }
+            
+        }
 }
