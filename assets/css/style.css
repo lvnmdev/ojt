@@ -1,3 +1,23 @@
+/* Media Queries */
+@media only screen and (min-device-width: 769px) {
+	.side-nav-close {
+		display: none;
+	}
+}
+
+@media only screen and (max-device-width: 768px) {
+	.side-nav-close {
+		display: block;
+	}
+}
+
+@media only screen and (max-device-width: 425px) {
+	.main-container {
+		margin-left: 0;
+		position: fixed;
+	}
+}
+
 body {
 	background-color: lightgrey;
 }
@@ -123,7 +143,7 @@ body {
 	position: relative;
 	margin-top: 75px;
 	margin-left: 250px;
-	transition: 0.5s;
+	transition: 0.25s;
 }
 
 .side-navbar-container {
@@ -134,7 +154,7 @@ body {
 	top: 0;
 	left: 0;
 	overflow-x: hidden;
-	transition: 0.5s;
+	transition: 0.25s;
 	padding-top: 100px;
 	width: 250px;
 	box-shadow: 4px 0px 5px 0px rgba(0, 0, 0, 0.6);
