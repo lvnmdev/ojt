@@ -6,33 +6,37 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
 				<p class='path-nav'>Home
-					<i class="fa fa-chevron-right"></i>POST JOB HIRINGS</p>
+					<i class="fa fa-chevron-right"></i> Post Job Hiring</p>
 			</div>
 
 			<div class="card-content">
-				<button value="1" id='btnpost_job' class="btn btn-success">ADD JOB HIRING</button>
-				<div id='hirings'>
-					<table id="table_id" class="table table-condensed table-striped table-hover">
-						<thead class="jumbotron">
-							<tr>
-								<th scope="col">Position</th>
-								<th scope="col">No. of Applicants Needed</th>
-								<th scope="col">Preferred Sex</th>
-								<th scope="col">Preferred Civil Status</th>
-								<th scope="col">Education</th>
-								<th scope="col">Requirements</th>
-								<th scope="col">Date Posted</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody id="show_jobs">
-						</tbody>
-					</table>
-
+				<div class='card-title'>
+					<h1>Post Job</h1>
 				</div>
-
+				<div class='card-body'>
+					<button value="1" id='btnpost_job' class="btn btn-success">
+						<i class='fa fa-plus'></i> Add Post</button>
+					<br><br>
+					<div id='hirings'>
+						<table id="table_id" class="table table-condensed table-striped table-hover">
+							<thead class="jumbotron">
+								<tr>
+									<th scope="col">Position</th>
+									<th scope="col">No. of Applicants Needed</th>
+									<th scope="col">Preferred Sex</th>
+									<th scope="col">Preferred Civil Status</th>
+									<th scope="col">Education</th>
+									<th scope="col">Requirements</th>
+									<th scope="col">Date Posted</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody id="show_jobs">
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 		<div id="add_job" class="modal fade" tabindex="-1" role="dialog">
@@ -62,19 +66,21 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Sex</label>
-									<select name="pref_sex">
-										<option id="jf_3" value=""></option>
+									<br>
+									<select name="pref_sex" class='selectpicker'>
+										<option id="jf_3" value="">-- Select --</option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
-										<option value="Either">Either</option>										
+										<option value="Either">Either</option>
 									</select>
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Civil Status</label>
-									<select name="pref_civstat">
-										<option id="jf_4" value=""></option>
+									<br>
+									<select name="pref_civstat" class='selectpicker'>
+										<option id="jf_4" value="">-- Select --</option>
 										<option value="Single">Single</option>
 										<option value="Married">Married</option>
 										<option value="Either">Either</option>
@@ -84,8 +90,9 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Education</label>
-									<select name="pref_educ">
-										<option id="jf_5" value=""></option>
+									<br>
+									<select name="pref_educ" class='selectpicker'>
+										<option id="jf_5" value="">-- Select --</option>
 										<option value="College Graduate">College Graduate</option>
 										<option value="College Level">College Level</option>
 										<option value="Highschool Graduate">Highschool Graduate</option>

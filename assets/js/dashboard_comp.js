@@ -111,7 +111,7 @@ $(function () {
 							'<td>' + response.data[i].pref_educ + '</td>' +
 							'<td>' + response.data[i].requirements + '</td>' +
 							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '">Edit</button><button value="' + response.data[i].job_id + '" class="btn btn-danger delete">END</button></td>' +
+							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '"><i class="fa fa-edit"></i> Edit</button>&nbsp<button value="' + response.data[i].job_id + '" class="btn btn-danger delete"><i class="fa fa-times-circle"></i> End</button></td>' +
 							'</tr>'
 					}
 					$('#show_jobs').html(html)
