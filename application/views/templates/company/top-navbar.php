@@ -18,10 +18,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>USTP Online OJT Application</title>
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
 	<script type="text/javascript" src="<?= base_url('assets/js/jquery.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js')?>"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/datatables.min.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/fontawesome-all.min.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/dashboard_comp.js');?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/style.js');?>"></script>

@@ -1,4 +1,6 @@
 $(function(){
+    //Initialization of Datatable 
+    $('#table_id').dataTable();
 
     //Side Navigation Bar Slide
     $("#openNav").click(function () {

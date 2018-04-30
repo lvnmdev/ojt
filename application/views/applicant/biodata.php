@@ -10,10 +10,13 @@
 			</div>
 
 			<div class="card-content" style='overflow:auto;'>
-				<div>
+				<div class='card-title'>
 					<h1>Biodata</h1>
 				</div>
-				<div class="bio_field">
+				<div class="card-body">
+					<div class='col-md-12'>
+						<h3>User</h3>
+					</div>
 					<div class='col-md-4'>
 						<p>Name:</p>
 						<input class='form-control' id='user_fullname' type="text" readonly>
@@ -77,7 +80,7 @@
 						<input class='form-control' id='father_occupation' type="text" readonly>
 					</div>
 				</div>
-				<div class='col-md-12'>
+				<div class='card-footer'>
 					<hr>
 					<a id="btnedit_bio" type="button" class="btn btn-success">
 					<i class='fa fa-edit btn-icon'></i>Edit</a>

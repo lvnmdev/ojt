@@ -8,48 +8,47 @@
 					<?= $this->session->userdata('username')?>!</h1>
 				<p>Here is today's newsletter!</p>
 				<ul>
-					<li>Pending Application: 5</li>
-					<li>Available Jobs: 23</li>
 					<li>Last time signed in: 4/22/18 2:31pm</li>
 				</ul>
 			</div>
 
-			<div class='card-content'>
-				<div>
-					<h2>
-						Here is today's available jobs for you!
-					</h2>
+			<div class='col-md-4'>
+				<div class='card-content'>
+					<div class='dashboard-notify'>
+						<a href=''>
+							<div class='dashboard-badge'>
+								<span class='dashboard-badge-no'>5</span>
+							</div>
+
+						</a>
+						<label>Pending Applications</label>
+					</div>
 				</div>
-				<div>
-					<div class="table-responsive">
-					<table class='table table-striped table-hover'>
-						<thead>
-							<tr>
-								<th>Company Name</th>
-								<th>Position</th>
-								<th>Slot/s</th>
-								<th>Date Posted</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Syntactics</td>
-								<td>Web Designer</td>
-								<td>2</td>
-								<td>04/25/2018</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>City Health</td>
-								<td>IT Specialist</td>
-								<td>4</td>
-								<td>04/25/2018</td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+			</div>
+
+			<div class='col-md-4'>
+				<div class='card-content'>
+					<div class='dashboard-notify'>
+						<a href=''>
+							<div class='dashboard-badge'>
+								<span class='dashboard-badge-no'>23</span>
+							</div>
+						</a>
+						<label>Available Jobs</label>
+					</div>
 				</div>
+			</div>
+
+			<div class='col-md-4'>
+				<div class='card-content'>
+					<div class='dashboard-notify'>
+						<a href="">
+							<div class='dashboard-badge'>
+								<span class='dashboard-badge-no'></span>
+							</div>
+						</a>
+						<label></label>
+					</div>
 				</div>
 			</div>
 		</div>
