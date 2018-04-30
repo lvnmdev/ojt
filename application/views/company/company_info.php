@@ -43,7 +43,9 @@
 					</div>
 				</div>
 				<div class='card-footer'>
-					<a id="btnedit_info" type="button" class="btn btn-success"><i class='fa fa-edit btn-icon'></i>EDIT COMPANY INFO</a>
+					<div class="row">
+						<a id="btnedit_info" type="button" class="btn btn-success"><i class='fa fa-edit btn-icon'></i>Edit Company Info</a>
+					</div>
 				</div>
 			</div>
 		</div>

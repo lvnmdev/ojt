@@ -12,42 +12,44 @@
 				</ul>
 			</div>
 
-			<div class='col-md-4'>
-				<div class='card-content'>
-					<div class='dashboard-notify'>
-						<a href=''>
-							<div class='dashboard-badge'>
-								<span class='dashboard-badge-no'>5</span>
-							</div>
+			<div>
+				<div class='col-md-4'>
+					<div class='card-content'>
+						<div class='dashboard-notify'>
+							<a href=''>
+								<div class='dashboard-badge'>
+									<span class='dashboard-badge-no'>5</span>
+								</div>
 
-						</a>
-						<label>Pending Applications</label>
+							</a>
+							<label>Pending Applications</label>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class='col-md-4'>
-				<div class='card-content'>
-					<div class='dashboard-notify'>
-						<a href=''>
-							<div class='dashboard-badge'>
-								<span class='dashboard-badge-no'>23</span>
-							</div>
-						</a>
-						<label>Available Jobs</label>
+				<div class='col-md-4'>
+					<div class='card-content'>
+						<div class='dashboard-notify'>
+							<a href=''>
+								<div class='dashboard-badge'>
+									<span class='dashboard-badge-no'>23</span>
+								</div>
+							</a>
+							<label>Available Jobs</label>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class='col-md-4'>
-				<div class='card-content'>
-					<div class='dashboard-notify'>
-						<a href="">
-							<div class='dashboard-badge'>
-								<span class='dashboard-badge-no'></span>
-							</div>
-						</a>
-						<label></label>
+				<div class='col-md-4'>
+					<div class='card-content'>
+						<div class='dashboard-notify'>
+							<a href="">
+								<div class='dashboard-badge'>
+									<span class='dashboard-badge-no'></span>
+								</div>
+							</a>
+							<label></label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -56,4 +58,5 @@
 </div>
 <script>
 	var page_info = 'dashboard';
+
 </script>

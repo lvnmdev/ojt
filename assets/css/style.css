@@ -126,7 +126,6 @@ body {
 
 .dropdown-menu {
 	border-radius: 0 !important;
-	padding: 15px 20px;
 	right: 10px;
 	left: 100 !important;
 }
@@ -252,14 +251,11 @@ body {
 
 .card-body {
 	margin-top: 15px;
-	overflow: auto;
 }
 
 .card-footer {
-	width: 100%;
 	margin-top: 15px;
-	overflow: auto;
-	padding: 15px;
+	padding: 10px 15px;
 	border-top: 1px solid #eee;
 }
 
@@ -267,10 +263,12 @@ body {
 	background-color: white;
 	border-radius: 8px;
 	padding: 20px;
-	margin-top: 20px;
-	overflow: auto;
+	margin: 20px 0;
 }
 
+.biodata-form input {
+	color: #333;
+}
 /*MODAL BODY OVERRIDE */
 
 .modal-form {
@@ -285,10 +283,6 @@ body {
 
 .modal-title {
 	color: white !important;
-}
-
-.modal-body {
-	overflow: auto;
 }
 
 /* Scroll Back To Top Button */
