@@ -10,19 +10,39 @@
 			</div>
 
 			<div class="card-content">
-				<div id="comp_info_field">
-					<h1>Company name:</h1>
-					<p>Company Description:</p>
-					<p>HR Manager:</p>
-					<p>Contact No: </p>
-					<p>Company TIN(BIR): </p>
-					<p>Business Permit: </p>
-					<p>Operational Date:</p>
-					<p>Street:</p>
-					<p>Barangay:</p>
-					<p>Postal Code:</p>
+				<div class='card-title'>
+					<h1 id='company_name'></h1>
 				</div>
-				<div>
+				<div class='card-body'>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Company Description:</strong></p><p id='company_desc' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>HR Manager:</strong></p><p id='company_hr' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Contact No:</strong></p><p id='company_contact' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Company TIN(BIR):</strong></p><p id='company_tin' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Business Permit:</strong></p><p id='company_permit' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Operational Date:</strong></p><p id='company_opdate' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Street:</strong></p><p id='company_street' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Barangay:</strong></p><p id='company_barangay' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'><strong>Postal Code:</strong></p><p id='company_postal' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+				</div>
+				<div class='card-footer'>
 					<a id="btnedit_info" type="button" class="btn btn-success"><i class='fa fa-edit btn-icon'></i>EDIT COMPANY INFO</a>
 				</div>
 			</div>

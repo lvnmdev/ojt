@@ -9,8 +9,9 @@
 			</div>
 			<div class='card-content'>
 				<h1>Application</h1>
+				<hr>
 				<div class="table-responsive">
-					<table class='table table-striped table-hover'>
+					<table id='table_id' class='table table-striped table-hover'>
 						<thead>
 							<tr>
 								<th>Company Name</th>

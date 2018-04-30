@@ -15,21 +15,17 @@ $(function () {
 				var html = '';
 				console.log(response);
 				if (response.success) {
-					html += '<div class="card-block">' +
-						'<h3>Company name: ' + response.data.comp_name + '</h3>' +
-						'<p>Company Description: ' + response.data.comp_desc + '</p>' +
-						'<p>HR Manager: ' + response.data.comp_hr + '</p>' +
-						'<p>Contact No: ' + response.data.comp_contact + ' </p>' +
-						'<p>Company TIN(BIR): ' + response.data.comp_tin + ' </p>' +
-						'<p>Business Permit: ' + response.data.comp_permit + ' </p>' +
-						'<p>Operational Date: ' + response.data.comp_opdate + '</p>' +
-						'<p>Street: ' + response.data.comp_addst + '</p>' +
-						'<p>Barangay: ' + response.data.comp_addbrgy + '</p>' +
-						'<p>Postal Code: ' + response.data.comp_postcode + '</p>' +
-						'</div>'
-					$('#comp_info_field').html(html);
+					$("#company_name").html(response.data.comp_name);
+					$("#company_desc").html(response.data.comp_desc);
+					$("#company_hr").html(response.data.comp_hr);
+					$("#company_contact").html(response.data.comp_contact);
+					$("#company_tin").html(response.data.comp_tin);
+					$("#company_permit").html(response.data.comp_permit);
+					$("#company_opdate").html(response.data.comp_opdate);
+					$("#company_street").html(response.data.comp_addst);
+					$("#company_barangay").html(response.data.comp_addbrgy);
+					$("#company_postal").html(response.data.comp_postcode);
 				}
-
 			},
 			error: function () {
 				alert('Error');
@@ -99,7 +95,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_jobs',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				var html = '';

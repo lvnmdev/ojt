@@ -16,7 +16,7 @@ body {
 
 *:active,
 *:focus {
-	outline: none;
+	outline: none !important;
 }
 
 .mid-container {
@@ -196,7 +196,6 @@ body {
 .side-navbar li:hover {
 	background-color: rgba(0, 0, 0, .2);
 	transition: .25s ease-in-out;
-	font-size: 1.25em;
 }
 
 .side-navbar li:active {
@@ -223,18 +222,31 @@ body {
 	font-size: 1.2em;
 }
 
+.card-title {
+	border-bottom: 1px solid #333;
+}
+
+.card-body {
+	margin-top: 15px;
+}
+
+.card-footer {
+	width: 100%;
+}
+
 .card-content {
 	background-color: white;
 	border-radius: 8px;
 	padding: 20px;
 	margin-top: 20px;
+	overflow: auto;
 }
 
 /*MODAL BODY OVERRIDE */
 
 .modal-form {
 	width: 80% !important;
-	margin: auto !important;
+	margin: 20px auto !important;
 }
 
 .modal-header {
@@ -284,4 +296,30 @@ body {
 
 .resume-title {
 	border-bottom: 1px solid #333;
+}
+
+/* Dashboard Notification */
+.dashboard-notify {
+	text-align: center;
+	padding: 20px;
+}
+
+.dashboard-badge {
+	background-color: #1a1751;
+	border-radius: 100%;
+	color: white;
+	height: 150px;
+	width: 150px;
+	margin: auto;
+	padding: 30px;
+}
+
+.dashboard-badge:hover {
+	background-color: #13113a;
+}
+
+.dashboard-badge-no {
+	font-size: 4em;
+	margin: auto;
+	text-decoration: none;
 }
