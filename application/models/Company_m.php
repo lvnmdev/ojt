@@ -56,11 +56,29 @@ class Company_m extends CI_Model {
 //Functionals for Job Posting
         public function show_jobs(){
             $user = $this->session->userdata('username');
-            $query = $this->db->select('*')->from('tbl_job_posting')->where('user_name',$user)->get();
+            $query = $this->db->select('*')->from('tbl_job_posting')->where('user_name',$user)->where('status',1)->get();
 
             if($query->num_rows()>0){
                 $result[0] = true;
                 $result[1] = $query->result();
+
+                return $result;
+            }else {
+                $result[0] = false;
+                $result[1] = "";
+                
+                return $result;
+            }
+            
+        }
+
+        public function show_edit_job(){
+            $id = $this->input->post('id');
+            $query = $this->db->select('*')->from('tbl_job_posting')->where('job_id',$id)->where('status',1)->get();
+
+            if($query->num_rows()>0){
+                $result[0] = true;
+                $result[1] = $query->row();
 
                 return $result;
             }else {
@@ -89,11 +107,43 @@ class Company_m extends CI_Model {
             return $result;
             }
 
+        public function edit_job(){
+                $field = array(
+                    'job_id' => $this->input->post('id'),
+                    'position' => $this->input->post('position'),
+                    'no_applicants' => $this->input->post('no_applicants'),
+                    'pref_sex' => $this->input->post('pref_sex'),
+                    'pref_civstat' => $this->input->post('pref_civstat'),
+                    'pref_educ' => $this->input->post('pref_educ'),
+                    'requirements' => $this->input->post('requirements')
+                );
+                
+                $this->db->where('job_id',$field['job_id']);
+                $this->db->update('tbl_job_posting',$field);
+                if($this->db->affected_rows()>0){
+                    $result[0] = true;
+                    return $result;
+                }
+            }
+
+        public function end_job(){
+                $job_id = $this->input->post('job_id');
+                $field = array(
+                    'status' => 0
+                );
+            $this->db->where('job_id',$job_id);
+            $this->db->update('tbl_job_posting',$field);
+            
+            if($this->db->affected_rows()>0){
+                $result[0] = true;
+                return $result;
+            }
+       }
 
 
 
 
 
-    }
+}
 
 

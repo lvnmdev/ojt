@@ -90,6 +90,7 @@ $(function () {
 	});
 
 	//Job Posting Functionals
+
 	function show_job_postings() {
 		$.ajax({
 			type: 'ajax',
@@ -100,22 +101,20 @@ $(function () {
 			success: function (response) {
 				var html = '';
 				var i;
-				console.log(response.data[0].position);
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
-						html += '<tr>'+
-									'<td>'+response.data[i].position+'</td>'+
-									'<td>'+response.data[i].no_applicants+'</td>'+
-									'<td>'+response.data[i].pref_sex+'</td>'+
-									'<td>'+response.data[i].pref_civstat+'</td>'+
-									'<td>'+response.data[i].pref_educ+'</td>'+
-									'<td>'+response.data[i].requirements+'</td>'+
-									'<td>'+response.data[i].date_posted+'</td>'+
-									'<td><button class="btn btn-success">Edit</button><button class="btn btn-danger">END</button></td>'+
-								'</tr>'
+						html += '<tr>' +
+							'<td>' + response.data[i].position + '</td>' +
+							'<td>' + response.data[i].no_applicants + '</td>' +
+							'<td>' + response.data[i].pref_sex + '</td>' +
+							'<td>' + response.data[i].pref_civstat + '</td>' +
+							'<td>' + response.data[i].pref_educ + '</td>' +
+							'<td>' + response.data[i].requirements + '</td>' +
+							'<td>' + response.data[i].date_posted + '</td>' +
+							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '">Edit</button><button value="' + response.data[i].job_id + '" class="btn btn-danger delete">END</button></td>' +
+							'</tr>'
 					}
-				console.log(html);
-				$('#show_jobs').html(html)
+					$('#show_jobs').html(html)
 				}
 			},
 			error: function () {
@@ -124,9 +123,22 @@ $(function () {
 		});
 	}
 
-	$('#btnpost_job').click(function () {
+	$('#btnpost_job').click(function (e) {
+		$('#jf_1').attr('value', '');
+		$('#jf_2').attr('value', '');
+		$('#jf_3').attr('value', '');
+		$('#jf_4').attr('value', '');
+		$('#jf_5').attr('value', '');
+		$('#jf_6').attr('value', '');
 		$('#add_job').modal('show');
-		$('.modal-title').text('Add Job Post');
+		$('.modal-title').text('Add Job Posting');
+		$('#btnsubmit_post_edit').css({
+			'display': 'none'
+		});
+		$('#btnsubmit_post').css({
+			'display': ''
+		});
+
 	});
 
 	$('#btnsubmit_post').click(function () {
@@ -147,10 +159,96 @@ $(function () {
 			},
 			error: function () {
 				alert('Error');
-				
+
 			}
 		});
 	});
 
+	function end_job(id) {
+		var job_id = id;
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'end_job',
+			data: {
+				job_id: id
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				location.reload();
+			},
+			error: function () {
+				alert('Error');
+
+			}
+		});
+
+	}
+
+	$(document).on('click', '.delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+		end_job(id);
+
+	});
+
+	$(document).on('click', '.edit', function (e) {
+		var id = $(e.currentTarget).val();
+		$('#add_job').modal('show');
+		$('.modal-title').text('Edit Job');
+		$('#btnsubmit_post_edit').css({
+			'display': ''
+		});
+		$('#btnsubmit_post').css({
+			'display': 'none'
+		});
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			data: {
+				id: id
+			},
+			url: 'show_job_edit',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response) {
+					$('#jf_0').attr('value', id);
+					$('#jf_1').attr('value', response.data.position);
+					$('#jf_2').attr('value', response.data.no_applicants);
+					$('#jf_3').attr('value', response.data.pref_sex);
+					$('#jf_4').attr('value', response.data.pref_civstat);
+					$('#jf_5').attr('value', response.data.pref_educ);
+					$('#jf_6').attr('value', response.data.requirements);
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	});
+
+	$('#btnsubmit_post_edit').click(function () {
+		var formData = $('#form_add_job').serialize();
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			data: formData,
+			url: 'edit_job',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				if (response.success) {
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	});
 
 })

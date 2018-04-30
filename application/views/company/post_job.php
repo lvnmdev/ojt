@@ -10,7 +10,7 @@
 			</div>
 
 			<div class="card-content">
-				<button id='btnpost_job' class="btn btn-success">ADD JOB HIRING</button>
+				<button value="1" id='btnpost_job' class="btn btn-success">ADD JOB HIRING</button>
 				<div id='hirings'>
 					<table id="table_id" class="table table-condensed table-striped table-hover">
 						<thead class="jumbotron">
@@ -49,28 +49,32 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Position</label>
-									<input type="text" name="position" class="form-control">
+									<input style='display:hidden;' id='jf_0' type="hidden" name="id" class="form-control">
+									<input id="jf_1" type="text" name="position" class="form-control">
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">No. of Applicants Needed</label>
-									<input type="text" name="no_applicants" class="form-control">
+									<input id="jf_2" type="text" name="no_applicants" class="form-control">
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Sex</label>
-									<select name="pref_sex" id="">
+									<select name="pref_sex">
+										<option id="jf_3" value=""></option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
+										<option value="Either">Either</option>										
 									</select>
 								</div>
 							</div>
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Preferred Civil Status</label>
-									<select name="pref_civstat" id="">
+									<select name="pref_civstat">
+										<option id="jf_4" value=""></option>
 										<option value="Single">Single</option>
 										<option value="Married">Married</option>
 										<option value="Either">Either</option>
@@ -80,7 +84,8 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Education</label>
-									<select name="pref_educ" id="">
+									<select name="pref_educ">
+										<option id="jf_5" value=""></option>
 										<option value="College Graduate">College Graduate</option>
 										<option value="College Level">College Level</option>
 										<option value="Highschool Graduate">Highschool Graduate</option>
@@ -93,7 +98,7 @@
 							<div class='col-sm-12 col-md-12'>
 								<div class="form-group">
 									<label for="name" class="label-control">Requirements</label>
-									<input placeholder="Separate multiple requirements with a comma (,)" type="text" name="requirements" class="form-control">
+									<input id="jf_6" placeholder="Separate multiple requirements with a comma (,)" type="text" name="requirements" class="form-control">
 								</div>
 							</div>
 						</form>
@@ -103,6 +108,8 @@
 							<i class='fa fa-times btn-icon'></i>Cancel</button>
 						<button type="button" id="btnsubmit_post" class="btn btn-primary">
 							<i class='fa fa-save btn-icon'></i>Save</button>
+						<button type="button" id="btnsubmit_post_edit" class="btn btn-success">
+							<i class='fa fa-edit btn-icon'></i>Edit</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
