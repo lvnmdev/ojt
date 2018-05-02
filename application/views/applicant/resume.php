@@ -10,60 +10,44 @@
 			</div>
 
 			<div class="card-content">
-				<h4 class='resume-title'>QUALIFICATIONS</h4>
-				<p>
+				<div>
+					<h4 class='resume-title'>QUALIFICATIONS</h4>
 					<div id='resume_skills'>
 
 					</div>
-				</p>
-				<br>
-
-				<h4 class='resume-title'>WORK EXPERIENCE</h4>
-				<p>
+					<a id='addqual' type='button' class='btn btn-success'><i class="fa fa-edit"></i> Add Qualifications/Skills</a>
+				</div>
+				
+				<div>
+					<h4 class='resume-title'>WORK EXPERIENCE</h4>
 					<div id='resume_xp'>
 
 					</div>
-				</p>
-				<br>
+					<a id='addwork' type='button' class='btn btn-success'><i class="fa fa-edit"></i> Add Working Experince</a>
+				</div>
 
-				<h4 class='resume-title'>ACCOMPLISHMENTS</h4>
-				<p>
+				<div>
+					<h4 class='resume-title'>ACCOMPLISHMENTS</h4>
 					<div id='resume_accomplishments'>
 
 					</div>
-				</p>
-				<br>
+					<a id='addacco' type='button' class='btn btn-success'><i class="fa fa-edit"></i> Add Accomplishments</a>
+				</div>
 
-				<h4 class='resume-title'>EDUCATION</h4>
-				<p>
+				<div>
+					<h4 class='resume-title'>EDUCATION</h4>
 					<div id='resume_education'>
 
 					</div>
-				</p>
+					<a id='addeduc' type='button' class='btn btn-success'><i class="fa fa-edit"></i> Add Education</a>
+				</div>
 
-				<div class='resume-edit'>
-					<div class="dropdown">
-						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Edit Resume
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li>
-								<a id='addqual' type='button' class='btn btn-primary'>Add Qualifications/Skills</a>
-							</li>
-							<li>
-								<a id='addwork' type='button' class='btn btn-primary'>Add Working Experince</a>
-							</li>
-							<li>
-								<a id='addacco' type='button' class='btn btn-primary'>Add Accomplishments</a>
-							</li>
-							<li>
-								<a id='addeduc' type='button' class='btn btn-primary'>Add Education</a>
-							</li>
-							<li>
-								<a id='addsemi' type='button' class='btn btn-primary'>Add Seminars Attended</a>
-							</li>
-						</ul>
+				<div>
+					<h4 class='resume-title'>SEMINARS</h4>
+					<div id="resume_seminar">
+
 					</div>
+					<a id='addsemi' type='button' class='btn btn-success'> <i class="fa fa-edit"></i>Add Seminars Attended</a>
 				</div>
 			</div>
 
@@ -79,11 +63,6 @@
 						<h1 class="modal-title"></h1>
 					</div>
 					<div class="modal-body">
-<<<<<<< HEAD
-						<form id="form_resume" class="form-horizontal">
-						</form>
-						</div>
-=======
 						<div class=''>
 							<div id="edit_form_resume">
 							</div>
@@ -97,7 +76,6 @@
 								<i class='fa fa-plus btn-icon'></i>Add</button>
 						</div>
 					</div>
->>>>>>> 2e18850bd5bbc733b893d74c10ea8abd44a98148
 					<div class="modal-footer">
 						<button class="btn btn-danger" data-dismiss="modal">
 							<i class='fa fa-times btn-icon'></i>Close</button>
@@ -113,5 +91,4 @@
 </div>
 <script>
 	var page_info = 'nobiodata';
-
 </script>

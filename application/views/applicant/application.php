@@ -25,11 +25,7 @@
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
-<<<<<<< HEAD
 						<tbody id='show_jobs'>
-=======
-						<tbody>
->>>>>>> 2e18850bd5bbc733b893d74c10ea8abd44a98148
 							
 						</tbody>
 					</table>
