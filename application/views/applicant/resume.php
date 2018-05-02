@@ -73,20 +73,34 @@
 			<div class="modal-dialog modal-form" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 						<h1 class="modal-title"></h1>
 					</div>
 					<div class="modal-body">
+<<<<<<< HEAD
 						<form id="form_resume" class="form-horizontal">
 						</form>
 						</div>
+=======
+						<div class=''>
+							<div id="edit_form_resume">
+							</div>
+						</div>
+						<div>
+							<hr>
+							<form id="form_resume" class="form-horizontal">
+							</form>
+							<hr>
+							<button id="btnsubmit_resume" class="btn btn-primary">
+								<i class='fa fa-plus btn-icon'></i>Add</button>
+						</div>
+					</div>
+>>>>>>> 2e18850bd5bbc733b893d74c10ea8abd44a98148
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">
-							<i class='fa fa-times btn-icon'></i>Cancel</button>
-						<button type="button" id="btnsubmit_resume" class="btn btn-primary">
-							<i class='fa fa-save btn-icon'></i>Save</button>
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class='fa fa-times btn-icon'></i>Close</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->

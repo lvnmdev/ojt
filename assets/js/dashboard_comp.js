@@ -123,7 +123,7 @@ $(function () {
 		});
 	}
 
-	$('#btnpost_job').click(function (e) {
+	$('#btnpost_job').click(function () {
 		$('#jf_1').attr('value', '');
 		$('#jf_2').attr('value', '');
 		$('#jf_3').attr('value', '');
