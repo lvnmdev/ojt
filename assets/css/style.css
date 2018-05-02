@@ -321,6 +321,15 @@ body {
 	border-bottom: 1px solid #333;
 }
 
+.resume-delete {
+	color: #d9534f;
+}
+
+.resume-delete:hover {
+	color: darkred;
+}
+
+
 /* Dashboard Notification */
 .dashboard-notify {
 	text-align: center;
