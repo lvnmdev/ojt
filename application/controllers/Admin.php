@@ -10,5 +10,29 @@ class Admin extends CI_Controller {
         $data['content'] = 'admin/dashboard';
         
 		$this->load->view('templates/admin/content', $data);
-    }
+	}
+	
+	public function company() {
+		$data['content'] = 'admin/company';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
+	public function pending_company() {
+		$data['content'] = 'admin/pending_company';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
+	public function applicants() {
+		$data['content'] = 'admin/applicants';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
+	public function pending_applicants() {
+		$data['content'] = 'admin/pending_applicants';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
 }

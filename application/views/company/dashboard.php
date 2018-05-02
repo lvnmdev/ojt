@@ -48,7 +48,7 @@
 									<span class='dashboard-badge-no'>14</span>
 								</div>
 							</a>
-							<h4><strong>Employees0</strong></h4>
+							<h4><strong>Employees</strong></h4>
 						</div>
 					</div>
 				</div>

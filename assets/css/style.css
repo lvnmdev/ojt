@@ -176,7 +176,7 @@ body {
 	font-size: 2.25em;
 }
 
-.side-nav-close a:hover
+.side-nav-close a:hover,
 .side-nav-open a:hover {
 	color: lightgrey;
 	transition: 1s ease-in-out;
@@ -222,7 +222,7 @@ body {
 }
 
 .side-navbar li {
-	padding: 20px 10px;
+	padding: 17px 10px;
 }
 
 .nav-icon {
@@ -271,7 +271,7 @@ body {
 }
 /*MODAL BODY OVERRIDE */
 
-.modal-form {
+.modal-biodata {
 	width: 80% !important;
 	margin: 20px auto !important;
 }

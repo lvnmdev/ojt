@@ -106,7 +106,7 @@
 </div>
 
 <div id="edit_bio" class="modal fade" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-form" role="document">
+	<div class="modal-dialog modal-form modal-biodata" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">

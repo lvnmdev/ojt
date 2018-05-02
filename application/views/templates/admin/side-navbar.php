@@ -12,27 +12,23 @@
 	<ul class='side-navbar'>
 		<a href="<?= base_url('Admin/dashboard');?>">
 			<li>
-				<i class='fa nav-icon'></i>Dashboard</li>
-		</a>
-		<a href="<?= base_url('Admin/worker');?>">
-			<li>
-				<i class='fa nav-icon'></i>Worker</li>
+				<i class='fa fa-clipboard nav-icon'></i>Dashboard</li>
 		</a>
 		<a href="<?= base_url('Admin/company');?>">
 			<li>
-				<i class='fa nav-icon'></i>Company</li>
+				<i class='fa fa-briefcase nav-icon'></i>Company</li>
 		</a>
 		<a href="<?= base_url('Admin/pending_company');?>">
 			<li>
-				<i class='fa nav-icon'></i>Pending Company</li>
+				<i class='fa fa-file-alt nav-icon'></i>Pending Company</li>
 		</a>
 		<a href="<?= base_url('Admin/applicants');?>">
 			<li>
-				<i class='fa nav-icon'></i>Applicants</li>
+				<i class='fa fa-users nav-icon'></i>Applicants</li>
 		</a>
-		<a href="<?= base_url('Admin/application');?>">
+		<a href="<?= base_url('Admin/pending_applicants');?>">
 			<li>
-				<i class='fa nav-icon'></i>Application</li>
+				<i class='fa fa-file-alt nav-icon'></i>Pending Applicants</li>
 		</a>
 		<a href="<?= base_url('Admin/hirings');?>">
 			<li>
