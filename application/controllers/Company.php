@@ -115,4 +115,16 @@ class Company extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+
+	public function show_pending_applications(){
+		$result = $this->company->show_pending_applications();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+
+		echo json_encode($msg);
+	}
 }

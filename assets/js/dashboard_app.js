@@ -139,7 +139,7 @@ $(function () {
 		$('#super_input').text('Add Skill');
 
 		$('#input').attr('name', 'skill');
-		
+
 		$('#hide_form1').css({
 			'display': 'none'
 		});
@@ -486,7 +486,7 @@ $(function () {
 							'<td>' + response.data[i].pref_educ + '</td>' +
 							'<td>' + response.data[i].requirements + '</td>' +
 							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '">Apply </button></td>' +
+							'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
 							'</tr>'
 					}
 					$('#show_jobs').html(html)
@@ -497,4 +497,67 @@ $(function () {
 			}
 		});
 	}
+	var job_id_app;
+	$('.apply').click(function (e) {
+		job_id_app = $(e.currentTarget).val();
+		$('#apply_job').modal('show');
+		$('.modal-title').text('Confirm Apply');
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_available_jobs',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response.data);
+				var html = '';
+				var i;
+				if (response.data) {
+					for (i = 0; i < response.data.length; i++) {
+						if (response.data[i].job_id == job_id_app) {
+							html += '<tr>' +
+								'<td>' + response.data[i].comp_name + '</td>' +
+								'<td>' + response.data[i].position + '</td>' +
+								'<td>' + response.data[i].no_applicants + '</td>' +
+								'<td>' + response.data[i].pref_sex + '</td>' +
+								'<td>' + response.data[i].pref_civstat + '</td>' +
+								'<td>' + response.data[i].pref_educ + '</td>' +
+								'<td>' + response.data[i].requirements + '</td>' +
+								'<td>' + response.data[i].date_posted + '</td>' +
+								'</tr>'
+						}
+					}
+					$('#job_desc').html(html)
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		})
+	})
+
+	$('#confirm_app').click(function () {
+		var job_id = job_id_app;
+		console.log(job_id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'apply_job',
+			data: {
+				id : job_id
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					alert('inserted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	})
 })

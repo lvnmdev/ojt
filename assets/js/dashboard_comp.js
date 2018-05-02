@@ -3,6 +3,7 @@ $(function () {
 	//Company Info Functions
 	show_comp_info();
 	show_job_postings();
+	show_pending_applications();
 
 	function show_comp_info() {
 		$.ajax({
@@ -251,4 +252,36 @@ $(function () {
 		});
 	});
 
+
+	function show_pending_applications(){
+		var html = '';
+		var i;
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_pending_applications',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success){
+					for (i = 0; i < response.data.length; i++) {
+						html += '<tr>' +
+							'<td>' + response.data[i].applicant_name + '</td>' +
+							'<td>' + response.data[i].position + '</td>' +
+							'<td>' + response.data[i].sex + '</td>' +
+							'<td>' + response.data[i].date_applied + '</td>' +
+							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '"><i class="fa fa-edit"></i> Hire</button>&nbsp<button value="' + response.data[i].job_id + '" class="btn btn-danger delete"><i class="fa fa-times-circle"></i> Deny Application</button></td>' +
+							'</tr>'
+					}
+					$('#show_applicants').html(html)
+				}
+
+			},
+			error: function () {
+				alert('Error');
+
+			}
+		});
+	}
 })
