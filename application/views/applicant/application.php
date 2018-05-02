@@ -26,7 +26,7 @@
 							</tr>
 						</thead>
 						<tbody id='show_jobs'>
-							
+
 						</tbody>
 					</table>
 				</div>
@@ -34,6 +34,34 @@
 		</div>
 	</div>
 </div>
+<div id="apply_job" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-form" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title"></h1>
+			</div>
+			<div id="job_desc">
+
+			</div>
+			<div class="modal-footer">
+				<button id="confirm_app" class="btn btn-primary">
+					<i class='fa fa-check btn-icon'></i>Confirm</button>
+				<button class="btn btn-danger" data-dismiss="modal">
+					<i class='fa fa-times btn-icon'></i>Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+</div>
+<!-- /.modal-dialog -->
+</div>
 <script>
 	var page_info = 'application';
+
 </script>

@@ -140,4 +140,15 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 		
 	}
+
+	public function apply_job(){
+		$result = $this->applicant->apply_job();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+
+		echo json_encode($msg);
+
+	}
 }

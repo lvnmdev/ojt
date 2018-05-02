@@ -177,4 +177,20 @@ class Applicant_m extends CI_Model {
             }
             
         }
+
+        public function apply_job(){
+            $field = array(
+                'job_id' => $this->input->post('id'),
+                'user_name' => $this->session->userdata('username'),
+            );
+
+            $query = $this->db->insert('tbl_pending_application',$field);
+
+            if($query){
+                return true;
+            }else{
+                return false;
+                
+            }
+        }
 }
