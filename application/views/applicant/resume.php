@@ -79,11 +79,6 @@
 						<h1 class="modal-title"></h1>
 					</div>
 					<div class="modal-body">
-<<<<<<< HEAD
-						<form id="form_resume" class="form-horizontal">
-						</form>
-						</div>
-=======
 						<div class=''>
 							<div id="edit_form_resume">
 							</div>
@@ -97,7 +92,6 @@
 								<i class='fa fa-plus btn-icon'></i>Add</button>
 						</div>
 					</div>
->>>>>>> 2e18850bd5bbc733b893d74c10ea8abd44a98148
 					<div class="modal-footer">
 						<button class="btn btn-danger" data-dismiss="modal">
 							<i class='fa fa-times btn-icon'></i>Close</button>
