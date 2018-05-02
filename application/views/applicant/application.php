@@ -22,20 +22,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Syntactics</td>
-								<td>Web Designer</td>
-								<td>2</td>
-								<td>04/25/2018</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>City Health</td>
-								<td>IT Specialist</td>
-								<td>4</td>
-								<td>04/25/2018</td>
-								<td></td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>

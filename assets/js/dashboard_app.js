@@ -137,7 +137,6 @@ $(function () {
 	});
 
 	$('#addqual').click(function () {
-		var i = 0;
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Qualifications/Skills');
 		$('#form_resume').html(form);
@@ -165,6 +164,29 @@ $(function () {
 		});
 
 		$('#data_input').val('skill');
+
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				var skills = '';
+				var i;
+				if (data.skills) {
+					for (i = 0; i < data.skills.length; i++) {
+						skills += '<ul class="resume-list">' +
+							'<li>' + '<span>' + data.skills[i].skill + '</span><button class="btn btn-danger"><i class="fa fa-times"></i></button></li>' +
+							'</ul>';
+					}
+					$('#edit_form_resume').html(skills);
+				}
+			},
+			error: function (data) {
+
+			}
+		})
 	})
 
 	$('#addwork').click(function () {
@@ -188,7 +210,32 @@ $(function () {
 
 		$('#data_input').val('work');
 
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data.workxp);
+				var xp = '';
+				var i;
+				if (data.workxp) {
+					for (i = 0; i < data.workxp.length; i++) {
+						xp += '<ul class="resume-list">' +
+						'<li>' + data.workxp[i].position + '</span><button class="btn btn-danger"><i class="fa fa-times"></i></button></li>' +
+							'<li>' + data.workxp[i].company + '</li>' +
+							'<li>' + data.workxp[i].date_start + '</li>' +
+							'<li>' + data.workxp[i].date_end + '</li>' +
+							'</ul>';
+					}
+					$('#edit_form_resume').html(xp);
+				}
+			},
+			error: function (data) {
 
+			}
+		})
 	})
 	$('#addacco').click(function () {
 		$('#edit_resume').modal('show');
@@ -205,7 +252,32 @@ $(function () {
 
 		$('#data_input').val('accomplishment');
 
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data.accomplishment);
+				var acco = '';
+				var i;
+				if (data.accomplishment) {
+					for (i = 0; i < data.accomplishment.length; i++) {
+						acco += '<ul class="resume-list">' +
+							'<li>' + data.accomplishment[i].accomplishment + '<button class="btn btn-danger"><i class="fa fa-times"></i></button></li>' +
+							'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'</ul>';
+					}
+					$('#edit_form_resume').html(acco);
+				}
+			},
+			error: function (data) {
+				
+			}
+		})
 	})
+
 	$('#addeduc').click(function () {
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Educational Background');
@@ -227,6 +299,34 @@ $(function () {
 
 		$('#data_input').val('education');
 
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data.education);
+				var educ = '';
+				var i;
+				if (data.education) {
+					for (i = 0; i < data.education.length; i++) {
+						educ += '<ul class="resume-list">' +
+							'<li>' + data.education[i].level + '<button class="btn btn-danger"><i class="fa fa-times"></i></button></li>' +
+							'<li>' + data.education[i].school + '</li>' +
+							'<li>' + data.education[i].start + '</li>' +
+							'<li>' + data.education[i].graduated + '</li>' +
+							'</ul>';
+					}
+					$('#edit_form_resume').html(educ);
+				}
+			},
+			error: function (data) {
+
+			}
+		})
+
+
 	})
 
 	$('#addsemi').click(function () {
@@ -246,6 +346,32 @@ $(function () {
 		$('#input2').attr('name', 'conductedby');
 
 		$('#data_input').val('seminar');
+
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data.seminars);
+				var semi = '';
+				var i;
+				if (data.seminars) {
+					for (i = 0; i < data.education.length; i++) {
+						semi += '<ul class="resume-list">' +
+								'<li>' + data.seminars[i].seminar + '<button class="btn btn-danger"><i class="fa fa-times"></i></button></li>' +
+								'<li>' + data.seminars[i].seminar_date + '</li>' +
+								'<li>' + data.seminars[i].conductedby + '</li>' +
+							'</ul>';
+					}
+					$('#edit_form_resume').html(semi);
+				}
+			},
+			error: function (data) {
+
+			}
+		})
 
 	})
 
@@ -300,8 +426,8 @@ $(function () {
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
 						accomplishments += '<ul class="resume-list">' +
-								'<li>' + data.accomplishment[i].accomplishment + '</li>' +
-								'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'<li>' + data.accomplishment[i].accomplishment + '</li>' +
+							'<li>' + data.accomplishment[i].affiliation + '</li>' +
 							'</ul>';
 					}
 					$('#resume_accomplishments').html(accomplishments);
@@ -309,7 +435,7 @@ $(function () {
 				if (data.skills) {
 					for (i = 0; i < data.skills.length; i++) {
 						skills += '<ul class="resume-list">' +
-								'<li>' + data.skills[i].skill + '</li>' +
+							'<li>' + data.skills[i].skill + '</li>' +
 							'</ul>';
 					}
 					$('#resume_skills').html(skills);
@@ -317,10 +443,10 @@ $(function () {
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
 						xp += '<ul class="resume-list">' +
-								'<li>' + data.workxp[i].position + '</li>' +
-								'<li>' + data.workxp[i].company + '</li>' +
-								'<li>' + data.workxp[i].date_start + '</li>' +
-								'<li>' + data.workxp[i].date_end + '</li>' +
+							'<li>' + data.workxp[i].position + '</li>' +
+							'<li>' + data.workxp[i].company + '</li>' +
+							'<li>' + data.workxp[i].date_start + '</li>' +
+							'<li>' + data.workxp[i].date_end + '</li>' +
 							'</ul>';
 					}
 					$('#resume_xp').html(xp);
@@ -337,9 +463,6 @@ $(function () {
 					}
 					$('#resume_education').html(education);
 				}
-
-
-
 			},
 			error: function () {
 				alert('Error');
