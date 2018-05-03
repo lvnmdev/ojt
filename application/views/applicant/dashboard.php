@@ -27,12 +27,7 @@
 								<div class="col-md-8">
 									<label>Ongoing Applications</label>
 								</div>
-<<<<<<< HEAD
-							</a>
-							<label>On-Going Applications</label>
-=======
 							</div>
->>>>>>> 3e73fe5c4f9bb0183673d944e76c1a519f50d905
 						</div>
 					</div>
 				</div>
