@@ -158,12 +158,13 @@ class Applicant extends CI_Controller {
 
 	}
 
-	public function count_applications(){
-		$result = $this->applicant->count_applications();
+	public function count_dashboard(){
+		$result = $this->applicant->count_dashboard();
 		$msg['success'] = false;
 		if($result[0]){
 			$msg['success'] = true;
 			$msg['data'] = $result[1];
+			$msg['data1'] = $result[2];
 		}
 
 		echo json_encode($msg);

@@ -1,22 +1,23 @@
 $(function () {
-		show_bio_data();
-		resume_checker();		
-		show_resume();
-		show_available_jobs();
-		show_pending_application();
+	show_bio_data();
+	resume_checker();
+	show_resume();
+	show_available_jobs();
+	count_dashboard();
 
-	function show_pending_application(){
+	function count_dashboard() {
 		var html = '';
 		var i;
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
-			url: 'count_applications',
+			url: 'count_dashboard',
 			async: false,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				$('#applications_count').html(response.data.pending_applicant)
+				$('#applications_count').html(response.data.pending_applicant);
+				$('#jobs_count').html(response.data1.jobs_posted);
 
 			},
 			error: function () {
@@ -25,8 +26,8 @@ $(function () {
 			}
 		});
 	}
-	
-	function resume_checker(){
+
+	function resume_checker() {
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -35,7 +36,7 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if(!response.success){
+				if (!response.success) {
 					window.location.href = 'resume';
 				}
 			},
@@ -43,8 +44,8 @@ $(function () {
 				alert('Error');
 			}
 
-	});
-}
+		});
+	}
 
 
 	//For Biodata Functions Start HERE!

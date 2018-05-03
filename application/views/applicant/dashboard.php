@@ -25,7 +25,7 @@
 									</a>
 								</div>
 								<div class="col-md-8">
-									<label>Pending Applications</label>
+									<label>Ongoing Applications</label>
 								</div>
 							</div>
 						</div>
@@ -39,7 +39,7 @@
 								<div class="col-md-4">
 									<a href='<?= base_url("Applicant/application")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='jobs_count' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>

@@ -194,14 +194,17 @@ class Applicant_m extends CI_Model {
             }
         }
 
-        public function count_applications(){
+        public function count_dashboard(){
             $user = $this->session->userdata('username');
             $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';
+            $sql1 = 'SELECT count(tbl_job_posting.job_id) as jobs_posted FROM tbl_job_posting GROUP BY tbl_job_posting.status';
             $query = $this->db->query($sql);
+            $query1 = $this->db->query($sql1);
 
-            if($query){
+            if($query || $query1){
                 $result[0] = true;
                 $result[1] = $query->row();
+                $result[2] = $query1->row();
                 return $result;
             }else {
                 $result[0] = false;
