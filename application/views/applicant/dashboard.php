@@ -22,7 +22,7 @@
 								</div>
 
 							</a>
-							<label>Pending Applications</label>
+							<label>On-Going Applications</label>
 						</div>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 						<div class='dashboard-notify'>
 							<a href=''>
 								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>23</span>
+									<span id='jobs_count' class='dashboard-badge-no'></span>
 								</div>
 							</a>
 							<label>Available Jobs</label>
