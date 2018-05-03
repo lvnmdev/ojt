@@ -5,10 +5,10 @@
             redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==1){
             redirect('Company/dashboard');
-        }else{
+        }
+    }else{
 			redirect('Main/index');
 		}
-    }
 
 ?>
 	<!DOCTYPE html>
