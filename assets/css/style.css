@@ -348,6 +348,10 @@ body {
 	padding: 30px;
 }
 
+.dashboard-badge-label h4 {
+	text-align: right;
+}
+
 .dashboard-badge:hover {
 	background-color: #13113a;
 }

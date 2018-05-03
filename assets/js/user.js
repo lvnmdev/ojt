@@ -1,4 +1,4 @@
-var base = 'http://localhost/ojt/index.php/'
+var base = 'http://172.16.191.36/ojt/index.php/'
 
 $(function () {
 	$('#regbtn').click(function () {
