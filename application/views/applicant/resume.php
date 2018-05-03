@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
-				<p class='path-nav'>Home
+				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Resume</p>
 			</div>
 

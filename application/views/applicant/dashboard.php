@@ -12,25 +12,29 @@
 				</ul>
 			</div>
 
-			<div>
-				<div class='col-md-4'>
+			<div class="row">
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
+							<div>
+								<a href='<?= base_url("Applicant/pending_application")?>'>
 								<div class='dashboard-badge'>
 									<span class='dashboard-badge-no'>5</span>
 								</div>
-
 							</a>
-							<label>Pending Applications</label>
+							</div>
+							<div>
+								<label>Pending Applications</label>
+							</div>
+							
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
+							<a href='<?= base_url("Applicant/application")?>'>
 								<div class='dashboard-badge'>
 									<span class='dashboard-badge-no'>23</span>
 								</div>
@@ -40,10 +44,10 @@
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
+							<a href="<?= base_url()?>">
 								<div class='dashboard-badge'>
 									<span class='dashboard-badge-no'></span>
 								</div>

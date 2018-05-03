@@ -5,11 +5,12 @@
 		<div class="container-fluid">
 			<div class='card-content'>
 				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
-					<i class="fa fa-chevron-right"></i> Application</p>
+					<i class="fa fa-chevron-right"></i><a href="<?= base_url("Applicant/application")?>"> Application</a><i class="fa fa-chevron-right"></i> Pending Application
+                </p>
 			</div>
 			<div class='card-content'>
 				<div class='card-title'>
-					<h1>Application</h1>
+					<h1>Pending Application</h1>
 				</div>
 				<div class='card-body'>
 					<div class="table-responsive">
