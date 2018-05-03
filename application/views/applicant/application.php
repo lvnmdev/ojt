@@ -4,7 +4,8 @@
 		<!-- Container fluid  -->
 		<div class="container-fluid">
 			<div class='card-content'>
-				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
+				<p class='path-nav'>
+					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Application</p>
 			</div>
 			<div class='card-content'>
@@ -46,8 +47,10 @@
 				</button>
 				<h1 class="modal-title"></h1>
 			</div>
-			<div id="job_desc">
+			<div class="modal-body">
+				<div id="job_desc">
 
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button id="confirm_app" class="btn btn-primary">
