@@ -12,25 +12,33 @@
 				</ul>
 			</div>
 
-			<div>
-				<div class='col-md-4'>
+			<div class="row">
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
+							<div>
+								<a href='<?= base_url("Applicant/pending_application")?>'>
 								<div class='dashboard-badge'>
 									<span id='applications_count' class='dashboard-badge-no'></span>
 								</div>
-
 							</a>
+<<<<<<< HEAD
 							<label>On-Going Applications</label>
+=======
+							</div>
+							<div>
+								<label>Pending Applications</label>
+							</div>
+							
+>>>>>>> e3cd4def09383ec6d2c6f12797d65fb2ef46da66
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
+							<a href='<?= base_url("Applicant/application")?>'>
 								<div class='dashboard-badge'>
 									<span id='jobs_count' class='dashboard-badge-no'></span>
 								</div>
@@ -40,10 +48,10 @@
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
+							<a href="<?= base_url()?>">
 								<div class='dashboard-badge'>
 									<span class='dashboard-badge-no'></span>
 								</div>

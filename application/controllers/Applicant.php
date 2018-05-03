@@ -30,6 +30,12 @@ class Applicant extends CI_Controller {
 		$this->load->view('templates/applicant/content', $data);
 	}
 
+	public function pending_application() {
+		$data['content'] = 'applicant/pending_application';
+        
+		$this->load->view('templates/applicant/content', $data);
+	}
+
 
 	//Functionals (Biodata)
 

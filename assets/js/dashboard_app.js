@@ -145,28 +145,28 @@ $(function () {
 		'<input id="data_input" style="display:none;" name="data_input" class="form-control">' +
 
 		'<label id="super_input" class="label-control col-md-2"></label>' +
-		'<div class="col-md-3">' +
+		'<div class="col-md-6">' +
 		'<input id="input" type="text" name="" class="form-control">' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form1">' +
 		'<label id="super_input1" class="label-control col-md-2"></label>' +
-		'<div class="col-md-3">' +
+		'<div class="col-md-6">' +
 		'<input id="input1" name="" class="form-control">' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form2">' +
 		'<label id="super_input2" class="label-control col-md-2"></label>' +
-		'<div class="col-md-3">' +
+		'<div class="col-md-6">' +
 		'<input id="input2" name="" class="form-control">' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form3">' +
 		'<label id="super_input3" class="label-control col-md-2"></label>' +
-		'<div class="col-md-3">' +
+		'<div class="col-md-6">' +
 		'<input id="input3" name="" class="form-control">' +
 		'</div>' +
 		'</div>'
