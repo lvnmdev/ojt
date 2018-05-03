@@ -1,13 +1,31 @@
 $(function () {
-	show_available_jobs();
-
-	if (page_info == 'biodata') {
 		show_bio_data();
-	} else if (page_info == 'nobiodata') {
+		resume_checker();		
 		show_resume();
-	} else if (page_info == 'application') {
+		show_available_jobs();
 
-	}
+	
+	function resume_checker(){
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if(!response.success){
+					window.location.href = 'resume';
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+
+	});
+}
+
+
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
@@ -544,7 +562,7 @@ $(function () {
 			method: 'post',
 			url: 'apply_job',
 			data: {
-				id : job_id
+				id: job_id
 			},
 			async: false,
 			dataType: 'json',
