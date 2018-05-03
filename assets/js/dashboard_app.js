@@ -3,7 +3,28 @@ $(function () {
 		resume_checker();		
 		show_resume();
 		show_available_jobs();
+		show_pending_application();
 
+	function show_pending_application(){
+		var html = '';
+		var i;
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'count_applications',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				$('#applications_count').html(response.data.pending_applicant)
+
+			},
+			error: function () {
+				alert('Error');
+
+			}
+		});
+	}
 	
 	function resume_checker(){
 		$.ajax({

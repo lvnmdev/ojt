@@ -18,7 +18,7 @@
 						<div class='dashboard-notify'>
 							<a href=''>
 								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>5</span>
+									<span id='applications_count' class='dashboard-badge-no'></span>
 								</div>
 
 							</a>

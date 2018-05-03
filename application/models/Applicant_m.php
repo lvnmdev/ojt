@@ -193,4 +193,19 @@ class Applicant_m extends CI_Model {
                 
             }
         }
+
+        public function count_applications(){
+            $user = $this->session->userdata('username');
+            $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';
+            $query = $this->db->query($sql);
+
+            if($query){
+                $result[0] = true;
+                $result[1] = $query->row();
+                return $result;
+            }else {
+                $result[0] = false;
+                return $result;
+            }
+        }
 }

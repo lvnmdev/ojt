@@ -151,4 +151,15 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
+
+	public function count_applications(){
+		$result = $this->applicant->count_applications();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+
+		echo json_encode($msg);
+	}
 }
