@@ -5,7 +5,8 @@
 		<div class="container-fluid">
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
-				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
+				<p class='path-nav'>
+					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Biodata</p>
 			</div>
 
@@ -54,47 +55,46 @@
 								<input class='form-control' id='user_current_address' type="text" readonly>
 							</div>
 						</div>
-					<div class="row">
-						<div class='col-xs-12 col-md-12'>
-							<h3>Mother / Guardian</h3>
+						<div class="row">
+							<div class='col-xs-12 col-md-12'>
+								<h3>Mother / Guardian</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class='col-xs-4 col-md-4'>
+								<p>Name:</p>
+								<input class='form-control' id='mother_fullname' type="text" readonly>
+							</div>
+							<div class='col-xs-3 col-md-3'>
+								<p>Birthdate:</p>
+								<input class='form-control' id='mother_birthdate' type="text" readonly>
+							</div>
+							<div class='col-xs-3 col-md-3'>
+								<p>Occupation:</p>
+								<input class='form-control' id='mother_occupation' type="text" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class='col-xs-12 col-md-12'>
+								<h3>Father / Guardian</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class='col-xs-4 col-md-4'>
+								<p>Name:</p>
+								<input class='form-control' id='father_fullname' type="text" readonly>
+							</div>
+							<div class='col-xs-3 col-md-3'>
+								<p>Birthdate:</p>
+								<input class='form-control' id='father_birthdate' type="text" readonly>
+							</div>
+							<div class='col-xs-3 col-md-3'>
+								<p>Occupation:</p>
+								<input class='form-control' id='father_occupation' type="text" readonly>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class='col-xs-4 col-md-4'>
-							<p>Name:</p>
-							<input class='form-control' id='mother_fullname' type="text" readonly>
-						</div>
-						<div class='col-xs-3 col-md-3'>
-							<p>Birthdate:</p>
-							<input class='form-control' id='mother_birthdate' type="text" readonly>
-						</div>
-						<div class='col-xs-3 col-md-3'>
-							<p>Occupation:</p>
-							<input class='form-control' id='mother_occupation' type="text" readonly>
-						</div>
-					</div>
-					<div class="row">
-						<div class='col-xs-12 col-md-12'>
-							<h3>Father / Guardian</h3>
-						</div>
-					</div>
-					<div class="row">
-						<div class='col-xs-4 col-md-4'>
-							<p>Name:</p>
-							<input class='form-control' id='father_fullname' type="text" readonly>
-						</div>
-						<div class='col-xs-3 col-md-3'>
-							<p>Birthdate:</p>
-							<input class='form-control' id='father_birthdate' type="text" readonly>
-						</div>
-						<div class='col-xs-3 col-md-3'>
-							<p>Occupation:</p>
-							<input class='form-control' id='father_occupation' type="text" readonly>
-						</div>
-					</div>
-				</div>
-				<div class='card-footer'>
-					<div class="row">
+					<div class='card-footer'>
 						<a id="btnedit_bio" type="button" class="btn btn-success">
 							<i class='fa fa-edit btn-icon'></i>Edit</a>
 					</div>
@@ -102,7 +102,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <div id="edit_bio" class="modal fade" tabindex="-1" role="dialog">

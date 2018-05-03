@@ -555,16 +555,14 @@ $(function () {
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
 						if (response.data[i].job_id == job_id_app) {
-							html += '<tr>' +
-								'<td>' + response.data[i].comp_name + '</td>' +
-								'<td>' + response.data[i].position + '</td>' +
-								'<td>' + response.data[i].no_applicants + '</td>' +
-								'<td>' + response.data[i].pref_sex + '</td>' +
-								'<td>' + response.data[i].pref_civstat + '</td>' +
-								'<td>' + response.data[i].pref_educ + '</td>' +
-								'<td>' + response.data[i].requirements + '</td>' +
-								'<td>' + response.data[i].date_posted + '</td>' +
-								'</tr>'
+							html += 
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Company Name</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].comp_name + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Position</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].position + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Sex</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_sex + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Civil Status</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_civstat + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Education Attained</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_educ + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Requirements</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].requirements + '</div></div>' +
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Date Posted</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].date_posted + '</div></div>'
 						}
 					}
 					$('#job_desc').html(html)
