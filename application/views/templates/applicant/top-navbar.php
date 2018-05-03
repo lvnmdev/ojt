@@ -5,7 +5,9 @@
             redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==1){
             redirect('Company/dashboard');
-        }
+        }else{
+			redirect('Main/index');
+		}
     }
 
 ?>
