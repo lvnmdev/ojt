@@ -22,15 +22,7 @@
 									<span id='applications_count' class='dashboard-badge-no'></span>
 								</div>
 							</a>
-<<<<<<< HEAD
 							<label>On-Going Applications</label>
-=======
-							</div>
-							<div>
-								<label>Pending Applications</label>
-							</div>
-							
->>>>>>> e3cd4def09383ec6d2c6f12797d65fb2ef46da66
 						</div>
 					</div>
 				</div>
