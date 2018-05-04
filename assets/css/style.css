@@ -6,39 +6,20 @@
 }
 
 @media only screen and (max-device-width: 768px) {
-	footer {
-		margin-left: 0 !important;
-	}
-
 	.side-nav-close {
 		display: block;
-	}
-	
-	.side-navbar-container {
-		width: 0;
 	}
 }
 
 @media only screen and (max-device-width: 425px) {
-	footer {
-		margin-left: 0 !important;
-	}
-
-	.side-navbar-container {
-		width: 0;
+	.main-container {
+		margin-left: 0;
+		position: fixed;
 	}
 }
 
 body {
 	background-color: lightgrey;
-}
-
-footer {
-	bottom: 0 !important;
-	padding: 20px;
-	background-color: #fbb414;
-	margin-top: 20px;
-	margin-left: 250px;
 }
 
 .container-fluid {
@@ -202,19 +183,19 @@ footer {
 .side-nav-close a:hover,
 .side-nav-open a:hover {
 	color: lightgrey;
-	transition: .25s ease-in-out;
+	transition: 1s ease-in-out;
 }
 
 .side-nav-close a:active,
 .side-nav-open a:active {
 	color: grey;
-	transition: .25s ease-in-out;
 }
 
 .side-nav-open {
 	left: 0;
 	font-size: 2.5em;
 	padding: 15px;
+	transition: 1s ease-in-out;
 }
 
 .side-nav-close a,
@@ -319,8 +300,8 @@ footer {
 	font-size: 2.5em;
 	border: none;
 	outline: none;
-	background-color: #1a1751;
-	color: white;
+	background-color: #fbb414;
+	color: #1a1751;
 	cursor: pointer;
 	padding: 10px 20px;
 	border-radius: 100%;
@@ -330,7 +311,7 @@ footer {
 }
 
 .scrollup-btn:hover {
-  background-color: #1a1745;
+  background-color: #d89c13;
 }
 
 /* Resume */
@@ -381,7 +362,6 @@ footer {
 	text-decoration: none;
 }
 
-<<<<<<< HEAD
 
 
 /** ============== PRELOAD STYLES START ============== **/
@@ -438,10 +418,8 @@ footer {
 }
 
 /** ============== PRELOAD STYLES END ============== **
-=======
 /* Graph */
 .graph-canvas {
 	width: 100%;
 	height: 500px;
 }
->>>>>>> 49f68860b5c1e70f7a791a1e98462b9a4a8190dc
