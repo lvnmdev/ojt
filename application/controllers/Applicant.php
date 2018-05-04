@@ -129,11 +129,6 @@ class Applicant extends CI_Controller {
 
 	}
 
-	public function to_pdf(){
-		$this->load->library('Pdf');
-		$this->load->view('templates/applicant/to_resume');
-	}
-
 	
 	public function show_available_jobs(){
 		$result = $this->applicant->show_available_jobs();
@@ -168,5 +163,19 @@ class Applicant extends CI_Controller {
 		}
 
 		echo json_encode($msg);
+	}
+
+	public function to_pdf(){
+		$result = $this->applicant->show_resume();
+		$msg['success'] = false;
+		if($result[0]){
+			$_POST['skill'] = $result[1];
+			$_POST['accomplishment'] = $result[2];
+			$_POST['education'] = $result[3];
+			$_POST['seminars'] = $result[4];
+			$_POST['workxp'] = $result[5];
+		}
+		$this->load->library('Pdf');
+		$this->load->view('templates/applicant/to_resume');
 	}
 }
