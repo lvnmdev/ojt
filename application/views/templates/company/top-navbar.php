@@ -6,13 +6,8 @@
             redirect('Applicant/dashboard');
         }
     }else{
-<<<<<<< HEAD
 		redirect('Main/index');
 	}
-=======
-			redirect('Main/index');
-		}
->>>>>>> 8396d6d9e28da10600a5d7af3b379112597f35b2
 
 ?>
 	<!DOCTYPE html>
@@ -62,12 +57,13 @@
 						</ul>
 					</div>
 				</div>
-				<div class='side-nav-open'>
-					<a type='button' id='openNav'>
-						<i class='fa fa-bars'></i>
-					</a>
-				</div>
-				<button id='scrollup-btn' class='scrollup-btn'>
-					<i class='fa fa-chevron-up'></i>
-				</button>
+			</div>
+			<div class='side-nav-open'>
+				<a type='button' id='openNav'>
+					<i class='fa fa-bars'></i>
+				</a>
+			</div>
+			<button id='scrollup-btn' class='scrollup-btn'>
+				<i class='fa fa-chevron-up'></i>
+			</button>
 		</header>
