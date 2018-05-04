@@ -4,10 +4,10 @@
 	</div>
 
 	<div class="card-container">
-		<div class='container-fluid text-success'>
+		<div class='text-success'>
 			<p id="banner-message"></p>
 		</div>
-		<div class='container-fluid text-danger'>
+		<div class=' text-danger'>
 			<p id="banner-failed"></p>
 		</div>
 
