@@ -1,3 +1,16 @@
+$(document).ready(function() {
+    //Preloader
+    $(window).on("load", function() {
+        preloaderFadeOutTime = 2000;
+        function hidePreloader() {
+            var preloader = $('.folding-cube-wrapper');
+            preloader.fadeOut(preloaderFadeOutTime);
+        }
+
+        hidePreloader();
+    });
+});
+
 $(function(){
     //Initialization of Datatable 
     $('#table_id').dataTable();

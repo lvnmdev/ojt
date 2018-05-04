@@ -22,16 +22,19 @@
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables.min.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
-		<script type="text/javascript" src="<?= base_url('assets/js/jquery.js')?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js')?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/bootstrap-select.min.js')?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/datatables.min.js')?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/fontawesome-all.min.js')?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/dashboard_app.js');?>"></script>
-		<script type="text/javascript" src="<?= base_url('assets/js/style.js');?>"></script>
+
 	</head>
 
 	<body>
+	<div class="folding-cube-wrapper">
+		<div class="folding-cube-body">
+			<div class="cube-1 cube"></div>
+			<div class="cube-2 cube"></div>		
+			<div class="cube-4 cube"></div>
+			<div class="cube-3 cube"></div>
+
+		</div>
+	</div>
 		<header class='top-navbar container-fluid'>
 			<div class='user-profile'>
 				<div class="dropdown show">
