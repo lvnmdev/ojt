@@ -1,6 +1,6 @@
 $(function () {
 	show_bio_data();
-	resume_checker();
+//	resume_checker();
 	show_resume();
 	show_available_jobs();
 	count_dashboard();

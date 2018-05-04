@@ -1,5 +1,4 @@
 <?php
-
     if (isset($_SESSION['username'])){
         if ($_SESSION['usertype']==0){
             redirect('Admin/dashboard');
@@ -7,8 +6,13 @@
             redirect('Applicant/dashboard');
         }
     }else{
+<<<<<<< HEAD
+		redirect('Main/index');
+	}
+=======
 			redirect('Main/index');
 		}
+>>>>>>> 8396d6d9e28da10600a5d7af3b379112597f35b2
 
 ?>
 <!DOCTYPE html>
