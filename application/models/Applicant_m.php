@@ -1,4 +1,5 @@
-<?php
+ 
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Applicant_m extends CI_Model {
@@ -159,9 +160,8 @@ class Applicant_m extends CI_Model {
 
 
 
-
         public function show_available_jobs(){
-           $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name;';
+           $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name WHERE status = 1;';
            $query = $this->db->query($sql);
 
             if($query){
@@ -176,5 +176,39 @@ class Applicant_m extends CI_Model {
                 return $result;
             }
             
+        }
+
+        public function apply_job(){
+            $field = array(
+                'job_id' => $this->input->post('id'),
+                'user_name' => $this->session->userdata('username'),
+            );
+
+            $query = $this->db->insert('tbl_pending_application',$field);
+
+            if($query){
+                return true;
+            }else{
+                return false;
+                
+            }
+        }
+
+        public function count_dashboard(){
+            $user = $this->session->userdata('username');
+            $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';
+            $sql1 = 'SELECT count(tbl_job_posting.job_id) as jobs_posted FROM tbl_job_posting GROUP BY tbl_job_posting.status';
+            $query = $this->db->query($sql);
+            $query1 = $this->db->query($sql1);
+
+            if($query || $query1){
+                $result[0] = true;
+                $result[1] = $query->row();
+                $result[2] = $query1->row();
+                return $result;
+            }else {
+                $result[0] = false;
+                return $result;
+            }
         }
 }

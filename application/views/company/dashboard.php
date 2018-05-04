@@ -12,43 +12,66 @@
 				</ul>
 			</div>
 
-			<div>
-				<div class='col-md-4'>
+			<div class="row">
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>5</span>
+							<div class="row">
+								<div class="col-md-4">
+									<a href='<?= base_url("Applicant/pending_application")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-
-							</a>
-							<h4><strong>Pending Applications</strong></h4>
+								<div class="col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>Pending Applications</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>3</span>
+							<div class="row">
+								<div class="col-md-4">
+									<a href='<?= base_url("Applicant/application")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<h4><strong>Posted Jobs</strong></h4>
+								<div class="col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>Posted Jobs</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>14</span>
+							<div class="row">
+								<div class="col-md-4">
+									<a href='<?= base_url("Applicant/")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<h4><strong>Employees0</strong></h4>
+								<div class="col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>Employees</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

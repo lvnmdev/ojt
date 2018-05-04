@@ -6,7 +6,9 @@
         }else if($_SESSION['usertype']==2){
             redirect('Applicant/dashboard');
         }
-    }
+    }else{
+			redirect('Main/index');
+		}
 
 ?>
 <!DOCTYPE html>
@@ -29,6 +31,8 @@
 	<script type="text/javascript" src="<?= base_url('assets/js/fontawesome-all.min.js')?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/dashboard_admin.js');?>"></script>
 	<script type="text/javascript" src="<?= base_url('assets/js/style.js');?>"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/chart.bundle.min.js');?>"></script>
+	<script type="text/javascript" src="<?= base_url('assets/js/moment.min.js');?>"></script>
 </head>
 
 <body>

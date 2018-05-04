@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Applicant extends CI_Controller {	
 	function __constructor(){
 		parent::__constructor();
+
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Origin: <origin>");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Request-Method: OPTIONS, POST, GET, PUT, DELETE');
 	}
 
 	public function dashboard(){
@@ -26,6 +31,12 @@ class Applicant extends CI_Controller {
 
 	public function resume() {
 		$data['content'] = 'applicant/resume';
+        
+		$this->load->view('templates/applicant/content', $data);
+	}
+
+	public function pending_application() {
+		$data['content'] = 'applicant/pending_application';
         
 		$this->load->view('templates/applicant/content', $data);
 	}
@@ -139,5 +150,28 @@ class Applicant extends CI_Controller {
 
 		echo json_encode($msg);
 		
+	}
+
+	public function apply_job(){
+		$result = $this->applicant->apply_job();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+
+		echo json_encode($msg);
+
+	}
+
+	public function count_dashboard(){
+		$result = $this->applicant->count_dashboard();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+			$msg['data1'] = $result[2];
+		}
+
+		echo json_encode($msg);
 	}
 }

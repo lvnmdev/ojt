@@ -4,13 +4,13 @@
 		<!-- Container fluid  -->
 		<div class="container-fluid">
 			<div class='card-content'>
-				<p class='path-nav'>
-					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
-					<i class="fa fa-chevron-right"></i> Application</p>
+				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
+					<i class="fa fa-chevron-right"></i><a href="<?= base_url("Applicant/application")?>"> Application</a><i class="fa fa-chevron-right"></i> Pending Application
+                </p>
 			</div>
 			<div class='card-content'>
 				<div class='card-title'>
-					<h1>Application</h1>
+					<h1>Pending Application</h1>
 				</div>
 				<div class='card-body'>
 					<div class="table-responsive">
@@ -47,10 +47,8 @@
 				</button>
 				<h1 class="modal-title"></h1>
 			</div>
-			<div class="modal-body">
-				<div id="job_desc">
+			<div id="job_desc">
 
-				</div>
 			</div>
 			<div class="modal-footer">
 				<button id="confirm_app" class="btn btn-primary">

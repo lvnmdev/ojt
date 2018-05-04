@@ -12,43 +12,66 @@
 				</ul>
 			</div>
 
-			<div>
-				<div class='col-md-4'>
+			<div class="row">
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>5</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-4">
+									<a href='<?= base_url("Applicant/pending_application")?>'>
+										<div class='dashboard-badge'>
+											<span id='applications_count' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-
-							</a>
-							<label>Pending Applications</label>
+								<div class="col-xs-12 col-sm-12 col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>Ongoing Applications</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>23</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-4">
+									<a href='<?= base_url("Applicant/application")?>'>
+										<div class='dashboard-badge'>
+											<span id='jobs_count' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<label>Available Jobs</label>
+								<div class="col-xs-12 col-sm-12 col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>Available Jobs</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class='col-md-4'>
+				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'></span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-4">
+									<a href='<?= base_url("Applicant/")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<label></label>
+								<div class="col-xs-12 col-sm-12 col-md-8">
+									<div class="dashboard-badge-label">
+										<h4>???</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -58,5 +81,4 @@
 </div>
 <script>
 	var page_info = 'dashboard';
-
 </script>

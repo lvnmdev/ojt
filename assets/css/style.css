@@ -22,6 +22,10 @@ body {
 	background-color: lightgrey;
 }
 
+.container-fluid {
+	padding: 0 25px;
+}
+
 /* Login */
 
 .index-bg {
@@ -176,7 +180,7 @@ body {
 	font-size: 2.25em;
 }
 
-.side-nav-close a:hover
+.side-nav-close a:hover,
 .side-nav-open a:hover {
 	color: lightgrey;
 	transition: 1s ease-in-out;
@@ -263,7 +267,7 @@ body {
 	background-color: white;
 	border-radius: 8px;
 	padding: 20px;
-	margin: 20px 0;
+	margin: 25px 0 0 0;
 }
 
 .biodata-form input {
@@ -271,7 +275,7 @@ body {
 }
 /*MODAL BODY OVERRIDE */
 
-.modal-form {
+.modal-biodata {
 	width: 80% !important;
 	margin: 20px auto !important;
 }
@@ -321,10 +325,18 @@ body {
 	border-bottom: 1px solid #333;
 }
 
+.resume-delete {
+	color: #d9534f;
+}
+
+.resume-delete:hover {
+	color: darkred;
+}
+
+
 /* Dashboard Notification */
 .dashboard-notify {
 	text-align: center;
-	padding: 20px;
 }
 
 .dashboard-badge {
@@ -333,8 +345,11 @@ body {
 	color: white;
 	height: 150px;
 	width: 150px;
-	margin: auto;
 	padding: 30px;
+}
+
+.dashboard-badge-label h4 {
+	text-align: right;
 }
 
 .dashboard-badge:hover {
@@ -347,6 +362,7 @@ body {
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
 
 
 /** ============== PRELOAD STYLES START ============== **/
@@ -403,3 +419,10 @@ body {
 }
 
 /** ============== PRELOAD STYLES END ============== **
+=======
+/* Graph */
+.graph-canvas {
+	width: 100%;
+	height: 500px;
+}
+>>>>>>> 49f68860b5c1e70f7a791a1e98462b9a4a8190dc

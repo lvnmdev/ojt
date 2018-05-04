@@ -16,24 +16,27 @@
 				<div class='card-body'>
 					<button value="1" id='btnpost_job' class="btn btn-success">
 						<i class='fa fa-plus'></i> Add Post</button>
-					<br><br>
+					<br>
+					<br>
 					<div id='hirings'>
-						<table id="table_id" class="table table-condensed table-striped table-hover">
-							<thead class="jumbotron">
-								<tr>
-									<th scope="col">Position</th>
-									<th scope="col">No. of Applicants Needed</th>
-									<th scope="col">Preferred Sex</th>
-									<th scope="col">Preferred Civil Status</th>
-									<th scope="col">Education</th>
-									<th scope="col">Requirements</th>
-									<th scope="col">Date Posted</th>
-									<th scope="col">Action</th>
-								</tr>
-							</thead>
-							<tbody id="show_jobs">
-							</tbody>
-						</table>
+						<div class='table-responsive'>
+							<table id="table_id" class="table table-condensed table-striped table-hover">
+								<thead class="jumbotron">
+									<tr>
+										<th scope="col">Position</th>
+										<th scope="col">No. of Applicants Needed</th>
+										<th scope="col">Preferred Sex</th>
+										<th scope="col">Preferred Civil Status</th>
+										<th scope="col">Education</th>
+										<th scope="col">Requirements</th>
+										<th scope="col">Date Posted</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody id="show_jobs">
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
