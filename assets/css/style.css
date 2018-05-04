@@ -6,20 +6,39 @@
 }
 
 @media only screen and (max-device-width: 768px) {
+	footer {
+		margin-left: 0 !important;
+	}
+
 	.side-nav-close {
 		display: block;
+	}
+	
+	.side-navbar-container {
+		width: 0;
 	}
 }
 
 @media only screen and (max-device-width: 425px) {
-	.main-container {
-		margin-left: 0;
-		position: fixed;
+	footer {
+		margin-left: 0 !important;
+	}
+
+	.side-navbar-container {
+		width: 0;
 	}
 }
 
 body {
 	background-color: lightgrey;
+}
+
+footer {
+	bottom: 0 !important;
+	padding: 20px;
+	background-color: #fbb414;
+	margin-top: 20px;
+	margin-left: 250px;
 }
 
 .container-fluid {
@@ -183,19 +202,19 @@ body {
 .side-nav-close a:hover,
 .side-nav-open a:hover {
 	color: lightgrey;
-	transition: 1s ease-in-out;
+	transition: .25s ease-in-out;
 }
 
 .side-nav-close a:active,
 .side-nav-open a:active {
 	color: grey;
+	transition: .25s ease-in-out;
 }
 
 .side-nav-open {
 	left: 0;
 	font-size: 2.5em;
 	padding: 15px;
-	transition: 1s ease-in-out;
 }
 
 .side-nav-close a,
@@ -300,8 +319,8 @@ body {
 	font-size: 2.5em;
 	border: none;
 	outline: none;
-	background-color: #fbb414;
-	color: #1a1751;
+	background-color: #1a1751;
+	color: white;
 	cursor: pointer;
 	padding: 10px 20px;
 	border-radius: 100%;
@@ -311,7 +330,7 @@ body {
 }
 
 .scrollup-btn:hover {
-  background-color: #d89c13;
+  background-color: #1a1745;
 }
 
 /* Resume */

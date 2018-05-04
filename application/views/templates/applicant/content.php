@@ -9,4 +9,5 @@ else {
 }
 
 $this->load->view('templates/applicant/footer');
+$this->load->view('templates/footer');
 ?>
