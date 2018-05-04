@@ -28,30 +28,38 @@
 	</head>
 
 	<body>
-	<div class="folding-cube-wrapper">
-		<div class="folding-cube-body">
-			<div class="cube-1 cube"></div>
-			<div class="cube-2 cube"></div>		
-			<div class="cube-4 cube"></div>
-			<div class="cube-3 cube"></div>
+		<div class="folding-cube-wrapper">
+			<div class="folding-cube-body">
+				<div class="cube-1 cube"></div>
+				<div class="cube-2 cube"></div>
+				<div class="cube-4 cube"></div>
+				<div class="cube-3 cube"></div>
 
+			</div>
 		</div>
-	</div>
 		<header class='top-navbar container-fluid'>
 			<div class='user-profile'>
-				<div class="dropdown show">
-					<a class="dropdown-toggle user-info" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">
-						<img src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="">
+				<div class="dropdown">
+					<a role='button' class="dropdown-toggle user-info" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="true">
+						<img src="<?= base_url('assets/img/icons/default-profile.png') ?>">
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a href="<?php echo base_url("Main/logout ")?>">
-							<li>
-								<i class="fa fa-sign-out-alt"></i> Logout</li>
-						</a>
-					</ul>
+					<div class="dropdown-menu" aria-labelledby="user-dropdown">
+						<ul class="user-info-opt">
+							<a href="<?php echo base_url("Applicant/settings ")?>">
+								<li>
+									<i class="fa fa-cog"></i> Settings
+								</li>
+							</a>
+							<a href="<?php echo base_url("Main/logout ")?>">
+								<li>
+									<i class="fa fa-sign-out-alt"></i> Logout
+								</li>
+							</a>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class='side-nav-open'>

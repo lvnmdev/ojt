@@ -1,3 +1,16 @@
+<?php
+
+    if (isset($_SESSION['username'])){
+        if ($_SESSION['usertype']==0){
+            redirect('Admin/dashboard');
+        }else if($_SESSION['usertype']==1){
+            redirect('Company/dashboard');
+        }else{
+            redirect('Applicant/dashboard');
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -164,11 +177,11 @@ strong {
  }
 
 form { margin-bottom: 25px; }
-form input{    
+form input, form select{    
   margin-bottom: 10px;
   text-indent: 5px;
   background-color: transparent;
-  -webkit-text-fill-color: #1a1751;
+  -webkit-text-fill-color: #fff;
   border: none;
   border-bottom: 2px solid whitesmoke;
   padding: 5px;
@@ -184,27 +197,38 @@ form input{
 	  <div class="split left">
       <div class="split-inner">
   	    <h1>Login</h1>
-        <form>
-            <input type="" name="" placeholder="username">
-            <input type="" name="" placeholder="password">
+        <form id="loginform">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
         </form>
-  	    <a href="<?= base_url('/main/login');?>" class="button">Enter</a>
+  	    <a type="button" id="loginbtn" class="button">Enter</a>
       </div>
 	  </div>
 	  <div class="split right">
       <div class="split-inner">
   	    <h1>Register</h1>
-        <form>
-          <input class="min-form" type="text" name="username" placeholder="Username">
-          <input class="min-form" type="email" name="email" placeholder="Email">
-          <input class="min-form" type="password" name="password" placeholder="Password">
-          <input class="min-form" type="password" name="repassword" placeholder="Confirm Password">
+        <form id="regform">
+          <input type="text"     name="username"   placeholder="Username">
+          <input type="email"    name="email"      placeholder="Email">
+          <input type="password" name="password"   placeholder="Password">
+          <input type="password" name="repassword" placeholder="Confirm Password"><br><br>
+          <div class="form-group">
+            <label style="color:whitesmoke;">User Type:</label>
+            <br>
+            <select name="usertype">
+              <option class="form-control" value="2">Applicant</option>
+              <option class="form-control" value="1">Company  </option>
+              <option class="form-control" value="0">Admin    </option>
+            </select>
+          </div>
+        
         </form>
-  	    <a href="<?= base_url('/main/login');?>" class="button">Submit</a>
+  	    <a type="button" id="regbtn" class="button">Submit</a>
       </div>
 	  </div>
 	</div>
-
+<script src="<?= base_url('assets/js/jquery.js')?>"></script>
+<script src="<?= base_url('assets/js/user.js');?>"></script>
 <script>
 
 const left = document.querySelector(".left");

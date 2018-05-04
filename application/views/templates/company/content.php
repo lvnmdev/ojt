@@ -7,5 +7,5 @@ if (isset($content)) {
 else {
     echo 'Content not found.';
 }
-$this->load->view('templates/footer');
+$this->load->view("templates/footer");
 ?>

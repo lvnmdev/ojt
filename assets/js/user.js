@@ -7,7 +7,7 @@ $(function () {
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
-			url: 'registerUser',
+			url: 'main/registerUser',
 			data: formData,
 			async: false,
 			dataType: 'json',
@@ -53,7 +53,7 @@ $(function () {
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
-			url: base + 'Main/loginUser',
+			url: 'main/loginUser',
 			data: formData,
 			async: false,
 			dataType: 'json',
