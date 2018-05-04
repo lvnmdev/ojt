@@ -11,7 +11,7 @@
 
 			<div class="card-content">
 				<div>
-					<h4 class='resume-title'>QUALIFICATIONS</h4>
+					<h3 class='resume-title'>QUALIFICATIONS</h3>
 					<div id='resume_skills'>
 
 					</div>
@@ -19,7 +19,7 @@
 				</div>
 				
 				<div>
-					<h4 class='resume-title'>WORK EXPERIENCE</h4>
+					<h3 class='resume-title'>WORK EXPERIENCE</h3>
 					<div id='resume_xp'>
 
 					</div>
@@ -27,7 +27,7 @@
 				</div>
 
 				<div>
-					<h4 class='resume-title'>ACCOMPLISHMENTS</h4>
+					<h3 class='resume-title'>ACCOMPLISHMENTS</h3>
 					<div id='resume_accomplishments'>
 
 					</div>
@@ -35,7 +35,7 @@
 				</div>
 
 				<div>
-					<h4 class='resume-title'>EDUCATION</h4>
+					<h3 class='resume-title'>EDUCATION</h3>
 					<div id='resume_education'>
 
 					</div>
@@ -43,7 +43,7 @@
 				</div>
 
 				<div>
-					<h4 class='resume-title'>SEMINARS</h4>
+					<h3 class='resume-title'>SEMINARS</h3>
 					<div id="resume_seminar">
 
 					</div>

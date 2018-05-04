@@ -10,18 +10,18 @@
 	.side-nav-close {
 		display: block;
 	}
+
 	footer {
 		margin-left: 0 !important;
+		width: 100vw !important;
 	}
-}
 
-@media only screen and (max-device-width: 425px) {
+	.side-navbar-container {
+		width: 0;
+	}
+
 	.main-container {
 		margin-left: 0;
-		position: fixed;
-	}
-	footer {
-		margin-left: 0 !important;
 	}
 }
 
@@ -31,10 +31,9 @@ body {
 
 footer {
 	background-color: #fbb414;
-	margin-left: 250px;
+	margin-left: 270px;
 	padding: 20px;
 	margin-top: 20px;
-	bottom: 0 !important;
 }
 
 .container-fluid {
@@ -100,12 +99,12 @@ footer {
 	width: 100%;
 	top: 0;
 	z-index: 1;
+	padding-left: 0;
 }
 
 .user-profile {
 	float: right;
 	padding: 15px 0;
-	margin-right: 10px;
 }
 
 .user-profile .user-info {
@@ -114,10 +113,33 @@ footer {
 	color: white;
 }
 
+.user-info-opt {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.user-info-opt li {
+	padding: 10px;
+}
+
+.user-info-opt a {
+	text-decoration: none;
+}
+
+.user-info-opt li:hover {
+	background-color: #fbb414;
+}
+
+.user-info-opt a:active {
+	text-decoration: none;
+}
+
 .dropdown-menu {
 	border-radius: 0 !important;
 	right: 10px;
 	left: 100 !important;
+	padding: 0;
 }
 
 .user-profile img {
@@ -130,8 +152,8 @@ footer {
 
 .main-container {
 	position: relative;
-	margin-top: 75px;
-	margin-left: 250px;
+	margin-top: 80px;
+	margin-left: 270px;
 	transition: 0.25s;
 }
 
@@ -145,42 +167,51 @@ footer {
 	overflow-x: hidden;
 	transition: 0.25s;
 	padding-top: 100px;
-	width: 250px;
+	width: 270px;
 	box-shadow: 4px 0px 5px 0px rgba(0, 0, 0, 0.6);
 }
 
 .ustp-menu {
 	background-color: #1a1751;
 	height: 80px;
-	padding: 20px;
+	padding: 15px 15px;
 }
 
-.ustp-menu h1 {
+.logo h1{
 	margin: 0;
 	color: white;
 	float: left;
 }
 
+.logo h4 {
+	margin: 0;
+	color: white;
+	float: left;
+	padding: 7px 0;
+}
+
 .side-nav-close {
 	float: right;
 	font-size: 2.25em;
+	padding: 5px 0;
 }
 
 .side-nav-close a:hover,
 .side-nav-open a:hover {
-	color: lightgrey;
-	transition: 1s ease-in-out;
+	color: #fbb414;
+	transition: .25s ease-in-out;
 }
 
 .side-nav-close a:active,
 .side-nav-open a:active {
-	color: grey;
+	color: #fbb414;
+	transition: .25s ease-in-out;
 }
 
 .side-nav-open {
 	left: 0;
 	font-size: 2.5em;
-	padding: 15px;
+	padding: 15px 0 15px 25px;
 	transition: 1s ease-in-out;
 }
 
@@ -280,8 +311,8 @@ footer {
 .scrollup-btn {
 	display: none;
 	position: fixed;
-	bottom: 20px;
-	right: 30px;
+	bottom: 50px;
+	right: 20px;
 	z-index: 99;
 	font-size: 2.5em;
 	border: none;
@@ -291,13 +322,14 @@ footer {
 	cursor: pointer;
 	padding: 10px 20px;
 	border-radius: 100%;
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	transition: 1s;
+	-webkit-transition: .5s;
+	-moz-transition: .5s;
+	transition: .5s;
 }
 
 .scrollup-btn:hover {
-	background-color: #d89c13;
+	background-color: #fbb414;
+	color: #1a1751;
 }
 
 /* Resume */
