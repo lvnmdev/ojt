@@ -16,9 +16,12 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if(response.data!=null){
+				if (response.data != null && response.data1 != null){
 					$('#applications_count').html(response.data.pending_applicant);
 					$('#jobs_count').html(response.data1.jobs_posted);
+				}else{
+					$('#applications_count').html(0);
+					$('#jobs_count').html(0);
 				}
 
 			},

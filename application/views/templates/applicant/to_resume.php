@@ -204,14 +204,14 @@ $html = '<style>
     </div>
     <div>
 
-        <div style="width:50%;margin-right:0px;">
+        <div style="width:50%;margin-right:0px;text-align:center;">
             <img style="width:200px;height:200px;" src="C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$user.'_pic.png">
-            <span>
+		</div>
+		<div>
                 <p>Name: '.$name.'</p>
                 <p>Home Address: '.$h_address.'</p>
                 <p>Current Address: '.$c_address.'</p>
                 <p>Email Address: '.$email.'</p>
-            </span>
         </div>
     </div>
     <div style="display: block">
