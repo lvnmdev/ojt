@@ -18,6 +18,7 @@ $(function(){
     //Side Navigation Bar Slide
     $("#openNav").click(function () {
         $(".side-navbar-container").css({"width":"270px"});
+        $(".side-navbar-container").css({"width":"250px"});
     });
 
     $("#closeNav").click(function () {

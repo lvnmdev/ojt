@@ -1,17 +1,23 @@
 <?php
-
-$basic_info = array('Jhon Harvey','09112312312','jhbabia1998@gmail.com');
-
-
-
-
+$user = $this->session->userdata('username');
+$email = $this->session->userdata('email');
+$sql = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+$query = $sql->row();
+$name = $query->fname.' '. $query->mname.' '. $query->lname.'</p>';
+$h_address = $query->haddress.'</p>';
+$c_address = $query->caddress.'</p>';
+$skill_info =	$_POST['skill'];
+$accomplishment_info =	$_POST['accomplishment'];
+$education_info =	$_POST['education'];
+$seminar_info =	$_POST['seminars'];
+$workxp_info =	$_POST['workxp'];
 //============================================================+
-// File name   : example_001.php
+// File name   : example_003.php
 // Begin       : 2008-03-04
 // Last Update : 2013-05-14
 //
-// Description : Example 001 for TCPDF class
-//               Default Header and Footer
+// Description : Example 003 for TCPDF class
+//               Custom Header and Footer
 //
 // Author: Nicola Asuni
 //
@@ -25,7 +31,7 @@ $basic_info = array('Jhon Harvey','09112312312','jhbabia1998@gmail.com');
 /**
  * Creates an example PDF TEST document using TCPDF
  * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Default Header and Footer
+ * @abstract TCPDF - Example: Custom Header and Footer
  * @author Nicola Asuni
  * @since 2008-03-04
  */
@@ -33,28 +39,19 @@ $basic_info = array('Jhon Harvey','09112312312','jhbabia1998@gmail.com');
 // Include the main TCPDF library (search for installation path).
 //require_once('tcpdf_include.php');
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor($basic_info[0]);
-$pdf->SetTitle('RESUME');
-$pdf->SetSubject('RESUME');
-$pdf->SetKeywords('Resume');
-
-// set default header data
+// Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
 
 	//Page header
 	public function Header() {
 		// Logo
-		$image_file = 'C:\xampp\htdocs\ojt\assets\img\logoustp.jpg';
-		$this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-		// Set font
-		$this->SetFont('helvetica', 'B', 20);
-		// Title
-		$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+		// $image_file = 'C:\xampp\htdocs\ojt\assets\img\logo\ustp.jpg';
+		// $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+		// // Set font
+		// $this->SetFont('helvetica', 'B', 20);
+		// // Title
+		//$this->Cell(0, 15, 'Resume', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 	}
 
 	// Page footer
@@ -68,12 +65,29 @@ class MYPDF extends TCPDF {
 	}
 }
 
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+// create new PDF document
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Nicola Asuni');
+$pdf->SetTitle('TCPDF Example 003');
+$pdf->SetSubject('TCPDF Tutorial');
+$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+// set default header data
+// $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+
+// // set header and footer fonts
+// $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+// $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// // set default monospaced font
+// $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// // set margins
+// $pdf->SetMargins(10,15,15);
+// $pdf->SetHeaderMargin(0);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // set auto page breaks
@@ -90,36 +104,99 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // ---------------------------------------------------------
 
-// set default font subsetting mode
-$pdf->setFontSubsetting(true);
+// set font
+$pdf->SetFont('times', 'BI', 12);
 
-// Set font
-// dejavusans is a UTF-8 Unicode font, if you only need to
-// print standard ASCII chars, you can use core fonts like
-// helvetica or times to reduce file size.
-$pdf->SetFont('helvetica', '', 14, '', true);
-
-// Add a page
-// This method has several options, check the source code documentation for more information.
+// add a page
 $pdf->AddPage();
 
-// set text shadow effect
-$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+// set some text to print
+$skill = '<ul>';
 
+$i = 0;
+foreach ($skill_info as $qual) {
+	$skill.='<br><li>'.$skill_info[$i]->skill.'</li>';
+	$i++;
+}
+$skill.='</ul>';
+////////////////////////////////////////////
+
+$accomplishment = '<ul>';
+
+$i = 0;
+foreach ($accomplishment_info as $qual) {
+	$accomplishment.='<br><li>'.$accomplishment_info[$i]->accomplishment;
+	$accomplishment.='<br><label>Affiliation: </label>'.$accomplishment_info[$i]->affiliation.'</li>';
+	$i++;
+}
+$accomplishment.='</ul>';
+///////////////////////////////////////////
+
+$workxp = '<ul>';
+
+$i = 0;
+foreach ($workxp_info as $qual) {
+	$workxp.='<br><li><label>Position: </label>'.$workxp_info[$i]->position;
+	$workxp.='<br><label>Company: </label>'.$workxp_info[$i]->company;
+	$workxp.='<br><label>Date Started: </label>'.$workxp_info[$i]->date_start;
+	$workxp.='<br><label>Date Ended: </label>'.$workxp_info[$i]->date_end.'</li>';
+	$i++;
+}
+$workxp.='</ul>';
+
+/////////////////////////////////////////
+
+$education = '<ul>';
+
+$i = 0;
+foreach ($education_info as $qual) {
+	$education.='<br><li><label>Level: </label>'.$education_info[$i]->level;
+	$education.='<br><label>School: </label>'.$education_info[$i]->school;
+	$education.='<br><label>Date Started: </label>'.$education_info[$i]->start;
+	$education.='<br><label>Date Graduated: </label>'.$education_info[$i]->graduated.'</li>';
+	$i++;
+}
+$education.='</ul>';
+
+///////////////////////////////////////
+
+$seminar = '<ul>';
+
+$i = 0;
+foreach ($seminar_info as $qual) {
+	$seminar.='<br><li><label>Seminar Name: </label>'.$seminar_info[$i]->seminar;
+	$seminar.='<br><label>Date Conducted: </label>'.$seminar_info[$i]->seminar_date;
+	$seminar.='<br><label>Conducted by: </label>'.$seminar_info[$i]->conductedby;
+	$i++;
+}
+$seminar.='</ul>';
 
 // Set some content to print
-$html = 'NAME: '.$basic_info[0].'Objectives: '.$basic_info[1];
+$html = '<style>body{padding:5px;font-family:Monospace;font-size:.8em;}hr{font-weight:bold;}p{margin-right:0px;}label{float:left;}</style><body>';
+$html .= '<div style="text-align:center;float:left;">';
+$html .= '<img style="width:150px;height:150px;" src="C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$user.'_pic.png">';
+$html .= '</div>';
+$html .= '<div style="float:left;"><p>Name: '.$name;
+$html .= '<p>Home Address: '.$h_address;
+$html .= '<p>Current Address: '.$c_address;
+$html .= '<p>Email Address: '.$email;
+$html .= '</div>';
+$html .= '<hr>';
 
+$html .= '<h2>Skills/Qualifications:</h2> '.$skill;
+$html .= '<h2>Accomplishments:</h2> '.$accomplishment;
+$html .= '<h2>Work Experience:</h2> '.$workxp;
+$html .= '<h2>Educational Background:</h2> '.$education;
+$html .= '<h2>Seminars Attended:</h2> '.$seminar;
+$html .= '</body>';
 
-
-// Print text using writeHTMLCell()
+// print a block of text using Write()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // ---------------------------------------------------------
 
-// Close and output PDF document
-// This method has several options, check the source code documentation for more information.
-$pdf->Output('example_001.pdf', 'I');
+//Close and output PDF document
+$pdf->Output('Resume.pdf', 'I');
 
 //============================================================+
 // END OF FILE

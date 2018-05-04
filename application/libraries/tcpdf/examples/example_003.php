@@ -1,4 +1,13 @@
 <?php
+$user = $this->session->userdata('username');
+$sql = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+$query = $sql->row();
+$name = $query->fname.' '. $query->mname.' '. $query->lname.'</h4>';
+$skill_info =	$_POST['skill'];
+$accomplishment_info =	$_POST['accomplishment'];
+$education_info =	$_POST['education'];
+$seminar_info =	$_POST['seminars'];
+$workxp_info =	$_POST['workxp'];
 //============================================================+
 // File name   : example_003.php
 // Begin       : 2008-03-04
@@ -99,14 +108,78 @@ $pdf->SetFont('times', 'BI', 12);
 $pdf->AddPage();
 
 // set some text to print
-$txt = <<<EOD
-TCPDF Example 003
+$skill = '<ul>';
 
-Custom page header and footer are defined by extending the TCPDF class and overriding the Header() and Footer() methods.
-EOD;
+$i = 0;
+foreach ($skill_info as $qual) {
+	$skill.='<li>'.$skill_info[$i]->skill.'</li>';
+	$i++;
+}
+$skill.='</ul>';
+////////////////////////////////////////////
+
+$accomplishment = '<ul>';
+
+$i = 0;
+foreach ($accomplishment_info as $qual) {
+	$accomplishment.='<li>'.$accomplishment_info[$i]->accomplishment;
+	$accomplishment.='<br><label>Affiliation: </label>'.$accomplishment_info[$i]->affiliation.'</li>';
+	$i++;
+}
+$accomplishment.='</ul>';
+///////////////////////////////////////////
+
+$workxp = '<ul>';
+
+$i = 0;
+foreach ($workxp_info as $qual) {
+	$workxp.='<li><label>Position: </label>'.$workxp_info[$i]->position;
+	$workxp.='<br><label>Company: </label>'.$workxp_info[$i]->company;
+	$workxp.='<br><label>Date Started: </label>'.$workxp_info[$i]->date_start;
+	$workxp.='<br><label>Date Ended: </label>'.$workxp_info[$i]->date_end.'</li>';
+	$i++;
+}
+$workxp.='</ul>';
+
+/////////////////////////////////////////
+
+$education = '<ul>';
+
+$i = 0;
+foreach ($education_info as $qual) {
+	$education.='<li><label>Level: </label>'.$education_info[$i]->level;
+	$education.='<br><label>School: </label>'.$education_info[$i]->school;
+	$education.='<br><label>Date Started: </label>'.$education_info[$i]->start;
+	$education.='<br><label>Date Graduated: </label>'.$education_info[$i]->graduated.'</li>';
+	$i++;
+}
+$education.='</ul>';
+
+///////////////////////////////////////
+
+$seminar = '<ul>';
+
+$i = 0;
+foreach ($education_info as $qual) {
+	$seminar.='<li><label>Seminar Name: </label>'.$seminar_info[$i]->seminar;
+	$seminar.='<br><label>Date Conducted: </label>'.$seminar_info[$i]->seminar_date;
+	$seminar.='<br><label>Conducted by: </label>'.$seminar_info[$i]->conductedby;
+	$i++;
+}
+$seminar.='</ul>';
+
+// Set some content to print
+$html = '<style>body{padding:5px;font-family:Monospace;font-size:.8em;}hr{font-weight:bold;}</style><body>';
+$html .= '<h4>Name: '.$name;
+$html .= '<h2>Skills/Qualifications:</h2> '.$skill;
+$html .= '<h2>Accomplishments:</h2> '.$accomplishment;
+$html .= '<h2>Work Experience:</h2> '.$workxp;
+$html .= '<h2>Educational Background:</h2> '.$education;
+$html .= '<h2>Seminars Attended:</h2> '.$seminar;
+$html .= '</body>';
 
 // print a block of text using Write()
-$pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+$pdf->Write(0, $html, '', 0, 'C', true, 0, false, false, 0);
 
 // ---------------------------------------------------------
 

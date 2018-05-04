@@ -10,6 +10,8 @@
 			</div>
 
 			<div class="card-content">
+			<a class="btn btn-info" href="<?= base_url('Applicant/to_pdf')?>">
+							<i class='fa fa-print btn-icon'></i>Export to PDF</a>
 				<div>
 					<h3 class='resume-title'>QUALIFICATIONS</h3>
 					<div id='resume_skills'>
