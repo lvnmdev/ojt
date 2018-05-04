@@ -3,9 +3,9 @@ $user = $this->session->userdata('username');
 $email = $this->session->userdata('email');
 $sql = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
 $query = $sql->row();
-$name = $query->fname.' '. $query->mname.' '. $query->lname.'</p>';
-$h_address = $query->haddress.'</p>';
-$c_address = $query->caddress.'</p>';
+$name = $query->fname.' '. $query->mname.' '. $query->lname;
+$h_address = $query->haddress;
+$c_address = $query->caddress;
 $skill_info =	$_POST['skill'];
 $accomplishment_info =	$_POST['accomplishment'];
 $education_info =	$_POST['education'];
@@ -70,10 +70,10 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 003');
-$pdf->SetSubject('TCPDF Tutorial');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+$pdf->SetAuthor('USTP');
+$pdf->SetTitle('Resume');
+$pdf->SetSubject('Resume Creation');
+$pdf->SetKeywords('Resume');
 
 // set default header data
 // $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
@@ -172,23 +172,58 @@ foreach ($seminar_info as $qual) {
 $seminar.='</ul>';
 
 // Set some content to print
-$html = '<style>body{padding:5px;font-family:Monospace;font-size:.8em;}hr{font-weight:bold;}p{margin-right:0px;}label{float:left;}</style><body>';
-$html .= '<div style="text-align:center;float:left;">';
-$html .= '<img style="width:150px;height:150px;" src="C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$user.'_pic.png">';
-$html .= '</div>';
-$html .= '<div style="float:left;"><p>Name: '.$name;
-$html .= '<p>Home Address: '.$h_address;
-$html .= '<p>Current Address: '.$c_address;
-$html .= '<p>Email Address: '.$email;
-$html .= '</div>';
-$html .= '<hr>';
+$html = '<style>
+    body {
+        padding: 5px;
+        font-family: Monospace;
+        font-size: .8em;
+    }
 
-$html .= '<h2>Skills/Qualifications:</h2> '.$skill;
-$html .= '<h2>Accomplishments:</h2> '.$accomplishment;
-$html .= '<h2>Work Experience:</h2> '.$workxp;
-$html .= '<h2>Educational Background:</h2> '.$education;
-$html .= '<h2>Seminars Attended:</h2> '.$seminar;
-$html .= '</body>';
+    hr {
+        font-weight: bold;
+    }
+
+    /* p {
+        width: 50%;
+    } */
+
+    span {
+        float: right;
+        ;
+    }
+</style>
+
+<body>
+    <div style="text-align: center">
+        <p style="text-align:center;">University of Science and Technology of Southern Philippines</p>
+
+        <p style="text-align:center;">Alubijid | Cagayan de Oro | Claveria | Jasaan | Oroquieta | Panaon</p>
+
+        <p style="text-align:center;">C.M. Recto Ave., Lapasan,Cagayan de Oro City,Philippines,9000</p>
+
+    </div>
+    <div>
+
+        <div style="width:50%;margin-right:0px;">
+            <img style="width:200px;height:200px;" src="C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$user.'_pic.png">
+            <span>
+                <p>Name: '.$name.'</p>
+                <p>Home Address: '.$h_address.'</p>
+                <p>Current Address: '.$c_address.'</p>
+                <p>Email Address: '.$email.'</p>
+            </span>
+        </div>
+    </div>
+    <div style="display: block">
+        <hr>
+        <h2>Skills/Qualifications:</h2> '.$skill.'
+        <h2>Accomplishments:</h2> '.$accomplishment.'
+        <h2>Work Experience:</h2> '.$workxp.'
+        <h2>Educational Background:</h2> '.$education.'
+        <h2>Seminars Attended:</h2> '.$seminar.'
+    </div>
+</body>';
+
 
 // print a block of text using Write()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
