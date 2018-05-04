@@ -199,14 +199,14 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (data) {
-				var html = '';
 				if (data.skills) {
+					var edit_skills = "";
 					for (i = 0; i < data.skills.length; i++) {
-						html += '<ul class="resume-list">' +
+						edit_skills += '<ul class="resume-list">' +
 							'<li>' + data.skills[i].skill + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(html);
+					$('#edit_form_resume').html(edit_skills);
 				}
 			},
 			error: function (data) {
@@ -243,17 +243,17 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (data) {
-				var html = '';
+				var edit_workxp = '';
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
-						html += '<ul class="resume-list">' +
+						edit_workxp += '<ul class="resume-list">' +
 							'<li>' + data.workxp[i].position + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
 							'<li>' + data.workxp[i].company + '</li>' +
 							'<li>' + data.workxp[i].date_start + '</li>' +
 							'<li>' + data.workxp[i].date_end + '</li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(html);
+					$('#edit_form_resume').html(edit_workxp);
 				}
 			},
 			error: function (data) {
@@ -291,15 +291,15 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (data) {
-				var html = '';
+				var edit_accomplishment = '';
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
-						html += '<ul class="resume-list">' +
+						edit_accomplishmen += '<ul class="resume-list">' +
 							'<li>' + data.accomplishment[i].accomplishment + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
 							'<li>' + data.accomplishment[i].affiliation + '</li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(html);
+					$('#edit_form_resume').html(edit_accomplishmen);
 				}
 			},
 			error: function (data) {
@@ -336,17 +336,17 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (data) {
-				var html = '';
+				var edit_education = '';
 				if (data.education) {
 					for (i = 0; i < data.education.length; i++) {
-						html += '<ul class="resume-list">' +
+						edit_education += '<ul class="resume-list">' +
 							'<li>' + data.education[i].level + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
 							'<li>' + data.education[i].school + '</li>' +
 							'<li>' + data.education[i].start + '</li>' +
 							'<li>' + data.education[i].graduated + '</li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(html);
+					$('#edit_form_resume').html(edit_education);
 				}
 			},
 			error: function (data) {
@@ -385,16 +385,16 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (data) {
-				var html = '';
+				var edit_seminars = '';
 				if (data.seminars) {
 					for (i = 0; i < data.seminars.length; i++) {
-						html += '<ul class="resume-list">' +
+						edit_seminars += '<ul class="resume-list">' +
 							'<li>' + data.seminars[i].seminar + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
 							'<li>' + data.seminars[i].seminar_date + '</li>' +
 							'<li>' + data.seminars[i].conductedby + '</li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(html);
+					$('#edit_form_resume').html(edit_seminars);
 				}
 			},
 			error: function (data) {

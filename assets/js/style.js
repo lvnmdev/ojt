@@ -1,3 +1,16 @@
+$(document).ready(function() {
+    //Preloader
+    $(window).on("load", function() {
+        preloaderFadeOutTime = 2000;
+        function hidePreloader() {
+            var preloader = $('.folding-cube-wrapper');
+            preloader.fadeOut(preloaderFadeOutTime);
+        }
+
+        hidePreloader();
+    });
+});
+
 $(function(){
     //Initialization of Datatable 
     $('#table_id').dataTable();
@@ -5,7 +18,10 @@ $(function(){
     //Side Navigation Bar Slide
     $("#openNav").click(function () {
         $(".side-navbar-container").css({"width":"250px"});
+<<<<<<< HEAD
         //$(".main-container").css({"margin-left":"250px"});
+=======
+>>>>>>> 8396d6d9e28da10600a5d7af3b379112597f35b2
     });
 
     $("#closeNav").click(function () {
@@ -24,7 +40,7 @@ $(function(){
         }
     }
 
-    // When the user clicks on the button, scroll to the top of the document
+    // When the user clicks on the button, it scrolls to the top of the document
 
     $("#scrollup-btn").click(function () {
         document.body.scrollTop = 0;

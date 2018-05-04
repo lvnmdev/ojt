@@ -16,15 +16,20 @@
 				<div class='col-xs-12 col-sm-3 col-md-3'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>5</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-5">
+									<a href='<?= base_url("Applicant/pending_application")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-
-							</a>
-							<h4>
-								<strong>Company</strong>
-							</h4>
+								<div class="col-xs-12 col-sm-12 col-md-7">
+									<div class="dashboard-badge-label">
+										<h4>Company</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -32,14 +37,20 @@
 				<div class='col-xs-12 col-sm-3 col-md-3'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href=''>
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>3</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-5">
+									<a href='<?= base_url("Applicant/application")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<h4>
-								<strong>Pending Company</strong>
-							</h4>
+								<div class="col-xs-12 col-sm-12 col-md-7">
+									<div class="dashboard-badge-label">
+										<h4>Pending Company</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -47,14 +58,20 @@
 				<div class='col-xs-12 col-sm-3 col-md-3'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>14</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-5">
+									<a href='<?= base_url("Applicant/")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<h4>
-								<strong>Applicants</strong>
-							</h4>
+								<div class="col-xs-12 col-sm-12 col-md-7">
+									<div class="dashboard-badge-label">
+										<h4>Applicants</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -62,14 +79,20 @@
 				<div class='col-xs-12 col-sm-3 col-md-3'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href="">
-								<div class='dashboard-badge'>
-									<span class='dashboard-badge-no'>14</span>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-5">
+									<a href='<?= base_url("Applicant/")?>'>
+										<div class='dashboard-badge'>
+											<span id='' class='dashboard-badge-no'></span>
+										</div>
+									</a>
 								</div>
-							</a>
-							<h4>
-								<strong>Pending Applicants</strong>
-							</h4>
+								<div class="col-xs-12 col-sm-12 col-md-7">
+									<div class="dashboard-badge-label">
+										<h4>Pending Applicants</h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Applicant extends CI_Controller {	
 	function __constructor(){
 		parent::__constructor();
+
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Origin: <origin>");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Request-Method: OPTIONS, POST, GET, PUT, DELETE');
 	}
 
 	public function dashboard(){

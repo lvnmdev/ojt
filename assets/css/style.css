@@ -348,6 +348,10 @@ body {
 	padding: 30px;
 }
 
+.dashboard-badge-label h4 {
+	text-align: right;
+}
+
 .dashboard-badge:hover {
 	background-color: #13113a;
 }
@@ -358,6 +362,62 @@ body {
 	text-decoration: none;
 }
 
+
+
+/** ============== PRELOAD STYLES START ============== **/
+.folding-cube-wrapper{ background: #fff; position: fixed; width: 100%; height: 100%; z-index: 99999}
+.folding-cube-body { 
+	position: absolute;top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg); 
+}
+
+.folding-cube-body .cube {     
+	float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1); 
+}
+
+.folding-cube-body .cube::before { 
+	background-color: #ffb606;content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: foldCubeAngle 2.4s infinite linear both;
+    animation: foldCubeAngle 2.4s infinite linear both;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    background: #ffb606; 
+}
+
+.folding-cube-body .cube-2::before { -webkit-animation-delay: .3s; animation-delay: .3s; }
+.folding-cube-body .cube-3::before { -webkit-animation-delay: .6s; animation-delay: .6s; }
+.folding-cube-body .cube-4::before { -webkit-animation-delay: .9s; animation-delay: .9s; }
+
+.folding-cube-body .cube-2 { -webkit-transform: scale(1.1) rotateZ(90deg); transform: scale(1.1) rotateZ(90deg); }
+.folding-cube-body .cube-3 { -webkit-transform: scale(1.1) rotateZ(180deg); transform: scale(1.1) rotateZ(180deg); }
+.folding-cube-body .cube-4 { -webkit-transform: scale(1.1) rotateZ(270deg); transform: scale(1.1) rotateZ(270deg); }
+
+@keyframes foldCubeAngle {
+	0%,   10% {-webkit-transform:perspective(140px) rotateX(-180deg);transform:perspective(140px) rotateX(-180deg);opacity:0}
+	25%,  75% {-webkit-transform:perspective(140px) rotateX(0);transform:perspective(140px) rotateX(0);opacity:1}
+	100%, 90% {-webkit-transform:perspective(140px) rotateY(180deg);transform:perspective(140px) rotateY(180deg);opacity:0}
+}
+
+/** ============== PRELOAD STYLES END ============== **
 /* Graph */
 .graph-canvas {
 	width: 100%;
