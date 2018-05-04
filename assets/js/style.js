@@ -18,10 +18,6 @@ $(function(){
     //Side Navigation Bar Slide
     $("#openNav").click(function () {
         $(".side-navbar-container").css({"width":"250px"});
-<<<<<<< HEAD
-        //$(".main-container").css({"margin-left":"250px"});
-=======
->>>>>>> 8396d6d9e28da10600a5d7af3b379112597f35b2
     });
 
     $("#closeNav").click(function () {
