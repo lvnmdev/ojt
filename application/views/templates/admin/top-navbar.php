@@ -6,8 +6,9 @@
             redirect('Applicant/dashboard');
         }
     }else{
-		redirect('Main/index');
-	}
+			redirect('Main/index');
+		}
+
 ?>
 	<!DOCTYPE html>
 	<html>

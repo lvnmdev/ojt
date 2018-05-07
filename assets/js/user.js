@@ -18,17 +18,17 @@ $(function () {
 						window.location.href = base;
 					}, 3000);
 				} else if (response.success == 'existing') {
-					$('#banner-failed').html('Username is already taken').fadeIn().delay(3000).fadeOut('slow');
+					$('#banner-failed2').html('Username is already taken').fadeIn().delay(3000).fadeOut('slow');
 					setTimeout(function () {
 						location.reload();
 					}, 3000);
 				} else if (response.success == 'mismatch') {
-					$('#banner-failed').html('Your password did not match').fadeIn().delay(3000).fadeOut('slow');
+					$('#banner-failed2').html('Your password did not match').fadeIn().delay(3000).fadeOut('slow');
 					setTimeout(function () {
 						location.reload();
 					}, 3000);
 				} else if (response.success == 'invalid') {
-					$('#banner-failed').html('Username contains invalid characters').fadeIn().delay(3000).fadeOut('slow');
+					$('#banner-failed2').html('Username contains invalid characters').fadeIn().delay(3000).fadeOut('slow');
 					setTimeout(function () {
 						location.reload();
 					}, 3000);
