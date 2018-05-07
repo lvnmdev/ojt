@@ -95,6 +95,7 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 .hover-left .left         { width: var(--hover-width); }
 .hover-left .right        { width: var(--other-width); }
 .hover-left .right:before { z-index: 2; }
+strong:after {   content: '\00bb';  }
 
 
 .hover-right .right       { width: var(--hover-width); }
@@ -104,10 +105,6 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 @media(max-width: 800px) {
   h1 {
     font-size: 2rem;
-  }
-
-  .button {
-    width: 12rem;
   }
 }
 
