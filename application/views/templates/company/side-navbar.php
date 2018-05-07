@@ -1,7 +1,7 @@
 <nav class='side-navbar-container' style='padding:0;'>
 	<div class='ustp-menu'>
-		<div class='watermark'>
-			<h1>USTP</h1>
+		<div class='logo'>
+			<h1><i class="fa fa-graduation-cap"></i> ustp<span style="font-size:1.2em;"/>|</span></h1><h4><span style="color:#fbb414;">graduate</span><br>tracer</h4>
 		</div>
 		<div class='side-nav-close'>
 			<a type='button' id='closeNav'>

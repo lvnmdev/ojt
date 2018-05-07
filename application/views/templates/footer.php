@@ -1,7 +1,10 @@
 <footer>
-	<div class="page-wrapper">
-		<div class="container-fluid">
-			<small><strong>Privacy Disclaimer: Personal datas are used for tracking purposes.</strong></small>
+	<div class="container-fluid">
+		<div class="row">
+			<i class="fa fa-info-circle"></i>
+			<small>
+				<strong>Privacy Disclaimer: Personal datas are used for tracking purposes.</strong>
+			</small>
 		</div>
 	</div>
 </footer>
