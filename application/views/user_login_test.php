@@ -1,12 +1,23 @@
 <?php
-
     if (isset($_SESSION['username'])){
+      $query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
+      $query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
         if ($_SESSION['usertype']==0){
             redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==1){
+          if ($query_comp->num_rows() > 0) {
             redirect('Company/dashboard');
+          }
+          else {
+            redirect('Company/require_form');
+          }
         }else{
-            redirect('Applicant/dashboard');
+            if ($query_app->num_rows() > 0) {
+              redirect('Applicant/dashboard');
+            }
+            else {
+              redirect('Applicant/require_form');
+            }
         }
     }
 

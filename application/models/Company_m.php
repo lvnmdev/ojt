@@ -151,7 +151,7 @@ class Company_m extends CI_Model {
                $result[1] = $query->result();
                return $result;
            }
-       }
+        }
 
 
 

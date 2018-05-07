@@ -35,4 +35,37 @@ class Admin extends CI_Controller {
         
 		$this->load->view('templates/admin/content', $data);
 	}
+
+	//Functionals
+
+	public function show_company() {
+		$result = $this->admin->show_company();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_applicant() {
+		$result = $this->admin->show_applicant();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function notification() {
+		$result = $this->admin->notification();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['count_applicant'] = $result[1];
+			$msg['count_company'] = $result[2];
+		}
+		echo json_encode($msg);
+	}
 }
