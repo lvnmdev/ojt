@@ -16,13 +16,13 @@
 <body class="require-form">
 	<div class="page-wrapper">
 		<div class="container">
-			<div class="card-content">
+			<div class="card-content" style="margin-bottom:20px;">
 				<div class="card-title">
 					<h1>Biodata</h1>
 					<h4 style="color:red;">Please fill all fields. You are required to.</h4>
 				</div>
 				<div class="card-body">
-					<form id="form_bio">
+					<form id="form_bio" method="post">
 						<div class='row'>
 							<div class='col-xs-12 col-sm-4 col-md-4'>
 								<div class="form-group ">
@@ -44,7 +44,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class='col-xs-12 col-sm-3 col-md-3'>
+							<div class='col-xs-12 col-sm-4 col-md-3'>
 								<div class="form-group">
 									<label for="name" class="label-control">Sex</label>
 									<br>
@@ -54,19 +54,19 @@
 									</select>
 								</div>
 							</div>
-							<div class='col-xs-12 col-sm-3 col-md-3'>
+							<div class='col-xs-12 col-sm-4 col-md-3'>
 								<div class="form-group ">
 									<label for="name" class="label-control">Birthdate</label>
 									<input id='bio_bday' type="date" name="birthdate" class="form-control" value="" required>
 								</div>
 							</div>
-							<div class='col-xs-12 col-sm-3 col-md-3'>
+							<div class='col-xs-12 col-sm-6 col-md-3'>
 								<div class="form-group">
 									<label for="name" class="label-control">Nationality</label>
 									<input id='bio_nationality' type="text" name="nationality" class="form-control" value="" required>
 								</div>
 							</div>
-							<div class='col-xs-12 col-sm-3 col-md-3'>
+							<div class='col-xs-12 col-sm-6 col-md-3'>
 								<div class="form-group">
 									<label for="name" class="label-control">Religion</label>
 									<input id='bio_religion' type="text" name="religion" class="form-control" value="" required>
@@ -134,9 +134,9 @@
 								</div>
 							</div>
 						</div>
-						<div>
-							<input type="button" id="btnsubmit_bio" class="btn btn-primary">
-							<i class='fa fa-save btn-icon'></i>Submit</input>
+						<div class="card-footer" style="padding-left:0;">
+							<button type="submit" id="btnsubmit_bio" class="btn btn-primary">
+							<i class='fa fa-location-arrow btn-icon'></i>Submit</button>
 						</div>
 					</form>
 				</div>

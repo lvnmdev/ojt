@@ -39,7 +39,6 @@ class MainModel extends CI_Model {
 		else{
 			return false;
 		}
-
 	}
 
 	public function login(){
@@ -56,7 +55,6 @@ class MainModel extends CI_Model {
 		}else{
 			return false;
 		}
-	
 	}
 
 }

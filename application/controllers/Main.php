@@ -11,10 +11,17 @@ class Main extends CI_Controller {
 		header('Access-Control-Request-Method: OPTIONS, POST, GET, PUT, DELETE');
 	}
 
-	public function index()
-	{
+	public function index() {
 		$this->load->view('header');
 		$this->load->view('user_login');
+	}
+
+	public function pending() {
+		$this->load->view('acc_pending');
+	}
+
+	public function inactive() {
+		$this->load->view('acc_inactive');
 	}
 
 //Functional
@@ -61,14 +68,15 @@ class Main extends CI_Controller {
 				'username' => ($return[0]->user_name),
 				'password' => ($return[0]->user_pass),
 				'email' => ($return[0]->user_email),
-				'usertype' => ($return[0]->user_type)
+				'usertype' => ($return[0]->user_type),
+				'userstatus' => ($return[0]->user_status)
 			);
 			$this->session->set_userdata($session_data);			
 			$msg['data'] = $this->session->userdata('usertype');
 			$msg['user'] = $this->session->userdata('username');
+			$msg['status'] = $this->session->userdata('userstatus');
 		}
 		echo json_encode($msg);
-
 	}
 
 	public function logout(){
