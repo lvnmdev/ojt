@@ -57,12 +57,13 @@
 						</ul>
 					</div>
 				</div>
-				<div class='side-nav-open'>
-					<a type='button' id='openNav'>
-						<i class='fa fa-bars'></i>
-					</a>
-				</div>
-				<button id='scrollup-btn' class='scrollup-btn'>
-					<i class='fa fa-chevron-up'></i>
-				</button>
+			</div>
+			<div class='side-nav-open'>
+				<a type='button' id='openNav'>
+					<i class='fa fa-bars'></i>
+				</a>
+			</div>
+			<button id='scrollup-btn' class='scrollup-btn'>
+				<i class='fa fa-chevron-up'></i>
+			</button>
 		</header>

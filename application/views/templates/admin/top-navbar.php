@@ -1,5 +1,4 @@
 <?php
-
     if (isset($_SESSION['username'])){
         if($_SESSION['usertype']==1){
             redirect('Company/dashboard');
@@ -9,7 +8,6 @@
     }else{
 		redirect('Main/index');
 	}
-
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -60,12 +58,13 @@
 						</ul>
 					</div>
 				</div>
-				<div class='side-nav-open'>
-					<a type='button' id='openNav'>
-						<i class='fa fa-bars'></i>
-					</a>
-				</div>
-				<button id='scrollup-btn' class='scrollup-btn'>
-					<i class='fa fa-chevron-up'></i>
-				</button>
+			</div>
+			<div class='side-nav-open'>
+				<a type='button' id='openNav'>
+					<i class='fa fa-bars'></i>
+				</a>
+			</div>
+			<button id='scrollup-btn' class='scrollup-btn'>
+				<i class='fa fa-chevron-up'></i>
+			</button>
 		</header>
