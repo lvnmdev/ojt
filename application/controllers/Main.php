@@ -72,11 +72,11 @@ class Main extends CI_Controller {
 				'username' => ($return[0]->user_name),
 				'password' => ($return[0]->user_pass),
 				'email' => ($return[0]->user_email),
-				'usertype' => ($return[0]->user_type)
+				'usertype' => ($return[0]->user_type),
 			);
 			$this->session->set_userdata($session_data);			
 			$msg['data'] = $this->session->userdata('usertype');
-			$msg['user'] = $this->session->userdata('username');
+			$msg['user'] = $this->session->userdata('username');				
 		}
 		echo json_encode($msg);
 

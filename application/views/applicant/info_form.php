@@ -22,7 +22,7 @@
 					<h4 style="color:red;">Please fill all fields. You are required to.</h4>
 				</div>
 				<div class="card-body">
-					<form id="form_bio">
+					<form id="form_bio" method='post'>
 						<div class='row'>
 							<div class='col-xs-12 col-sm-4 col-md-4'>
 								<div class="form-group ">
@@ -135,8 +135,8 @@
 							</div>
 						</div>
 						<div>
-							<input type="button" id="btnsubmit_bio" class="btn btn-primary">
-							<i class='fa fa-save btn-icon'></i>Submit</input>
+							<button type="submit" id="btnsubmit_bio" class="btn btn-primary">
+							<i class='fa fa-save btn-icon'></i>Submit</button>
 						</div>
 					</form>
 				</div>

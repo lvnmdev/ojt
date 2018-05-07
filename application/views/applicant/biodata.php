@@ -114,24 +114,24 @@
 				<h1 class="modal-title">Biodata</h1>
 			</div>
 			<div class="modal-body">
-				<form id="form_bio">
+				<form id="form_bio" method='post'>
 					<div class='row'>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group ">
 								<label for="name" class="label-control">First Name</label>
-								<input id='bio_fname' type="text" name="fname" class="form-control" value="">
+								<input id='bio_fname' type="text" name="fname" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group">
 								<label for="name" class="label-control">Middle Name</label>
-								<input id='bio_mname' type="text" name="mname" class="form-control" value="">
+								<input id='bio_mname' type="text" name="mname" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group">
 								<label for="name" class="label-contro">Last Name</label>
-								<input id='bio_lname' type="text" name="lname" class="form-control" value="">
+								<input id='bio_lname' type="text" name="lname" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 							<div class="form-group">
 								<label for="name" class="label-control">Sex</label>
 								<br>
-								<select name="sex" class="selectpicker" style='width:100%;'>
+								<select name="sex" class="selectpicker" style='width:100%;' required>
 									<option value="Male">Male</option>
 									<option value="Female">Female</option>
 								</select>
@@ -149,19 +149,19 @@
 						<div class='col-xs-12 col-sm-3 col-md-3'>
 							<div class="form-group ">
 								<label for="name" class="label-control">Birthdate</label>
-								<input id='bio_bday' type="date" name="birthdate" class="form-control" value="">
+								<input id='bio_bday' type="date" name="birthdate" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-3 col-md-3'>
 							<div class="form-group">
 								<label for="name" class="label-control">Nationality</label>
-								<input id='bio_nationality' type="text" name="nationality" class="form-control" value="">
+								<input id='bio_nationality' type="text" name="nationality" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-3 col-md-3'>
 							<div class="form-group">
 								<label for="name" class="label-control">Religion</label>
-								<input id='bio_religion' type="text" name="religion" class="form-control" value="">
+								<input id='bio_religion' type="text" name="religion" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -169,7 +169,7 @@
 						<div class='col-xs-12 col-sm-12 col-md-12'>
 							<div class="form-group">
 								<label for="name" class="label-control">Home Address</label>
-								<input id='bio_h' type="text" name="haddress" class="form-control" value="">
+								<input id='bio_h' type="text" name="haddress" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -177,7 +177,7 @@
 						<div class='col-xs-12 col-sm-12 col-md-12'>
 							<div class="form-group">
 								<label for="name" class="label-contro">Current Address</label>
-								<input id='bio_c' type="text" name="caddress" class="form-control" value="">
+								<input id='bio_c' type="text" name="caddress" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -186,7 +186,7 @@
 						<div class='col-xs-12 col-sm-12 col-md-12'>
 							<div class="form-group">
 								<label for="name" class="label-control">Mother Maiden Name</label>
-								<input id='bio_momfname' type="text" name="momfname" class="form-control" value="">
+								<input id='bio_momfname' type="text" name="momfname" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -194,13 +194,13 @@
 						<div class='col-xs-12 col-sm-3 col-md-3'>
 							<div class="form-group ">
 								<label for="name" class="label-control">Mother Birthdate</label>
-								<input id='bio_mombday' type="date" name="mombday" class="form-control" value="">
+								<input id='bio_mombday' type="date" name="mombday" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group ">
 								<label for="name" class="label-control">Mother Occupation</label>
-								<input id='bio_momwork' type="text" name="momwork" class="form-control" value="">
+								<input id='bio_momwork' type="text" name="momwork" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -208,7 +208,7 @@
 						<div class='col-xs-12 col-sm-12 col-md-12'>
 							<div class="form-group">
 								<label for="name" class="label-control">Father Full Name</label>
-								<input id='bio_dadfname' type="text" name="dadfname" class="form-control" value="">
+								<input id='bio_dadfname' type="text" name="dadfname" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
@@ -216,23 +216,23 @@
 						<div class='col-xs-12 col-sm-3 col-md-3'>
 							<div class="form-group">
 								<label for="name" class="label-control">Father Birthdate</label>
-								<input id='bio_dadbday' type="date" name="dadbday" class="form-control" value="">
+								<input id='bio_dadbday' type="date" name="dadbday" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group ">
 								<label for="name" class="label-control">Father Occupation</label>
-								<input id='bio_dadwork' type="text" name="dadwork" class="form-control" value="">
+								<input id='bio_dadwork' type="text" name="dadwork" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
+					<div>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							<i class='fa fa-times btn-icon'></i>Cancel</button>
+						<button type="submit" id="btnsubmit_bio" class="btn btn-primary">
+							<i class='fa fa-save btn-icon'></i>Submit</button>
+					</div>
 				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">
-					<i class='fa fa-times btn-icon'></i>Cancel</button>
-				<button type="button" id="btnsubmit_bio" class="btn btn-primary">
-					<i class='fa fa-save btn-icon'></i>Save</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
