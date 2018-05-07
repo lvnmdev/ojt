@@ -1,7 +1,7 @@
 var base = 'http://localhost/ojt/index.php/'
 
 $(function () {
-	$('#regbtn').click(function () {
+	function register(){
 		var formData = $('#regform').serialize();
 		console.log(formData);
 		$.ajax({
@@ -45,9 +45,9 @@ $(function () {
 				alert('Registration Failed Error');
 			}
 		});
-	});
+	};
 
-	$('#loginbtn').click(function () {
+	function loginUser(){
 		var formData = $('#loginform').serialize();
 		console.log(formData);
 		$.ajax({
@@ -74,7 +74,7 @@ $(function () {
 				alert("Error");
 			}
 		});
-	});
+	};
 
 
 
