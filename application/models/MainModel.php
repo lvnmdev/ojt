@@ -27,7 +27,7 @@ class MainModel extends CI_Model {
 	public function register(){
 		$field = array(
 				'user_name' => $this->input->post('username'),
-				'user_pass' => hash('sha1',$this->post('password').config_item('encryption_key')),
+				'user_pass' => $this->input->post('password'),
 				'user_email' => $this->input->post('email'),
 				'user_type' => $this->input->post('usertype')
 			);
@@ -41,7 +41,7 @@ class MainModel extends CI_Model {
 
 	public function login(){
 		$user = $this->input->post('username');
-		$pass = hash('sha1',$this->post('password').config_item('encryption_key'));
+		$pass = $this->input->post('password');
 		$this->db->where('user_name', $user);
 		$this->db->where('user_pass', $pass);
 		$query = $this->db->get('tbl_users');
