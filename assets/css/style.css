@@ -91,6 +91,7 @@ footer {
 	font-weight: bold;
 }
 
+
 /* Navbar */
 
 .top-navbar {
@@ -485,5 +486,5 @@ footer {
 
 .graph-canvas {
 	width: 100%;
-	height: 500px;
+	height: auto;
 }

@@ -1,12 +1,23 @@
 <?php
-
     if (isset($_SESSION['username'])){
+      $query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
+      $query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
         if ($_SESSION['usertype']==0){
             redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==1){
+          if ($query_comp->num_rows() > 0) {
             redirect('Company/dashboard');
+          }
+          else {
+            redirect('Company/require_form');
+          }
         }else{
-            redirect('Applicant/dashboard');
+            if ($query_app->num_rows() > 0) {
+              redirect('Applicant/dashboard');
+            }
+            else {
+              redirect('Applicant/require_form');
+            }
         }
     }
 
@@ -95,7 +106,7 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 .hover-left .left         { width: var(--hover-width); }
 .hover-left .right        { width: var(--other-width); }
 .hover-left .right:before { z-index: 2; }
-strong:after {   content: '\00bb';  }
+.hover-left strong:after {   content: '\00bb'; }
 
 
 .hover-right .right       { width: var(--hover-width); }

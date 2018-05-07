@@ -136,5 +136,6 @@ $autoload['model'] = array(
                 
                 'MainModel'=>'model',
                 'Applicant_m'=>'applicant',
-                'Company_m'=>'company'
+                'Company_m'=>'company',
+                'Admin_m' =>'admin'
 );
