@@ -36,6 +36,9 @@ class MainModel extends CI_Model {
 		if ($q1){
 			return true;
 		} 
+		else{
+			return false;
+		}
 
 	}
 
