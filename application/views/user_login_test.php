@@ -150,74 +150,76 @@ form input, form select{
   }
 
 </style>
-<body>
-	<div class="custom-container">
-	<strong>USTP Online OJT Application</strong>
-	  <div class="split left">
-      <div class="split-inner">
-  	    <h1>Login</h1>
-        <form id="loginform">
-            <div id="banner-success" class="alert alert-success" style="display: none;"></div>
-				    <div id="banner-failed" class="alert alert-danger" style="display: none"></div>
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-        </form>
-  	    <a type="button" id="loginbtn" class="button">Enter</a>
-      </div>
-	  </div>
-	  <div class="split right">
-      <div class="split-inner">
-  	    <h1>Register</h1>
-        <form id="regform">
-<div class='alert alert-success' id="banner-message" style="display:none"></div>
-<div class='alert alert-danger' id="banner-failed2" style="display:none"></div>
-<div class='alert alert-warning' id="banner-warning1" style="display:none"></div>
-<div class='alert alert-warning' id="banner-warning2" style="display:none"></div>
-<div class='alert alert-warning' id="banner-warning3" style="display:none"></div>
 
-          <input type="text"     name="username"   placeholder="Username">
-          <input type="email"    name="email"      placeholder="Email">
-          <input type="password" name="password"   placeholder="Password">
-          <input type="password" name="repassword" placeholder="Confirm Password"><br><br>
-          <div class="form-group">
-            <label style="color:whitesmoke; float: left;">User Type:</label>
-            <br>
-            <select name="usertype">
-              <option class="form-control" value="2">Applicant</option>
-              <option class="form-control" value="1">Company  </option>
-              <option class="form-control" value="0">Admin    </option>
-            </select>
-          </div>
-        
-        </form>
-  	    <a type="button" id="regbtn" class="button">Submit</a>
-      </div>
-	  </div>
-	</div>
-<script src="<?= base_url('assets/js/jquery.js')?>"></script>
-<script src="<?= base_url('assets/js/user.js');?>"></script>
-<script>
+	<body>
+		<div class="custom-container">
+			<strong>USTP Online OJT Application</strong>
+			<div class="split left">
+				<div class="split-inner">
+					<h1>Login</h1>
+					<form id="loginform" method="post">
+						<div id="banner-success" class="alert alert-success" style="display: none;"></div>
+						<div id="banner-failed" class="alert alert-danger" style="display: none"></div>
+						<input type="text" name="username" placeholder="Username" required>
+						<input type="password" name="password" placeholder="Password" required>
+						<input type="submit" class="button" value = "Login">
+					</form>
+				</div>
+			</div>
+			<div class="split right">
+				<div class="split-inner">
+					<h1>Register</h1>
+					<form id="regform" method="post">
+						<div class='alert alert-success' id="banner-message" style="display:none"></div>
+						<div class='alert alert-danger' id="banner-failed2" style="display:none"></div>
+						<div class='alert alert-warning' id="banner-warning1" style="display:none"></div>
+						<div class='alert alert-warning' id="banner-warning2" style="display:none"></div>
+						<div class='alert alert-warning' id="banner-warning3" style="display:none"></div>
 
-const left = document.querySelector(".left");
-const right = document.querySelector(".right");
-const container = document.querySelector(".custom-container");
+						<input type="text" name="username" placeholder="Username" required>
+						<input type="email" name="email" placeholder="Email" required>
+						<input type="password" name="password" placeholder="Password" required>
+						<input type="password" name="repassword" placeholder="Confirm Password" required>
+						<br>
+						<br>
+						<div class="form-group">
+							<label style="color:whitesmoke; float: left;">User Type:</label>
+							<br>
+							<select name="usertype">
+								<option class="form-control" value="2">Applicant</option>
+								<option class="form-control" value="1">Company </option>
+								<option class="form-control" value="0">Admin </option>
+							</select>
+						</div>
+						<input type="submit" class="button" value="Submit">
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="<?= base_url('assets/js/jquery.js')?>"></script>
+		<script src="<?= base_url('assets/js/user.js');?>"></script>
+		<script>
+			const left = document.querySelector(".left");
+			const right = document.querySelector(".right");
+			const container = document.querySelector(".custom-container");
 
-left.addEventListener("mouseenter", () => {
-  container.classList.add("hover-left");
-});
+			left.addEventListener("mouseenter", () => {
+				container.classList.add("hover-left");
+			});
 
-left.addEventListener("mouseleave", () => {
-  container.classList.remove("hover-left");
-});
+			left.addEventListener("mouseleave", () => {
+				container.classList.remove("hover-left");
+			});
 
-right.addEventListener("mouseenter", () => {
-  container.classList.add("hover-right");
-});
+			right.addEventListener("mouseenter", () => {
+				container.classList.add("hover-right");
+			});
 
-right.addEventListener("mouseleave", () => {
-  container.classList.remove("hover-right");
-});
+			right.addEventListener("mouseleave", () => {
+				container.classList.remove("hover-right");
+			});
 
-</script>
-</body>
-</html>
+		</script>
+	</body>
+
+	</html>

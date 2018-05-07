@@ -1,4 +1,4 @@
-var base = 'http://localhost/ojt/index.php/'
+
 
 $(function () {
 	$('regform').submit(function () {
@@ -14,24 +14,12 @@ $(function () {
 			success: function (response) {
 				if (response.success == 'added') {
 					$('#banner-message').html('Succesfully Registered!').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						window.location.href = base;
-					}, 3000);
 				} else if (response.success == 'existing') {
 					$('#banner-failed2').html('Username is already taken').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-
-					}, 3000);
 				} else if (response.success == 'mismatch') {
 					$('#banner-failed2').html('Your password did not match').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-
-					}, 3000);
 				} else if (response.success == 'invalid') {
 					$('#banner-failed2').html('Username contains invalid characters').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-
-					}, 3000);
 				} else if (response.success == 'empty1') {
 					$('#banner-warning1').removeAttr('style');
 					$('#banner-warning1').html('Please fill up this field').fadeIn();
@@ -60,14 +48,8 @@ $(function () {
 			success: function (response) {
 				if (response.success) {
 					$('#banner-success').html('Welcome! ' + response.user).fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-
-					}, 3000);
 				} else {
 					$('#banner-failed').html('Wrong Login Credentials').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-
-					}, 3000);
 				}
 			},
 			error: function () {
