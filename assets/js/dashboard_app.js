@@ -19,8 +19,7 @@ $(function () {
 				if(response.data != null && response.data1 != null) {
 					$('#applications_count').html(response.data.pending_applicant);
 					$('#jobs_count').html(response.data1.jobs_posted);
-				}
-				else {
+				}else{
 					$('#applications_count').html(0);
 					$('#jobs_count').html(0);
 				}
