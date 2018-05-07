@@ -17,10 +17,10 @@
 					<div class='card-content'>
 						<div class='dashboard-notify'>
 							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Applicant/pending_application")?>'>
+								<div class="col-xs-12 	col-sm-12 col-md-5">
+									<a href='<?= base_url("Admin/")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='company_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
@@ -39,9 +39,9 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Applicant/application")?>'>
+									<a href='<?= base_url("Admin/")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='pending_company_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
@@ -60,9 +60,9 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Applicant/")?>'>
+									<a href='<?= base_url("Admin/")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='app_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
@@ -81,9 +81,9 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Applicant/")?>'>
+									<a href='<?= base_url("Admin/")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='pending_app_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
@@ -101,19 +101,21 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card-content">
-						<canvas id="myChart2" class="graph-canvas"></canvas>
+						<canvas id="user_stat_chart" class="graph-canvas"></canvas>
 					</div>
 				</div>
 				<div class='col-md-6'>
 					<div class="card-content">
-						<canvas id="myChart" class="graph-canvas"></canvas>
+						<canvas id="pending_user_stat_chart" class="graph-canvas"></canvas>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class='col-md-12'>
 					<div class="card-content">
-						<canvas id="myChart3" class="graph-canvas"></canvas>
+						<div style="overflow-x:auto">
+							<canvas id="myChart" class="graph-canvas"></canvas>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -121,53 +123,24 @@
 	</div>
 </div>
 <script>
-	new Chart(document.getElementById("myChart3"), {
-		type: 'bar',
-		data: {
-			labels: ["1900", "1950", "1999", "2050"],
-			datasets: [{
-				label: "Africa",
-				backgroundColor: "#3e95cd",
-				data: [133, 221, 783, 2478]
-			}, {
-				label: "Europe",
-				backgroundColor: "#8e5ea2",
-				data: [408, 547, 675, 734]
-			}]
-		},
-		options: {
-			title: {
-				display: true,
-				text: 'Population growth (millions)'
-			}
-		}
-	});
-
+$(function () { 
 	var ctx = $("#myChart");
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'line',
 		data: {
-			labels: ["January", "February", "March", "April", "May", "June"],
+			labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 			datasets: [{
 				label: '# of Applicants',
-				data: [13, 19, 25, 17, 22, 15],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)'
-				],
-				borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)'
-				],
-				borderWidth: 1
+				data: [13,19,25,17,22,15,34,63,43,22,8,28],
+				backgroundColor: ['rgb(251, 180, 20, 0.25)'],
+				borderColor: ['#fbb414'],
+				borderWidth: 2
+			}, {
+				label: '# of Company',
+				data: [21,43,1,35,6,51,25,25,53,23,62,11],
+				backgroundColor: ['rgb(26, 23, 81, 0.25)'],
+				borderColor: ['#1a1751'],
+				borderWidth: 2
 			}]
 		},
 		options: {
@@ -180,25 +153,6 @@
 			}
 		}
 	});
-
-	new Chart(document.getElementById("myChart2"), {
-    type: 'doughnut',
-    data: {
-      labels: ["Applicant","Company"],
-      datasets: [
-        {
-          label: "Users",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [2478,157]
-        }
-      ]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Users'
-      }
-    }
 });
 
 </script>

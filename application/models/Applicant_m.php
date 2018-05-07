@@ -23,7 +23,6 @@ class Applicant_m extends CI_Model {
             
             return $result;
         }
-        
     }
 
     public function edit_bio(){
@@ -172,7 +171,7 @@ class Applicant_m extends CI_Model {
             }else {
                 $result[0] = false;
                 $result[1] = "";
-                
+
                 return $result;
             }
             

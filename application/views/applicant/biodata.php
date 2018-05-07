@@ -115,7 +115,6 @@
 			</div>
 			<div class="modal-body">
 				<form id="form_bio">
-					<input type="hidden" name="txtId" value="0">
 					<div class='row'>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group ">

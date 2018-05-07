@@ -6,6 +6,12 @@ class Company extends CI_Controller {
 		parent::__constructor();
 	}
 
+	public function require_form() {
+		$data['content'] = 'company/info_form';
+        
+		$this->load->view('templates/company/content', $data);
+	}
+
 	public function dashboard() {
         $data['content'] = 'company/dashboard';
         
