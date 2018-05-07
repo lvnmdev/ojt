@@ -44,7 +44,13 @@ class Applicant extends CI_Controller {
         
 		$this->load->view('templates/applicant/content', $data);
 	}
-
+	public function settings(){        
+		$this->load->view('applicant/settings');
+	}
+	public function upload(){
+		$this->applicant->upload_photo();
+		redirect('Applicant/settings');
+	}
 
 	//Functionals (Biodata)
 
@@ -54,6 +60,7 @@ class Applicant extends CI_Controller {
 		if($result[0]){
 			$msg['success'] = true;
 			$msg['data'] = $result[1];
+			$msg['pic'] = $result[2];
 		}
 
 		echo json_encode($msg);

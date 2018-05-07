@@ -60,6 +60,7 @@ $(function () {
 			async: false,
 			dataType: 'json',
 			success: function (response) {
+				console.log(response);
 				if (response.success) {
 					
 					$('#banner-success').html('Welcome! ' + response.user).fadeIn().delay(3000).fadeOut('slow');

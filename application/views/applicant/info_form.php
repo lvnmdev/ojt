@@ -22,7 +22,11 @@
 					<h4 style="color:red;">Please fill all fields. You are required to.</h4>
 				</div>
 				<div class="card-body">
+<<<<<<< HEAD
 					<form id="form_bio" method="post">
+=======
+					<form id="form_bio" method='post'>
+>>>>>>> a81173b293ea41906f3ae0ad73ca380776ba32b1
 						<div class='row'>
 							<div class='col-xs-12 col-sm-4 col-md-4'>
 								<div class="form-group ">
@@ -134,9 +138,15 @@
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<div class="card-footer" style="padding-left:0;">
 							<button type="submit" id="btnsubmit_bio" class="btn btn-primary">
 							<i class='fa fa-location-arrow btn-icon'></i>Submit</button>
+=======
+						<div>
+							<button type="submit" id="btnsubmit_bio" class="btn btn-primary">
+							<i class='fa fa-save btn-icon'></i>Submit</button>
+>>>>>>> a81173b293ea41906f3ae0ad73ca380776ba32b1
 						</div>
 					</form>
 				</div>

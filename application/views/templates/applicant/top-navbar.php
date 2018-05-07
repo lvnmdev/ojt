@@ -42,18 +42,19 @@
 				<div class="dropdown">
 					<a role='button' class="dropdown-toggle user-info" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="true">
-						<img src="<?= base_url('assets/img/icons/default-profile.png') ?>">
+			
+						<img id="prof_pic" style="width:50px;height:50px;" src="" alt="Profile" class="img img-circle">
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="user-dropdown">
 						<ul class="user-info-opt">
-							<a href="<?php echo base_url("Applicant/settings ")?>">
+							<a href="<?php echo base_url("Applicant/settings")?>">
 								<li>
 									<i class="fa fa-cog"></i> Settings
 								</li>
 							</a>
-							<a href="<?php echo base_url("Main/logout ")?>">
+							<a href="<?php echo base_url("Main/logout")?>">
 								<li>
 									<i class="fa fa-sign-out-alt"></i> Logout
 								</li>

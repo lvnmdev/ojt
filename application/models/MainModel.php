@@ -43,11 +43,11 @@ class MainModel extends CI_Model {
 
 	public function login(){
 		$user = $this->input->post('username');
-		$pass = $this->input->post('password');
+		$pass = $this->input->post('password');		
 		$this->db->where('user_name', $user);
 		$this->db->where('user_pass', $pass);
-		$query = $this->db->get('tbl_users');
-
+		$query = $this->db->get('tbl_users');		
+		
 		if($query->num_rows()==1){
 			$result[0] = $query->row();
 			$result[1] = true;

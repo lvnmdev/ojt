@@ -11,10 +11,13 @@ class Applicant_m extends CI_Model {
     public function show_bio(){
         $user = $this->session->userdata('username');
         $query = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+        $query2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$user)->get();
+        
 
         if($query->num_rows()>0){
             $result[0] = true;
             $result[1] = $query->row();
+            $result[2] = $query2->row();
 
             return $result;
         }else {
@@ -208,6 +211,30 @@ class Applicant_m extends CI_Model {
             }else {
                 $result[0] = false;
                 return $result;
+            }
+        }
+
+        public function upload_photo(){
+            $info = pathinfo($_FILES['image']['name']);
+            $ext = $info['extension']; // get the extension of the file
+            $newname = $_SESSION['username'].'_pic.'.$ext; 
+
+            $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
+            $link = 'assets/img/profile_pics/'.$newname;
+
+            $field = array(
+                'user_name' => $this->session->userdata('username'),
+                'photo_path' => $link
+            );
+            $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$field['user_name'])->get();
+            if($query->num_rows()>0){
+                $this->db->where('user_name',$field['user_name']);
+                $this->db->update('tbl_photo_upload',$field);
+                unlink($target);
+                move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+            }else{
+                $this->db->insert('tbl_photo_upload',$field);
+                move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
             }
         }
 }

@@ -29,28 +29,6 @@ $(function () {
 			}
 		});
 	}
-
-	function resume_checker() {
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_resume',
-			async: true,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (!response.success) {
-					window.location.href = 'resume';
-				}
-			},
-			error: function () {
-				alert('Error');
-			}
-
-		});
-	}
-
-
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
@@ -63,6 +41,9 @@ $(function () {
 				var html = '';
 				console.log(response);
 				if (response.success) {
+					$('#prof_pic').attr('src','../../ojt/'+response.pic.photo_path);
+
+
 					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 					$("#user_sex").val(response.data.sex);
 					$("#user_birthdate").val(response.data.birthdate);
@@ -118,7 +99,7 @@ $(function () {
 		$('#edit_bio').modal('show');
 	})
 
-	$('#btnsubmit_bio').click(function () {
+	$('#form_bio').submit(function () {
 		var formData = $('#form_bio').serialize();
 		$.ajax({
 			type: 'ajax',
@@ -134,7 +115,7 @@ $(function () {
 				} else if (response.operation == 'update') {
 					alert('data updated');
 				}
-				location.reload();
+				window.location.href='resume';
 
 			},
 			error: function () {
@@ -407,7 +388,7 @@ $(function () {
 
 	})
 
-	$('#btnsubmit_resume').click(function () {
+	$('#form_resume').click(function () {
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
 		$.ajax({
