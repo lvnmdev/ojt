@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //Preloader
+    //Preloader Start
     $(window).on("load", function() {
         preloaderFadeOutTime = 2000;
         function hidePreloader() {
@@ -9,6 +9,9 @@ $(document).ready(function() {
 
         hidePreloader();
     });
+    //End
+
+
 });
 
 $(function(){
@@ -19,6 +22,7 @@ $(function(){
     $("#openNav").click(function () {
         $(".side-navbar-container").css({"width":"270px"});
         $(".side-navbar-container").css({"width":"250px"});
+        //$(".main-container").css({"margin-left":"250px"});
     });
 
     $("#closeNav").click(function () {
