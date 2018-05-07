@@ -1,5 +1,3 @@
-
-
 $(function () {
 	$('regform').submit(function () {
 		var formData = $('#regform').serialize();
