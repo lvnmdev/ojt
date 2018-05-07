@@ -236,7 +236,7 @@
 			<div class="split right">
 				<div class="split-inner">
 					<h1>Register</h1>
-					<form id="regform" onsubmit="register()" method="post">
+					<form id="regform" method="post">
 						<div class='alert alert-success' id="banner-message" style="display:none"></div>
 						<div class='alert alert-danger' id="banner-failed2" style="display:none"></div>
 						<div class='alert alert-warning' id="banner-warning1" style="display:none"></div>
