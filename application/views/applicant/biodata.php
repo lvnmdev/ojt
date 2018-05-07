@@ -242,5 +242,4 @@
 
 <script>
 	var page_info = 'biodata';
-
 </script>

@@ -53,6 +53,7 @@ html, body {
 h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; margin-bottom: 25px; }
 
 .button {
+  width: inherit;
   margin: 0 auto;
   display: inline-block;
   margin: 0 auto;
@@ -106,8 +107,33 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 .hover-left .left         { width: var(--hover-width); }
 .hover-left .right        { width: var(--other-width); }
 .hover-left .right:before { z-index: 2; }
-.hover-left strong:after {   content: '\00bb'; }
 
+
+strong { 
+	position: absolute;
+	color: #fff;
+  top: 10%;
+  z-index: 9999;
+  width: 100%;
+  text-align: center;
+  font-size: 36px;transition: all 0.5s;
+ }
+strong span { position: relative; display: inline-block; transition: 0.5s; }
+strong span:after, strong span:before {
+    position: absolute;
+    font-size: 70px;
+    top: -30px;
+    transition: 0.5s; 
+    opacity: 0; 
+}
+strong span:after { content: '\00bb'; right: -30px; }
+strong span:before { content: "\00ab"; left: -30px; }
+
+
+.hover-left strong span { padding-right: 35px; right: 12%; }
+.hover-left strong span:after { right: 0; opacity: 1;}
+.hover-right strong span { padding-left: 35px; left: 12%; }
+.hover-right strong span:before { left: 0; opacity: 1;}
 
 .hover-right .right       { width: var(--hover-width); }
 .hover-right .left        {  width: var(--other-width); }
@@ -125,15 +151,7 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
   }
 }
 
-strong { 
-	position: absolute;
-	color: #fff;
-  top: 10%;
-  z-index: 9999;
-  width: 100%;
-  text-align: center;
-  font-size: 36px;
- }
+
 
 form { margin-bottom: 25px; }
 form input, form select{    
@@ -153,7 +171,7 @@ form input, form select{
 
 	<body>
 		<div class="custom-container">
-			<strong>USTP Online OJT Application</strong>
+			<strong><span>USTP Online OJT Application</span></strong>
 			<div class="split left">
 				<div class="split-inner">
 					<h1>Login</h1>
@@ -162,6 +180,7 @@ form input, form select{
 						<div id="banner-failed" class="alert alert-danger" style="display: none"></div>
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="password" name="password" placeholder="Password" required>
+            <div class="form-group"></div>
 						<input type="submit" class="button" value = "Login">
 					</form>
 				</div>

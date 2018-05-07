@@ -14,18 +14,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('header');
-		$this->load->view('user_login_test');
-	}
-
-	public function login(){
-		$this->load->view('header');
 		$this->load->view('user_login');
-	}
-
-	public function reg()
-	{
-		$this->load->view('header');
-		$this->load->view('user_registration');
 	}
 
 //Functional
