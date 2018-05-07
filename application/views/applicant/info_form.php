@@ -4,14 +4,13 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Page Title</title>
+	<title>USTP | Form</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap-select.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
-	<script src="main.js"></script>
 </head>
 
 <body class="require-form">
