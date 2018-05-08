@@ -5,3 +5,4 @@
     <input type="file" name="image" id="image">
     <input type="submit" value="Upload Image" name="submit">
 </form>
+  
