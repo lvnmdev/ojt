@@ -45,7 +45,9 @@ class Applicant extends CI_Controller {
 		$this->load->view('templates/applicant/content', $data);
 	}
 	public function settings(){        
-		$this->load->view('applicant/settings');
+		$data['content'] = 'applicant/settings';
+        
+		$this->load->view('templates/applicant/content', $data);
 	}
 	public function upload(){
 		$this->applicant->upload_photo();

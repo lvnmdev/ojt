@@ -1,6 +1,6 @@
 $(function () {
 	show_bio_data();
-//	resume_checker();
+	//	resume_checker();
 	show_resume();
 	show_available_jobs();
 	count_dashboard();
@@ -16,11 +16,14 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if(response.data != null && response.data1 != null) {
+				if (response.data != null) {
 					$('#applications_count').html(response.data.pending_applicant);
-					$('#jobs_count').html(response.data1.jobs_posted);
-				}else{
+				}else {
 					$('#applications_count').html(0);
+				}
+				if (response.data1 != null) {
+					$('#jobs_count').html(response.data1.jobs_posted);
+				}else {
 					$('#jobs_count').html(0);
 				}
 			},
@@ -41,9 +44,6 @@ $(function () {
 				var html = '';
 				console.log(response);
 				if (response.success) {
-					$('#prof_pic').attr('src','../../ojt/'+response.pic.photo_path);
-
-
 					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 					$("#user_sex").val(response.data.sex);
 					$("#user_birthdate").val(response.data.birthdate);
@@ -57,6 +57,11 @@ $(function () {
 					$("#father_fullname").val(response.data.dadfname);
 					$("#father_birthdate").val(response.data.dadbday);
 					$("#father_occupation").val(response.data.dadwork);
+					if (response.pic) {
+						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
+					} else {
+
+					}
 				}
 
 			},
@@ -115,13 +120,14 @@ $(function () {
 				} else if (response.operation == 'update') {
 					alert('data updated');
 				}
-				window.location.href='resume';
+				window.location.href = 'dashboard';
 
 			},
 			error: function () {
 				alert('Error');
 			}
 		});
+		return false;
 	});
 	//For Biodata Functions End HERE!
 	//For Resume Functions Start HERE!
@@ -130,36 +136,37 @@ $(function () {
 
 		'<label id="super_input" class="label-control col-md-2"></label>' +
 		'<div class="col-md-6">' +
-		'<input id="input" type="text" name="" class="form-control">' +
+		'<input id="input" type="text" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form1">' +
 		'<label id="super_input1" class="label-control col-md-2"></label>' +
 		'<div class="col-md-6">' +
-		'<input id="input1" name="" class="form-control">' +
+		'<input id="input1" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form2">' +
 		'<label id="super_input2" class="label-control col-md-2"></label>' +
 		'<div class="col-md-6">' +
-		'<input id="input2" name="" class="form-control">' +
+		'<input id="input2" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form3">' +
 		'<label id="super_input3" class="label-control col-md-2"></label>' +
 		'<div class="col-md-6">' +
-		'<input id="input3" name="" class="form-control">' +
+		'<input id="input3" name="" class="form-control" >' +
 		'</div>' +
 		'</div>'
 
 	$('#addqual').click(function () {
+		$('#edit_form_resume').html('');
 		var i = 0;
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Qualifications/Skills');
-		$('#form_resume').html(form);
+		$('#form_content').html(form);
 		$('#super_input').text('Add Skill');
 
 		$('#input').attr('name', 'skill');
@@ -200,9 +207,10 @@ $(function () {
 	})
 
 	$('#addwork').click(function () {
+		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Working Experience');
-		$('#form_resume').html(form);
+		$('#form_content').html(form);
 
 		$('#super_input').text('Position');
 		$('#super_input1').text('Company');
@@ -247,9 +255,10 @@ $(function () {
 	})
 
 	$('#addacco').click(function () {
+		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Accomplishments');
-		$('#form_resume').html(form);
+		$('#form_content').html(form);
 
 		$('#super_input').text('Accomplishment');
 		$('#super_input1').text('Affiliation');
@@ -293,9 +302,10 @@ $(function () {
 	})
 
 	$('#addeduc').click(function () {
+		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Educational Background');
-		$('#form_resume').html(form);
+		$('#form_content').html(form);
 
 		$('#super_input').text('Level');
 		$('#super_input1').text('Name of School');
@@ -341,9 +351,10 @@ $(function () {
 	})
 
 	$('#addsemi').click(function () {
+		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
 		$('.modal-title').text('Add Seminars Attended');
-		$('#form_resume').html(form);
+		$('#form_content').html(form);
 
 		$('#super_input').text('Name of Seminar');
 		$('#super_input1').text('Date');
@@ -388,7 +399,7 @@ $(function () {
 
 	})
 
-	$('#form_resume').click(function () {
+	$('#form_resume').submit(function () {
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
 		$.ajax({
@@ -412,6 +423,7 @@ $(function () {
 	})
 
 	function show_resume() {
+		
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -420,6 +432,10 @@ $(function () {
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
+				if (!data.success){
+					$('#ze_question').modal('show');
+					$(".btn-info").attr("disabled", "disabled");
+				}
 				var skills = '';
 				var xp = '';
 				var accomplishments = '';
@@ -435,6 +451,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_seminar').html(seminar);
+				}else{
+					$(".btn-info").attr("disabled", "disabled");					
 				}
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
@@ -444,6 +462,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_accomplishments').html(accomplishments);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
 				}
 				if (data.skills) {
 					for (i = 0; i < data.skills.length; i++) {
@@ -452,6 +472,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_skills').html(skills);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
 				}
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
@@ -463,6 +485,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_xp').html(xp);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
 				}
 
 				if (data.education) {
@@ -475,6 +499,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_education').html(education);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
 				}
 
 
@@ -539,7 +565,7 @@ $(function () {
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
 						if (response.data[i].job_id == job_id_app) {
-							html += 
+							html +=
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Company Name</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].comp_name + '</div></div>' +
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Position</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].position + '</div></div>' +
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Sex</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_sex + '</div></div>' +
