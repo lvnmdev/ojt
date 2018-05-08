@@ -7,9 +7,7 @@ class Company extends CI_Controller {
 	}
 
 	public function require_form() {
-		$data['content'] = 'company/info_form';
-        
-		$this->load->view('templates/company/content', $data);
+		$this->load->view('company/info_form');
 	}
 
 	public function dashboard() {

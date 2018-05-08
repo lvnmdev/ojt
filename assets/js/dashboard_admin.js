@@ -2,6 +2,8 @@ $(function () {
 
     show_company();
     show_applicant();
+    show_pending_company();
+    show_pending_applicant();
 
     //Notification
     $.ajax({
@@ -74,7 +76,7 @@ $(function () {
             dataType: 'json',
             success: function (response) {
                 var html = '';
-                if (response.data) {
+                if (response.success) {
                     for (i = 0; i < response.data.length; i++) {
                         html += '<tr>' +
                             '<td>' + response.data[i].comp_name + '</td>' +
@@ -100,7 +102,7 @@ $(function () {
             dataType: 'json',
             success: function (response) {
                 var html = '';
-                if (response.data) {
+                if (response.success) {
                     for (i = 0; i < response.data.length; i++) {
                         html += '<tr>' +
                             '<td>' + response.data[i].user_name + '</td>' +
@@ -116,4 +118,57 @@ $(function () {
             }
         })
     }
-});
+
+    function show_pending_applicant() {
+        $.ajax({
+            type: 'ajax',
+            method: 'get',
+            url: 'show_pending_applicant',
+            async: false,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                var html = '';
+                if (response.success) {
+                    for (i = 0; i < response.data.length; i++) {
+                        html += '<tr>' +
+                            '<td>' + response.data[i].user_name + '</td>' +
+                            '<td>' + response.data[i].user_email + '</td>' +
+                            '<td>' + '<a type="button" class="btn btn-success"><i class="fa fa-user-check btn-icon"></i>Approve</a>&nbsp<a type="button" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deny</a>' + '</td>' +
+                            '</tr>';
+                    }
+                    $('#show_pending_applicant').html(html)
+                }
+            },
+            error: function (response) {
+                alert('error');
+            }
+        })
+	}
+
+    function show_pending_company() {
+        $.ajax({
+        	type: 'ajax',
+        	method: 'get',
+        	url: 'show_pending_company',
+        	async: false,
+        	dataType: 'json',
+        	success: function (response) {
+                console.log(response);
+        		var html = '';
+        		if (response.success) { 
+        			for (i = 0; i < response.data.length; i++) {
+        				html += '<tr>' +
+                            '<td>' + response.data[i].user_name + '</td>' +
+        					'<td>' + response.data[i].user_email + '</td>' +
+        					'</tr>';
+        			}
+        			$('#show_pending_company').html(html)
+        		}
+        	},
+        	error: function (response) {
+                alert('error');
+        	}
+        })
+	}
+})

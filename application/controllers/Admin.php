@@ -58,6 +58,26 @@ class Admin extends CI_Controller {
 		echo json_encode($msg);
 	}
 
+	public function show_pending_company() {
+		$result = $this->admin->show_pending_company();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_pending_applicant() {
+		$result = $this->admin->show_pending_applicant();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
 	public function notification() {
 		$result = $this->admin->notification();
 		$msg['success'] = false;

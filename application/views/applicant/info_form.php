@@ -1,3 +1,10 @@
+<?php
+$query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
+if ($query_app->num_rows() > 0) {
+		redirect('Applicant/dashboard');
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -144,7 +151,6 @@
 		</div>
 	</div>
 </body>
-
 </html>
 <script type="text/javascript" src="<?= base_url('assets/js/jquery.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js')?>"></script>

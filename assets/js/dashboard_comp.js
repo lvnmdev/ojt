@@ -63,8 +63,7 @@ $(function () {
 		$('#edit_info').modal('show');
 	});
 
-
-	$('#btnsubmit_info').click(function () {
+	$('#form_info').submit(function () {
 		var formData = $('#form_info').serialize();
 		console.log(formData);
 		$.ajax({
@@ -82,7 +81,6 @@ $(function () {
 					alert('data updated');
 				}
 				location.reload();
-
 			},
 			error: function () {
 				alert('Error');
