@@ -146,8 +146,55 @@ class Applicant extends CI_Controller {
 
 
 	}
+	public function delete_resume(){
+		$data_input = $this->input->post('data_input');
+		$msg['success'] = false;
 
-	
+		switch ($data_input){
+			case 'skill':
+				$result = $this->applicant->delete_skill();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'work':
+				$result = $this->applicant->delete_workxp();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'education':
+				$result = $this->applicant->delete_education();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'accomplishment':
+				$result = $this->applicant->delete_accomplishment();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;
+			case 'seminar':
+				$result = $this->applicant->delete_seminars();
+
+				if($result){
+					$msg['success'] = true;
+				}
+				break;	
+			default:
+				$msg['operation'] = 'failed';
+				
+       
+		}
+		echo json_encode($msg);
+	}
+
+/////////////////JOBS FUNCTIONALS WUBBA LUBBA DUB DUB	
 	public function show_available_jobs(){
 		$result = $this->applicant->show_available_jobs();
 		$msg['success'] = false;

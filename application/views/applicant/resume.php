@@ -77,7 +77,7 @@
 						</div>
 						<div>
 							<hr>
-							<form id="form_resume" class="form-horizontal" method: "post">
+							<form id="form_resume" class="form-horizontal" method= "post">
 								<div id="form_content"></div>
 								<button type="submit" id="btnsubmit_resume" class="btn btn-primary">
 									<i class='fa fa-plus btn-icon'></i>Add</button>
