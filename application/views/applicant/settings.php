@@ -8,8 +8,7 @@
 					<?= $this->session->userdata('username')?>!</h1>
 			</div>
 			<div>
-				<img id="prof_pic" style="width:100px;height:100px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile"
-				class="img img-responsive">
+				<img id="prof_pic1" style="width:150px;height:150px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile">
 				<form action="upload" method="post" enctype="multipart/form-data">
 					Select image to upload:
 					<input type="file" name="image" id="image">

@@ -1,6 +1,5 @@
 $(function () {
 	show_bio_data();
-	//	resume_checker();
 	show_resume();
 	show_available_jobs();
 	count_dashboard();
@@ -18,12 +17,12 @@ $(function () {
 				console.log(response);
 				if (response.data != null) {
 					$('#applications_count').html(response.data.pending_applicant);
-				}else {
+				} else {
 					$('#applications_count').html(0);
 				}
 				if (response.data1 != null) {
 					$('#jobs_count').html(response.data1.jobs_posted);
-				}else {
+				} else {
 					$('#jobs_count').html(0);
 				}
 			},
@@ -59,6 +58,7 @@ $(function () {
 					$("#father_occupation").val(response.data.dadwork);
 					if (response.pic) {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
+						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
 					} else {
 
 					}
@@ -194,7 +194,8 @@ $(function () {
 					var edit_skills = "";
 					for (i = 0; i < data.skills.length; i++) {
 						edit_skills += '<ul class="resume-list">' +
-							'<li>' + data.skills[i].skill + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
+							'<li>' + data.skills[i].skill + '&nbsp<span><button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+
 							'</ul>';
 					}
 					$('#edit_form_resume').html(edit_skills);
@@ -239,7 +240,9 @@ $(function () {
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
 						edit_workxp += '<ul class="resume-list">' +
-							'<li>' + data.workxp[i].position + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
+							'<li>' + data.workxp[i].position + '&nbsp<span><button class="resume-delete work-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+
+
 							'<li>' + data.workxp[i].company + '</li>' +
 							'<li>' + data.workxp[i].date_start + '</li>' +
 							'<li>' + data.workxp[i].date_end + '</li>' +
@@ -287,12 +290,13 @@ $(function () {
 				var edit_accomplishment = '';
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
-						edit_accomplishmen += '<ul class="resume-list">' +
-							'<li>' + data.accomplishment[i].accomplishment + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
+						edit_accomplishment += '<ul class="resume-list">' +
+							'<li>' + data.accomplishment[i].accomplishment + '&nbsp<span><button class="resume-delete acc-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+
 							'<li>' + data.accomplishment[i].affiliation + '</li>' +
 							'</ul>';
 					}
-					$('#edit_form_resume').html(edit_accomplishmen);
+					$('#edit_form_resume').html(edit_accomplishment);
 				}
 			},
 			error: function (data) {
@@ -300,7 +304,6 @@ $(function () {
 			}
 		})
 	})
-
 	$('#addeduc').click(function () {
 		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
@@ -334,7 +337,8 @@ $(function () {
 				if (data.education) {
 					for (i = 0; i < data.education.length; i++) {
 						edit_education += '<ul class="resume-list">' +
-							'<li>' + data.education[i].level + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
+							'<li>' + data.education[i].level + '&nbsp<span><button class="resume-delete educ-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+
 							'<li>' + data.education[i].school + '</li>' +
 							'<li>' + data.education[i].start + '</li>' +
 							'<li>' + data.education[i].graduated + '</li>' +
@@ -384,7 +388,8 @@ $(function () {
 				if (data.seminars) {
 					for (i = 0; i < data.seminars.length; i++) {
 						edit_seminars += '<ul class="resume-list">' +
-							'<li>' + data.seminars[i].seminar + '&nbsp<span><a type="button" class="resume-delete"><i class="fa fa-times"></i></a></span></li>' +
+							'<li>' + data.seminars[i].seminar + '&nbsp<span><button class="resume-delete semi-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+
 							'<li>' + data.seminars[i].seminar_date + '</li>' +
 							'<li>' + data.seminars[i].conductedby + '</li>' +
 							'</ul>';
@@ -421,9 +426,20 @@ $(function () {
 			}
 		});
 	})
+	$('#btnsubmit_resume').click(function () {
+		$('#btnsubmit_resume').click(function () {
+			$("#btnsubmit_resume").attr("disabled", "disabled");
+		});
+	})
+	var info;
+	$(".btn-info").click(function (e) {
+		if (!info.success || !info.seminars || !info.accomplishment || !info.skills || !info.workxp || !info.education) {
+			e.preventDefault();
+		}
+		console.log(info);
+	});
 
 	function show_resume() {
-		
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -432,7 +448,8 @@ $(function () {
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
-				if (!data.success){
+				info = data;				
+				if (!data.success) {
 					$('#ze_question').modal('show');
 					$(".btn-info").attr("disabled", "disabled");
 				}
@@ -451,8 +468,8 @@ $(function () {
 							'</ul>';
 					}
 					$('#resume_seminar').html(seminar);
-				}else{
-					$(".btn-info").attr("disabled", "disabled");					
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
 				}
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
@@ -503,7 +520,7 @@ $(function () {
 					$(".btn-info").attr("disabled", "disabled");
 				}
 
-
+				
 
 			},
 			error: function () {
@@ -608,4 +625,25 @@ $(function () {
 			}
 		});
 	})
-})
+
+	$(document).on('click', '.skill-delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+	});
+	$(document).on('click', '.educ-delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+	});
+	$(document).on('click', '.work-delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+	});
+	$(document).on('click', '.semi-delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+	});
+	$(document).on('click', '.acc-delete', function (e) {
+		var id = $(e.currentTarget).val();
+		console.log(id);
+	});
+});

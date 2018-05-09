@@ -159,7 +159,18 @@ class Applicant_m extends CI_Model {
         }
         return $result;
     }
-
+        
+        public function delete_skill(){
+                $id = $this->input->post('id');
+        		$this->db->where('skill_id', $id);
+		        $this->db->delete('tbl_resume_skills');
+		        if($this->db->affected_rows() > 0){
+			        return true;
+		        }else{
+			        return false;
+		        }
+            
+        }
 
 
         public function show_available_jobs(){
