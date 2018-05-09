@@ -44,14 +44,14 @@ class Applicant extends CI_Controller {
         
 		$this->load->view('templates/applicant/content', $data);
 	}
-	public function settings(){        
-		$data['content'] = 'applicant/settings';
+	public function user_settings(){        
+		$data['content'] = 'user_settings';
         
 		$this->load->view('templates/applicant/content', $data);
 	}
 	public function upload(){
 		$this->applicant->upload_photo();
-		redirect('Applicant/settings');
+		redirect('Applicant/user_settings');
 	}
 
 	//Functionals (Biodata)

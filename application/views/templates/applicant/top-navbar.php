@@ -7,7 +7,7 @@
             redirect('Company/dashboard');
         }
     }else{
-		redirect('Main/index');
+		redirect('/');
 	}
 
 ?>
@@ -24,7 +24,6 @@
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables.min.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
-
 	</head>
 
 	<body>
@@ -34,7 +33,6 @@
 				<div class="cube-2 cube"></div>
 				<div class="cube-4 cube"></div>
 				<div class="cube-3 cube"></div>
-
 			</div>
 		</div>
 		<header class='top-navbar container-fluid'>
@@ -42,16 +40,16 @@
 				<div class="dropdown">
 					<a role='button' class="dropdown-toggle user-info" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="true">
-						<img id="prof_pic" style="width:50px;height:50px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-circle">
+						<img id="prof_pic1" style="width:50px;height:50px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-circle">
 						
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="user-dropdown">
 						<ul class="user-info-opt">
-							<a href="<?php echo base_url("Applicant/settings")?>">
+							<a href="<?php echo base_url("Applicant/user_settings")?>">
 								<li>
-									<i class="fa fa-cog"></i> Settings
+									<i class="fas fa-user-cog"></i> User Settings
 								</li>
 							</a>
 							<a href="<?php echo base_url("Main/logout")?>">

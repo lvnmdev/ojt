@@ -351,6 +351,8 @@ footer {
 
 .resume-delete {
 	color: #d9534f;
+	border: none;
+	background-color: none;
 }
 
 .resume-delete:hover {

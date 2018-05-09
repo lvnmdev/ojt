@@ -6,7 +6,7 @@
             redirect('Applicant/dashboard');
         }
     }else{
-			redirect('Main/index');
+			redirect('/');
 		}
 
 ?>
@@ -46,9 +46,9 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="user-dropdown">
 						<ul class="user-info-opt">
-							<a href="<?php echo base_url("Applicant/settings ")?>">
+							<a href="<?php echo base_url("Admin/user_settings ")?>">
 								<li>
-									<i class="fa fa-cog"></i> Settings
+									<i class="fas fa-user-cog"></i> User Settings
 								</li>
 							</a>
 							<a href="<?php echo base_url("Main/logout ")?>">
