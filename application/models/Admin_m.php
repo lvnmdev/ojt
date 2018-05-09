@@ -36,6 +36,38 @@ class Admin_m extends CI_Model {
             
             return $result;
         }
+    }                                                   
+
+    public function show_pending_company() {
+      $query = $this->db->select('*')->from('tbl_users')->where('user_status','1')->where('user_type','1')->get();
+        if($query){
+            $result[0] = true;
+            $result[1] = $query->result();
+
+            return $result;
+        }
+        else {
+            $result[0] = false;
+            $result[1] = "";
+            
+            return $result;
+        }
+    }
+
+    public function show_pending_applicant() {
+      $query = $this->db->select('*')->from('tbl_users')->where('user_status','1')->where('user_type','2')->get();
+        if($query){
+            $result[0] = true;
+            $result[1] = $query->result();
+
+            return $result;
+            }
+        else {
+            $result[0] = false;
+            $result[1] = "";
+            
+            return $result;
+        }
     }
 
     public function notification() {

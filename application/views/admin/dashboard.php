@@ -17,14 +17,14 @@
 					<div class='card-content'>
 						<div class='dashboard-notify'>
 							<div class="row">
-								<div class="col-xs-12 	col-sm-12 col-md-5">
+								<div class="col-xs-12 col-sm-12 col-md-8">
 									<a href='<?= base_url("Admin/")?>'>
 										<div class='dashboard-badge'>
 											<span id='company_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-7">
+								<div class="col-xs-12 col-sm-12 col-md-4">
 									<div class="dashboard-badge-label">
 										<h4>Company</h4>
 									</div>
