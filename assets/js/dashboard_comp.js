@@ -26,7 +26,14 @@ $(function () {
 					$("#company_street").html(response.data.comp_addst);
 					$("#company_barangay").html(response.data.comp_addbrgy);
 					$("#company_postal").html(response.data.comp_postcode);
+					if (response.pic) {
+						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
+						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
+					} else {
+
+					}
 				}
+				$('#user_profile_name').html(response.data.comp_name);
 			},
 			error: function () {
 				alert('Error');

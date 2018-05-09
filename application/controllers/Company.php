@@ -40,6 +40,17 @@ class Company extends CI_Controller {
 		$this->load->view('templates/company/content', $data);
 	}
 
+	public function user_settings(){
+		$data['content'] = 'user_settings';
+        
+		$this->load->view('templates/company/content', $data);
+	}
+
+	public function upload(){
+		$this->company->upload_photo();
+		redirect('Company/user_settings');
+	}
+
 
 	//Functional 
 	public function show_info(){
@@ -48,6 +59,7 @@ class Company extends CI_Controller {
 		if($result[0]){
 			$msg['success'] = true;
 			$msg['data'] = $result[1];
+			$msg['pic'] = $result[2];
 		}
 
 		echo json_encode($msg);

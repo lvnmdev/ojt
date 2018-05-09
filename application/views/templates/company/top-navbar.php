@@ -38,7 +38,7 @@
 				<div class="dropdown">
 					<a role='button' class="dropdown-toggle user-info" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="true">
-						<img src="<?= base_url('assets/img/icons/default-profile.png') ?>">
+						<img id="prof_pic" src="<?= base_url('assets/img/icons/default-profile.png') ?>">
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>
 					</a>

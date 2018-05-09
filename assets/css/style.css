@@ -4,29 +4,56 @@
 	.side-nav-close {
 		display: none;
 	}
-
 	.side-navbar-container {
 		width: 270px;
 	}
-
+	#image {
+		font-size: 1vw;
+	}
 }
 
 @media only screen and (max-device-width: 768px) {
 	.side-nav-close {
 		display: block;
 	}
-
 	footer {
 		margin-left: 0 !important;
 		width: 100vw !important;
 	}
-
 	.side-navbar-container {
 		width: 0;
 	}
-
 	.main-container {
 		margin-left: 0 !important;
+	}
+	#image {
+		font-size: 1.75vw;
+	}
+}
+
+@media only screen and (max-device-width: 425px) {
+	#image {
+		font-size: 3vw;
+	}
+	
+	.card-title,
+	.user-profile-pic,
+	.user-profile-details {
+		text-align: center;
+		margin: auto;
+	}
+}
+
+@media only screen and (max-device-width: 375px) {
+	#image {
+		font-size: 3.5vw;
+	}
+
+	.card-title,
+	.user-profile-pic,
+	.user-profile-details {
+		text-align: center;
+		margin: auto;
 	}
 }
 
@@ -96,7 +123,6 @@ footer {
 	font-weight: bold;
 }
 
-
 /* Navbar */
 
 .top-navbar {
@@ -133,9 +159,7 @@ footer {
 	text-decoration: none;
 }
 
-.user-info-opt li:hover {
-	background-color: #fbb414;
-}
+.user-info-opt li:hover {}
 
 .user-info-opt a:active {
 	text-decoration: none;
@@ -182,7 +206,7 @@ footer {
 	padding: 15px 15px;
 }
 
-.logo h1{
+.logo h1 {
 	margin: 0;
 	color: white;
 	float: left;
@@ -312,6 +336,10 @@ footer {
 	color: white !important;
 }
 
+.close span {
+	color: white;
+}
+
 /* Scroll Back To Top Button */
 
 .scrollup-btn {
@@ -351,8 +379,8 @@ footer {
 
 .resume-delete {
 	color: #d9534f;
-	border: none;
-	background-color: none;
+	border: none !important;
+	background-color: transparent !important;
 }
 
 .resume-delete:hover {
@@ -495,3 +523,14 @@ footer {
 	width: 100%;
 	height: auto;
 }
+
+/* User Profile Pic */
+
+.user-profile-pic {
+	height: 150px;
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+.user-change-profile {}

@@ -40,7 +40,7 @@
 				<div class="dropdown">
 					<a role='button' class="dropdown-toggle user-info" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="true">
-						<img id="prof_pic1" style="width:50px;height:50px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-circle">
+						<img id="prof_pic" style="width:50px;height:50px;" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-circle">
 						
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>

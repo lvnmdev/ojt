@@ -60,42 +60,36 @@
 			</div>
 
 		</div>
+	</div>
+</div>
 
-		<div id="edit_resume" class="modal fade" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-form" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h1 class="modal-title"></h1>
-					</div>
-					<div class="modal-body">
-						<div class=''>
-							<div id="edit_form_resume">
-							</div>
-						</div>
-						<div>
-							<hr>
-							<form id="form_resume" class="form-horizontal" method= "post">
-								<div id="form_content"></div>
-								<button type="submit" id="btnsubmit_resume" class="btn btn-primary">
-									<i class='fa fa-plus btn-icon'></i>Add</button>
-							</form>
-							<hr>
-
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-danger" data-dismiss="modal">
-							<i class='fa fa-times btn-icon'></i>Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
+<div id="edit_resume" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-form" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title"></h1>
 			</div>
-			<!-- /.modal-dialog -->
+			<div class="modal-body">
+				<div id="edit_form_resume">
+				</div>
+				<div>
+					<form id="form_resume" class="form-horizontal" method="post">
+						<div id="form_content"></div>
+						<button type="submit" id="btnsubmit_resume" class="btn btn-primary">
+							<i class='fa fa-plus btn-icon'></i>Add</button>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">
+					<i class='fa fa-times btn-icon'></i>Close</button>
+			</div>
+			<!-- /.modal-content -->
 		</div>
-
+		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal-dialog -->
 </div>

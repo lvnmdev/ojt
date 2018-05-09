@@ -62,6 +62,8 @@ $(function () {
 					} else {
 
 					}
+					$('#user_profile_name').html(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
+
 				}
 
 			},
@@ -134,29 +136,29 @@ $(function () {
 	var form = '<div class="form-group">' +
 		'<input id="data_input" style="display:none;" name="data_input" class="form-control">' +
 
-		'<label id="super_input" class="label-control col-md-2"></label>' +
-		'<div class="col-md-6">' +
+		'<label id="super_input" class="label-control col-md-3" style="padding: 6px 12px;"></label>' +
+		'<div class="col-md-8">' +
 		'<input id="input" type="text" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form1">' +
-		'<label id="super_input1" class="label-control col-md-2"></label>' +
-		'<div class="col-md-6">' +
+		'<label id="super_input1" class="label-control col-md-3" style="padding: 6px 12px;"></label>' +
+		'<div class="col-md-8">' +
 		'<input id="input1" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form2">' +
-		'<label id="super_input2" class="label-control col-md-2"></label>' +
-		'<div class="col-md-6">' +
+		'<label id="super_input2" class="label-control col-md-3" style="padding: 6px 12px;"></label>' +
+		'<div class="col-md-8">' +
 		'<input id="input2" name="" class="form-control" >' +
 		'</div>' +
 		'</div>' +
 
 		'<div class="form-group" id="hide_form3">' +
-		'<label id="super_input3" class="label-control col-md-2"></label>' +
-		'<div class="col-md-6">' +
+		'<label id="super_input3" class="label-control col-md-3" style="padding: 6px 12px;"></label>' +
+		'<div class="col-md-8">' +
 		'<input id="input3" name="" class="form-control" >' +
 		'</div>' +
 		'</div>'
@@ -193,10 +195,12 @@ $(function () {
 				if (data.skills) {
 					var edit_skills = "";
 					for (i = 0; i < data.skills.length; i++) {
-						edit_skills += '<ul class="resume-list">' +
-							'<li>' + data.skills[i].skill + '&nbsp<span><button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
-
-							'</ul>';
+						edit_skills += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+							'<li>' + data.skills[i].skill + '</li>' +
+							'</div></ul>' +	
+							'<div class="col-xs-1 col-sm-1 col-md-1">' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'</div>';
 					}
 					$('#edit_form_resume').html(edit_skills);
 				}
@@ -239,14 +243,18 @@ $(function () {
 				var edit_workxp = '';
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
-						edit_workxp += '<ul class="resume-list">' +
-							'<li>' + data.workxp[i].position + '&nbsp<span><button class="resume-delete work-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+						edit_workxp += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+							'<li>' + data.workxp[i].position + '</li>' +
 
 
 							'<li>' + data.workxp[i].company + '</li>' +
 							'<li>' + data.workxp[i].date_start + '</li>' +
 							'<li>' + data.workxp[i].date_end + '</li>' +
-							'</ul>';
+							'</div></ul>' +
+							'<div class="col-xs-1 col-sm-1 col-md-1">' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'</div>';
+
 					}
 					$('#edit_form_resume').html(edit_workxp);
 				}
@@ -290,11 +298,14 @@ $(function () {
 				var edit_accomplishment = '';
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
-						edit_accomplishment += '<ul class="resume-list">' +
-							'<li>' + data.accomplishment[i].accomplishment + '&nbsp<span><button class="resume-delete acc-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+						edit_accomplishment += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+							'<li>' + data.accomplishment[i].accomplishment + '</li>' +
 
 							'<li>' + data.accomplishment[i].affiliation + '</li>' +
-							'</ul>';
+							'</div></ul>' +
+							'<div class="col-xs-1 col-sm-1 col-md-1">' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'</div>';
 					}
 					$('#edit_form_resume').html(edit_accomplishment);
 				}
@@ -336,13 +347,17 @@ $(function () {
 				var edit_education = '';
 				if (data.education) {
 					for (i = 0; i < data.education.length; i++) {
-						edit_education += '<ul class="resume-list">' +
-							'<li>' + data.education[i].level + '&nbsp<span><button class="resume-delete educ-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+						edit_education += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+							'<li>' + data.education[i].level + '</li>' +
 
 							'<li>' + data.education[i].school + '</li>' +
 							'<li>' + data.education[i].start + '</li>' +
 							'<li>' + data.education[i].graduated + '</li>' +
-							'</ul>';
+							'</div></ul>' +
+							'<div class="col-xs-1 col-sm-1 col-md-1">' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'</div>';
+
 					}
 					$('#edit_form_resume').html(edit_education);
 				}
@@ -387,12 +402,16 @@ $(function () {
 				var edit_seminars = '';
 				if (data.seminars) {
 					for (i = 0; i < data.seminars.length; i++) {
-						edit_seminars += '<ul class="resume-list">' +
-							'<li>' + data.seminars[i].seminar + '&nbsp<span><button class="resume-delete semi-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></a></span></li>' +
+						edit_seminars += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+							'<li>' + data.seminars[i].seminar + '</li>' +
 
 							'<li>' + data.seminars[i].seminar_date + '</li>' +
 							'<li>' + data.seminars[i].conductedby + '</li>' +
-							'</ul>';
+							'</div></ul>' +
+							'<div class="col-xs-1 col-sm-1 col-md-1">' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'</div>';
+
 					}
 					$('#edit_form_resume').html(edit_seminars);
 				}
