@@ -2,7 +2,9 @@
 $user = $this->session->userdata('username');
 $email = $this->session->userdata('email');
 $sql = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+$sql2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$user)->get();
 $query = $sql->row();
+$query2 = $sql2->row();
 $name = $query->fname.' '. $query->mname.' '. $query->lname;
 $h_address = $query->haddress;
 $c_address = $query->caddress;
@@ -205,7 +207,7 @@ $html = '<style>
     <div>
 
         <div style="width:50%;margin-right:0px;text-align:center;">
-            <img style="width:200px;height:200px;" src="C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$user.'_pic.png">
+            <img style="width:200px;height:200px;" src="C:/xampp/htdocs/ojt/'.$query2->photo_path.'">
 		</div>
 		<div>
                 <p>Name: '.$name.'</p>
