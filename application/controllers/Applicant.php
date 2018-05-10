@@ -148,7 +148,7 @@ class Applicant extends CI_Controller {
 
 	}
 	public function delete_resume(){
-		$data_input = $this->input->post('data_input');
+		$data_input = $this->input->post('field');
 		$msg['success'] = false;
 
 		switch ($data_input){

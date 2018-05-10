@@ -133,6 +133,7 @@ $(function () {
 	});
 	//For Biodata Functions End HERE!
 	//For Resume Functions Start HERE!
+	$('#btnsubmit_resume').attr('disabled', 'disabled');
 	var form = '<div class="form-group">' +
 		'<input id="data_input" style="display:none;" name="data_input" class="form-control">' +
 
@@ -162,7 +163,8 @@ $(function () {
 		'<input id="input3" name="" class="form-control" >' +
 		'</div>' +
 		'</div>'
-
+	var checker;
+	var checker1;
 	$('#addqual').click(function () {
 		$('#edit_form_resume').html('');
 		var i = 0;
@@ -184,6 +186,14 @@ $(function () {
 		});
 
 		$('#data_input').val('skill');
+		$('#input').keyup(function () {
+			var checker = $('#input').val();
+			if (checker.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
 
 		$.ajax({
 			type: 'ajax',
@@ -197,9 +207,9 @@ $(function () {
 					for (i = 0; i < data.skills.length; i++) {
 						edit_skills += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
 							'<li>' + data.skills[i].skill + '</li>' +
-							'</div></ul>' +	
+							'</div></ul>' +
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'<button class="resume-delete skill-delete" id="' + i + '" value="' + data.skills[i].skill_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
 					}
 					$('#edit_form_resume').html(edit_skills);
@@ -210,6 +220,9 @@ $(function () {
 			}
 		})
 	})
+
+
+
 
 	$('#addwork').click(function () {
 		$('#edit_form_resume').html('');
@@ -230,8 +243,30 @@ $(function () {
 		$('#input1').attr('name', 'company');
 		$('#input2').attr('name', 'date_start');
 		$('#input3').attr('name', 'date_end');
+		$('#input2').attr('required', 'required');
+		$('#input3').attr('required', 'required');
 
 		$('#data_input').val('work');
+
+
+
+		$('#input').keyup(function () {
+			checker = $('#input').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
+		$('#input1').keyup(function () {
+			checker1 = $('#input1').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
+
 
 		$.ajax({
 			type: 'ajax',
@@ -252,7 +287,7 @@ $(function () {
 							'<li>' + data.workxp[i].date_end + '</li>' +
 							'</div></ul>' +
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'<button class="resume-delete work-delete" id="' + i + '" value="' + data.workxp[i].work_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
 
 					}
@@ -287,7 +322,22 @@ $(function () {
 		$('#hide_form3').css({
 			'display': 'none'
 		});
-
+		$('#input').keyup(function () {
+			checker = $('#input').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
+		$('#input1').keyup(function () {
+			checker1 = $('#input1').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -304,7 +354,7 @@ $(function () {
 							'<li>' + data.accomplishment[i].affiliation + '</li>' +
 							'</div></ul>' +
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'<button class="resume-delete acc-delete" id="' + i + '" value="' + data.accomplishment[i].accomplishment_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
 					}
 					$('#edit_form_resume').html(edit_accomplishment);
@@ -329,6 +379,8 @@ $(function () {
 		$('#input1').attr('type', 'text');
 		$('#input2').attr('type', 'date');
 		$('#input3').attr('type', 'date');
+		$('#input2').attr('required', 'required');
+		$('#input3').attr('required', 'required');
 
 		$('#input').attr('name', 'level');
 		$('#input1').attr('name', 'school');
@@ -336,7 +388,22 @@ $(function () {
 		$('#input3').attr('name', 'graduate');
 
 		$('#data_input').val('education');
-
+		$('#input').keyup(function () {
+			checker = $('#input').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
+		$('#input1').keyup(function () {
+			checker1 = $('#input1').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -355,7 +422,7 @@ $(function () {
 							'<li>' + data.education[i].graduated + '</li>' +
 							'</div></ul>' +
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'<button class="resume-delete educ-delete" id="' + i + '" value="' + data.education[i].educ_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
 
 					}
@@ -384,6 +451,7 @@ $(function () {
 
 		$('#input').attr('name', 'seminar');
 		$('#input1').attr('name', 'seminar_date');
+		$('#input1').attr('required', 'required');
 		$('#input2').attr('name', 'conductedby');
 
 		$('#data_input').val('seminar');
@@ -391,7 +459,22 @@ $(function () {
 		$('#hide_form3').css({
 			'display': 'none'
 		});
-
+		$('#input').keyup(function () {
+			checker = $('#input').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
+		$('#input2').keyup(function () {
+			checker1 = $('#input2').val();
+			if (checker.length > 0 && checker1.length > 0) {
+				$('#btnsubmit_resume').removeAttr('disabled');
+			} else {
+				$('#btnsubmit_resume').attr('disabled', 'disabled');
+			}
+		});
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -409,7 +492,7 @@ $(function () {
 							'<li>' + data.seminars[i].conductedby + '</li>' +
 							'</div></ul>' +
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + i + '"><i class="fa fa-times"></i></button>' +
+							'<button class="resume-delete semi-delete" id="' + i + '" value="' + data.seminars[i].seminar_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
 
 					}
@@ -424,6 +507,7 @@ $(function () {
 	})
 
 	$('#form_resume').submit(function () {
+		$("#btnsubmit_resume").attr("disabled", "disabled");
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
 		$.ajax({
@@ -445,11 +529,7 @@ $(function () {
 			}
 		});
 	})
-	$('#btnsubmit_resume').click(function () {
-		$('#btnsubmit_resume').click(function () {
-			$("#btnsubmit_resume").attr("disabled", "disabled");
-		});
-	})
+
 	var info;
 	$(".btn-info").click(function (e) {
 		if (!info.success || !info.seminars || !info.accomplishment || !info.skills || !info.workxp || !info.education) {
@@ -467,7 +547,7 @@ $(function () {
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
-				info = data;				
+				info = data;
 				if (!data.success) {
 					$('#ze_question').modal('show');
 					$(".btn-info").attr("disabled", "disabled");
@@ -539,7 +619,7 @@ $(function () {
 					$(".btn-info").attr("disabled", "disabled");
 				}
 
-				
+
 
 			},
 			error: function () {
@@ -648,21 +728,134 @@ $(function () {
 	$(document).on('click', '.skill-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'delete_resume',
+			data: {
+				id: id,
+				field: 'skill'
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response) {
+					alert('deleted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
 	});
 	$(document).on('click', '.educ-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'delete_resume',
+			data: {
+				id: id,
+				field: 'education'
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+
+					alert('deleted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
 	});
 	$(document).on('click', '.work-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'delete_resume',
+			data: {
+				id: id,
+				field: 'work'
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					alert('deleted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
 	});
 	$(document).on('click', '.semi-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'delete_resume',
+			data: {
+				id: id,
+				field: 'seminar'
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+
+					alert('deleted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
 	});
 	$(document).on('click', '.acc-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'delete_resume',
+			data: {
+				id: id,
+				field: 'accomplishment'
+			},
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+
+					alert('deleted');
+					location.reload();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
 	});
 });

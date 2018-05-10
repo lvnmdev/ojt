@@ -171,6 +171,51 @@ class Applicant_m extends CI_Model {
 		        }
             
         }
+        public function delete_workxp(){
+                $id = $this->input->post('id');
+        		$this->db->where('work_id', $id);
+		        $this->db->delete('tbl_resume_workxp');
+		        if($this->db->affected_rows() > 0){
+			        return true;
+		        }else{
+			        return false;
+		        }
+            
+        }
+        public function delete_education(){
+                $id = $this->input->post('id');
+        		$this->db->where('educ_id', $id);
+		        $this->db->delete('tbl_resume_education');
+		        if($this->db->affected_rows() > 0){
+			        return true;
+		        }else{
+			        return false;
+		        }
+            
+        }
+        public function delete_accomplishment(){
+                $id = $this->input->post('id');
+        		$this->db->where('accomplishment_id', $id);
+		        $this->db->delete('tbl_resume_accomplishment');
+		        if($this->db->affected_rows() > 0){
+			        return true;
+		        }else{
+			        return false;
+		        }
+            
+        }
+        public function delete_seminars(){
+                $id = $this->input->post('id');
+        		$this->db->where('seminar_id', $id);
+		        $this->db->delete('tbl_resume_seminars');
+		        if($this->db->affected_rows() > 0){
+			        return true;
+		        }else{
+			        return false;
+		        }
+            
+        }
+   
 
 
         public function show_available_jobs(){
@@ -206,7 +251,7 @@ class Applicant_m extends CI_Model {
                 
             }
         }
-
+/////////////////////////////////////////////////////////////Dashboard and Settings Functionals
         public function count_dashboard(){
             $user = $this->session->userdata('username');
             $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';

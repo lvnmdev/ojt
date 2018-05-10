@@ -16,7 +16,7 @@
 								<div class="col-xs-12 col-sm-12 col-md-6">
 									<div class="col-xs-12 col-sm-3 col-md-4">
 										<div class="user-profile-pic">
-											<img id="prof_pic1" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-responsive">
+											<img style = "height:100%;" id="prof_pic1" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-responsive">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-9 col-md-8">
