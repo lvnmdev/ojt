@@ -44,6 +44,7 @@ $(function () {
 		}, 0)
 	})
 	//For Biodata Functions Start HERE!
+	var gender;
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -55,6 +56,7 @@ $(function () {
 				var html = '';
 				console.log(response);
 				if (response.success) {
+					gender = response.data.sex;
 					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 					$("#user_sex").val(response.data.sex);
 					$("#user_birthdate").val(response.data.birthdate);
@@ -655,7 +657,7 @@ $(function () {
 				var i;
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
-						html += '<tr>' +
+						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either'){html += '<tr>' +
 							'<td>' + response.data[i].comp_name + '</td>' +
 							'<td>' + response.data[i].position + '</td>' +
 							'<td>' + response.data[i].no_applicants + '</td>' +
@@ -666,7 +668,7 @@ $(function () {
 							'<td>' + response.data[i].date_posted + '</td>' +
 							'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
 							'</tr>'
-					}
+					}}
 					$('#show_jobs').html(html)
 				}
 			},
