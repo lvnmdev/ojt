@@ -7,7 +7,7 @@ class Admin_m extends CI_Model {
     }
 
     public function show_company() {
-      $query = $this->db->select('*')->from('tbl_company_info')->get();
+      $query = $this->db->select('*')->from('tbl_company_info')->join('tbl_users','tbl_company_info.user_name = tbl_users.user_name','inner')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
@@ -23,7 +23,7 @@ class Admin_m extends CI_Model {
     }
 
     public function show_applicant() {
-      $query = $this->db->select('*')->from('tbl_applicant_bio')->get();
+      $query =  $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
@@ -39,7 +39,7 @@ class Admin_m extends CI_Model {
     }                                                   
 
     public function show_pending_company() {
-      $query = $this->db->select('*')->from('tbl_users')->where('user_status','1')->where('user_type','1')->get();
+      $query = $this->db->select('*')->from('tbl_company_info')->join('tbl_users','tbl_company_info.user_name = tbl_users.user_name','inner')->where('user_status','1')->where('user_type','1')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
@@ -55,7 +55,7 @@ class Admin_m extends CI_Model {
     }
 
     public function show_pending_applicant() {
-      $query = $this->db->select('*')->from('tbl_users')->where('user_status','1')->where('user_type','2')->get();
+      $query = $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->where('user_status','1')->where('user_type','2')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
@@ -73,11 +73,15 @@ class Admin_m extends CI_Model {
     public function notification() {
         $count_applicant = $this->db->query('SELECT COUNT(user_id) as "count_applicant" FROM tbl_users WHERE `user_type` = "2" GROUP BY user_type ');
         $count_company = $this->db->query('SELECT COUNT(user_id) as "count_company" FROM tbl_users WHERE `user_type` = "1" GROUP BY user_type');
+        $count_p_applicant = $this->db->query('SELECT COUNT(user_id) as "count_p_applicant" FROM tbl_users WHERE `user_type` = "2" AND `user_status` = "1" GROUP BY user_type ');
+        $count_p_company = $this->db->query('SELECT COUNT(user_id) as "count_p_company" FROM tbl_users WHERE `user_type` = "1" AND `user_status` = "1" GROUP BY user_type');
 
-        if ($count_applicant && $count_company) {
+        if ($count_applicant && $count_company && $count_p_applicant && $count_p_company) {
             $result[0] = true;
             $result[1] = $count_applicant->result();
             $result[2] = $count_company->result();
+            $result[3] = $count_p_applicant->result();
+            $result[4] = $count_p_company->result();
 
             return $result;
         }

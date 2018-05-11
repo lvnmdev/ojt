@@ -31,6 +31,18 @@ $(function () {
 			}
 		});
 	}
+	var image = 0;
+	$('.btn-default').attr('disabled', 'disabled');
+	$('#image').click(function () {
+		$('.btn-default').removeAttr('disabled');
+		setInterval(function () {
+			if ($('#image').val().length < 1) {
+				$('.btn-default').attr('disabled', 'disabled');
+			} else {
+				$('.btn-default').removeAttr('disabled');
+			}
+		}, 0)
+	})
 	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({

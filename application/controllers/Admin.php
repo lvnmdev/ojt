@@ -85,6 +85,8 @@ class Admin extends CI_Controller {
 			$msg['success'] = true;
 			$msg['count_applicant'] = $result[1];
 			$msg['count_company'] = $result[2];
+			$msg['count_p_applicant'] = $result[3];
+			$msg['count_p_company'] = $result[4];
 		}
 		echo json_encode($msg);
 	}

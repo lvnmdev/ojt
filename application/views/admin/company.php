@@ -19,6 +19,9 @@
 									<th>Company Name</th>
 									<th>Company Description</th>
 									<th>Company HR</th>
+									<th>Company Email</th>
+									<th>Contact Number</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody id="show_company">

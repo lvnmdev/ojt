@@ -20,6 +20,9 @@
 									<th>Username</th>
 									<th>Name</th>
 									<th>Sex</th>
+									<th>Email</th>
+									<th>Contact Number</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody id="show_applicant">

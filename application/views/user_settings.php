@@ -13,20 +13,23 @@
 					<div class='card-content'>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-6">
-									<div class="col-xs-12 col-sm-3 col-md-4">
-										<div class="user-profile-pic">
-											<img style = "height:100%;" id="prof_pic1" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-responsive">
+								<div class="col-xs-12 col-sm-12 col-md-8">
+									<div class="row">
+										<div class="col-xs-12 col-sm-3 col-md-4 col-lg-3">
+											<div class="user-profile-pic">
+												<img style="height:100%;" id="prof_pic1" src="<?= base_url('assets/img/icons/default-profile.png') ?>" alt="Profile" class="img img-responsive">
+											</div>
 										</div>
-									</div>
-									<div class="col-xs-12 col-sm-9 col-md-8">
-										<div class="user-profile-details">
-											<h1 id="user_profile_name">
+										<div class="col-xs-12 col-sm-9 col-md-8 col-lg-9">
+											<div class="user-profile-details">
+												<h1 id="user_profile_name">
 
-											</h1>
-											<h3>
-												(<?= $this->session->userdata('username')?>)
-											</h3>
+												</h1>
+												<h3>
+													(
+													<?= $this->session->userdata('username')?>)
+												</h3>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -46,7 +49,7 @@
 												</div>
 												<div class="input-group-btn">
 													<button type="submit" name="submit" class="btn btn-default">
-														<i class="fa fa-upload"></i> Upload Image</button>
+														<i class="fa fa-upload"></i> Upload</button>
 												</div>
 											</div>
 										</form>

@@ -16,8 +16,12 @@
 						<table id='table_id' class='table table-striped table-hover'>
 							<thead>
 								<tr>
-									<th>Username</th>
-									<th>Email</th>
+									<th>Company Name</th>
+									<th>Company Description</th>
+									<th>Company Email</th>
+									<th>Company Permit</th>
+									<th>Company TIN</th>
+									<th>Operational Date</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
