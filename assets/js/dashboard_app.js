@@ -557,7 +557,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
@@ -584,6 +584,7 @@ $(function () {
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
 				}
+				
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
 						accomplishments += '<ul class="resume-list">' +
