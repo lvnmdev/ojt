@@ -1,3 +1,5 @@
+	var job_ids = [];
+
 $(function () {
 	show_bio_data();
 	show_resume();
@@ -46,6 +48,7 @@ $(function () {
 	})
 	//For Biodata Functions Start HERE!
 	var gender;
+
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -585,7 +588,7 @@ $(function () {
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
 				}
-				
+
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
 						accomplishments += '<ul class="resume-list">' +
@@ -646,6 +649,7 @@ $(function () {
 
 
 
+
 	function show_available_jobs() {
 		$.ajax({
 			type: 'ajax',
@@ -659,18 +663,25 @@ $(function () {
 				var i;
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
-						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either'){html += '<tr>' +
-							'<td>' + response.data[i].comp_name + '</td>' +
-							'<td>' + response.data[i].position + '</td>' +
-							'<td>' + response.data[i].no_applicants + '</td>' +
-							'<td>' + response.data[i].pref_sex + '</td>' +
-							'<td>' + response.data[i].pref_civstat + '</td>' +
-							'<td>' + response.data[i].pref_educ + '</td>' +
-							'<td>' + response.data[i].requirements + '</td>' +
-							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
-							'</tr>'
-					}}
+						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either') {
+							for (j = 0; j < job_ids.length; i++) {
+								if (response.data[i].job_id != job_ids[j]) {
+									html += '<tr>' +
+										'<td>' + response.data[i].comp_name + '</td>' +
+										'<td>' + response.data[i].position + '</td>' +
+										'<td>' + response.data[i].no_applicants + '</td>' +
+										'<td>' + response.data[i].pref_sex + '</td>' +
+										'<td>' + response.data[i].pref_civstat + '</td>' +
+										'<td>' + response.data[i].pref_educ + '</td>' +
+										'<td>' + response.data[i].requirements + '</td>' +
+										'<td>' + response.data[i].date_posted + '</td>' +
+										'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
+										'</tr>'
+
+								}
+							}
+						}
+					}
 					$('#show_jobs').html(html)
 				}
 			},
@@ -681,6 +692,8 @@ $(function () {
 	}
 
 	function show_ongoing_applications() {
+		var job_id = [];
+
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -693,15 +706,16 @@ $(function () {
 				var i;
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
+						job_id.push(response.data[i].job_id);
 						html += '<tr>' +
-						'<td>' + response.data[i].comp_name + '</td>' +
-						'<td>' + response.data[i].comp_hr + '</td>' +
-						'<td>' + response.data[i].position + '</td>' +
-						'<td>' + response.data[i].requirements + '</td>' +
-						'<td>' + response.data[i].date_posted + '</td>' +
-						'<td>' + response.data[i].date_applied + '</td>' +
-						'<td><button class="btn btn-danger" value="' + response.data[i].job_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
-						'</tr>'
+							'<td>' + response.data[i].comp_name + '</td>' +
+							'<td>' + response.data[i].comp_hr + '</td>' +
+							'<td>' + response.data[i].position + '</td>' +
+							'<td>' + response.data[i].requirements + '</td>' +
+							'<td>' + response.data[i].date_posted + '</td>' +
+							'<td>' + response.data[i].date_applied + '</td>' +
+							'<td><button class="btn btn-danger" value="' + response.data[i].job_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
+							'</tr>'
 					}
 					$('#show_ongoing_application').html(html)
 				}
@@ -710,6 +724,8 @@ $(function () {
 				alert('Error');
 			}
 		});
+		job_ids = job_id;
+		console.log(job_ids);
 	}
 
 	var job_id_app;
