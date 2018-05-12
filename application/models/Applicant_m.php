@@ -142,18 +142,22 @@ class Applicant_m extends CI_Model {
 
         }
         if($query2->num_rows()>0){
+            $result[0] = true;
             $result[2] = $query2->result();
 
         }
         if($query3->num_rows()>0){
+            $result[0] = true;
             $result[3] = $query3->result();
 
         }
         if($query4->num_rows()>0){
+            $result[0] = true;
             $result[4] = $query4->result();
 
         }
         if($query5->num_rows()>0){
+            $result[0] = true;
             $result[5] = $query5->result();
 
         }
