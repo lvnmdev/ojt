@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class='card-content'>
 				<p class='path-nav'>
-					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
+					<a href="<?= base_url("Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Application</p>
 			</div>
 			<div class='card-content'>

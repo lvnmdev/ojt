@@ -39,8 +39,8 @@ class Applicant extends CI_Controller {
 		$this->load->view('templates/applicant/content', $data);
 	}
 
-	public function pending_application() {
-		$data['content'] = 'applicant/pending_application';
+	public function ongoing_application() {
+		$data['content'] = 'applicant/ongoing_application';
         
 		$this->load->view('templates/applicant/content', $data);
 	}
@@ -191,6 +191,18 @@ class Applicant extends CI_Controller {
 				$msg['operation'] = 'failed';
 				
        
+		}
+		echo json_encode($msg);
+	}
+
+	//ongoing application
+
+	public function show_ongoing_applications(){
+		$result = $this->applicant->show_ongoing_applications();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
 		}
 		echo json_encode($msg);
 	}

@@ -53,7 +53,19 @@ class Company extends CI_Controller {
 
 
 	//Functional 
-	public function show_info(){
+	public function notification() {
+		$result = $this->company->notification();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['count_p_jobs'] = $result[1];
+			$msg['count_p_apps'] = $result[2];
+		}
+
+		echo json_encode($msg);
+	}
+
+	public function show_info() {
 		$result = $this->company->show_info();
 		$msg['success'] = false;
 		if($result[0]){
@@ -63,8 +75,8 @@ class Company extends CI_Controller {
 		}
 
 		echo json_encode($msg);
-		
 	}
+
 	public function edit_info(){
 		$result = $this->company->edit_info();
 		$msg['success'] = false;

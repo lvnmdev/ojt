@@ -5,6 +5,27 @@ $(function () {
 	show_job_postings();
 	show_pending_applications();
 
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'notification',
+		async: true,
+		dataType: 'json',
+		success: function (response) {
+			var posted_jobs_no = response.count_p_jobs[0].count_p_jobs;
+			var pending_app_no = response.count_p_apps[0].count_p_apps;
+
+			if (response.success) {
+				$('#pending_app_no').html(pending_app_no);
+				$('#posted_jobs_no').html(posted_jobs_no);
+			}
+		},
+		error: function () {
+
+		}
+	})
+
+
 	function show_comp_info() {
 		$.ajax({
 			type: 'ajax',
@@ -276,7 +297,7 @@ $(function () {
 							'<td>' + response.data[i].position + '</td>' +
 							'<td>' + response.data[i].sex + '</td>' +
 							'<td>' + response.data[i].date_applied + '</td>' +
-							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '"><i class="fa fa-edit"></i> Hire</button>&nbsp<button value="' + response.data[i].job_id + '" class="btn btn-danger delete"><i class="fa fa-times-circle"></i> Deny Application</button></td>' +
+							'<td><button class="btn btn-primary" value="' + response.data[i].job_id + '"><i class="fa fa-eye"></i> View</button></td>' +
 							'</tr>'
 					}
 					$('#show_applicants').html(html)
