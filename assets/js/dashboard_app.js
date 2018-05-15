@@ -3,10 +3,8 @@
 	$(function () {
 		show_bio_data();
 		show_resume();
-		show_available_jobs();
 		show_ongoing_applications();
 		count_dashboard();
-		var gender;
 
 		function count_dashboard() {
 			var html = '';
@@ -84,7 +82,7 @@
 						$('#user_profile_name').html(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 						show_available_jobs(gender);
 
-					
+
 					}
 
 				},
@@ -92,7 +90,6 @@
 					alert('Error');
 				}
 			});
-			console.log(gender);
 		}
 
 		$('#btnedit_bio').click(function () {
@@ -211,7 +208,10 @@
 			$('#input').keyup(function () {
 				var checker = $('#input').val();
 				if (checker.length > 0) {
-					$('#btnsubmit_resume').removeAttr('disabled');
+					if (/^[a-zA-Z0-9- ]*$/.test(checker) == true) {
+						$('#btnsubmit_resume').removeAttr('disabled');
+
+					}
 				} else {
 					$('#btnsubmit_resume').attr('disabled', 'disabled');
 				}
@@ -283,6 +283,9 @@
 			$('#input1').keyup(function () {
 				checker1 = $('#input1').val();
 				if (checker.length > 0 && checker1.length > 0) {
+					if (/^[a-zA-Z0-9- ]*$/.test(checker) == false) {
+						$('#btn_submit_resume').attr('disabled', 'disabled');
+					}
 					$('#btnsubmit_resume').removeAttr('disabled');
 				} else {
 					$('#btnsubmit_resume').attr('disabled', 'disabled');
@@ -655,7 +658,7 @@
 
 
 		function show_available_jobs(gender) {
-			var sex = gender;
+			console.log(gender)
 			$.ajax({
 				type: 'ajax',
 				method: 'get',
@@ -666,24 +669,21 @@
 					console.log(response.data);
 					var html = '';
 					var i;
-					if (response.data != null) {
+					if (response.data) {
 						for (i = 0; i < response.data.length; i++) {
 							if (gender == response.data[i].pref_sex || response.data[i].pref_sex == "Either") {
-								for (var j = 0; j < job_ids.length; j++) {
-									if (response.data[i].job_id != job_ids[j]) {
-										html += '<tr>' +
-											'<td>' + response.data[i].comp_name + '</td>' +
-											'<td>' + response.data[i].position + '</td>' +
-											'<td>' + response.data[i].no_applicants + '</td>' +
-											'<td>' + response.data[i].pref_sex + '</td>' +
-											'<td>' + response.data[i].pref_civstat + '</td>' +
-											'<td>' + response.data[i].pref_educ + '</td>' +
-											'<td>' + response.data[i].requirements + '</td>' +
-											'<td>' + response.data[i].date_posted + '</td>' +
-											'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
-											'</tr>'
-
-									}
+								if (jQuery.inArray(response.data[i].job_id, job_ids) < 0) {
+									html += '<tr>' +
+										'<td>' + response.data[i].comp_name + '</td>' +
+										'<td>' + response.data[i].position + '</td>' +
+										'<td>' + response.data[i].no_applicants + '</td>' +
+										'<td>' + response.data[i].pref_sex + '</td>' +
+										'<td>' + response.data[i].pref_civstat + '</td>' +
+										'<td>' + response.data[i].pref_educ + '</td>' +
+										'<td>' + response.data[i].requirements + '</td>' +
+										'<td>' + response.data[i].date_posted + '</td>' +
+										'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
+										'</tr>'
 								}
 							}
 						}
@@ -732,12 +732,10 @@
 			job_ids = job_id;
 			console.log(job_ids);
 		}
-
-		var job_id_app;
-		$('.apply').click(function (e) {
-			job_id_app = $(e.currentTarget).val();
+		$(document).on('click', '.apply', function (e) {
 			$('#apply_job').modal('show');
 			$('.modal-title').text('Confirm Apply');
+			job_id_app = $(e.currentTarget).val();
 			$.ajax({
 				type: 'ajax',
 				method: 'get',
@@ -768,7 +766,9 @@
 					alert('Error');
 				}
 			})
-		})
+
+
+		});
 
 		$('#confirm_app').click(function () {
 			var job_id = job_id_app;
