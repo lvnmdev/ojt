@@ -63,6 +63,10 @@
 </div>
 <!-- /.modal-dialog -->
 </div>
+<br>
+<br>
+<br>
+<br>
 <script>
 	var page_info = 'application';
 
