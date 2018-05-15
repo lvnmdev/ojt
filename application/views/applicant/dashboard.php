@@ -18,7 +18,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-4">
-									<a href='<?= base_url("Applicant/pending_application")?>'>
+									<a href='<?= base_url("Applicant/ongoing_application")?>'>
 										<div class='dashboard-badge'>
 											<span id='applications_count' class='dashboard-badge-no'></span>
 										</div>

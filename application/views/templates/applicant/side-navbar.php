@@ -18,6 +18,10 @@
 			<li>
 				<i class='fa fa-paperclip nav-icon'></i>Application</li>
 		</a>
+		<a href="<?= base_url('Applicant/ongoing_application');?>">
+			<li>
+				<i class='fa fa-clipboard-list nav-icon'></i>Ongoing Application</li>
+		</a>
 		<a href="<?= base_url('Applicant/biodata');?>">
 			<li>
 				<i class='fa fa-address-book nav-icon'></i>Biodata</li>

@@ -95,8 +95,10 @@
 						</div>
 					</div>
 					<div class='card-footer'>
-						<a id="btnedit_bio" type="button" class="btn btn-success">
-							<i class='fa fa-edit btn-icon'></i>Edit</a>
+						<div class="row">
+							<a id="btnedit_bio" type="button" class="btn btn-success">
+								<i class='fa fa-edit btn-icon'></i>Edit</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -226,7 +228,7 @@
 							</div>
 						</div>
 					</div>
-					<div>
+					<div class="modal-footer" style="padding-bottom:0;">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">
 							<i class='fa fa-times btn-icon'></i>Cancel</button>
 						<button type="submit" id="btnsubmit_bio" class="btn btn-primary">

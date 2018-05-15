@@ -1,7 +1,10 @@
+	var job_ids = [];
+
 $(function () {
 	show_bio_data();
 	show_resume();
 	show_available_jobs();
+	show_ongoing_applications();
 	count_dashboard();
 
 	function count_dashboard() {
@@ -647,6 +650,7 @@ $(function () {
 
 
 
+
 	function show_available_jobs() {
 		$.ajax({
 			type: 'ajax',
@@ -661,17 +665,22 @@ $(function () {
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
 						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either') {
-							html += '<tr>' +
-								'<td>' + response.data[i].comp_name + '</td>' +
-								'<td>' + response.data[i].position + '</td>' +
-								'<td>' + response.data[i].no_applicants + '</td>' +
-								'<td>' + response.data[i].pref_sex + '</td>' +
-								'<td>' + response.data[i].pref_civstat + '</td>' +
-								'<td>' + response.data[i].pref_educ + '</td>' +
-								'<td>' + response.data[i].requirements + '</td>' +
-								'<td>' + response.data[i].date_posted + '</td>' +
-								'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
-								'</tr>'
+							for (j = 0; j < job_ids.length; i++) {
+								if (response.data[i].job_id != job_ids[j]) {
+									html += '<tr>' +
+										'<td>' + response.data[i].comp_name + '</td>' +
+										'<td>' + response.data[i].position + '</td>' +
+										'<td>' + response.data[i].no_applicants + '</td>' +
+										'<td>' + response.data[i].pref_sex + '</td>' +
+										'<td>' + response.data[i].pref_civstat + '</td>' +
+										'<td>' + response.data[i].pref_educ + '</td>' +
+										'<td>' + response.data[i].requirements + '</td>' +
+										'<td>' + response.data[i].date_posted + '</td>' +
+										'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
+										'</tr>'
+
+								}
+							}
 						}
 					}
 					$('#show_jobs').html(html)
@@ -682,6 +691,44 @@ $(function () {
 			}
 		});
 	}
+
+	function show_ongoing_applications() {
+		var job_id = [];
+
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_ongoing_applications',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response.data);
+				var html = '';
+				var i;
+				if (response.data) {
+					for (i = 0; i < response.data.length; i++) {
+						job_id.push(response.data[i].job_id);
+						html += '<tr>' +
+							'<td>' + response.data[i].comp_name + '</td>' +
+							'<td>' + response.data[i].comp_hr + '</td>' +
+							'<td>' + response.data[i].position + '</td>' +
+							'<td>' + response.data[i].requirements + '</td>' +
+							'<td>' + response.data[i].date_posted + '</td>' +
+							'<td>' + response.data[i].date_applied + '</td>' +
+							'<td><button class="btn btn-danger" value="' + response.data[i].job_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
+							'</tr>'
+					}
+					$('#show_ongoing_application').html(html)
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+		job_ids = job_id;
+		console.log(job_ids);
+	}
+
 	var job_id_app;
 	$('.apply').click(function (e) {
 		job_id_app = $(e.currentTarget).val();

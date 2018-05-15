@@ -20,7 +20,7 @@
 								<div class="col-md-4">
 									<a href='<?= base_url("Applicant/pending_application")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='pending_app_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
@@ -41,7 +41,7 @@
 								<div class="col-md-4">
 									<a href='<?= base_url("Applicant/application")?>'>
 										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
+											<span id='posted_jobs_no' class='dashboard-badge-no'></span>
 										</div>
 									</a>
 								</div>
