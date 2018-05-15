@@ -218,7 +218,7 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
-
+//////////////////////////////Dashboard Functionals!
 	public function count_dashboard(){
 		$result = $this->applicant->count_dashboard();
 		$msg['success'] = false;
@@ -230,7 +230,18 @@ class Applicant extends CI_Controller {
 
 		echo json_encode($msg);
 	}
-
+//////////////////////////////////////////FOR EDITING LOGIN CREDENTIALS!
+	public function edit_username(){
+		$result = $this->applicant->change_username();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+			$_SESSION['username'] = $this->input->post('new_user');
+		}
+		echo json_encode($msg);
+       
+	}
+//////////////////////////////////////////For PDF PURPOSES!
 	public function to_pdf(){
 		$result = $this->applicant->show_resume();
 		$msg['success'] = false;

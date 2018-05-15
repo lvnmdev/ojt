@@ -297,4 +297,19 @@ class Applicant_m extends CI_Model {
                 move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
             }
         }
+
+/////////////////////////////////////////////////////CHANGE Login Credentials Baby!
+        public function change_username(){
+            $user = $this->session->userdata('username');
+            $user_name = $this->input->post('user_name');
+            var_dump($user_name);
+            $this->db->query('UPDATE `tbl_user` SET `user_name`=$user_name WHERE `user_name` = $user');
+            if($this->db->affected_rows()>0){
+                return true;
+            }else{
+                return false;
+            }
+
+
+        }
 }

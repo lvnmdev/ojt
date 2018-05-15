@@ -45,6 +45,7 @@ $(function () {
 	})
 	//For Biodata Functions Start HERE!
 	var gender;
+
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -57,6 +58,7 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 					gender = response.data.sex;
+					console.log(gender);
 					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 					$("#user_sex").val(response.data.sex);
 					$("#user_birthdate").val(response.data.birthdate);
@@ -584,7 +586,7 @@ $(function () {
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
 				}
-				
+
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
 						accomplishments += '<ul class="resume-list">' +
@@ -658,18 +660,20 @@ $(function () {
 				var i;
 				if (response.data) {
 					for (i = 0; i < response.data.length; i++) {
-						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either'){html += '<tr>' +
-							'<td>' + response.data[i].comp_name + '</td>' +
-							'<td>' + response.data[i].position + '</td>' +
-							'<td>' + response.data[i].no_applicants + '</td>' +
-							'<td>' + response.data[i].pref_sex + '</td>' +
-							'<td>' + response.data[i].pref_civstat + '</td>' +
-							'<td>' + response.data[i].pref_educ + '</td>' +
-							'<td>' + response.data[i].requirements + '</td>' +
-							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
-							'</tr>'
-					}}
+						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == 'Either') {
+							html += '<tr>' +
+								'<td>' + response.data[i].comp_name + '</td>' +
+								'<td>' + response.data[i].position + '</td>' +
+								'<td>' + response.data[i].no_applicants + '</td>' +
+								'<td>' + response.data[i].pref_sex + '</td>' +
+								'<td>' + response.data[i].pref_civstat + '</td>' +
+								'<td>' + response.data[i].pref_educ + '</td>' +
+								'<td>' + response.data[i].requirements + '</td>' +
+								'<td>' + response.data[i].date_posted + '</td>' +
+								'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
+								'</tr>'
+						}
+					}
 					$('#show_jobs').html(html)
 				}
 			},
@@ -873,4 +877,63 @@ $(function () {
 		});
 
 	});
+
+	///////////////////////////////Change Functionalities
+	$('#change_user').attr('disabled', 'disabled');
+	$('#change_pass').attr('disabled', 'disabled');
+
+	$('#new_user').keyup(function () {
+		var checker = $('#new_user').val();
+
+		$('#illegal_user').css({
+			'display': 'none'
+		});
+		if (checker.length > 0) {
+			if (/^[a-zA-Z0-9- ]*$/.test(checker) == false) {
+				$('#change_user').attr('disabled', 'disabled');
+				$('#illegal_user').removeAttr('style');
+				$('#illegal_user').html('Your username contains illegal characters.');
+			} else {
+				$('#change_user').removeAttr('disabled');
+			}
+
+		} else {
+			$('#change_user').attr('disabled', 'disabled');
+		}
+	});
+
+
+	$("#form_change_user").submit(function () {
+		var formData = $('#form_change_user').serialize();
+		console.log(formData);
+		$.ajax({
+			type: 'ajax',
+			method: 'post',
+			url: 'edit_username',
+			data: formData,
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					alert('data inserted');
+				} else {
+					alert('data not inserted');
+				}
+
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
+
+	})
+
+
+
+
+
+
+
 });

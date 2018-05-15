@@ -68,15 +68,14 @@
 								<h1>Change Username</h1>
 							</div>
 							<div class="card-body">
-								<form method="post" class="form-group">
-									<label for="">Username:</label>
-									<input type="username" class="form-control" required>
+								<form id="form_change_user" class="form-group">
+									<p id="illegal_user" class="alert alert-danger" style="display:none"></p>
+									<label for="">Current Username:</label>
+									<p><?= $this->session->userdata('username')?></p>
 									<label for="">New Username:</label>
-									<input type="username" class="form-control" required>
-									<label for="">Password:</label>
-									<input type="username" class="form-control" required>
+									<input type="text" id="new_user" name="user_name" class="form-control" required>
 									<div class="card-footer" style="padding-left:0;">
-										<button type="submit" class="btn btn-primary">
+										<button id="change_user" type="submit" class="btn btn-primary">
 											<i class="fa fa-location-arrow"></i> Change</button>
 									</div>
 								</form>
@@ -99,7 +98,7 @@
 									<label for="">Confirm New Password</label>
 									<input type="password" class="form-control" required>
 									<div class="card-footer" style="padding-left:0;">
-										<button type="submit" class="btn btn-primary">
+										<button id="change_pass" type="submit" class="btn btn-primary">
 											<i class="fa fa-location-arrow"></i> Change</button>
 									</div>
 								</form>
