@@ -179,58 +179,58 @@ class Applicant_m extends CI_Model {
     }
         
     public function delete_skill(){
-            $id = $this->input->post('id');
-            $this->db->where('skill_id', $id);
-            $this->db->delete('tbl_resume_skills');
-            if($this->db->affected_rows() > 0){
-                return true;
-            }else{
-                return false;
-            }
+        $id = $this->input->post('id');
+        $this->db->where('skill_id', $id);
+        $this->db->delete('tbl_resume_skills');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
         
     }
     public function delete_workxp(){
-            $id = $this->input->post('id');
-            $this->db->where('work_id', $id);
-            $this->db->delete('tbl_resume_workxp');
-            if($this->db->affected_rows() > 0){
-                return true;
-            }else{
-                return false;
-            }
+        $id = $this->input->post('id');
+        $this->db->where('work_id', $id);
+        $this->db->delete('tbl_resume_workxp');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
         
     }
     public function delete_education(){
-            $id = $this->input->post('id');
-            $this->db->where('educ_id', $id);
-            $this->db->delete('tbl_resume_education');
-            if($this->db->affected_rows() > 0){
-                return true;
-            }else{
-                return false;
-            }
+        $id = $this->input->post('id');
+        $this->db->where('educ_id', $id);
+        $this->db->delete('tbl_resume_education');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
         
     }
     public function delete_accomplishment(){
-            $id = $this->input->post('id');
-            $this->db->where('accomplishment_id', $id);
-            $this->db->delete('tbl_resume_accomplishment');
-            if($this->db->affected_rows() > 0){
-                return true;
-            }else{
-                return false;
-            }
+        $id = $this->input->post('id');
+        $this->db->where('accomplishment_id', $id);
+        $this->db->delete('tbl_resume_accomplishment');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
         
     }
     public function delete_seminars(){
-            $id = $this->input->post('id');
-            $this->db->where('seminar_id', $id);
-            $this->db->delete('tbl_resume_seminars');
-            if($this->db->affected_rows() > 0){
-                return true;
-            }else{
-                return false;
-            }
+        $id = $this->input->post('id');
+        $this->db->where('seminar_id', $id);
+        $this->db->delete('tbl_resume_seminars');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
         
     }
 
