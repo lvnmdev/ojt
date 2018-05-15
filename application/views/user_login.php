@@ -15,7 +15,12 @@
 				}
 			}
 			else if ($_SESSION['userstatus'] == 1){ 		//Status is pending and not yet activated.
-				redirect('Main/pending');
+				if ($query_comp->num_rows() > 0) {
+					redirect('Main/pending');
+				}
+				else {
+					redirect('Company/require_form');
+				}
 			}
 			else { 											//Status is inactive
 				redirect('Main/inactive');
@@ -31,7 +36,12 @@
 				}
 			}
 			else if ($_SESSION['userstatus'] == 1){ 		//Status is pending and not yet activated.
-				redirect('Main/pending');
+				if ($query_app->num_rows() > 0) {
+					redirect('Main/pending');
+				}
+				else {
+					redirect('Applicant/require_form');
+				}
 			}
 			else { 											//Status is inactive
 				redirect('Main/inactive');

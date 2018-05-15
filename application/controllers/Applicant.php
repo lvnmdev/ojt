@@ -39,8 +39,8 @@ class Applicant extends CI_Controller {
 		$this->load->view('templates/applicant/content', $data);
 	}
 
-	public function pending_application() {
-		$data['content'] = 'applicant/pending_application';
+	public function ongoing_application() {
+		$data['content'] = 'applicant/ongoing_application';
         
 		$this->load->view('templates/applicant/content', $data);
 	}
@@ -195,6 +195,18 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 	}
 
+	//ongoing application
+
+	public function show_ongoing_applications(){
+		$result = $this->applicant->show_ongoing_applications();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
 /////////////////JOBS FUNCTIONALS WUBBA LUBBA DUB DUB	
 	public function show_available_jobs(){
 		$result = $this->applicant->show_available_jobs();
@@ -218,7 +230,7 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
-
+//////////////////////////////Dashboard Functionals!
 	public function count_dashboard(){
 		$result = $this->applicant->count_dashboard();
 		$msg['success'] = false;
@@ -230,7 +242,18 @@ class Applicant extends CI_Controller {
 
 		echo json_encode($msg);
 	}
-
+//////////////////////////////////////////FOR EDITING LOGIN CREDENTIALS!
+	public function edit_username(){
+		$result = $this->applicant->change_username();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+			$_SESSION['username'] = $this->input->post('new_user');
+		}
+		echo json_encode($msg);
+       
+	}
+//////////////////////////////////////////For PDF PURPOSES!
 	public function to_pdf(){
 		$result = $this->applicant->show_resume();
 		$msg['success'] = false;

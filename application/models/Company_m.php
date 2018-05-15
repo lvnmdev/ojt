@@ -5,6 +5,23 @@ class Company_m extends CI_Model {
     public function __construct(){
 		parent::__construct();
     }
+
+    public function notification() {
+        $user = $this->session->userdata('username');
+        $count_p_jobs =  $this->db->select('count(*) as `count_p_jobs`')->from('tbl_job_posting')->where('user_name',$user)->where('status','1')->get();
+        $count_p_apps =  $this->db->select('count(*) as `count_p_apps`')->from('tbl_pending_application')->join('tbl_job_posting','tbl_pending_application.job_id = tbl_job_posting.job_id','inner')->where('tbl_job_posting.user_name',$user)->get();
+
+        $result[0] = false;
+
+        if ($count_p_jobs && $count_p_apps) {
+            $result[0] = true;
+            $result[1] = $count_p_jobs->result();
+            $result[2] = $count_p_apps->result();
+
+            return $result;
+        }
+    }
+
     public function show_info(){
         $user = $this->session->userdata('username');
         $query = $this->db->select('*')->from('tbl_company_info')->where('user_name',$user)->get();

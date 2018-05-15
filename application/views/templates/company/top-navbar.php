@@ -1,10 +1,21 @@
 <?php
+	$query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
     if (isset($_SESSION['username'])){
         if ($_SESSION['usertype']==0){
             redirect('Admin/dashboard');
         }else if($_SESSION['usertype']==2){
             redirect('Applicant/dashboard');
-        }
+		}
+		else {
+			if ($_SESSION['userstatus'] == 1){
+				if ($query_comp->num_rows() > 0) {
+					redirect('Main/pending');
+				}
+				else {
+					redirect('Company/info_form');
+				}
+			}
+		}
     }else{
 		redirect('/');
 	}

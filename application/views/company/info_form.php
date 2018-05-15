@@ -1,8 +1,15 @@
 <?php 
 $query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
-if ($query_comp->num_rows() > 0) {
+if ($_SESSION['userstatus'] == 1){
+	if ($query_comp->num_rows() > 0) {
+		redirect('Main/pending');
+	}
+}
+else {
+	if ($query_comp->num_rows() > 0) {
         redirect('Company/dashboard');
     }
+}
 ?>
 
 <!DOCTYPE html>

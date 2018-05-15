@@ -1,4 +1,26 @@
 /* Media Queries */
+@media only screen and (min-device-width: 1025px) {
+	.dashboard-badge {
+		height: 150px;
+		width: 150px;
+		padding: 30px;
+	}
+	.dashboard-badge-no {
+		font-size: 4em;
+	}
+}
+
+@media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+	.dashboard-badge {
+		height: 100px;
+		width: 100px;
+		padding: 20px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 3em;
+	}
+}
 
 @media only screen and (min-device-width: 769px) {
 	.side-nav-close {
@@ -8,7 +30,7 @@
 		width: 270px;
 	}
 	#image {
-		font-size: 1vw;
+		font-size: .9vw;
 	}
 }
 
@@ -28,6 +50,15 @@
 	}
 	#image {
 		font-size: 1.75vw;
+	}
+	.dashboard-badge {
+		height: 150px;
+		width: 150px;
+		padding: 30px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 4em;
 	}
 }
 
@@ -264,17 +295,28 @@ footer {
 }
 
 .side-navbar li:hover {
-	border-left: 5px solid #fbb414;
-	background-color: rgba(0, 0, 0, .2);
+	border-left: 7px solid #fbb414;
+	background-color: rgba(0, 0, 0, .05);
 	transition: .25s ease-in-out;
 }
 
 .side-navbar li:active {
-	background-color: rgb(160, 160, 160);
+	-webkit-transition: all 0.225s ease-in;
+	-moz-transition: all 0.225s ease-in;
+	transition: all 0.225s ease-in;
+	background-position: bottom left;
+	color: #1a1751;
 }
 
 .side-navbar li {
 	padding: 20px 10px;
+	background-image: linear-gradient(to left, transparent 50%, #fbb414 50%);
+	background-size: 200% 100%;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	-webkit-transition: all 0.225s ease-in;
+	-moz-transition: all 0.225s ease-in;
+	transition: all 0.225s ease-in;
 }
 
 .nav-icon {
@@ -393,18 +435,18 @@ footer {
 
 .dashboard-notify {
 	text-align: center;
+	position: relative;
 }
 
 .dashboard-badge {
+	position: relative;
 	background-color: #1a1751;
 	border-radius: 100%;
 	color: white;
-	height: 150px;
-	width: 150px;
-	padding: 30px;
 }
 
 .dashboard-badge-label h4 {
+	position: relative;
 	text-align: right;
 }
 
@@ -413,7 +455,6 @@ footer {
 }
 
 .dashboard-badge-no {
-	font-size: 4em;
 	margin: auto;
 	text-decoration: none;
 }

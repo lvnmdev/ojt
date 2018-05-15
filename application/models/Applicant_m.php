@@ -142,155 +142,188 @@ class Applicant_m extends CI_Model {
 
         }
         if($query2->num_rows()>0){
+            $result[0] = true;
             $result[2] = $query2->result();
 
         }
         if($query3->num_rows()>0){
+            $result[0] = true;
             $result[3] = $query3->result();
 
         }
         if($query4->num_rows()>0){
+            $result[0] = true;
             $result[4] = $query4->result();
 
         }
         if($query5->num_rows()>0){
+            $result[0] = true;
             $result[5] = $query5->result();
 
         }
         return $result;
     }
+
+    public function show_ongoing_applications() {
+        $user = $this->session->userdata('username');
+        $query = $this->db->select('*')->from('tbl_pending_application')->join('tbl_job_posting','tbl_pending_application.job_id = tbl_job_posting.job_id','inner')->join('tbl_company_info','tbl_job_posting.user_name = tbl_company_info.user_name','inner')->where('tbl_pending_application.user_name',$user)->get();
+
+        $result[0] = false;
+
+        if ($query->num_rows()>0) {
+            $result[0] = true;
+            $result[1] = $query->result();
+        }
+
+        return $result;
+    }
         
-        public function delete_skill(){
-                $id = $this->input->post('id');
-        		$this->db->where('skill_id', $id);
-		        $this->db->delete('tbl_resume_skills');
-		        if($this->db->affected_rows() > 0){
-			        return true;
-		        }else{
-			        return false;
-		        }
-            
-        }
-        public function delete_workxp(){
-                $id = $this->input->post('id');
-        		$this->db->where('work_id', $id);
-		        $this->db->delete('tbl_resume_workxp');
-		        if($this->db->affected_rows() > 0){
-			        return true;
-		        }else{
-			        return false;
-		        }
-            
-        }
-        public function delete_education(){
-                $id = $this->input->post('id');
-        		$this->db->where('educ_id', $id);
-		        $this->db->delete('tbl_resume_education');
-		        if($this->db->affected_rows() > 0){
-			        return true;
-		        }else{
-			        return false;
-		        }
-            
-        }
-        public function delete_accomplishment(){
-                $id = $this->input->post('id');
-        		$this->db->where('accomplishment_id', $id);
-		        $this->db->delete('tbl_resume_accomplishment');
-		        if($this->db->affected_rows() > 0){
-			        return true;
-		        }else{
-			        return false;
-		        }
-            
-        }
-        public function delete_seminars(){
-                $id = $this->input->post('id');
-        		$this->db->where('seminar_id', $id);
-		        $this->db->delete('tbl_resume_seminars');
-		        if($this->db->affected_rows() > 0){
-			        return true;
-		        }else{
-			        return false;
-		        }
-            
-        }
-   
-
-
-        public function show_available_jobs(){
-           $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name WHERE status = 1;';
-           $query = $this->db->query($sql);
-
-            if($query){
-                $result[0] = true;
-                $result[1] = $query->result();
-
-                return $result;
-            }else {
-                $result[0] = false;
-                $result[1] = "";
-
-                return $result;
-            }
-            
-        }
-
-        public function apply_job(){
-            $field = array(
-                'job_id' => $this->input->post('id'),
-                'user_name' => $this->session->userdata('username'),
-            );
-
-            $query = $this->db->insert('tbl_pending_application',$field);
-
-            if($query){
+    public function delete_skill(){
+            $id = $this->input->post('id');
+            $this->db->where('skill_id', $id);
+            $this->db->delete('tbl_resume_skills');
+            if($this->db->affected_rows() > 0){
                 return true;
             }else{
                 return false;
-                
             }
-        }
-/////////////////////////////////////////////////////////////Dashboard and Settings Functionals
-        public function count_dashboard(){
-            $user = $this->session->userdata('username');
-            $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';
-            $sql1 = 'SELECT count(tbl_job_posting.job_id) as jobs_posted FROM tbl_job_posting GROUP BY tbl_job_posting.status';
-            $query = $this->db->query($sql);
-            $query1 = $this->db->query($sql1);
-
-            if($query || $query1){
-                $result[0] = true;
-                $result[1] = $query->row();
-                $result[2] = $query1->row();
-                return $result;
-            }else {
-                $result[0] = false;
-                return $result;
-            }
-        }
-
-        public function upload_photo(){
-            $info = pathinfo($_FILES['image']['name']);
-            $ext = $info['extension']; // get the extension of the file
-            $newname = $_SESSION['username'].'_pic.'.$ext; 
-
-            $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
-            $link = 'assets/img/profile_pics/'.$newname;
-
-            $field = array(
-                'user_name' => $this->session->userdata('username'),
-                'photo_path' => $link
-            );
-            $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$field['user_name'])->get();
-            if($query->num_rows()>0){
-                $this->db->where('user_name',$field['user_name']);
-                $this->db->update('tbl_photo_upload',$field);
-                unlink($target);
-                move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+        
+    }
+    public function delete_workxp(){
+            $id = $this->input->post('id');
+            $this->db->where('work_id', $id);
+            $this->db->delete('tbl_resume_workxp');
+            if($this->db->affected_rows() > 0){
+                return true;
             }else{
-                $this->db->insert('tbl_photo_upload',$field);
-                move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+                return false;
             }
+        
+    }
+    public function delete_education(){
+            $id = $this->input->post('id');
+            $this->db->where('educ_id', $id);
+            $this->db->delete('tbl_resume_education');
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        
+    }
+    public function delete_accomplishment(){
+            $id = $this->input->post('id');
+            $this->db->where('accomplishment_id', $id);
+            $this->db->delete('tbl_resume_accomplishment');
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        
+    }
+    public function delete_seminars(){
+            $id = $this->input->post('id');
+            $this->db->where('seminar_id', $id);
+            $this->db->delete('tbl_resume_seminars');
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        
+    }
+
+
+
+    public function show_available_jobs(){
+        $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name WHERE status = 1;';
+        $query = $this->db->query($sql);
+
+        if($query){
+            $result[0] = true;
+            $result[1] = $query->result();
+
+            return $result;
+        }else {
+            $result[0] = false;
+            $result[1] = "";
+
+            return $result;
+        }
+        
+    }
+
+    public function apply_job(){
+        $field = array(
+            'job_id' => $this->input->post('id'),
+            'user_name' => $this->session->userdata('username'),
+        );
+
+        $query = $this->db->insert('tbl_pending_application',$field);
+
+        if($query){
+            return true;
+        }else{
+            return false;
+            
+        }
+    }
+/////////////////////////////////////////////////////////////Dashboard and Settings Functionals
+    public function count_dashboard(){
+        $user = $this->session->userdata('username');
+        $sql = 'SELECT count(tbl_pending_application.pending_id) as pending_applicant FROM tbl_pending_application WHERE tbl_pending_application.user_name = "'.$user.'" GROUP BY tbl_pending_application.user_name;';
+        $sql1 = 'SELECT count(tbl_job_posting.job_id) as jobs_posted FROM tbl_job_posting GROUP BY tbl_job_posting.status';
+        $query = $this->db->query($sql);
+        $query1 = $this->db->query($sql1);
+
+        if($query || $query1){
+            $result[0] = true;
+            $result[1] = $query->row();
+            $result[2] = $query1->row();
+            return $result;
+        }else {
+            $result[0] = false;
+            return $result;
+        }
+    }
+
+    public function upload_photo(){
+        $info = pathinfo($_FILES['image']['name']);
+        $ext = $info['extension']; // get the extension of the file
+        $newname = $_SESSION['username'].'_pic.'.$ext; 
+
+        $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
+        $link = 'assets/img/profile_pics/'.$newname;
+
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'photo_path' => $link
+        );
+        $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$field['user_name'])->get();
+        if($query->num_rows()>0){
+            $this->db->where('user_name',$field['user_name']);
+            $this->db->update('tbl_photo_upload',$field);
+            unlink($target);
+            move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+        }else{
+            $this->db->insert('tbl_photo_upload',$field);
+            move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+        }
+    }
+
+/////////////////////////////////////////////////////CHANGE Login Credentials Baby!
+        public function change_username(){
+            $user = $this->session->userdata('username');
+            $user_name = $this->input->post('user_name');
+            var_dump($user_name);
+            $this->db->query('UPDATE `tbl_user` SET `user_name`=$user_name WHERE `user_name` = $user');
+            if($this->db->affected_rows()>0){
+                return true;
+            }else{
+                return false;
+            }
+
+
         }
 }

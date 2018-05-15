@@ -17,8 +17,9 @@
 						<table id='table_id' class='table table-striped table-hover'>
 							<thead>
 								<tr>
-									<th>Username</th>
+									<th>Name</th>
 									<th>Email</th>
+									<th>Date Registered</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
