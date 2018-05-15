@@ -84,7 +84,7 @@
 						$('#user_profile_name').html(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 						show_available_jobs(gender);
 
-					
+
 					}
 
 				},
@@ -211,7 +211,10 @@
 			$('#input').keyup(function () {
 				var checker = $('#input').val();
 				if (checker.length > 0) {
-					$('#btnsubmit_resume').removeAttr('disabled');
+					if (/^[a-zA-Z0-9- ]*$/.test(checker) == true) {
+						$('#btnsubmit_resume').removeAttr('disabled');
+
+					}
 				} else {
 					$('#btnsubmit_resume').attr('disabled', 'disabled');
 				}
@@ -283,6 +286,9 @@
 			$('#input1').keyup(function () {
 				checker1 = $('#input1').val();
 				if (checker.length > 0 && checker1.length > 0) {
+					if (/^[a-zA-Z0-9- ]*$/.test(checker) == false) {
+						$('#btn_submit_resume').attr('disabled', 'disabled');
+					}
 					$('#btnsubmit_resume').removeAttr('disabled');
 				} else {
 					$('#btnsubmit_resume').attr('disabled', 'disabled');
@@ -735,9 +741,9 @@
 
 		var job_id_app;
 		$('.apply').click(function (e) {
-			job_id_app = $(e.currentTarget).val();
 			$('#apply_job').modal('show');
 			$('.modal-title').text('Confirm Apply');
+			job_id_app = $(e.currentTarget).val();
 			$.ajax({
 				type: 'ajax',
 				method: 'get',
