@@ -316,14 +316,20 @@ class Applicant_m extends CI_Model {
         public function change_username(){
             $user = $this->session->userdata('username');
             $user_name = $this->input->post('user_name');
-            var_dump($user_name);
-            $this->db->query('UPDATE `tbl_user` SET `user_name`=$user_name WHERE `user_name` = $user');
-            if($this->db->affected_rows()>0){
-                return true;
-            }else{
-                return false;
-            }
+            $this->db->set('user_name',$user_name);
+            $this->db->where('user_name',$user);
+            $this->db->update('tbl_users');
+            return true;
+        
+        }
 
-
+        public function change_password(){
+            $user = $this->session->userdata('username');
+            $user_pass = $this->input->post('pass_new');
+            $this->db->set('user_pass',$user_pass);
+            $this->db->where('user_name',$user);
+            $this->db->update('tbl_users');
+            return true;
+        
         }
 }

@@ -127,6 +127,8 @@
 
 		$('#form_bio').submit(function () {
 			var formData = $('#form_bio').serialize();
+			console.log(formData);
+
 			$.ajax({
 				type: 'ajax',
 				method: 'post',
@@ -955,35 +957,78 @@
 
 
 		$("#form_change_user").submit(function () {
-			var formData = $('#form_change_user').serialize();
+			var formData = $('#form_change_user').serializeArray();
 			console.log(formData);
+
 			$.ajax({
 				type: 'ajax',
-				method: 'post',
-				url: 'edit_username',
+				url: 'change_username',
+				method: 'POST',
 				data: formData,
 				async: false,
 				dataType: 'json',
 				success: function (response) {
 					console.log(response);
 					if (response.success) {
-						alert('data inserted');
-					} else {
-						alert('data not inserted');
+						$('#success_user').removeAttr('style');
+						$('#success_user').html('Username Updated');
 					}
 
 				},
-				error: function () {
-					alert('Error');
+
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert(textStatus + " " + errorThrown)
 				}
 			});
 
+		});
+
+		setInterval(function () {
+			$('#illegal_user1').css({ 'display': 'none' });
+			var checker_pass = $('#pass_new').val();
+			var checker_con = $('#pass_con').val();
+			if (checker_pass.length > 0 && checker_con.length > 0) {
+				$('#change_pass').removeAttr('disabled');
+				if (checker_con != checker_pass) {
+					$('#change_pass').attr('disabled', 'disabled');
+					$('#illegal_user1').removeAttr('style');
+					$('#illegal_user1').html('Passwords do not match');
+				}
+
+			} else {
+				$('#change_pass').attr('disabled', 'disabled');
+				
+			}
+		}, 0)
+
+
+
+		$("#form_change_password").submit(function () {
+			var formData = $('#form_change_password').serializeArray();
+			console.log(formData);
+
+			$.ajax({
+				type: 'ajax',
+				url: 'change_password',
+				method: 'POST',
+				data: formData,
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						$('#success_user1').removeAttr('style');
+						$('#success_user1').html('Password Updated');
+					}
+
+				},
+
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert(textStatus + " " + errorThrown)
+				}
+			});
 
 		})
-
-
-
-
 
 
 

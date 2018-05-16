@@ -69,9 +69,9 @@
 							</div>
 							<div class="card-body">
 								<form id="form_change_user" class="form-group">
-									<p id="illegal_user" class="alert alert-danger" style="display:none"></p>
 									<label for="">Current Username:</label>
-									<p><?= $this->session->userdata('username')?></p>
+									<input type="text" name="old_name" class="form-control" value="<?= $this->session->userdata('username')?>" disabled required>
+
 									<label for="">New Username:</label>
 									<input type="text" id="new_user" name="user_name" class="form-control" required>
 									<div class="card-footer" style="padding-left:0;">
@@ -90,18 +90,29 @@
 								<h1>Change Password</h1>
 							</div>
 							<div class="card-body">
-								<form method="post" class="form-group">
-									<label for="">Password:</label>
-									<input type="password" class="form-control" required>
+								<form id="form_change_password" class="form-group">
 									<label for="">New Password:</label>
-									<input type="password" class="form-control" required>
+									<input id="pass_new" type="password" name="pass_new" class="form-control" required>
 									<label for="">Confirm New Password</label>
-									<input type="password" class="form-control" required>
+									<input id="pass_con" type="password" name="pass_con" class="form-control" required>
 									<div class="card-footer" style="padding-left:0;">
 										<button id="change_pass" type="submit" class="btn btn-primary">
 											<i class="fa fa-location-arrow"></i> Change</button>
 									</div>
 								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="card-content">
+						<div>
+							<div class="card-body">
+								<p id="illegal_user1" class="alert alert-danger" style="display:none"></p>
+								<p id="illegal_user" class="alert alert-danger" style="display:none"></p>
+								<p id="success_user1" class="alert alert-success" style="display:none"></p>
+								<p id="success_user" class="alert alert-success" style="display:none"></p>
+
 							</div>
 						</div>
 					</div>
