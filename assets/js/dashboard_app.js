@@ -1,28 +1,35 @@
-var job_ids = [];
+	var job_ids = [];
 
-$(function () {
-	show_bio_data();
-	show_resume();
-	show_available_jobs();
-	show_ongoing_applications();
-	count_dashboard();
-	var gender;
+	$(function () {
+		show_bio_data();
+		show_resume();
+		show_ongoing_applications();
+		count_dashboard();
 
-	function count_dashboard() {
-		var html = '';
-		var i;
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'count_dashboard',
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response.data != null) {
-					$('#applications_count').html(response.data.pending_applicant);
-				} else {
-					$('#applications_count').html(0);
+		function count_dashboard() {
+			var html = '';
+			var i;
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: 'count_dashboard',
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.data != null) {
+						$('#applications_count').html(response.data.pending_applicant);
+					} else {
+						$('#applications_count').html(0);
+					}
+					if (response.data1 != null) {
+						$('#jobs_count').html(response.data1.jobs_posted);
+					} else {
+						$('#jobs_count').html(0);
+					}
+				},
+				error: function () {
+					alert('Error');
 				}
 				if (response.data1 != null) {
 					$('#jobs_count').html(response.data1.jobs_posted);
@@ -555,41 +562,40 @@ $(function () {
 		});
 	})
 
-	var info;
-	$(".btn-info").click(function (e) {
-		if (!info.success || !info.seminars || !info.accomplishment || !info.skills || !info.workxp || !info.education) {
-			e.preventDefault();
-		}
-		console.log(info);
-	});
-
-	function show_resume() {
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_resume',
-			async: false,
-			dataType: 'json',
-			success: function (data) {
-				console.log(data);
-				info = data;
-				if (!data.success) {
-					$('#ze_question').modal('show');
-					$(".btn-info").attr("disabled", "disabled");
-				}
-				var skills = '';
-				var xp = '';
-				var accomplishments = '';
-				var seminar = '';
-				var education = '';
-				var i;
-				if (data.seminars) {
-					for (i = 0; i < data.seminars.length; i++) {
-						seminar += '<ul class="resume-list">' +
-							'<li>' + data.seminars[i].seminar + '</li>' +
-							'<li>' + data.seminars[i].seminar_date + '</li>' +
-							'<li>' + data.seminars[i].conductedby + '</li>' +
-							'</ul>';
+		function show_resume() {
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: 'show_resume',
+				async: false,
+				dataType: 'json',
+				success: function (data) {
+					console.log(data);
+					info = data;
+					if (!data.success) {
+						$('#ze_question').modal('show');
+						$(".btn-info").attr("disabled", "disabled");
+						$("ul.side-navbar").children().click(function (e) {
+							e.preventDefault();
+						})
+					}
+					var skills = '';
+					var xp = '';
+					var accomplishments = '';
+					var seminar = '';
+					var education = '';
+					var i;
+					if (data.seminars) {
+						for (i = 0; i < data.seminars.length; i++) {
+							seminar += '<ul class="resume-list">' +
+								'<li>' + data.seminars[i].seminar + '</li>' +
+								'<li>' + data.seminars[i].seminar_date + '</li>' +
+								'<li>' + data.seminars[i].conductedby + '</li>' +
+								'</ul>';
+						}
+						$('#resume_seminar').html(seminar);
+					} else {
+						$(".btn-info").attr("disabled", "disabled");
 					}
 					$('#resume_seminar').html(seminar);
 				} else {
@@ -647,33 +653,22 @@ $(function () {
 
 
 
-			},
-			error: function () {
-				alert('Error');
-			}
-		});
-	}
-
-
-
-
-	function show_available_jobs(gender) {
-		var sex = gender;
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_available_jobs',
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response.data);
-				var html = '';
-				var i;
-				if (response.data != null) {
-					for (i = 0; i < response.data.length; i++) {
-						if (gender == response.data[i].pref_sex || response.data[i].pref_sex == "Either") {
-							for (var j = 0; j < job_ids.length; j++) {
-								if (response.data[i].job_id != job_ids[j]) {
+		function show_available_jobs(gender) {
+			console.log(gender)
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: 'show_available_jobs',
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response.data);
+					var html = '';
+					var i;
+					if (response.data) {
+						for (i = 0; i < response.data.length; i++) {
+							if (gender == response.data[i].pref_sex || response.data[i].pref_sex == "Either") {
+								if (jQuery.inArray(response.data[i].job_id, job_ids) < 0) {
 									html += '<tr>' +
 										'<td>' + response.data[i].comp_name + '</td>' +
 										'<td>' + response.data[i].position + '</td>' +
@@ -691,135 +686,170 @@ $(function () {
 					}
 					$('#show_jobs').html(html)
 				}
-			},
-			error: function () {
-				alert('Error');
-			}
-		});
-	}
+			});
+		}
 
-	function show_ongoing_applications() {
-		var job_id = [];
+		function show_ongoing_applications() {
+			var job_id = [];
 
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_ongoing_applications',
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response.data);
-				var html = '';
-				var i;
-				if (response.data) {
-					for (i = 0; i < response.data.length; i++) {
-						job_id.push(response.data[i].job_id);
-						html += '<tr>' +
-							'<td>' + response.data[i].comp_name + '</td>' +
-							'<td>' + response.data[i].comp_hr + '</td>' +
-							'<td>' + response.data[i].position + '</td>' +
-							'<td>' + response.data[i].requirements + '</td>' +
-							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td>' + response.data[i].date_applied + '</td>' +
-							'<td><button class="btn btn-danger" value="' + response.data[i].job_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
-							'</tr>'
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: 'show_ongoing_applications',
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response.data);
+					var html = '';
+					var i;
+					if (response.data) {
+						for (i = 0; i < response.data.length; i++) {
+							job_id.push(response.data[i].job_id);
+							html += '<tr>' +
+								'<td>' + response.data[i].comp_name + '</td>' +
+								'<td>' + response.data[i].comp_hr + '</td>' +
+								'<td>' + response.data[i].position + '</td>' +
+								'<td>' + response.data[i].requirements + '</td>' +
+								'<td>' + response.data[i].date_posted + '</td>' +
+								'<td>' + response.data[i].date_applied + '</td>'
+							if (response.data[i].app_status == "1") {
+								html += '<td><button class="btn btn-danger cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
+									'</tr>'
+							} else if (response.data[i].app_status == "0") {
+								html += '<td><button class="btn btn-primary cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Reapply</button></td>' +
+									'</tr>'
+
+							} else {
+								html += '<td>Denied</td>' +
+									'</tr>'
+							}
+
+						}
+						$('#show_ongoing_application').html(html)
 					}
 					$('#show_ongoing_application').html(html)
 				}
-			},
-			error: function () {
-				alert('Error');
-			}
-		});
-		job_ids = job_id;
-		console.log(job_ids);
-	}
+			});
+			job_ids = job_id;
+			console.log(job_ids);
+		}
+		$(document).on('click', '.cancel', function (e) {
+			$('#cancel_application').modal('show');
+			$('.modal-title').text('Cancel Application?');
+			job_id_app = $(e.currentTarget).val();
+			console.log(job_id_app);
+		})
 
-	var job_id_app;
-	$('.apply').click(function (e) {
-		$('#apply_job').modal('show');
-		$('.modal-title').text('Confirm Apply');
-		job_id_app = $(e.currentTarget).val();
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_available_jobs',
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response.data);
-				var html = '';
-				var i;
-				if (response.data) {
-					for (i = 0; i < response.data.length; i++) {
-						if (response.data[i].job_id == job_id_app) {
-							html +=
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Company Name</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].comp_name + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Position</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].position + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Sex</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_sex + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Civil Status</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_civstat + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Education Attained</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_educ + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Requirements</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].requirements + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Date Posted</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].date_posted + '</div></div>'
+		$(document).on('click', '.apply', function (e) {
+			$('#apply_job').modal('show');
+			$('.modal-title').text('Confirm Apply');
+			job_id_app = $(e.currentTarget).val();
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: 'show_available_jobs',
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response.data);
+					var html = '';
+					var i;
+					if (response.data) {
+						for (i = 0; i < response.data.length; i++) {
+							if (response.data[i].job_id == job_id_app) {
+								html +=
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Company Name</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].comp_name + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Position</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].position + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Sex</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_sex + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Civil Status</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_civstat + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Education Attained</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_educ + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Requirements</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].requirements + '</div></div>' +
+									'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Date Posted</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].date_posted + '</div></div>'
+							}
 						}
 					}
 					$('#job_desc').html(html)
 				}
-			},
-			error: function () {
-				alert('Error');
-			}
-		})
-	})
+			})
 
-	$('#confirm_app').click(function () {
-		var job_id = job_id_app;
-		console.log(job_id);
-		$.ajax({
-			type: 'ajax',
-			method: 'post',
-			url: 'apply_job',
-			data: {
-				id: job_id
-			},
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response.success) {
-					alert('inserted');
-					location.reload();
-				}
-			},
-			error: function () {
-				alert('Error');
-			}
+
 		});
-	})
 
-	$(document).on('click', '.skill-delete', function (e) {
-		var id = $(e.currentTarget).val();
-		console.log(id);
-		$.ajax({
-			type: 'ajax',
-			method: 'post',
-			url: 'delete_resume',
-			data: {
-				id: id,
-				field: 'skill'
-			},
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response) {
-					alert('deleted');
-					location.reload();
+		$('#confirm_app').click(function () {
+			var job_id = job_id_app;
+			console.log(job_id);
+			$.ajax({
+				type: 'ajax',
+				method: 'post',
+				url: 'apply_job',
+				data: {
+					id: job_id
+				},
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						alert('inserted');
+						location.reload();
+					}
+				},
+				error: function () {
+					alert('Error');
 				}
-			},
-			error: function () {
-				alert('Error');
-			}
+			});
+		})
+		$('#confirm_cancel').click(function () {
+			var job_id = job_id_app;
+			console.log(job_id);
+			$.ajax({
+				type: 'ajax',
+				method: 'post',
+				url: 'cancel_job',
+				data: {
+					id: job_id
+				},
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						alert('JOB APPLICATION ABORTED');
+						location.reload()
+					}
+				},
+				error: function () {
+					alert('Error');
+				}
+			});
+		})
+
+
+		$(document).on('click', '.skill-delete', function (e) {
+			var id = $(e.currentTarget).val();
+			console.log(id);
+			$.ajax({
+				type: 'ajax',
+				method: 'post',
+				url: 'delete_resume',
+				data: {
+					id: id,
+					field: 'skill'
+				},
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response) {
+						alert('deleted');
+						location.reload();
+					}
+				},
+				error: function () {
+					alert('Error');
+				}
+			});
+
 		});
 
 	});
@@ -955,39 +985,85 @@ $(function () {
 		}
 	});
 
+		$("#form_change_user").submit(function () {
+			var formData = $('#form_change_user').serializeArray();
+			console.log(formData);
 
-	$("#form_change_user").submit(function () {
-		var formData = $('#form_change_user').serialize();
-		console.log(formData);
-		$.ajax({
-			type: 'ajax',
-			method: 'post',
-			url: 'edit_username',
-			data: formData,
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response.success) {
-					alert('data inserted');
-				} else {
-					alert('data not inserted');
+			$.ajax({
+				type: 'ajax',
+				url: 'change_username',
+				method: 'POST',
+				data: formData,
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						$('#success_user').removeAttr('style');
+						$('#success_user').html('Username Updated');
+					}
+
+				},
+
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert(textStatus + " " + errorThrown)
 				}
-			},
-			error: function () {
-				alert('Error');
-			}
+			});
+
 		});
-	})
+
+		$('#prof_pic1').load(function () {
+			setInterval(function () {
+				$('#illegal_user1').css({
+					'display': 'none'
+				});
+				var checker_pass = $('#pass_new').val();
+				var checker_con = $('#pass_con').val();
+				if (checker_pass.length > 0 && checker_con.length > 0) {
+					$('#change_pass').removeAttr('disabled');
+					if (checker_con != checker_pass) {
+						$('#change_pass').attr('disabled', 'disabled');
+						$('#illegal_user1').removeAttr('style');
+						$('#illegal_user1').html('Passwords do not match');
+					}
+
+				} else {
+					$('#change_pass').attr('disabled', 'disabled');
+
+				}
+			}, 0)
 
 	$(document).on('click', '.graduate_edit', function (e) {
 		$('#graduate_edit_info').modal('show');
 		var id = $(e.currentTarget).val();
 	});
 
+		$("#form_change_password").submit(function () {
+			var formData = $('#form_change_password').serializeArray();
+			console.log(formData);
 
+			$.ajax({
+				type: 'ajax',
+				url: 'change_password',
+				method: 'POST',
+				data: formData,
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						$('#success_user1').removeAttr('style');
+						$('#success_user1').html('Password Updated');
+					}
 
+				},
 
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert(textStatus + " " + errorThrown)
+				}
+			});
+
+		})
 
 
 

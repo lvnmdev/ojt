@@ -236,6 +236,16 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
+	public function cancel_job(){
+		$result = $this->applicant->cancel_job();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+
+		echo json_encode($msg);
+
+	}
 //////////////////////////////Dashboard Functionals!
 	public function count_dashboard(){
 		$result = $this->applicant->count_dashboard();
@@ -249,12 +259,22 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 	}
 //////////////////////////////////////////FOR EDITING LOGIN CREDENTIALS!
-	public function edit_username(){
+	public function change_username(){
 		$result = $this->applicant->change_username();
 		$msg['success'] = false;
 		if($result){
 			$msg['success'] = true;
-			$_SESSION['username'] = $this->input->post('new_user');
+			$_SESSION['username'] = $this->input->post('user_name');
+		}
+		echo json_encode($msg);
+       
+	}
+	public function change_password(){
+		$result = $this->applicant->change_password();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+			$_SESSION['password'] = $this->input->post('pass_new');
 		}
 		echo json_encode($msg);
        

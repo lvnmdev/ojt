@@ -35,6 +35,9 @@
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables.min.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
+		<script src="<?= base_url('assets/js/angular/angular.js')?>"></script>
+		<script src="<?= base_url('assets/js/angular/toastr.js')?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/angular/toastr.css')?>">
 	</head>
 
 	<body>

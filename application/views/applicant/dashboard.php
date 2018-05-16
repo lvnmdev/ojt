@@ -80,14 +80,11 @@
 		</div>
 	</div>
 </div>
-<div id="ze_question" class="modal fade" tabindex="-1" role="dialog" style="margin: 10% 26%;text-align:center;">
+<div id="ze_question" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="margin: 10% 26%;text-align:center;">
 	<div class="modal-dialog modal-form modal-biodata" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true" style='color:white;'>&times;</span>
-				</button>
-				<h1 class="modal-title">Are you currently employed</h1>
+				<h1 class="modal-title">Are you currently employed?</h1>
 			</div>
 			<div class="modal-body">
 				<form method='post'>
@@ -104,6 +101,10 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+<br>
+<br>
+<br>
+<br>
 <script>
 	var page_info = 'dashboard';
 </script>
