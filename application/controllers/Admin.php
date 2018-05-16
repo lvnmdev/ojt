@@ -12,13 +12,13 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/admin/content', $data);
 	}
 	
-	public function company() {
+	public function companies() {
 		$data['content'] = 'admin/company';
         
 		$this->load->view('templates/admin/content', $data);
 	}
 
-	public function pending_company() {
+	public function pending_companies() {
 		$data['content'] = 'admin/pending_company';
         
 		$this->load->view('templates/admin/content', $data);
@@ -32,6 +32,18 @@ class Admin extends CI_Controller {
 
 	public function pending_applicants() {
 		$data['content'] = 'admin/pending_applicants';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
+	public function hirings() {
+		$data['content'] = 'admin/hirings';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
+	public function pending_hirings() {
+		$data['content'] = 'admin/pending_hirings';
         
 		$this->load->view('templates/admin/content', $data);
 	}

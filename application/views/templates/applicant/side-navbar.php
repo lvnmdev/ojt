@@ -30,5 +30,9 @@
 			<li>
 				<i class='fa fa-file-alt nav-icon'></i>Resume</li>
 		</a>
+		<a href="<?= base_url('Applicant/employed');?>">
+			<li>
+				<i class='fa fa-file-alt nav-icon'></i>Graduate Info</li>
+		</a>
 	</ul>
 </nav>

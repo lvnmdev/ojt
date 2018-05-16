@@ -18,7 +18,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-8">
-									<a href='<?= base_url("Admin/")?>'>
+									<a href='<?= base_url("Admin/companies")?>'>
 										<div class='dashboard-badge'>
 											<span id='company_no' class='dashboard-badge-no'></span>
 										</div>
@@ -39,7 +39,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Admin/")?>'>
+									<a href='<?= base_url("Admin/pending_companies")?>'>
 										<div class='dashboard-badge'>
 											<span id='pending_company_no' class='dashboard-badge-no'></span>
 										</div>
@@ -60,7 +60,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Admin/")?>'>
+									<a href='<?= base_url("Admin/applicants")?>'>
 										<div class='dashboard-badge'>
 											<span id='app_no' class='dashboard-badge-no'></span>
 										</div>
@@ -81,7 +81,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-5">
-									<a href='<?= base_url("Admin/")?>'>
+									<a href='<?= base_url("Admin/pending_applicants")?>'>
 										<div class='dashboard-badge'>
 											<span id='pending_app_no' class='dashboard-badge-no'></span>
 										</div>

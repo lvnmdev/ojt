@@ -14,13 +14,13 @@
 			<li>
 				<i class='fa fa-clipboard nav-icon'></i>Dashboard</li>
 		</a>
-		<a href="<?= base_url('Admin/company');?>">
+		<a href="<?= base_url('Admin/companies');?>">
 			<li>
-				<i class='fa fa-briefcase nav-icon'></i>Company</li>
+				<i class='fa fa-briefcase nav-icon'></i>Companies</li>
 		</a>
-		<a href="<?= base_url('Admin/pending_company');?>">
+		<a href="<?= base_url('Admin/pending_companies');?>">
 			<li>
-				<i class='fa fa-file-alt nav-icon'></i>Pending Company</li>
+				<i class='fa fa-file-alt nav-icon'></i>Pending Companies</li>
 		</a>
 		<a href="<?= base_url('Admin/applicants');?>">
 			<li>
@@ -34,17 +34,9 @@
 			<li>
 				<i class='fa nav-icon'></i>Hirings</li>
 		</a>
-		<a href="<?= base_url('Admin/pending hirings');?>">
+		<a href="<?= base_url('Admin/pending_hirings');?>">
 			<li>
 				<i class='fa nav-icon'></i>Pending Hirings</li>
-		</a>
-		<a href="<?= base_url('Admin/evaluation');?>">
-			<li>
-				<i class='fa nav-icon'></i>Evaluation</li>
-		</a>
-		<a href="<?= base_url('Admin/end_of_contract');?>">
-			<li>
-				<i class='fa nav-icon'></i>End of Contract</li>
 		</a>
 	</ul>
 </nav>

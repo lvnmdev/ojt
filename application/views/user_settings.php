@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class='card-content'>
 				<p class='path-nav'>
-					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
+					<a href="<?= base_url("Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> User Settings</p>
 			</div>
 			<div class="row">
@@ -26,8 +26,7 @@
 
 												</h1>
 												<h3>
-													(
-													<?= $this->session->userdata('username')?>)
+													(<?= $this->session->userdata('username')?>)
 												</h3>
 											</div>
 										</div>

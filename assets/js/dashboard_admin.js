@@ -1,5 +1,4 @@
-$(function () { 
-
+$(function () {
     show_company();
     show_applicant();
     show_pending_company();
@@ -89,7 +88,7 @@ $(function () {
                             '<td>' + response.data[i].comp_hr + '</td>'+
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].comp_contact + '</td>' +
-                            '<td>' + '<a type="button" class="btn btn-success"><i class="fa fa-user-check btn-icon"></i>Approve</a>&nbsp<a type="button" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deny</a>' + '</td>' +
+                            '<td>' + '<a type="button" data='+[i]+' class="btn btn-primary view_comp"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
                             '</tr>';
                     }
                     $('#show_company').html(html)
@@ -118,7 +117,7 @@ $(function () {
                             '<td>' + response.data[i].sex + '</td>' +
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].contact_no + '</td>' +
-                            '<td>' + '<a type="button" class="btn btn-success"><i class="fa fa-user-check btn-icon"></i>Approve</a>&nbsp<a type="button" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deny</a>' + '</td>' +
+                            '<td>' + '<a type="button" data='+[i]+' class="btn btn-primary view_app"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
                             '</tr>';
                     }
                     $('#show_applicant').html(html)
@@ -146,7 +145,7 @@ $(function () {
                             '<td>' + response.data[i].fname + ' ' + response.data[i].mname + ' ' + response.data[i].lname + '</td>' +   
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].date_registered + '</td>' +
-                            '<td>' + '<a type="button" class="btn btn-success"><i class="fa fa-user-check btn-icon"></i>Approve</a>&nbsp<a type="button" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deny</a>' + '</td>' +
+                            '<td>' + '<a type="button" data='+[i]+' class="btn btn-primary view_p_app"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
                             '</tr>';
                     }
                     $('#show_pending_applicant').html(html)
@@ -156,7 +155,7 @@ $(function () {
                 alert('error');
             }
         })
-	}
+    }
 
     function show_pending_company() {
         $.ajax({
@@ -175,9 +174,7 @@ $(function () {
                             '<td>' + response.data[i].comp_desc + '</td>' +
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].comp_opdate + '</td>' +
-                            '<td>' + response.data[i].comp_permit + '</td>' +
-                            '<td>' + response.data[i].comp_tin + '</td>' +
-                            '<td>' + '<a type="button" class="btn btn-success"><i class="fa fa-user-check btn-icon"></i>Approve</a>&nbsp<a type="button" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deny</a>' + '</td>' +
+                            '<td>' + '<a type="button" data='+[i]+' class="btn btn-primary view_p_comp"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
         					'</tr>';
         			}
         			$('#show_pending_company').html(html)
@@ -187,5 +184,26 @@ $(function () {
                 alert('error');
         	}
         })
-	}
+    }
+    
+    $('#show_pending_applicant').on('click', '.view_p_app', function () {
+    	$('#pending_app_info').modal('show');
+    	var id = $(this).attr('data');
+    });
+
+    $('#show_pending_company').on('click', '.view_p_comp', function () {
+    	$('#pending_comp_info').modal('show');
+    	var id = $(this).attr('data');
+    });
+
+    $('#show_applicant').on('click', '.view_app', function () {
+    	$('#app_info').modal('show');
+    	var id = $(this).attr('data');
+    });
+
+    $('#show_company').on('click', '.view_comp', function () {
+    	$('#comp_info').modal('show');
+    	var id = $(this).attr('data');
+    });
+
 })
