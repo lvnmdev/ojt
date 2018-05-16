@@ -230,6 +230,16 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
+	public function cancel_job(){
+		$result = $this->applicant->cancel_job();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+
+		echo json_encode($msg);
+
+	}
 //////////////////////////////Dashboard Functionals!
 	public function count_dashboard(){
 		$result = $this->applicant->count_dashboard();

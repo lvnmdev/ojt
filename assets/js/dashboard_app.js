@@ -578,6 +578,9 @@
 					if (!data.success) {
 						$('#ze_question').modal('show');
 						$(".btn-info").attr("disabled", "disabled");
+						$("ul.side-navbar").children().click(function (e) {
+							e.preventDefault();
+						})
 					}
 					var skills = '';
 					var xp = '';
@@ -720,9 +723,19 @@
 								'<td>' + response.data[i].position + '</td>' +
 								'<td>' + response.data[i].requirements + '</td>' +
 								'<td>' + response.data[i].date_posted + '</td>' +
-								'<td>' + response.data[i].date_applied + '</td>' +
-								'<td><button class="btn btn-danger" value="' + response.data[i].job_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
-								'</tr>'
+								'<td>' + response.data[i].date_applied + '</td>'
+							if (response.data[i].app_status == "1") {
+								html += '<td><button class="btn btn-danger cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
+									'</tr>'
+							} else if (response.data[i].app_status == "0") {
+								html += '<td><button class="btn btn-primary cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Reapply</button></td>' +
+									'</tr>'
+
+							} else {
+								html += '<td>Denied</td>' +
+									'</tr>'
+							}
+
 						}
 						$('#show_ongoing_application').html(html)
 					}
@@ -734,6 +747,13 @@
 			job_ids = job_id;
 			console.log(job_ids);
 		}
+		$(document).on('click', '.cancel', function (e) {
+			$('#cancel_application').modal('show');
+			$('.modal-title').text('Cancel Application?');
+			job_id_app = $(e.currentTarget).val();
+			console.log(job_id_app);
+		})
+
 		$(document).on('click', '.apply', function (e) {
 			$('#apply_job').modal('show');
 			$('.modal-title').text('Confirm Apply');
@@ -796,6 +816,31 @@
 				}
 			});
 		})
+		$('#confirm_cancel').click(function () {
+			var job_id = job_id_app;
+			console.log(job_id);
+			$.ajax({
+				type: 'ajax',
+				method: 'post',
+				url: 'cancel_job',
+				data: {
+					id: job_id
+				},
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
+						alert('JOB APPLICATION ABORTED');
+						location.reload()
+					}
+				},
+				error: function () {
+					alert('Error');
+				}
+			});
+		})
+
 
 		$(document).on('click', '.skill-delete', function (e) {
 			var id = $(e.currentTarget).val();
@@ -983,25 +1028,28 @@
 
 		});
 
-		setInterval(function () {
-			$('#illegal_user1').css({ 'display': 'none' });
-			var checker_pass = $('#pass_new').val();
-			var checker_con = $('#pass_con').val();
-			if (checker_pass.length > 0 && checker_con.length > 0) {
-				$('#change_pass').removeAttr('disabled');
-				if (checker_con != checker_pass) {
+		$('#prof_pic1').load(function () {
+			setInterval(function () {
+				$('#illegal_user1').css({
+					'display': 'none'
+				});
+				var checker_pass = $('#pass_new').val();
+				var checker_con = $('#pass_con').val();
+				if (checker_pass.length > 0 && checker_con.length > 0) {
+					$('#change_pass').removeAttr('disabled');
+					if (checker_con != checker_pass) {
+						$('#change_pass').attr('disabled', 'disabled');
+						$('#illegal_user1').removeAttr('style');
+						$('#illegal_user1').html('Passwords do not match');
+					}
+
+				} else {
 					$('#change_pass').attr('disabled', 'disabled');
-					$('#illegal_user1').removeAttr('style');
-					$('#illegal_user1').html('Passwords do not match');
+
 				}
+			}, 0)
 
-			} else {
-				$('#change_pass').attr('disabled', 'disabled');
-				
-			}
-		}, 0)
-
-
+		})
 
 		$("#form_change_password").submit(function () {
 			var formData = $('#form_change_password').serializeArray();
