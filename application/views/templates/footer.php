@@ -1,10 +1,3 @@
 <footer>
-	<div class="container-fluid">
-		<div class="row">
-			<i class="fa fa-info-circle"></i>
-			<small>
-				<strong>Privacy Disclaimer: Personal datas are used for tracking purposes.</strong>
-			</small>
-		</div>
-	</div>
+	<small> <i class="fa fa-info-circle"></i> Privacy Disclaimer: Personal datas are used for tracking purposes.</small>
 </footer>

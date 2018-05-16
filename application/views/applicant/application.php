@@ -67,6 +67,8 @@
 </div>
 <!-- /.modal-dialog -->
 </div>
+
+<br>
 <script>
 	var page_info = 'application';
 

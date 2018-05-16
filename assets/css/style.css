@@ -1,105 +1,8 @@
-/* Media Queries */
-@media only screen and (min-device-width: 1025px) {
-	.dashboard-badge {
-		height: 150px;
-		width: 150px;
-		padding: 30px;
-	}
-	.dashboard-badge-no {
-		font-size: 4em;
-	}
-}
 
-@media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
-	.dashboard-badge {
-		height: 100px;
-		width: 100px;
-		padding: 20px;
-	}
-
-	.dashboard-badge-no {
-		font-size: 3em;
-	}
-}
-
-@media only screen and (min-device-width: 769px) {
-	.side-nav-close {
-		display: none;
-	}
-	.side-navbar-container {
-		width: 270px;
-	}
-	#image {
-		font-size: .9vw;
-	}
-}
-
-@media only screen and (max-device-width: 768px) {
-	.side-nav-close {
-		display: block;
-	}
-	footer {
-		margin-left: 0 !important;
-		width: 100vw !important;
-	}
-	.side-navbar-container {
-		width: 0;
-	}
-	.main-container {
-		margin-left: 0 !important;
-	}
-	#image {
-		font-size: 1.75vw;
-	}
-	.dashboard-badge {
-		height: 150px;
-		width: 150px;
-		padding: 30px;
-	}
-
-	.dashboard-badge-no {
-		font-size: 4em;
-	}
-}
-
-@media only screen and (max-device-width: 425px) {
-	#image {
-		font-size: 3vw;
-	}
-	
-	.card-title,
-	.user-profile-pic,
-	.user-profile-details {
-		text-align: center;
-		margin: auto;
-	}
-}
-
-@media only screen and (max-device-width: 375px) {
-	#image {
-		font-size: 3.5vw;
-	}
-
-	.card-title,
-	.user-profile-pic,
-	.user-profile-details {
-		text-align: center;
-		margin: auto;
-	}
-}
-
-body {
-	background-color: lightgrey;
-}
-
-footer {
-	background-color: #fbb414;
-	margin-left: 270px;
-	padding: 20px;
-	margin-top: 20px;
-	position: absolute;
-	width: 100%;
-}
+a:hover { text-decoration: none; }
+body { background-color: lightgrey; }
+footer { background-color: #fbb414; padding: 20px; margin-top: 20px; }
+footer small { padding-left: 280px; }
 
 .container-fluid {
 	padding: 0 25px;
@@ -294,7 +197,7 @@ footer {
 	color: #1a1751;
 }
 
-.side-navbar li:hover {
+.side-navbar li:hover, .side-navbar li.active {
 	border-left: 7px solid #fbb414;
 	background-color: rgba(0, 0, 0, .05);
 	transition: .25s ease-in-out;
@@ -344,7 +247,7 @@ footer {
 }
 
 .card-body {
-	margin-top: 15px;
+	margin-top: 20px;
 }
 
 .card-footer {
@@ -577,3 +480,109 @@ footer {
 }
 
 .user-change-profile {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+@media only screen and (min-device-width: 1025px) {
+	.dashboard-badge {
+		height: 150px;
+		width: 150px;
+		padding: 30px;
+	}
+	.dashboard-badge-no {
+		font-size: 4em;
+	}
+}
+
+@media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+	.dashboard-badge {
+		height: 100px;
+		width: 100px;
+		padding: 20px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 3em;
+	}
+}
+
+@media only screen and (min-device-width: 769px) {
+	.side-nav-close {
+		display: none;
+	}
+	.side-navbar-container {
+		width: 270px;
+	}
+	#image {
+		font-size: .9vw;
+	}
+}
+
+@media only screen and (max-device-width: 768px) {
+	.side-nav-close {
+		display: block;
+	}
+	footer small {
+		padding-left: 0;
+	}
+	.side-navbar-container {
+		width: 0;
+	}
+	.main-container {
+		margin-left: 0 !important;
+	}
+	#image {
+		font-size: 1.75vw;
+	}
+	.dashboard-badge {
+		height: 150px;
+		width: 150px;
+		padding: 30px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 4em;
+	}
+}
+
+@media only screen and (max-device-width: 425px) {
+	#image {
+		font-size: 3vw;
+	}
+	
+	.card-title,
+	.user-profile-pic,
+	.user-profile-details {
+		text-align: center;
+		margin: auto;
+	}
+}
+
+@media only screen and (max-device-width: 375px) {
+	#image {
+		font-size: 3.5vw;
+	}
+
+	.card-title,
+	.user-profile-pic,
+	.user-profile-details {
+		text-align: center;
+		margin: auto;
+	}
+}
