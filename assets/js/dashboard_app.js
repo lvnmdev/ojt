@@ -102,8 +102,8 @@ $(function () {
 			}
 		}, 0)
 	})
-
 	//For Biodata Functions Start HERE!
+
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -195,11 +195,13 @@ $(function () {
 				} else if (response.operation == 'update') {
 					alert('data updated');
 				}
+				window.location.href = 'dashboard';
 			},
 			error: function () {
 				alert('Error');
 			}
 		});
+		return false;
 	});
 	
 	//For Biodata Functions End HERE!
