@@ -24,8 +24,9 @@ class Company_m extends CI_Model {
 
     public function show_info(){
         $user = $this->session->userdata('username');
-        $query = $this->db->select('*')->from('tbl_company_info')->where('user_name',$user)->get();
-        $query2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$user)->get();
+        $id = $this->session->userdata('id');
+        $query = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+        $query2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$id)->get();
 
         if($query->num_rows()>0){
             $result[0] = true;
