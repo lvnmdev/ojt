@@ -111,7 +111,7 @@
 						</div>
 					</div>
 					<div class="card-footer" style="padding-left:0;">
-						<button type="submit" id="btnsubmit_info" class="btn btn-primary">Submit</button>
+						<button type="submit" id="btnsubmit_info" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Submit</button>
 					</div>
 				</form>
 			</div>

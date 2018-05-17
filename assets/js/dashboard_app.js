@@ -29,7 +29,6 @@ $(function () {
 				alert('Error');
 			}
 		});
-		return false;
 	});
 
 	function show_graduate_info() {
@@ -195,13 +194,11 @@ $(function () {
 				} else if (response.operation == 'update') {
 					alert('data updated');
 				}
-				window.location.href = 'dashboard';
 			},
 			error: function () {
 				alert('Error');
 			}
 		});
-		return false;
 	});
 	
 	//For Biodata Functions End HERE!
