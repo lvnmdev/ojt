@@ -50,11 +50,13 @@ $(function () {
 					if (response.pic) {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
+						$('#user_profile_name').html(response.data.comp_name);
+
+
 					} else {
 
 					}
 				}
-				$('#user_profile_name').html(response.data.comp_name);
 			},
 			error: function () {
 				alert('Error');
@@ -279,7 +281,7 @@ $(function () {
 	});
 
 
-	function show_pending_applications(){
+	function show_pending_applications() {
 		var html = '';
 		var i;
 		$.ajax({
@@ -290,7 +292,7 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if (response.success){
+				if (response.success) {
 					for (i = 0; i < response.data.length; i++) {
 						html += '<tr>' +
 							'<td>' + response.data[i].applicant_name + '</td>' +
