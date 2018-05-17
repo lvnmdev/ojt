@@ -26,13 +26,13 @@
 			<li class="<?php if($this->uri->uri_string() == 'Applicant/biodata') { echo 'active'; } ?>">
 				<i class='fa fa-address-book nav-icon'></i>Biodata</li>
 		</a>
+		<a href="<?= base_url('Applicant/graduate_info');?>">
+			<li class="<?php if($this->uri->uri_string() == 'Applicant/graduate_info') { echo 'active'; } ?>">
+				<i class='fa fa-graduation-cap nav-icon'></i>Graduate Info</li>
+		</a>
 		<a href="<?= base_url('Applicant/resume');?>">
 			<li class="<?php if($this->uri->uri_string() == 'Applicant/resume') { echo 'active'; } ?>">
 				<i class='fa fa-file-alt nav-icon'></i>Resume</li>
-		</a>
-		<a href="<?= base_url('Applicant/employed');?>">
-			<li>
-				<i class='fa fa-graduation-cap nav-icon'></i>Graduate Info</li>
 		</a>
 	</ul>
 </nav>

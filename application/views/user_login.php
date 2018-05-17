@@ -49,14 +49,6 @@
         }
     }
 ?>
-	<!DOCTYPE html>
-	<html>
-
-	<head>
-		<title></title>
-	</head>
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
 <style>
 	:root {
   --container-bg-color: #333;
@@ -199,7 +191,7 @@ form input, form select{
 
 	<body>
 		<div class="custom-container">
-			<strong><span>USTP Online OJT Application</span></strong>
+			<strong><span>USTP | Graduate Tracer</span></strong>
 			<div class="split left">
 				<div class="split-inner">
 					<h1>Login</h1>

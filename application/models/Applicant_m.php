@@ -38,6 +38,7 @@ class Applicant_m extends CI_Model {
             'nationality' => $this->input->post('nationality'),
             'religion' => $this->input->post('religion'),
             'sex' => $this->input->post('sex'),
+            'contact_no' => $this->input->post('contact_no'),
             'haddress' => $this->input->post('haddress'),
             'caddress' => $this->input->post('caddress'),
             'birthdate' => $this->input->post('birthdate'),
@@ -48,6 +49,7 @@ class Applicant_m extends CI_Model {
             'dadbday' => $this->input->post('dadbday'),
             'dadwork' => $this->input->post('dadwork')
         );
+
 
         $query = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$field['user_name'])->get();
         if($query->num_rows()>0){
@@ -62,8 +64,8 @@ class Applicant_m extends CI_Model {
             $result[1] = 'insert';
             $result[0] = true;
             return $result;
-            }
         }
+    }
 
 
     public function insert_skill(){
@@ -165,6 +167,49 @@ class Applicant_m extends CI_Model {
         return $result;
     }
 
+     public function edit_graduate_info(){
+        $field = array(
+            'user_name' => $this->session->userdata('username'),
+            'date_graduated' => $this->input->post('g_date_graduated'),
+            'date_hired' => $this->input->post('g_date_hired'),
+            'company_name' => $this->input->post('g_company_name'),
+            'hr_person' => $this->input->post('g_hr_person'),
+            'hr_contact_no' => $this->input->post('g_hr_no'),
+            'hr_email' => $this->input->post('g_hr_email'),
+        );
+        
+        $result[0] = false;
+
+        $query = $this->db->select('*')->from('tbl_graduate_info')->where('user_name',$field['user_name'])->get();
+        if($query->num_rows()>0){
+            $this->db->where('user_name',$field['user_name']);
+            $this->db->update('tbl_graduate_info',$field);
+            $result[1] = 'update';
+            $result[0] = true;
+            return $result;
+
+        }else{
+            $query = $this->db->insert('tbl_graduate_info',$field);
+            $result[1] = 'insert';
+            $result[0] = true;
+            return $result;
+        }
+    }
+
+    public function show_graduate_info() {
+        $user = $this->session->userdata('username');
+        $query = $this->db->select('*')->from('tbl_graduate_info')->where('user_name',$user)->get();
+        
+        $result[0] = false;
+
+        if($query->num_rows() > 0) {
+            $result[0] = true;
+            $result[1] = $query->result();
+        }
+        
+        return $result;
+    }
+
     public function show_ongoing_applications() {
         $user = $this->session->userdata('username');
         $query = $this->db->select('tbl_pending_application.*')->select('tbl_job_posting.*')->select('tbl_company_info.*')->from('tbl_pending_application')->join('tbl_job_posting','tbl_pending_application.job_id = tbl_job_posting.job_id','inner')->join('tbl_company_info','tbl_job_posting.user_name = tbl_company_info.user_name','inner')->where('tbl_pending_application.user_name',$user)->get();
@@ -175,7 +220,6 @@ class Applicant_m extends CI_Model {
             $result[0] = true;
             $result[1] = $query->result();
         }
-
         return $result;
     }
         

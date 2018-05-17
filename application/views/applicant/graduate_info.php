@@ -19,34 +19,34 @@
 						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>Date Graduated:</strong>
 						</p>
-						<p id='g_date_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p id='user_date_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>Date Hired:</strong>
 						</p>
-						<p id='g_company_name' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p id='user_date_hired' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>Company Name:</strong>
 						</p>
-						<p id='g_date_hired' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p id='user_company_name' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>HR Person:</strong>
 						</p>
-						<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p id='user_hr_person' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-md-12'>
 							<strong>HR Contact Info:</strong>
 						</p>
                         <p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Contact No.</p>
-                        <p id='company_permit' class='col-xs-12 col-sm-9 col-md-10'></p>
+                        <p id='user_hr_contact_no' class='col-xs-12 col-sm-9 col-md-10'></p>
                         <p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Email</p>
-                        <p id='company_permit' class='col-xs-12 col-sm-9 col-md-10'></p>
+                        <p id='user_hr_email' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 				</div>
 				<div class='card-footer'>
@@ -70,29 +70,29 @@
 				<h4 class="modal-title">Graduate Information</h4>
 			</div>
 			<div class="modal-body">
-				<form id="form_info" class="form-horizontal">
+				<form id="graduate_form_info" class="form-horizontal" method="post">
 					<div class="form-group">
 						<label for="name" class="label-control col-md-4">Date Graduated</label>
 						<div class="col-md-8">
-							<input id='g_date_graduated' type="date" name="" class="form-control" value="" required>
+							<input id='e_g_date_graduated' type="date" name="g_date_graduated" class="form-control" value="" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="name" class="label-control col-md-4">Date Hired</label>
 						<div class="col-md-8">
-							<input id='g_date_hired' type="date" name="" class="form-control" value="" required>
+							<input id='e_g_date_hired' type="date" name="g_date_hired" class="form-control" value="" required>
 						</div>
 					</div>
                     <div class="form-group">
 						<label for="name" class="label-control col-md-4">Company Name</label>
 						<div class="col-md-8">
-							<input id='g_company_name' type="text" name="" class="form-control" value="" required>
+							<input id='e_g_company_name' type="text" name="g_company_name" class="form-control" value="" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="name" class="label-control col-md-4">HR Person</label>
 						<div class="col-md-8">
-							<input id='g_hr_person' type="text" name="" class="form-control" value="" required>
+							<input id='e_g_hr_person' type="text" name="g_hr_person" class="form-control" value="" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -101,13 +101,13 @@
 					<div class="form-group">
 						<label for="" class="label-control col-md-4"> &nbsp Contact No.</label>
 						<div class="col-md-8">
-							<input id='g_hr_no' type="number" name="tin" class="form-control" value="" required>
+							<input id='e_g_hr_no' type="number" name="g_hr_no" class="form-control" value="" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="label-control col-md-4"> &nbsp Email</label>
 						<div class="col-md-8">
-							<input id='g_hr_email' type="email" name="tin" class="form-control" value="" required>
+							<input id='e_g_hr_email' type="email" name="g_hr_email" class="form-control" value="" required>
 						</div>
 					</div>
 					<div class="card-footer" style="padding-left:0;">

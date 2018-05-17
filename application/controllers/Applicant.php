@@ -50,8 +50,8 @@ class Applicant extends CI_Controller {
 		$this->load->view('templates/applicant/content', $data);
 	}
 
-	public function employed() {
-		$data['content'] = 'applicant/employed';
+	public function graduate_info() {
+		$data['content'] = 'applicant/graduate_info';
         
 		$this->load->view('templates/applicant/content', $data);
 	}
@@ -211,6 +211,31 @@ class Applicant extends CI_Controller {
 			$msg['data'] = $result[1];
 		}
 		echo json_encode($msg);
+	}
+	
+	// graduate info
+
+	public function edit_graduate_info(){
+		$result = $this->applicant->edit_graduate_info();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['operation'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_graduate_info(){
+		$result = $this->applicant->show_graduate_info();
+		$msg['success'] = false;
+		
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+		
 	}
 
 /////////////////JOBS FUNCTIONALS WUBBA LUBBA DUB DUB	
