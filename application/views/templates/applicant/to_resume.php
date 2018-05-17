@@ -1,8 +1,9 @@
 <?php
 $user = $this->session->userdata('username');
+$id = $this->session->userdata('id');
 $email = $this->session->userdata('email');
 $sql = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
-$sql2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$user)->get();
+$sql2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$id)->get();
 $query = $sql->row();
 $query2 = $sql2->row();
 $name = $query->fname.' '. $query->mname.' '. $query->lname;
