@@ -210,10 +210,6 @@ form input, form select{
 					<h1>Register</h1>
 					<form id="regform" method="post">
 						<div class='alert alert-success' id="banner-message" style="display:none"></div>
-						<div class='alert alert-danger' id="banner-failed2" style="display:none"></div>
-						<div class='alert alert-warning' id="banner-warning1" style="display:none"></div>
-						<div class='alert alert-warning' id="banner-warning2" style="display:none"></div>
-						<div class='alert alert-warning' id="banner-warning3" style="display:none"></div>
 
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="email" name="email" placeholder="Email" required>
@@ -225,9 +221,8 @@ form input, form select{
 							<label style="color:whitesmoke; float: left;">User Type:</label>
 							<br>
 							<select name="usertype">
-								<option class="form-control" value="2">Applicant</option>
+								<option class="form-control" value="2">Student</option>
 								<option class="form-control" value="1">Company </option>
-								<option class="form-control" value="0">Admin </option>
 							</select>
 						</div>
 						<input type="submit" class="button" value="Submit">
