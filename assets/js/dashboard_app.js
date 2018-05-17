@@ -1,36 +1,37 @@
-	var job_ids = [];
+var job_ids = [];
 
-	$(function () {
-		show_bio_data();
-		show_resume();
-		show_ongoing_applications();
-		count_dashboard();
+$(function () {
+	show_bio_data();
+	show_resume();
+	show_ongoing_applications();
+	count_dashboard();
 
-		function count_dashboard() {
-			var html = '';
-			var i;
-			$.ajax({
-				type: 'ajax',
-				method: 'get',
-				url: 'count_dashboard',
-				async: false,
-				dataType: 'json',
-				success: function (response) {
-					console.log(response);
-					if (response.data != null) {
-						$('#applications_count').html(response.data.pending_applicant);
-					} else {
-						$('#applications_count').html(0);
-					}
-					if (response.data1 != null) {
-						$('#jobs_count').html(response.data1.jobs_posted);
-					} else {
-						$('#jobs_count').html(0);
-					}
-				},
-				error: function () {
-					alert('Error');
+	function count_dashboard() {
+		var html = '';
+		var i;
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'count_dashboard',
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.data != null) {
+					$('#applications_count').html(response.data.pending_applicant);
+				} else {
+					$('#applications_count').html(0);
 				}
+				if (response.data1 != null) {
+					$('#jobs_count').html(response.data1.jobs_posted);
+				} else {
+					$('#jobs_count').html(0);
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+
 		});
 	}
 	var image = 0;
@@ -182,9 +183,11 @@
 		'<div class="col-md-8">' +
 		'<input id="input3" name="" class="form-control" >' +
 		'</div>' +
-		'</div>'
+		'</div>';
+
 	var checker;
 	var checker1;
+
 	$('#addqual').click(function () {
 		$('#edit_form_resume').html('');
 		var i = 0;
@@ -217,35 +220,32 @@
 				$('#btnsubmit_resume').attr('disabled', 'disabled');
 			}
 		});
-
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_resume',
-			async: true,
-			dataType: 'json',
-			success: function (data) {
-				if (data.skills) {
-					var edit_skills = "";
-					for (i = 0; i < data.skills.length; i++) {
-						edit_skills += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
-							'<li>' + data.skills[i].skill + '</li>' +
-							'</div></ul>' +
-							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete skill-delete" id="' + i + '" value="' + data.skills[i].skill_id + '"><i class="fa fa-times"></i></button>' +
-							'</div>';
-					}
-					$('#edit_form_resume').html(edit_skills);
-				}
-			},
-			error: function (data) {
-
-			}
-		})
 	})
 
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'show_resume',
+		async: true,
+		dataType: 'json',
+		success: function (data) {
+			if (data.skills) {
+				var edit_skills = "";
+				for (i = 0; i < data.skills.length; i++) {
+					edit_skills += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+						'<li>' + data.skills[i].skill + '</li>' +
+						'</div></ul>' +
+						'<div class="col-xs-1 col-sm-1 col-md-1">' +
+						'<button class="resume-delete skill-delete" id="' + i + '" value="' + data.skills[i].skill_id + '"><i class="fa fa-times"></i></button>' +
+						'</div>';
+				}
+				$('#edit_form_resume').html(edit_skills);
+			}
+		},
+		error: function (data) {
 
-
+		}
+	})
 
 	$('#addwork').click(function () {
 		$('#edit_form_resume').html('');
@@ -388,7 +388,8 @@
 
 			}
 		})
-	})
+	});
+
 	$('#addeduc').click(function () {
 		$('#edit_form_resume').html('');
 		$('#edit_resume').modal('show');
@@ -499,35 +500,71 @@
 				$('#btnsubmit_resume').attr('disabled', 'disabled');
 			}
 		});
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_resume',
-			async: true,
-			dataType: 'json',
-			success: function (data) {
-				var edit_seminars = '';
-				if (data.seminars) {
-					for (i = 0; i < data.seminars.length; i++) {
-						edit_seminars += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
-							'<li>' + data.seminars[i].seminar + '</li>' +
-							'<li>' + data.seminars[i].seminar_date + '</li>' +
-							'<li>' + data.seminars[i].conductedby + '</li>' +
-							'</div></ul>' +
-							'<div class="col-xs-1 col-sm-1 col-md-1">' +
-							'<button class="resume-delete semi-delete" id="' + i + '" value="' + data.seminars[i].seminar_id + '"><i class="fa fa-times"></i></button>' +
-							'</div>';
-
-					}
-					$('#edit_form_resume').html(edit_seminars);
-				}
-			},
-			error: function (data) {
-
-			}
-		})
-
 	})
+
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'show_resume',
+		async: true,
+		dataType: 'json',
+		success: function (data) {
+			var edit_seminars = '';
+			if (data.seminars) {
+				for (i = 0; i < data.seminars.length; i++) {
+					edit_seminars += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
+						'<li>' + data.seminars[i].seminar + '</li>' +
+						'<li>' + data.seminars[i].seminar_date + '</li>' +
+						'<li>' + data.seminars[i].conductedby + '</li>' +
+						'</div></ul>' +
+						'<div class="col-xs-1 col-sm-1 col-md-1">' +
+						'<button class="resume-delete semi-delete" id="' + i + '" value="' + data.seminars[i].seminar_id + '"><i class="fa fa-times"></i></button>' +
+						'</div>';
+
+				}
+				$('#edit_form_resume').html(edit_seminars);
+			}
+		},
+		error: function (data) {
+
+		}
+	});
+
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'show_ongoing_applications',
+		async: false,
+		dataType: 'json',
+		success: function (response) {
+			console.log(response.data);
+			var html = '';
+			var i;
+			if (response.data) {
+				for (i = 0; i < response.data.length; i++) {
+					job_id.push(response.data[i].job_id);
+					html += '<tr>' +
+						'<td>' + response.data[i].comp_name + '</td>' +
+						'<td>' + response.data[i].comp_hr + '</td>' +
+						'<td>' + response.data[i].position + '</td>' +
+						'<td>' + response.data[i].requirements + '</td>' +
+						'<td>' + response.data[i].date_posted + '</td>' +
+						'<td>' + response.data[i].date_applied + '</td>'
+					if (response.data[i].app_status == "1") {
+						html += '<td><button class="btn btn-danger cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
+							'</tr>'
+					} else if (response.data[i].app_status == "0") {
+						html += '<td><button class="btn btn-primary cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Reapply</button></td>' +
+							'</tr>'
+
+					} else {
+						html += '<td>Denied</td>' +
+							'</tr>'
+					}
+				}
+			}
+		}
+	});
 
 	$('#form_resume').submit(function () {
 		$("#btnsubmit_resume").attr("disabled", "disabled");
@@ -553,92 +590,92 @@
 		});
 	})
 
-function show_resume() {
-$.ajax({
-	type: 'ajax',
-	method: 'get',
-	url: 'show_resume',
-	async: false,
-	dataType: 'json',
-	success: function (data) {
-		console.log(data);
-		info = data;
-		if (!data.success) {
-			$('#ze_question').modal('show');
-			$(".btn-info").attr("disabled", "disabled");
-			$("ul.side-navbar").children().click(function (e) {
-				e.preventDefault();
-			})
-		}
-		var skills = '';
-		var xp = '';
-		var accomplishments = '';
-		var seminar = '';
-		var education = '';
-		var i;
-		if (data.seminars) {
-			for (i = 0; i < data.seminars.length; i++) {
-				seminar += '<ul class="resume-list">' +
-					'<li>' + data.seminars[i].seminar + '</li>' +
-					'<li>' + data.seminars[i].seminar_date + '</li>' +
-					'<li>' + data.seminars[i].conductedby + '</li>' +
-					'</ul>';
+	function show_resume() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_resume',
+			async: false,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data);
+				info = data;
+				if (!data.success) {
+					$('#ze_question').modal('show');
+					$(".btn-info").attr("disabled", "disabled");
+					$("ul.side-navbar").children().click(function (e) {
+						e.preventDefault();
+					})
+				}
+				var skills = '';
+				var xp = '';
+				var accomplishments = '';
+				var seminar = '';
+				var education = '';
+				var i;
+				if (data.seminars) {
+					for (i = 0; i < data.seminars.length; i++) {
+						seminar += '<ul class="resume-list">' +
+							'<li>' + data.seminars[i].seminar + '</li>' +
+							'<li>' + data.seminars[i].seminar_date + '</li>' +
+							'<li>' + data.seminars[i].conductedby + '</li>' +
+							'</ul>';
+					}
+					$('#resume_seminar').html(seminar);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.accomplishment) {
+					for (i = 0; i < data.accomplishment.length; i++) {
+						accomplishments += '<ul class="resume-list">' +
+							'<li>' + data.accomplishment[i].accomplishment + '</li>' +
+							'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'</ul>';
+					}
+					$('#resume_accomplishments').html(accomplishments);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.skills) {
+					for (i = 0; i < data.skills.length; i++) {
+						skills += '<ul class="resume-list">' +
+							'<li>' + data.skills[i].skill + '</li>' +
+							'</ul>';
+					}
+					$('#resume_skills').html(skills);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.workxp) {
+					for (i = 0; i < data.workxp.length; i++) {
+						xp += '<ul class="resume-list">' +
+							'<li>' + data.workxp[i].position + '</li>' +
+							'<li>' + data.workxp[i].company + '</li>' +
+							'<li>' + data.workxp[i].date_start + '</li>' +
+							'<li>' + data.workxp[i].date_end + '</li>' +
+							'</ul>';
+					}
+					$('#resume_xp').html(xp);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+
+				if (data.education) {
+					for (i = 0; i < data.education.length; i++) {
+						education += '<ul class="resume-list">' +
+							'<li>' + data.education[i].level + '</li>' +
+							'<li>' + data.education[i].school + '</li>' +
+							'<li>' + data.education[i].start + '</li>' +
+							'<li>' + data.education[i].graduated + '</li>' +
+							'</ul>';
+					}
+					$('#resume_education').html(education);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
 			}
-			$('#resume_seminar').html(seminar);
-		} else {
-			$(".btn-info").attr("disabled", "disabled");
-		}
-
-	if (data.accomplishment) {
-		for (i = 0; i < data.accomplishment.length; i++) {
-			accomplishments += '<ul class="resume-list">' +
-				'<li>' + data.accomplishment[i].accomplishment + '</li>' +
-				'<li>' + data.accomplishment[i].affiliation + '</li>' +
-				'</ul>';
-		}
-		$('#resume_accomplishments').html(accomplishments);
-	} else {
-		$(".btn-info").attr("disabled", "disabled");
+		})
 	}
-	if (data.skills) {
-		for (i = 0; i < data.skills.length; i++) {
-			skills += '<ul class="resume-list">' +
-				'<li>' + data.skills[i].skill + '</li>' +
-				'</ul>';
-		}
-		$('#resume_skills').html(skills);
-	} else {
-		$(".btn-info").attr("disabled", "disabled");
-	}
-	if (data.workxp) {
-		for (i = 0; i < data.workxp.length; i++) {
-			xp += '<ul class="resume-list">' +
-				'<li>' + data.workxp[i].position + '</li>' +
-				'<li>' + data.workxp[i].company + '</li>' +
-				'<li>' + data.workxp[i].date_start + '</li>' +
-				'<li>' + data.workxp[i].date_end + '</li>' +
-				'</ul>';
-		}
-		$('#resume_xp').html(xp);
-	} else {
-		$(".btn-info").attr("disabled", "disabled");
-	}
-
-	if (data.education) {
-		for (i = 0; i < data.education.length; i++) {
-			education += '<ul class="resume-list">' +
-				'<li>' + data.education[i].level + '</li>' +
-				'<li>' + data.education[i].school + '</li>' +
-				'<li>' + data.education[i].start + '</li>' +
-				'<li>' + data.education[i].graduated + '</li>' +
-				'</ul>';
-		}
-		$('#resume_education').html(education);
-	} else {
-		$(".btn-info").attr("disabled", "disabled");
-	}
-
-
 
 	function show_available_jobs(gender) {
 		console.log(gender)
@@ -720,6 +757,7 @@ $.ajax({
 		job_ids = job_id;
 		console.log(job_ids);
 	}
+
 	$(document).on('click', '.cancel', function (e) {
 		$('#cancel_application').modal('show');
 		$('.modal-title').text('Cancel Application?');
@@ -731,6 +769,7 @@ $.ajax({
 		$('#apply_job').modal('show');
 		$('.modal-title').text('Confirm Apply');
 		job_id_app = $(e.currentTarget).val();
+
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -758,8 +797,6 @@ $.ajax({
 				$('#job_desc').html(html)
 			}
 		})
-
-
 	});
 
 	$('#confirm_app').click(function () {
@@ -786,6 +823,7 @@ $.ajax({
 			}
 		});
 	})
+
 	$('#confirm_cancel').click(function () {
 		var job_id = job_id_app;
 		console.log(job_id);
@@ -811,7 +849,6 @@ $.ajax({
 		});
 	})
 
-
 	$(document).on('click', '.skill-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
@@ -836,6 +873,7 @@ $.ajax({
 				alert('Error');
 			}
 		});
+
 	});
 
 	$(document).on('click', '.educ-delete', function (e) {
@@ -865,6 +903,7 @@ $.ajax({
 		});
 
 	});
+
 	$(document).on('click', '.work-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
@@ -891,6 +930,7 @@ $.ajax({
 		});
 
 	});
+
 	$(document).on('click', '.semi-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
@@ -918,6 +958,7 @@ $.ajax({
 		});
 
 	});
+
 	$(document).on('click', '.acc-delete', function (e) {
 		var id = $(e.currentTarget).val();
 		console.log(id);
@@ -970,55 +1011,55 @@ $.ajax({
 		}
 	});
 
-		$("#form_change_user").submit(function () {
-			var formData = $('#form_change_user').serializeArray();
-			console.log(formData);
+	$("#form_change_user").submit(function () {
+		var formData = $('#form_change_user').serializeArray();
+		console.log(formData);
 
-			$.ajax({
-				type: 'ajax',
-				url: 'change_username',
-				method: 'POST',
-				data: formData,
-				async: false,
-				dataType: 'json',
-				success: function (response) {
-					console.log(response);
-					if (response.success) {
-						$('#success_user').removeAttr('style');
-						$('#success_user').html('Username Updated');
-					}
-
-				},
-
-				error: function (jqXHR, textStatus, errorThrown) {
-					alert(textStatus + " " + errorThrown)
+		$.ajax({
+			type: 'ajax',
+			url: 'change_username',
+			method: 'POST',
+			data: formData,
+			async: false,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					$('#success_user').removeAttr('style');
+					$('#success_user').html('Username Updated');
 				}
-			});
 
+			},
+
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(textStatus + " " + errorThrown)
+			}
 		});
 
-		$('#prof_pic1').load(function () {
-			setInterval(function () {
-				$('#illegal_user1').css({
-					'display': 'none'
-				});
-				var checker_pass = $('#pass_new').val();
-				var checker_con = $('#pass_con').val();
-				if (checker_pass.length > 0 && checker_con.length > 0) {
-					$('#change_pass').removeAttr('disabled');
-					if (checker_con != checker_pass) {
-						$('#change_pass').attr('disabled', 'disabled');
-						$('#illegal_user1').removeAttr('style');
-						$('#illegal_user1').html('Passwords do not match');
-					}
+	});
 
-				} else {
+	$('#prof_pic1').load(function () {
+		setInterval(function () {
+			$('#illegal_user1').css({
+				'display': 'none'
+			});
+			var checker_pass = $('#pass_new').val();
+			var checker_con = $('#pass_con').val();
+			if (checker_pass.length > 0 && checker_con.length > 0) {
+				$('#change_pass').removeAttr('disabled');
+				if (checker_con != checker_pass) {
 					$('#change_pass').attr('disabled', 'disabled');
-
+					$('#illegal_user1').removeAttr('style');
+					$('#illegal_user1').html('Passwords do not match');
 				}
-			}, 0)
-		}
-			
+
+			} else {
+				$('#change_pass').attr('disabled', 'disabled');
+
+			}
+		}, 0)
+	});
+
 
 	$(document).on('click', '.graduate_edit', function (e) {
 		$('#graduate_edit_info').modal('show');
