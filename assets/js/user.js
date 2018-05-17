@@ -74,7 +74,6 @@ $(function () {
 					setTimeout(function () {
 						location.reload();
 					}, 3000);
-
 				}
 			},
 			error: function () {

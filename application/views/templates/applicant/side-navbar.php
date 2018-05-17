@@ -32,7 +32,7 @@
 		</a>
 		<a href="<?= base_url('Applicant/employed');?>">
 			<li>
-				<i class='fa fa-file-alt nav-icon'></i>Graduate Info</li>
+				<i class='fa fa-graduation-cap nav-icon'></i>Graduate Info</li>
 		</a>
 	</ul>
 </nav>
