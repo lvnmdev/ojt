@@ -25,9 +25,8 @@ class Company_m extends CI_Model {
     public function show_info(){
         $user = $this->session->userdata('username');
         $id = $this->session->userdata('id');
-        $query = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+        $query = $this->db->select('*')->from('tbl_company_info')->where('user_name',$user)->get();
         $query2 = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$id)->get();
-
         if($query->num_rows()>0){
             $result[0] = true;
             $result[1] = $query->row();
@@ -176,18 +175,18 @@ class Company_m extends CI_Model {
     public function upload_photo(){
         $info = pathinfo($_FILES['image']['name']);
         $ext = $info['extension']; // get the extension of the file
-        $newname = $_SESSION['username'].'_pic.'.$ext; 
+        $newname = $_SESSION['id'].'_pic.'.$ext; 
 
         $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
         $link = 'assets/img/profile_pics/'.$newname;
 
         $field = array(
-            'user_name' => $this->session->userdata('username'),
+            'user_id' => $this->session->userdata('id'),
             'photo_path' => $link
         );
-        $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_name',$field['user_name'])->get();
+        $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
         if($query->num_rows()>0){
-            $this->db->where('user_name',$field['user_name']);
+            $this->db->where('user_id',$field['user_id']);
             $this->db->update('tbl_photo_upload',$field);
             unlink($target);
             move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
