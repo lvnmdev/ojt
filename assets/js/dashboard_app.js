@@ -616,6 +616,9 @@ $(function () {
 				if (!data.success) {
 					$('#ze_question').modal('show');
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function(e){
+						e.preventDefault();						
+					});
 					$("ul.side-navbar").children().click(function (e) {
 						e.preventDefault();
 					})
@@ -637,6 +640,9 @@ $(function () {
 					$('#resume_seminar').html(seminar);
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function (e) {
+						e.preventDefault();
+					});
 				}
 				if (data.accomplishment) {
 					for (i = 0; i < data.accomplishment.length; i++) {
@@ -648,6 +654,9 @@ $(function () {
 					$('#resume_accomplishments').html(accomplishments);
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function (e) {
+						e.preventDefault();
+					});
 				}
 				if (data.skills) {
 					for (i = 0; i < data.skills.length; i++) {
@@ -658,6 +667,9 @@ $(function () {
 					$('#resume_skills').html(skills);
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function (e) {
+						e.preventDefault();
+					});
 				}
 				if (data.workxp) {
 					for (i = 0; i < data.workxp.length; i++) {
@@ -671,6 +683,9 @@ $(function () {
 					$('#resume_xp').html(xp);
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function (e) {
+						e.preventDefault();
+					});
 				}
 
 				if (data.education) {
@@ -685,10 +700,10 @@ $(function () {
 					$('#resume_education').html(education);
 				} else {
 					$(".btn-info").attr("disabled", "disabled");
+					$(".btn-info").click(function (e) {
+						e.preventDefault();
+					});
 				}
-
-
-
 			}
 		})
 	}

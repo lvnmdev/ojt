@@ -101,7 +101,7 @@
 					<div class="form-group">
 						<label for="" class="label-control col-md-4"> &nbsp Contact No.</label>
 						<div class="col-md-8">
-							<input id='e_g_hr_no' type="number" name="g_hr_no" class="form-control" value="" maxlength="11" required>
+							<input id='e_g_hr_no' type="tel" name="g_hr_no" class="form-control" value="" maxlength="11" required>
 						</div>
 					</div>
 					<div class="form-group">
