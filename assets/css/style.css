@@ -1,8 +1,29 @@
 
 a:hover { text-decoration: none; }
 body { background-color: lightgrey; }
-footer { background-color: #fbb414; padding: 20px; margin-top: 20px; }
-footer small { padding-left: 280px; }
+
+footer { 
+	margin-top: 20px; 
+	margin-left: 270px;
+
+}
+
+.footer-gold {
+	background-color: #fbb414;
+	padding:10px;
+}
+
+.footer-blue {
+	background-color: #1a1751;
+	color: white;
+	padding:25px;
+	font-size: .8em;
+}
+
+.footer-title {
+	font-weight: bold;
+	font-size: 1.2em !important;
+}
 
 .container-fluid {
 	padding: 0 25px;

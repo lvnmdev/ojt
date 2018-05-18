@@ -67,8 +67,15 @@ $(function () {
 						location.reload();
 					}, 3000);
 				} else {
+<<<<<<< HEAD
 					$('#toaster span').html('Wrong Login Credentials!');
 					toaster_login();
+=======
+					$('#banner-failed').html('Wrong Login Credentials').fadeIn().delay(3000).fadeOut('slow');
+					setTimeout(function () {
+						location.reload();
+					}, 3000);
+>>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 				}
 			},
 			error: function () {

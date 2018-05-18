@@ -6,7 +6,7 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
 				<p class='path-nav'>
-					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
+					<a href="<?= base_url("Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Resume</p>
 			</div>
 
@@ -63,7 +63,7 @@
 	</div>
 </div>
 
-<div id="edit_resume" class="modal fade" tabindex="-1" role="dialog">
+<div id="edit_resume" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-form" role="document">
 		<div class="modal-content">
 			<div class="modal-header">

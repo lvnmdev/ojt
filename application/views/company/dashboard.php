@@ -18,7 +18,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-md-4">
-									<a href='<?= base_url("Applicant/pending_application")?>'>
+									<a href='<?= base_url("Company/pending_apps")?>'>
 										<div class='dashboard-badge'>
 											<span id='pending_app_no' class='dashboard-badge-no'></span>
 										</div>
@@ -39,7 +39,7 @@
 						<div class='dashboard-notify'>
 							<div class="row">
 								<div class="col-md-4">
-									<a href='<?= base_url("Applicant/application")?>'>
+									<a href='<?= base_url("Company/post_job")?>'>
 										<div class='dashboard-badge'>
 											<span id='posted_jobs_no' class='dashboard-badge-no'></span>
 										</div>

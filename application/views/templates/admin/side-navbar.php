@@ -14,13 +14,13 @@
 			<li class="<?php if($this->uri->uri_string() == 'Admin/dashboard') { echo 'active'; } ?>">
 				<i class='fa fa-clipboard nav-icon'></i>Dashboard</li>
 		</a>
-		<a href="<?= base_url('Admin/company');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/company') { echo 'active'; } ?>">
-				<i class='fa fa-briefcase nav-icon'></i>Company</li>
+		<a href="<?= base_url('Admin/companies');?>">
+			<li class="<?php if($this->uri->uri_string() == 'Admin/companies') { echo 'active'; } ?>">
+				<i class='fa fa-briefcase nav-icon'></i>Companies</li>
 		</a>
-		<a href="<?= base_url('Admin/pending_company');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_company') { echo 'active'; } ?>">
-				<i class='fa fa-file-alt nav-icon'></i>Pending Company</li>
+		<a href="<?= base_url('Admin/pending_companies');?>">
+			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_companies') { echo 'active'; } ?>">
+				<i class='fa fa-file-alt nav-icon'></i>Pending Companies</li>
 		</a>
 		<a href="<?= base_url('Admin/applicants');?>">
 			<li class="<?php if($this->uri->uri_string() == 'Admin/applicants') { echo 'active'; } ?>">
@@ -37,14 +37,6 @@
 		<a href="<?= base_url('Admin/pending_hirings');?>">
 			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_hirings') { echo 'active'; } ?>">
 				<i class='fa nav-icon'></i>Pending Hirings</li>
-		</a>
-		<a href="<?= base_url('Admin/evaluation');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/evaluation') { echo 'active'; } ?>">
-				<i class='fa nav-icon'></i>Evaluation</li>
-		</a>
-		<a href="<?= base_url('Admin/end_of_contract');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/end_of_contract') { echo 'active'; } ?>">
-				<i class='fa nav-icon'></i>End of Contract</li>
 		</a>
 	</ul>
 </nav>

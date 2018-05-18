@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_m extends CI_Model {
     public function __construct(){
-		  parent::__construct();
+		parent::__construct();
     }
 
     public function show_company() {
-      $query = $this->db->select('*')->from('tbl_company_info')->join('tbl_users','tbl_company_info.user_name = tbl_users.user_name','inner')->get();
+      $query = $this->db->select('*')->from('tbl_company_info')->join('tbl_users','tbl_company_info.user_name = tbl_users.user_name','inner')->where('user_status','2')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
@@ -23,7 +23,7 @@ class Admin_m extends CI_Model {
     }
 
     public function show_applicant() {
-      $query =  $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->get();
+      $query =  $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->where('user_status','2')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();

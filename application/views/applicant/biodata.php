@@ -6,7 +6,7 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
 				<p class='path-nav'>
-					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
+					<a href="<?= base_url("Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Biodata</p>
 			</div>
 
@@ -26,7 +26,7 @@
 								<p>Name:</p>
 								<input class='form-control' id='user_fullname' type="text" readonly>
 							</div>
-							<div class='col-xs-12 col-md-1'>
+							<div class='col-xs-12 col-md-2'>
 								<p>Sex:</p>
 								<input class='form-control' id='user_sex' type="text" readonly>
 							</div>
@@ -34,6 +34,12 @@
 								<p>Birthdate:</p>
 								<input class='form-control' id='user_birthdate' type="text" readonly>
 							</div>
+							<div class=' col-xs-12 col-md-3'>
+								<p>Contact No:</p>
+								<input class='form-control' id='user_contact_no' type="text" readonly>
+							</div>
+						</div>
+						<div class="row">
 							<div class='col-xs-12 col-md-2'>
 								<p>Nationality:</p>
 								<input class='form-control' id='user_nationality' type="text" readonly>
@@ -132,35 +138,41 @@
 						</div>
 						<div class='col-xs-12 col-sm-4 col-md-4'>
 							<div class="form-group">
-								<label for="name" class="label-contro">Last Name</label>
+								<label for="name" class="label-control">Last Name</label>
 								<input id='bio_lname' type="text" name="lname" class="form-control" value="" required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class='col-xs-12 col-sm-3 col-md-3'>
+						<div class='col-xs-12 col-sm-3 col-md-2'>
 							<div class="form-group">
 								<label for="name" class="label-control">Sex</label>
 								<br>
-								<select name="sex" class="selectpicker" style='width:100%;' required>
+								<select name="sex" class="form-control" required>
 									<option value="Male">Male</option>
 									<option value="Female">Female</option>
 								</select>
 							</div>
 						</div>
-						<div class='col-xs-12 col-sm-3 col-md-3'>
+						<div class='col-xs-12 col-sm-4 col-md-2'>
 							<div class="form-group ">
 								<label for="name" class="label-control">Birthdate</label>
 								<input id='bio_bday' type="date" name="birthdate" class="form-control" value="" required>
 							</div>
 						</div>
-						<div class='col-xs-12 col-sm-3 col-md-3'>
+						<div class='col-xs-12 col-sm-5 col-md-2'>
+							<div class="form-group ">
+								<label for="name" class="label-control">Contact No.</label>
+								<input id='bio_contact_no' type="tel" name="contact_no" class="form-control" value="" maxlength="11" required>
+							</div>
+						</div>
+						<div class='col-xs-12 col-sm-4 col-md-3'>
 							<div class="form-group">
 								<label for="name" class="label-control">Nationality</label>
 								<input id='bio_nationality' type="text" name="nationality" class="form-control" value="" required>
 							</div>
 						</div>
-						<div class='col-xs-12 col-sm-3 col-md-3'>
+						<div class='col-xs-12 col-sm-4 col-md-3'>
 							<div class="form-group">
 								<label for="name" class="label-control">Religion</label>
 								<input id='bio_religion' type="text" name="religion" class="form-control" value="" required>

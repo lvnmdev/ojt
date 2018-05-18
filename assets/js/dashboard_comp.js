@@ -50,11 +50,13 @@ $(function () {
 					if (response.pic) {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
+						$('#user_profile_name').html(response.data.comp_name);
+
+
 					} else {
 
 					}
 				}
-				$('#user_profile_name').html(response.data.comp_name);
 			},
 			error: function () {
 				alert('Error');
@@ -279,7 +281,7 @@ $(function () {
 	});
 
 
-	function show_pending_applications(){
+	function show_pending_applications() {
 		var html = '';
 		var i;
 		$.ajax({
@@ -290,14 +292,14 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
-				if (response.success){
+				if (response.success) {
 					for (i = 0; i < response.data.length; i++) {
 						html += '<tr>' +
 							'<td>' + response.data[i].applicant_name + '</td>' +
 							'<td>' + response.data[i].position + '</td>' +
 							'<td>' + response.data[i].sex + '</td>' +
 							'<td>' + response.data[i].date_applied + '</td>' +
-							'<td><button class="btn btn-primary" value="' + response.data[i].job_id + '"><i class="fa fa-eye"></i> View</button></td>' +
+							'<td><button class="btn btn-primary view" value="' + response.data[i].user_name + '"><i class="fa fa-eye"></i> View</button></td>' +
 							'</tr>'
 					}
 					$('#show_applicants').html(html)
@@ -310,4 +312,98 @@ $(function () {
 			}
 		});
 	}
+
+	$(document).on('click', '.view', function (e) {
+		var name = $(e.currentTarget).val();
+		console.log(name);
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: '../Applicant/show_resume',
+			data:{
+				name:name
+			},
+			async: false,
+			dataType: 'json',
+			success: function (data) {
+				console.log(data);
+				var skills = '';
+				var xp = '';
+				var accomplishments = '';
+				var seminar = '';
+				var education = '';
+				var i;
+				if (data.seminars) {
+					for (i = 0; i < data.seminars.length; i++) {
+						seminar += '<ul class="resume-list">' +
+							'<li>' + data.seminars[i].seminar + '</li>' +
+							'<li>' + data.seminars[i].seminar_date + '</li>' +
+							'<li>' + data.seminars[i].conductedby + '</li>' +
+							'</ul>';
+					}
+					$('#resume_seminar').html(seminar);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.accomplishment) {
+					for (i = 0; i < data.accomplishment.length; i++) {
+						accomplishments += '<ul class="resume-list">' +
+							'<li>' + data.accomplishment[i].accomplishment + '</li>' +
+							'<li>' + data.accomplishment[i].affiliation + '</li>' +
+							'</ul>';
+					}
+					$('#resume_accomplishments').html(accomplishments);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.skills) {
+					for (i = 0; i < data.skills.length; i++) {
+						skills += '<ul class="resume-list">' +
+							'<li>' + data.skills[i].skill + '</li>' +
+							'</ul>';
+					}
+					$('#resume_skills').html(skills);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+				if (data.workxp) {
+					for (i = 0; i < data.workxp.length; i++) {
+						xp += '<ul class="resume-list">' +
+							'<li>' + data.workxp[i].position + '</li>' +
+							'<li>' + data.workxp[i].company + '</li>' +
+							'<li>' + data.workxp[i].date_start + '</li>' +
+							'<li>' + data.workxp[i].date_end + '</li>' +
+							'</ul>';
+					}
+					$('#resume_xp').html(xp);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+
+				if (data.education) {
+					for (i = 0; i < data.education.length; i++) {
+						education += '<ul class="resume-list">' +
+							'<li>' + data.education[i].level + '</li>' +
+							'<li>' + data.education[i].school + '</li>' +
+							'<li>' + data.education[i].start + '</li>' +
+							'<li>' + data.education[i].graduated + '</li>' +
+							'</ul>';
+					}
+					$('#resume_education').html(education);
+				} else {
+					$(".btn-info").attr("disabled", "disabled");
+				}
+
+
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(textStatus + " " + errorThrown)
+			}
+
+		});
+
+		$('#view_applicant').modal('show');
+		$('.modal-title').text('Applicant Details');
+	})
+
 })

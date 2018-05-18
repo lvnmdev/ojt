@@ -64,6 +64,7 @@ class Main extends CI_Controller {
 		if($return[1]){
 			$msg['success'] = true;
 			$session_data = array(
+				'id' => ($return[0]->user_id),
 				'username' => ($return[0]->user_name),
 				'password' => ($return[0]->user_pass),
 				'email' => ($return[0]->user_email),

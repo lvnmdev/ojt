@@ -36,7 +36,7 @@
 		</div>
 	</div>
 </div>
-<div id="apply_job" class="modal fade" tabindex="-1" role="dialog">
+<div id="cancel_application" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-form" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -49,10 +49,8 @@
 
 			</div>
 			<div class="modal-footer">
-				<button id="confirm_app" class="btn btn-primary">
-					<i class='fa fa-check btn-icon'></i>Confirm</button>
-				<button class="btn btn-danger" data-dismiss="modal">
-					<i class='fa fa-times btn-icon'></i>Close</button>
+				<button id="confirm_cancel" class="btn btn-primary">
+					<i class='fa fa-check btn-icon'></i>Confirm Cancellation</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

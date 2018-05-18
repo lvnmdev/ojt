@@ -49,6 +49,12 @@ class Applicant extends CI_Controller {
         
 		$this->load->view('templates/applicant/content', $data);
 	}
+
+	public function graduate_info() {
+		$data['content'] = 'applicant/graduate_info';
+        
+		$this->load->view('templates/applicant/content', $data);
+	}
 	
 	public function upload(){
 		$this->applicant->upload_photo();
@@ -83,7 +89,7 @@ class Applicant extends CI_Controller {
 
 	//Functionals (Resume)
 	public function show_resume(){
-		$result = $this->applicant->show_resume();
+		$result = $this->applicant->show_resume($this->input->get('name'));
 		$msg['success'] = false;
 		if($result[0]){
 			$msg['success'] = true;
@@ -206,6 +212,31 @@ class Applicant extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+	
+	// graduate info
+
+	public function edit_graduate_info(){
+		$result = $this->applicant->edit_graduate_info();
+		$msg['success'] = false;
+
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['operation'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_graduate_info(){
+		$result = $this->applicant->show_graduate_info();
+		$msg['success'] = false;
+		
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+		
+	}
 
 /////////////////JOBS FUNCTIONALS WUBBA LUBBA DUB DUB	
 	public function show_available_jobs(){
@@ -230,6 +261,16 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 
 	}
+	public function cancel_job(){
+		$result = $this->applicant->cancel_job();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+
+		echo json_encode($msg);
+
+	}
 //////////////////////////////Dashboard Functionals!
 	public function count_dashboard(){
 		$result = $this->applicant->count_dashboard();
@@ -243,12 +284,22 @@ class Applicant extends CI_Controller {
 		echo json_encode($msg);
 	}
 //////////////////////////////////////////FOR EDITING LOGIN CREDENTIALS!
-	public function edit_username(){
+	public function change_username(){
 		$result = $this->applicant->change_username();
 		$msg['success'] = false;
 		if($result){
 			$msg['success'] = true;
-			$_SESSION['username'] = $this->input->post('new_user');
+			$_SESSION['username'] = $this->input->post('user_name');
+		}
+		echo json_encode($msg);
+       
+	}
+	public function change_password(){
+		$result = $this->applicant->change_password();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+			$_SESSION['password'] = $this->input->post('pass_new');
 		}
 		echo json_encode($msg);
        

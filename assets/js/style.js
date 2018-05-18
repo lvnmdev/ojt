@@ -9,12 +9,7 @@ $(document).ready(function() {
 
         hidePreloader();
     });
-    //End
 
-
-});
-
-$(function(){
     //Initialization of Datatable 
     $('#table_id').dataTable();
 
