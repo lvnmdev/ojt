@@ -11,40 +11,38 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				if (response.success == 'added') {
-					$('#banner-message').html('Succesfully Registered!').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
+					$('#toaster span').html('Succesfully Registered!');
+					$('input').val('');
+					toaster_register();
 
 				} else if (response.success == 'existing') {
-					$('#banner-failed2').html('Username is already taken').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
+					$('#toaster span').html('Username is already taken!');
+					toaster_register();
 
 				} else if (response.success == 'mismatch') {
-					$('#banner-failed2').html('Your password did not match').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
+					$('#toaster span').html('Your password did not match');
+					toaster_register();
 
 				} else if (response.success == 'invalid') {
-					$('#banner-failed2').html('Username contains invalid characters').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
-				} else if (response.success == 'empty1') {
-					$('#banner-warning1').removeAttr('style');
-					$('#banner-warning1').html('Please fill up this field').fadeIn();
-				} else if (response.success == 'empty2') {
-					$('#banner-warning3').html('Please fill up this field').fadeIn();
-				} else if (response.success == 'empty3') {
-					$('#banner-warning2').html('Please fill up this field').fadeIn();
+					$('#toaster span').html('Username contains invalid characters');
+					toaster_register();
 
+				} else if (response.success == 'empty1') {
+					$('#toaster span').html('Please fill up this field');
+					toaster_register();
+
+				} else if (response.success == 'empty2') {
+					$('#toaster span').html('Please fill up this field');
+					toaster_register();
+
+				} else if (response.success == 'empty3') {
+					$('#toaster span').html('Please fill up this field');
+					toaster_register();
 				}
 			},
 			error: function () {
-				alert('Registration Failed Error');
+				$('#toaster span').html('OOPS! Something went wrong');
+				toaster_register();
 			}
 		});
 		return false;
@@ -62,25 +60,35 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					
-					$('#banner-success').html('Welcome! ' + response.user).fadeIn().delay(3000).fadeOut('slow');
 
-					setTimeout(function () {
+					$('#toaster span').html('Welcome! ' + response.user);
+					toaster_login();
+					setTimeout(() => {
 						location.reload();
 					}, 3000);
-
 				} else {
-					$('#banner-failed').html('Wrong Login Credentials').fadeIn().delay(3000).fadeOut('slow');
-					setTimeout(function () {
-						location.reload();
-					}, 3000);
-
+					$('#toaster span').html('Wrong Login Credentials!');
+					toaster_login();
 				}
 			},
 			error: function () {
-				alert("Error");
+				$('#toaster span').html('OOPS! Something went wrong');
+				toaster_login();
 			}
 		});
 		return false;
 	});
 });
+
+function toaster_login() {
+	var x = document.getElementById("toaster");
+	x.className = "show";
+	setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function toaster_register() {
+	var x = document.getElementById("toaster");
+	x.className = "t_register show";
+	setTimeout(() => { x.className = x.className.replace("t_register show", "") }, 3000);
+
+}
