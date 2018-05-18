@@ -49,6 +49,18 @@
         }
     }
 ?>
+<<<<<<< HEAD
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title></title>
+	</head>
+
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
+=======
+>>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 <style>
 	:root {
   --container-bg-color: #333;
@@ -128,6 +140,9 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 .hover-left .right        { width: var(--other-width); }
 .hover-left .right:before { z-index: 2; }
 
+.hover-right .right       { width: var(--hover-width); }
+.hover-right .left        {  width: var(--other-width); }
+.hover-right .left:before { z-index: 2; }
 
 strong { 
 	position: absolute;
@@ -150,14 +165,13 @@ strong span:after { content: '\00bb'; right: -30px; }
 strong span:before { content: "\00ab"; left: -30px; }
 
 
-.hover-left strong span { padding-right: 35px; right: 12%; }
+.hover-left strong span 		  { padding-right: 35px; right: 12%; }
 .hover-left strong span:after { right: 0; opacity: 1;}
-.hover-right strong span { padding-left: 35px; left: 12%; }
+.hover-right strong span 			  { padding-left: 35px; left: 12%; }
 .hover-right strong span:before { left: 0; opacity: 1;}
 
-.hover-right .right       { width: var(--hover-width); }
-.hover-right .left        {  width: var(--other-width); }
-.hover-right .left:before { z-index: 2; }
+.hover-left #toaster 		  { left: 38%; }
+.hover-right #toaster 		{ left: 64%; }
 
 @media(max-width: 800px) {
   h1 {
@@ -174,7 +188,7 @@ strong span:before { content: "\00ab"; left: -30px; }
 
 
 form { margin-bottom: 25px; }
-form input, form select{    
+form input, form select, form button{    
   margin-bottom: 10px;
   text-indent: 5px;
   background-color: transparent;
@@ -191,17 +205,20 @@ form input, form select{
 
 	<body>
 		<div class="custom-container">
+<<<<<<< HEAD
+		<div id="toaster"><span></span></div>	
+			<strong><span>USTP Online OJT Application</span></strong>
+=======
 			<strong><span>USTP | Graduate Tracer</span></strong>
+>>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 			<div class="split left">
 				<div class="split-inner">
 					<h1>Login</h1>
 					<form id="loginform" method="post">
-						<div id="banner-success" class="alert alert-success" style="display: none;"></div>
-						<div id="banner-failed" class="alert alert-danger" style="display: none"></div>
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="password" name="password" placeholder="Password" required>
             <div class="form-group"></div>
-						<input type="submit" class="button" value = "Login">
+						<button class="button">login</button>
 					</form>
 				</div>
 			</div>
@@ -209,7 +226,10 @@ form input, form select{
 				<div class="split-inner">
 					<h1>Register</h1>
 					<form id="regform" method="post">
+<<<<<<< HEAD
+=======
 						<div class='alert alert-success' id="banner-message" style="display:none"></div>
+>>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="email" name="email" placeholder="Email" required>
@@ -225,7 +245,7 @@ form input, form select{
 								<option class="form-control" value="1">Company </option>
 							</select>
 						</div>
-						<input type="submit" class="button" value="Submit">
+						<button class="button">Submit</button>
 					</form>
 				</div>
 			</div>
