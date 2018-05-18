@@ -86,5 +86,49 @@ class Admin_m extends CI_Model {
             return $result;
         }
     }
+
+    public function show_app_user() {
+        $id = $this->input->post('id');
+        $query = $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->where('tbl_users.user_name',$id)->get();
+
+        if($query->num_rows()>0){
+            $result[0] = true;
+            $result[1] = $query->row();
+
+            return $result;
+        }else {
+            $result[0] = false;
+            $result[1] = "";
+            
+            return $result;
+        }
+    }
+
+    public function show_comp_user() {
+        $id = $this->input->post('id');
+        $query = $this->db->select('*')->from('tbl_company_info')->join('tbl_users','tbl_company_info.user_name = tbl_users.user_name','inner')->where('tbl_users.user_name',$id)->get();
+
+        if($query->num_rows()>0){
+            $result[0] = true;
+            $result[1] = $query->row();
+
+            return $result;
+        }else {
+            $result[0] = false;
+            $result[1] = "";
+            
+            return $result;
+        }
+    }
+
+    public function change_user_status() {
+        $username = $this->input->post('id');
+        $status_no = $this->input->post('status_no');
+
+        $this->db->set('user_status',$status_no);
+        $this->db->where('user_name',$username);
+        $this->db->update('tbl_users');
+        return true;
+    }
 }
 ?>

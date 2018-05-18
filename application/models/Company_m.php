@@ -146,10 +146,10 @@ class Company_m extends CI_Model {
         }
 
     public function end_job(){
-            $job_id = $this->input->post('job_id');
-            $field = array(
-                'status' => 0
-            );
+        $job_id = $this->input->post('job_id');
+        $field = array(
+            'status' => 0
+        );
         $this->db->where('job_id',$job_id);
         $this->db->update('tbl_job_posting',$field);
         

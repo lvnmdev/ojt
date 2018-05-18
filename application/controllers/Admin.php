@@ -102,4 +102,34 @@ class Admin extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+
+	public function show_app_user() {
+		$result = $this->admin->show_app_user();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_comp_user() {
+		$result = $this->admin->show_comp_user();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+
+	// public function change_user_status() {
+	// 	$result = $this->admin->change_user_status();
+	// 	$msg['success'] = false;
+	// 	if($result){
+	// 		$msg['success'] = true;
+	// 		$msg['status'] = 'success';
+	// 	}
+	// 	echo json_encode($msg);
+	// }
 }

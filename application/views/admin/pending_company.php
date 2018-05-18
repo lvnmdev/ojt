@@ -47,49 +47,49 @@
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Company Name:</strong>
 					</p>
-					<p id='g_date_graduated' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_company_name' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Company Description:</strong>
 					</p>
-					<p id='g_company_name' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_company_desc' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Email:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_comp_email' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Company TIN(BIR):</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_company_tin' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Company Permit:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_company_permit' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Contact No.</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_contact_no' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Operational Date:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_op_date' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Date Registered:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_comp_date_reg' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 			</div>
 			<div class="modal-footer">

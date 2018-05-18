@@ -49,31 +49,31 @@
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Name:</strong>
 					</p>
-					<p id='g_date_graduated' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_app_name' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Sex:</strong>
 					</p>
-					<p id='g_company_name' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_app_sex' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Email:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_app_email' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Contact No:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_app_contact_no' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 				<div class="row">
 					<p class='col-xs-12 col-sm-3 col-md-4'>
 						<strong>Date Registered:</strong>
 					</p>
-					<p id='g_hr_person' class='col-xs-12 col-sm-9 col-md-6'></p>
+					<p id='p_app_date_reg' class='col-xs-12 col-sm-9 col-md-6'></p>
 				</div>
 			</div>
 			<div class="modal-footer">
