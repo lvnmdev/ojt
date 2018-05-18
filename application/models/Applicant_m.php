@@ -124,47 +124,90 @@ class Applicant_m extends CI_Model {
             return true;       
     }
 
-    public function show_resume(){
-        $user = $this->session->userdata('username');
-        $query1 = $this->db->select('*')->from('tbl_resume_skills')->where('user_name',$user)->get();
-        $query2 = $this->db->select('*')->from('tbl_resume_accomplishment')->where('user_name',$user)->get();
-        $query3 = $this->db->select('*')->from('tbl_resume_education')->where('user_name',$user)->get();
-        $query4 = $this->db->select('*')->from('tbl_resume_seminars')->where('user_name',$user)->get();
-        $query5 = $this->db->select('*')->from('tbl_resume_workxp')->where('user_name',$user)->get();
+    public function show_resume($data = null){
+        if($data != null){
+            $query1 = $this->db->select('*')->from('tbl_resume_skills')->where('user_name',$data)->get();
+            $query2 = $this->db->select('*')->from('tbl_resume_accomplishment')->where('user_name',$data)->get();
+            $query3 = $this->db->select('*')->from('tbl_resume_education')->where('user_name',$data)->get();
+            $query4 = $this->db->select('*')->from('tbl_resume_seminars')->where('user_name',$data)->get();
+            $query5 = $this->db->select('*')->from('tbl_resume_workxp')->where('user_name',$data)->get();
 
-        $result[0] = false;
-        $result[1] = '';
-        $result[2] = '';
-        $result[3] = '';
-        $result[4] = '';
-        $result[5] = '';
+            $result[0] = false;
+            $result[1] = '';
+            $result[2] = '';
+            $result[3] = '';
+            $result[4] = '';
+            $result[5] = '';
 
-        if($query1->num_rows()>0){
-            $result[0] = true;
-            $result[1] = $query1->result();
+            if($query1->num_rows()>0){
+                $result[0] = true;
+                $result[1] = $query1->result();
 
+            }
+            if($query2->num_rows()>0){
+                $result[0] = true;
+                $result[2] = $query2->result();
+
+            }
+            if($query3->num_rows()>0){
+                $result[0] = true;
+                $result[3] = $query3->result();
+
+            }
+            if($query4->num_rows()>0){
+                $result[0] = true;
+                $result[4] = $query4->result();
+
+            }
+            if($query5->num_rows()>0){
+                $result[0] = true;
+                $result[5] = $query5->result();
+
+            }
+            return $result;
+
+        }else{
+            $user = $this->session->userdata('username');
+            $query1 = $this->db->select('*')->from('tbl_resume_skills')->where('user_name',$user)->get();
+            $query2 = $this->db->select('*')->from('tbl_resume_accomplishment')->where('user_name',$user)->get();
+            $query3 = $this->db->select('*')->from('tbl_resume_education')->where('user_name',$user)->get();
+            $query4 = $this->db->select('*')->from('tbl_resume_seminars')->where('user_name',$user)->get();
+            $query5 = $this->db->select('*')->from('tbl_resume_workxp')->where('user_name',$user)->get();
+
+            $result[0] = false;
+            $result[1] = '';
+            $result[2] = '';
+            $result[3] = '';
+            $result[4] = '';
+            $result[5] = '';
+
+            if($query1->num_rows()>0){
+                $result[0] = true;
+                $result[1] = $query1->result();
+
+            }
+            if($query2->num_rows()>0){
+                $result[0] = true;
+                $result[2] = $query2->result();
+
+            }
+            if($query3->num_rows()>0){
+                $result[0] = true;
+                $result[3] = $query3->result();
+
+            }
+            if($query4->num_rows()>0){
+                $result[0] = true;
+                $result[4] = $query4->result();
+
+            }
+            if($query5->num_rows()>0){
+                $result[0] = true;
+                $result[5] = $query5->result();
+
+            }
+            return $result;
         }
-        if($query2->num_rows()>0){
-            $result[0] = true;
-            $result[2] = $query2->result();
-
-        }
-        if($query3->num_rows()>0){
-            $result[0] = true;
-            $result[3] = $query3->result();
-
-        }
-        if($query4->num_rows()>0){
-            $result[0] = true;
-            $result[4] = $query4->result();
-
-        }
-        if($query5->num_rows()>0){
-            $result[0] = true;
-            $result[5] = $query5->result();
-
-        }
-        return $result;
     }
 
      public function edit_graduate_info(){

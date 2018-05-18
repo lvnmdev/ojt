@@ -161,7 +161,7 @@ class Company_m extends CI_Model {
 
     public function show_pending_applications(){
         $user = $this->session->userdata('username');
-        $sql = "SELECT concat(tbl_applicant_bio.fname,' ',tbl_applicant_bio.mname,' ',tbl_applicant_bio.lname) as applicant_name, tbl_job_posting.position, tbl_applicant_bio.sex, tbl_pending_application.date_applied from tbl_pending_application INNER JOIN tbl_applicant_bio on tbl_applicant_bio.user_name = tbl_pending_application.user_name INNER JOIN tbl_job_posting on tbl_job_posting.job_id = tbl_pending_application.job_id WHERE tbl_job_posting.user_name = '$user'";
+        $sql = "SELECT concat(tbl_applicant_bio.fname,' ',tbl_applicant_bio.mname,' ',tbl_applicant_bio.lname) as applicant_name, tbl_job_posting.position, tbl_applicant_bio.sex, tbl_pending_application.date_applied, tbl_applicant_bio.user_name from tbl_pending_application INNER JOIN tbl_applicant_bio on tbl_applicant_bio.user_name = tbl_pending_application.user_name INNER JOIN tbl_job_posting on tbl_job_posting.job_id = tbl_pending_application.job_id WHERE tbl_job_posting.user_name = '$user'";
 
         $query = $this->db->query($sql);
 

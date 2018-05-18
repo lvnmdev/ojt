@@ -89,7 +89,7 @@ class Applicant extends CI_Controller {
 
 	//Functionals (Resume)
 	public function show_resume(){
-		$result = $this->applicant->show_resume();
+		$result = $this->applicant->show_resume($this->input->get('name'));
 		$msg['success'] = false;
 		if($result[0]){
 			$msg['success'] = true;
