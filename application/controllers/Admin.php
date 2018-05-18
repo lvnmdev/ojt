@@ -123,13 +123,13 @@ class Admin extends CI_Controller {
 		echo json_encode($msg);
 	}
 
-	// public function change_user_status() {
-	// 	$result = $this->admin->change_user_status();
-	// 	$msg['success'] = false;
-	// 	if($result){
-	// 		$msg['success'] = true;
-	// 		$msg['status'] = 'success';
-	// 	}
-	// 	echo json_encode($msg);
-	// }
+	public function change_user_status() {
+		$result = $this->admin->change_user_status();
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+			$msg['status'] = 'success';
+		}
+		echo json_encode($msg);
+	}
 }
