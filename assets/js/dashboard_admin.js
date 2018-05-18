@@ -12,10 +12,39 @@ $(function () {
         async: true,
         dataType: 'json',
         success: function (response) {
-            var applicant = response.count_applicant[0].count_applicant;
-            var company = response.count_company[0].count_company;
-            var pending_applicant = response.count_p_applicant[0].count_p_applicant;
-            var pending_company = response.count_p_company[0].count_p_company;
+            var applicant;
+            var company;
+            var pending_applicant;
+            var pending_company;
+
+            if (response.count_applicant[0] != null) {
+                applicant = response.count_applicant[0].count_applicant;
+            }
+            else {
+                applicant = 0;
+            }
+
+            if (response.count_company[0] != null) {
+                company = response.count_company[0].count_company;
+            }
+            else {
+                company = 0;
+            }
+
+            if (response.count_p_applicant[0] != null) {
+                pending_applicant = response.count_p_applicant[0].count_p_applicant;
+            }
+            else {
+                pending_applicant = 0;
+            }
+
+            if (response.count_p_company[0] != null) {
+                pending_company = response.count_p_company[0].count_p_company;
+            }
+            else {
+                pending_company = 0;
+            }
+
 
             //Charts
             if (response.success) {
@@ -188,12 +217,41 @@ $(function () {
     
     $('#show_pending_applicant').on('click', '.view_p_app', function () {
     	$('#pending_app_info').modal('show');
-    	var id = $(this).attr('data');
+        var id = $(this).attr('data');
+        
+        $.ajax({
+        	type: 'ajax',
+        	method: 'get',
+        	url: 'show_company',
+        	async: false,
+        	dataType: 'json',
+        	success: function (response) {
+        		var html = '';
+        		if (response.success) {
+        			for (i = 0; i < response.data.length; i++) {
+        				html += '<tr>' +
+        					'<td>' + response.data[i].comp_name + '</td>' +
+        					'<td>' + response.data[i].comp_desc + '</td>' +
+        					'<td>' + response.data[i].comp_hr + '</td>' +
+        					'<td>' + response.data[i].user_email + '</td>' +
+        					'<td>' + response.data[i].comp_contact + '</td>' +
+        					'<td>' + '<a type="button" data=' + [i] + ' class="btn btn-primary view_comp"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
+        					'</tr>';
+        			}
+        			$('#show_company').html(html)
+        		}
+        	},
+        	error: function (response) {
+
+        	}
+        })
     });
 
     $('#show_pending_company').on('click', '.view_p_comp', function () {
     	$('#pending_comp_info').modal('show');
-    	var id = $(this).attr('data');
+        var id = $(this).attr('data');
+        
+        
     });
 
     $('#show_applicant').on('click', '.view_app', function () {
