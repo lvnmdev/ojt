@@ -74,6 +74,11 @@ $(function () {
 				}
 				if (response.data1 != null) {
 					if (response.data != null) {
+						console.log(response.data1.jobs_posted)
+
+						console.log(response.data.pending_applicant)
+
+
 						$('#jobs_count').html(response.data1.jobs_posted - response.data.pending_applicant);
 					}
 					else {
