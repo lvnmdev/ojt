@@ -259,8 +259,9 @@ form input, form select, form button{
 			right.addEventListener("mouseleave", () => {
 				container.classList.remove("hover-right");
 			});
-
 		</script>
+		<script src="<?= base_url('assets/js/jquery.js')?>"></script>
+		<script src="<?= base_url('assets/js/user.js');?>"></script>
 	</body>
 
 	</html>
