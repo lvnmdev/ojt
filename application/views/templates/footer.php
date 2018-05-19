@@ -1,7 +1,7 @@
 <footer>
-	<div class="footer-gold">
+	<!-- <div class="footer-gold">
 		<small> <i class="fa fa-info-circle"></i><strong> Privacy Disclaimer: Personal data are used for tracking purposes.</strong></small>
-	</div>
+	</div> -->
 	<div class="footer-blue">
 		<p>
 			<span class="footer-title">University of Science and Technology of Southern Philippines</span><br>
