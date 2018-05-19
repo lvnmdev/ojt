@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http:/localhost/ojt/';
+=======
+$config['base_url'] = 'http://localhost/ojt/';
+>>>>>>> e2d3ac82fd7cd0644ee8204123f2bfb3d557aae7
 
 /*
 |--------------------------------------------------------------------------

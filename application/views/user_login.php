@@ -49,6 +49,18 @@
         }
     }
 ?>
+<<<<<<< HEAD
+=======
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>USTP | Graduate Tracer</title>
+	</head>
+
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
+>>>>>>> e2d3ac82fd7cd0644ee8204123f2bfb3d557aae7
 <style>
 	:root {
   --container-bg-color: #333;
