@@ -374,6 +374,28 @@ $(function () {
         	}
         })
     });
+    $(document).on('click', '#deny_p_app', function () {
+    	var id = $(this).attr('data');
+    	var status_no = '0';
+    	$.ajax({
+    		type: 'ajax',
+    		method: 'post',
+    		data: {
+    			id: id,
+    			status_no: status_no
+    		},
+    		url: 'change_user_status',
+    		async: false,
+    		dataType: 'json',
+    		success: function (response) {
+    			alert(response.status);
+    		},
+    		error: function () {
+    			alert('Error');
+    		}
+    	})
+    });
+
 
 
 })
