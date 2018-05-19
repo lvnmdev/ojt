@@ -364,7 +364,6 @@
 			right.addEventListener("mouseleave", () => {
 				container.classList.remove("hover-right");
 			});
-
 		</script>
 	</body>
 
