@@ -49,6 +49,8 @@
         }
     }
 ?>
+<<<<<<< HEAD
+=======
 	<!DOCTYPE html>
 	<html>
 
@@ -58,6 +60,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
+>>>>>>> e2d3ac82fd7cd0644ee8204123f2bfb3d557aae7
 <style>
 	:root {
   --container-bg-color: #333;
@@ -239,8 +242,6 @@ form input, form select, form button{
 				</div>
 			</div>
 		</div>
-		<script src="<?= base_url('assets/js/jquery.js')?>"></script>
-		<script src="<?= base_url('assets/js/user.js');?>"></script>
 		<script>
 			const left = document.querySelector(".left");
 			const right = document.querySelector(".right");
