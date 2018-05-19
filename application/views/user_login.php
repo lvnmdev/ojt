@@ -49,8 +49,6 @@
         }
     }
 ?>
-<<<<<<< HEAD
-=======
 	<!DOCTYPE html>
 	<html>
 
@@ -60,7 +58,6 @@
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
->>>>>>> e2d3ac82fd7cd0644ee8204123f2bfb3d557aae7
 <style>
 	:root {
   --container-bg-color: #333;
@@ -152,7 +149,8 @@ strong {
   width: 100%;
   text-align: center;
   font-size: 36px;transition: all 0.5s;
- }
+}
+
 strong span { position: relative; display: inline-block; transition: 0.5s; }
 strong span:after, strong span:before {
     position: absolute;
@@ -202,7 +200,6 @@ form input, form select, form button{
   }
 
 </style>
-
 	<body>
 		<div class="custom-container">
 			<strong><span>USTP | Graduate Tracer</span></strong>
