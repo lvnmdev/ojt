@@ -49,18 +49,15 @@
         }
     }
 ?>
-<<<<<<< HEAD
 	<!DOCTYPE html>
 	<html>
 
 	<head>
-		<title></title>
+		<title>USTP | Graduate Tracer</title>
 	</head>
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
-=======
->>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 <style>
 	:root {
   --container-bg-color: #333;
@@ -205,12 +202,7 @@ form input, form select, form button{
 
 	<body>
 		<div class="custom-container">
-<<<<<<< HEAD
-		<div id="toaster"><span></span></div>	
-			<strong><span>USTP Online OJT Application</span></strong>
-=======
 			<strong><span>USTP | Graduate Tracer</span></strong>
->>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 			<div class="split left">
 				<div class="split-inner">
 					<h1>Login</h1>
@@ -226,10 +218,7 @@ form input, form select, form button{
 				<div class="split-inner">
 					<h1>Register</h1>
 					<form id="regform" method="post">
-<<<<<<< HEAD
-=======
 						<div class='alert alert-success' id="banner-message" style="display:none"></div>
->>>>>>> 156eae4a851b281d4dd01b9581d5278d5d91ae64
 
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="email" name="email" placeholder="Email" required>
