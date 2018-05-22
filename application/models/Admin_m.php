@@ -55,7 +55,7 @@ class Admin_m extends CI_Model {
     }
 
     public function show_pending_applicant() {
-      $query = $this->db->select('*')->from('tbl_applicant_bio')->join('tbl_users','tbl_applicant_bio.user_name = tbl_users.user_name','inner')->where('user_status','1')->where('user_type','2')->get();
+      $query = $this->db->select('*')->from('tbl_users')->join('tbl_applicant_bio','tbl_users.user_name = tbl_applicant_bio.user_name','inner')->where('user_status','1')->where('user_type','2')->get();
         if($query){
             $result[0] = true;
             $result[1] = $query->result();
