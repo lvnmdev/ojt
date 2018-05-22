@@ -110,19 +110,20 @@ $(function () {
             success: function (response) {
                 var html = '';
                 if (response.success) {
-                    if (response.data.user_status = 2) {
-                        var response_remark = '<td style="color:green;">Active</td>';
-                    }
-                    else if (response.data.user_status = 0) {
-                        var response_remark = '<td style="color:red;">Deactivated</td>';
-                    }
+                    var response_status;
                     for (i = 0; i < response.data.length; i++) {
+                        if (response.data[i].user_status == "2") {
+                            response_status = '<td style="color:green;">Active</td>';
+                        }
+                        else if (response.data[i].user_status == "0") {
+                            response_status = '<td style="color:red;">Deactivated</td>';
+                        }
                         html += '<tr>' +
                             '<td>' + response.data[i].comp_name + '</td>' +
                             '<td>' + response.data[i].comp_hr + '</td>'+
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].comp_contact + '</td>' +
-                            response_remark +
+                            response_status +
                             '<td>' + '<a type="button" data='+response.data[i].user_name+' class="btn btn-primary view_comp"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
                             '</tr>';
                     }
@@ -142,22 +143,23 @@ $(function () {
             url: 'show_applicant',
             async: false,
             dataType: 'json',
-            success: function (response) {
+            success: function (response) {   
                 var html = '';
                 if (response.success) {
-                    if (response.data.user_status = 2) {
-                        var response_remark = '<td style="color:green;">Active</td>';
-                    }
-                    else if (response.data.user_status = 0) {
-                        var response_remark = '<td style="color:red;">Deactivated</td>';
-                    }
+                    var response_status;
                     for (i = 0; i < response.data.length; i++) {
+                        if (response.data[i].user_status == "2") {
+                            response_status = '<td style="color:green;">Active</td>';
+                        }
+                        else if (response.data[i].user_status == "0") {
+                            response_status = '<td style="color:red;">Deactivated</td>';
+                        }
                         html += '<tr>' +
                             '<td>' + response.data[i].fname + ' ' + response.data[i].mname + ' ' + response.data[i].lname + '</td>' +
                             '<td>' + response.data[i].sex + '</td>' +
                             '<td>' + response.data[i].user_email + '</td>' +
                             '<td>' + response.data[i].contact_no + '</td>' +
-                            response_remark +
+                            response_status +
                             '<td>' + '<a type="button" data='+response.data[i].user_name+' class="btn btn-primary view_app"><i class="fa fa-eye btn-icon"></i>View</a></td>' +
                             '</tr>';
                     }
@@ -296,9 +298,6 @@ $(function () {
     	$('#app_info').modal('show');
         var id = $(this).attr('data');
 
-        $('#activate_app').attr('data', id);
-        $('#deactivate_app').attr('data', id);
-        
         $.ajax({
         	type: 'ajax',
         	method: 'post',
@@ -317,11 +316,11 @@ $(function () {
                     $('#p_app_date_reg').html(response.data.date_registered);
                 }
                 var response_button;
-                if (response.data.user_status = 0) {
-                    response_button = '<button id="approve_p_app" class="btn btn-success"><i class="fas fa-user-check btn-icon"></i>Activate</button>';
+                if (response.data.user_status == 0) {
+                    response_button = '<button id="approve_p_app" data='+response.data.user_name+' class="btn btn-success"><i class="fas fa-user-check btn-icon"></i>Activate</button>';
                 }
-                else if (response.data.user_status = 2) {
-                    response_button = '<button id="deny_p_app" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deactivate</button>';
+                else if (response.data.user_status == 2) {
+                    response_button = '<button id="deny_p_app" data='+response.data.user_name+' class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deactivate</button>';
                 }
                 $('#response_app').html(response_button);
         	},
@@ -334,9 +333,6 @@ $(function () {
     $('#show_company').on('click', '.view_comp', function () {
     	$('#comp_info').modal('show');
         var id = $(this).attr('data');
-
-        $('#activate_comp').attr('data', id);
-        $('#deactivate_comp').attr('data', id);
         
         $.ajax({
         	type: 'ajax',
@@ -359,11 +355,11 @@ $(function () {
                     $('#p_comp_date_reg').html(response.data.date_registered);
                 }
                 var response_button;
-                if (response.data.user_status = 0) {
-                    response_button = '<button id="approve_p_app" class="btn btn-success"><i class="fas fa-user-check btn-icon"></i>Activate</button>';
+                if (response.data.user_status == 0) {
+                    response_button = '<button id="approve_p_app" data='+response.data.user_name+' class="btn btn-success"><i class="fas fa-user-check btn-icon"></i>Activate</button>';
                 }
-                else if (response.data.user_status = 2) {
-                    response_button = '<button id="deny_p_app" class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deactivate</button>';
+                else if (response.data.user_status == 2) {
+                    response_button = '<button id="deny_p_app" data='+response.data.user_name+' class="btn btn-danger"><i class="fa fa-user-times btn-icon"></i>Deactivate</button>';
                 }
                 $('#response_app').html(response_button);
         	},
@@ -387,7 +383,8 @@ $(function () {
         	async: true,
         	dataType: 'json',
         	success: function (response) {
-        		alert(response.status);
+                alert(response.status);
+                location.reload();
         	},
         	error: function () {
         		alert('Error');
@@ -410,6 +407,7 @@ $(function () {
     		dataType: 'json',
     		success: function (response) {
     			alert(response.status);
+                location.reload();
     		},
     		error: function () {
     			alert('Error');
