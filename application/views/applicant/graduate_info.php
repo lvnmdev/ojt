@@ -6,7 +6,7 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<div class='card-content'>
 				<p class='path-nav'>
-					<a href="<?= base_url("Applicant/dashboard ")?>">Home</a>
+					<a href="<?= base_url(" Applicant/dashboard ")?>">Home</a>
 					<i class="fa fa-chevron-right"></i> Graduate Information</p>
 			</div>
 
@@ -43,10 +43,10 @@
 						<p class='col-md-12'>
 							<strong>HR Contact Info:</strong>
 						</p>
-                        <p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Contact No.</p>
-                        <p id='user_hr_contact_no' class='col-xs-12 col-sm-9 col-md-10'></p>
-                        <p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Email</p>
-                        <p id='user_hr_email' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Contact No.</p>
+						<p id='user_hr_contact_no' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Email</p>
+						<p id='user_hr_email' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 				</div>
 				<div class='card-footer'>
@@ -78,40 +78,54 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="label-control col-md-4">Date Hired</label>
+						<label for="name" class="label-control col-md-4">Employment</label>
 						<div class="col-md-8">
-							<input id='e_g_date_hired' type="date" name="g_date_hired" class="form-control" value="" required>
+							<div class="col-md-6" style="padding-left:0;">
+								<input id="isEmployed" type="radio" name="g_employment" value="1" checked>&nbsp
+								<label>Employed</label>
+							</div>
+							<div class="col-md-6">
+								<input id="isNotEmployed" type="radio" name="g_employment" value="0">&nbsp
+								<label>Unemployed</label>
+							</div>
 						</div>
 					</div>
-                    <div class="form-group">
-						<label for="name" class="label-control col-md-4">Company Name</label>
-						<div class="col-md-8">
-							<input id='e_g_company_name' type="text" name="g_company_name" class="form-control" value="" required>
+					<div id="employed_inputs">
+						<div class="form-group">
+							<label for="name" class="label-control col-md-4">Date Hired</label>
+							<div class="col-md-8">
+								<input id='e_g_date_hired' type="date" name="g_date_hired" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="label-control col-md-4">Company Name</label>
+							<div class="col-md-8">
+								<input id='e_g_company_name' type="text" name="g_company_name" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="label-control col-md-4">HR Person</label>
+							<div class="col-md-8">
+								<input id='e_g_hr_person' type="text" name="g_hr_person" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="label-control col-md-4">HR Contact No.</label>
+							<div class="col-md-8">
+								<input id='e_g_hr_no' type="tel" name="g_hr_no" class="form-control" value="" maxlength="11" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="label-control col-md-4">HR Email</label>
+							<div class="col-md-8">
+								<input id='e_g_hr_email' type="email" name="g_hr_email" class="form-control" value="" required>
+							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="name" class="label-control col-md-4">HR Person</label>
-						<div class="col-md-8">
-							<input id='e_g_hr_person' type="text" name="g_hr_person" class="form-control" value="" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="label-control col-md-12">HR Contact Info:</label>
-					</div>
-					<div class="form-group">
-						<label for="" class="label-control col-md-4"> &nbsp Contact No.</label>
-						<div class="col-md-8">
-							<input id='e_g_hr_no' type="tel" name="g_hr_no" class="form-control" value="" maxlength="11" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="" class="label-control col-md-4"> &nbsp Email</label>
-						<div class="col-md-8">
-							<input id='e_g_hr_email' type="email" name="g_hr_email" class="form-control" value="" required>
-						</div>
-					</div>
+
 					<div class="card-footer" style="padding-left:0;">
-						<button type="submit" id="btnsubmit_info" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Submit</button>
+						<button type="submit" id="btnsubmit_info" class="btn btn-primary">
+							<i class="fa fa-paper-plane"></i> Submit</button>
 					</div>
 				</form>
 			</div>
