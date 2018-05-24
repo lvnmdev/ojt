@@ -384,7 +384,6 @@ footer {
 }
 
 /** ============== TOASTER STYLES START ============== **/
-
 #toaster {
     visibility: hidden;
     min-width: 230px;
@@ -396,6 +395,7 @@ footer {
     left: 26%;
     top: 138px;
     background: #fff ;
+
 }
 
 #toaster.t_register { left: 76%; }
@@ -409,13 +409,22 @@ footer {
 	height: 100%;
 	color: #1a1751;
     background-image: linear-gradient(to left, transparent 50%, #fbb414 50%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
 }
+#toaster span.danger { background-image: linear-gradient(to left, transparent 50%, red 50%); }
+
 #toaster.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 3s;
-    animation: fadein 0.5s, fadeout 0.5s 3s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.4s;
+    animation: fadein 0.5s, fadeout 0.5s 2.4s;
 }
 
+#toaster.show span {
+    animation: loadinglike 3s;
+}
+
+	
 @-webkit-keyframes fadein {
     from {top: 0; opacity: 0;} 
     to {top: 127px; opacity: 1;}
@@ -434,6 +443,11 @@ footer {
 @keyframes fadeout {
     from {top: 127px; opacity: 1;}
     to {top: 0; opacity: 0;}
+}
+
+@keyframes loadinglike {
+	from { background-size: 1% 100%; }
+	to { background-size: 200% 100%; color: white; }
 }
 
 /** ==============  TOASTER STYLES END  ============== **/

@@ -16,7 +16,12 @@ $(function () {
 					toaster_register();
 
 				} else if (response.success == 'existing') {
-					$('#toaster span').html('Username is already taken!');
+					var taken = document.querySelector('#toaster span');
+					var t = document.createTextNode('shit');
+					taken.appendChild(t);
+					taken.className = "danger";
+					
+
 					toaster_register();
 
 				} else if (response.success == 'mismatch') {
