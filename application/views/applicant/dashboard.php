@@ -89,7 +89,7 @@
 			<div class="modal-body">
 				<form method='post'>
 					<div>
-						<a href="dashboard" type="button" class="btn btn-primary">
+						<a href="graduate_info" type="button" class="btn btn-primary">
 							<i class='fa fa-check btn-icon'></i>Yes</a>
 						<a href="resume" type="button" class="btn btn-danger">
 							<i class='fa fa-times btn-icon'></i>No</a>

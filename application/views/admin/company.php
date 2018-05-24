@@ -17,10 +17,10 @@
 							<thead>
 								<tr>
 									<th>Company Name</th>
-									<th>Company Description</th>
 									<th>Company HR</th>
 									<th>Company Email</th>
 									<th>Contact Number</th>
+									<th>Status</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
@@ -95,10 +95,8 @@
 			</div>
 			<div class="modal-footer">
 				<center>
-					<button class="btn btn-success">
-						<i class="fas fa-user-check btn-icon"></i>Approve</button>
-					<button class="btn btn-danger">
-						<i class="fa fa-user-times btn-icon"></i>Deny</button>
+					<div id="response_app">
+					</div>
 				</center>
 			</div>
 			<!-- /.modal-content -->

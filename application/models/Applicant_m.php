@@ -214,6 +214,7 @@ class Applicant_m extends CI_Model {
         $field = array(
             'user_name' => $this->session->userdata('username'),
             'date_graduated' => $this->input->post('g_date_graduated'),
+            'is_employed' => $this->input->post('g_employment'),
             'date_hired' => $this->input->post('g_date_hired'),
             'company_name' => $this->input->post('g_company_name'),
             'hr_person' => $this->input->post('g_hr_person'),

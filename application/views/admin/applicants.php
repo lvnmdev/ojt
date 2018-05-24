@@ -17,11 +17,11 @@
 						<table id='table_id' class='table table-striped table-hover'>
 							<thead>
 								<tr>
-									<th>Username</th>
 									<th>Name</th>
 									<th>Sex</th>
 									<th>Email</th>
 									<th>Contact Number</th>
+									<th>Status</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
@@ -78,10 +78,8 @@
 			</div>
 			<div class="modal-footer">
 				<center>
-					<button class="btn btn-success">
-						<i class="fas fa-user-check btn-icon"></i>Activate</button>
-					<button class="btn btn-danger">
-						<i class="fa fa-user-times btn-icon"></i>Deactivate</button>
+					<div id="response_app">
+					</div>
 				</center>
 			</div>
 			<!-- /.modal-content -->

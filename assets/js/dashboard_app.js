@@ -1143,4 +1143,21 @@ $(function () {
 		});
 
 	})
+
+	//Checks the radio button for employment
+	$('#isEmployed').click(function () {
+		if ($('#isEmployed').is(':checked')) {
+			$('#employed_inputs').css({'display': 'block'}); //shows the employed exclusive inputs
+		}
+	});
+
+	$('#isNotEmployed').click(function () {
+		if ($('#isNotEmployed').is(':checked')) {
+			$('#employed_inputs').css({'display': 'none'}); //hides the employed exclusive inputs
+
+			$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no').val('N/A'); // this sets the inputs
+			$('#e_g_date_hired').val('0001-01-01');						 // with default values
+			$('#e_g_hr_email').val('default@default.com');				 // to prevent null values
+		}
+	});
 });
