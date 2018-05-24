@@ -27,17 +27,6 @@ $(function () {
 					$('#toaster span').html('Username contains invalid characters');
 					toaster_register();
 
-				} else if (response.success == 'empty1') {
-					$('#toaster span').html('Please fill up this field');
-					toaster_register();
-
-				} else if (response.success == 'empty2') {
-					$('#toaster span').html('Please fill up this field');
-					toaster_register();
-
-				} else if (response.success == 'empty3') {
-					$('#toaster span').html('Please fill up this field');
-					toaster_register();
 				}
 			},
 			error: function () {
