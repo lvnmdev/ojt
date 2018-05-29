@@ -12,15 +12,20 @@ $(function () {
 			success: function (response) {
 				if (response.success == 'added') {
 					$('#toaster span').html('Succesfully Registered!');
+					
 					$('input').val('');
+					
+					
 					toaster_register();
 
 				} else if (response.success == 'existing') {
+					//var taken = $('#toaster span').html('shit');
+					//taken.addClass('danger');
+
 					var taken = document.querySelector('#toaster span');
-					var t = document.createTextNode('shit');
-					taken.appendChild(t);
+					taken.innerText = "shit";
 					taken.className = "danger";
-					
+	
 
 					toaster_register();
 
