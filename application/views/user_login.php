@@ -53,7 +53,7 @@
 	<html>
 
 	<head>
-		<title></title>
+		<title>USTP | Graduate Tracer</title>
 	</head>
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.css')?>">

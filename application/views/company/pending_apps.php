@@ -45,7 +45,6 @@
 				<h1 class="modal-title"></h1>
 			</div>
 			<div class="modal-body">
-				<div class="card-content">
 				<div>
 					<h3 class='resume-title'>QUALIFICATIONS</h3>
 					<div id='resume_skills'>
@@ -80,7 +79,6 @@
 
 					</div>
 				</div>
-			</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">

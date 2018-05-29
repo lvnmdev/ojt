@@ -8,7 +8,6 @@
 					<a href="<?= base_url('Admin/dashboard'); ?>"> Home</a>
 					<i class="fa fa-chevron-right"></i> Pending Applicants</p>
 			</div>
-
 			<div class="card-content">
 				<div class="card-title">
 					<h1>Pending Applicant List</h1>
@@ -18,6 +17,7 @@
 						<table id='table_id' class='table table-striped table-hover'>
 							<thead>
 								<tr>
+									<th>Username</th>
 									<th>Name</th>
 									<th>Email</th>
 									<th>Date Registered</th>

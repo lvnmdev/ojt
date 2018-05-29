@@ -5,12 +5,12 @@
 		<div class="container-fluid">
 			<div class='card-content'>
 				<p class='path-nav'><a href="<?= base_url("Applicant/dashboard")?>">Home</a>
-					<i class="fa fa-chevron-right"></i> Ongoing Application
+					<i class="fa fa-chevron-right"></i> Cancelled Application
                 </p>
 			</div>
 			<div class='card-content'>
 				<div class='card-title'>
-					<h1>Ongoing Application</h1>
+					<h1>Cancelled Application</h1>
 				</div>
 				<div class='card-body'>
 					<div class="table-responsive">
@@ -26,7 +26,7 @@
 									<th scope="col">Action</th>
 								</tr>
 							</thead>
-							<tbody id='show_ongoing_application'>
+							<tbody id='show_cancelled_application'>
 
 							</tbody>
 						</table>
@@ -36,7 +36,8 @@
 		</div>
 	</div>
 </div>
-<div id="cancel_application" class="modal fade" tabindex="-1" role="dialog">
+
+<div id="reapply_application" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-form" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -45,8 +46,8 @@
 				</button>
 				<h1 class="modal-title"></h1>
 			</div>
-			<div class="modal-body">
-				<h4>Are you sure you want to cancel your application?</h4>
+			<div id="job_desc">
+
 			</div>
 			<div class="modal-footer">
 				<button id="confirm_cancel" class="btn btn-primary">
@@ -60,5 +61,4 @@
 
 <script>
 	var page_info = 'application';
-
 </script>
