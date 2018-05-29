@@ -416,8 +416,8 @@ footer {
 
 #toaster.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.4s;
-    animation: fadein 0.5s, fadeout 0.5s 2.4s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;
+    animation: fadein 0.5s, fadeout 0.5s 2.7s;
 }
 
 #toaster.show span {
@@ -436,8 +436,8 @@ footer {
 }
 
 @-webkit-keyframes fadeout {
-    from {top: 127px; opacity: 1;} 
-    to {top: 0; opacity: 0;}
+    from {top: 127px; opacity: 1; visibility: hidden;} 
+    to {top: 0; opacity: 0; visibility: hidden;}
 }
 
 @keyframes fadeout {
