@@ -16,18 +16,14 @@
 				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<div class="row">
-								<div class="col-md-4">
-									<a href='<?= base_url("Company/pending_apps")?>'>
-										<div class='dashboard-badge'>
-											<span id='pending_app_no' class='dashboard-badge-no'></span>
-										</div>
-									</a>
+							<a href='<?= base_url("Company/pending_apps")?>'>
+								<div class='dashboard-badge'>
+									<span id='pending_app_no' class='dashboard-badge-no'></span>
 								</div>
-								<div class="col-md-8">
-									<div class="dashboard-badge-label">
-										<h4>Pending Applications</h4>
-									</div>
+							</a>
+							<div class="text-center">
+								<div class="dashboard-badge-label">
+									<h4>Pending Applications</h4>
 								</div>
 							</div>
 						</div>
@@ -37,18 +33,14 @@
 				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<div class="row">
-								<div class="col-md-4">
-									<a href='<?= base_url("Company/post_job")?>'>
-										<div class='dashboard-badge'>
-											<span id='posted_jobs_no' class='dashboard-badge-no'></span>
-										</div>
-									</a>
+							<a href='<?= base_url("Company/post_job")?>'>
+								<div class='dashboard-badge'>
+									<span id='posted_jobs_no' class='dashboard-badge-no'></span>
 								</div>
-								<div class="col-md-8">
-									<div class="dashboard-badge-label">
-										<h4>Posted Jobs</h4>
-									</div>
+							</a>
+							<div class="text-center">
+								<div class="dashboard-badge-label">
+									<h4>Posted Jobs</h4>
 								</div>
 							</div>
 						</div>
@@ -58,18 +50,14 @@
 				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<div class="row">
-								<div class="col-md-4">
-									<a href='<?= base_url("Applicant/")?>'>
-										<div class='dashboard-badge'>
-											<span id='' class='dashboard-badge-no'></span>
-										</div>
-									</a>
+							<a href='<?= base_url("Applicant/")?>'>
+								<div class='dashboard-badge'>
+									<span id='' class='dashboard-badge-no'></span>
 								</div>
-								<div class="col-md-8">
-									<div class="dashboard-badge-label">
-										<h4>Employees</h4>
-									</div>
+							</a>
+							<div class="text-center">
+								<div class="dashboard-badge-label">
+									<h4>Employees</h4>
 								</div>
 							</div>
 						</div>

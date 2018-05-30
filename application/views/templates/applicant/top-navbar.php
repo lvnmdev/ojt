@@ -59,7 +59,7 @@
 						<?= $this->session->userdata('username')?>
 							<span class="caret"></span>
 					</a>
-					<div class="dropdown-menu" aria-labelledby="user-dropdown">
+					<div class="dropdown-menu user-settings" aria-labelledby="user-dropdown">
 						<ul class="user-info-opt">
 							<a href="<?php echo base_url("Applicant/user_settings")?>">
 								<li>
