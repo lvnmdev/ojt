@@ -4,13 +4,6 @@ body { background-color: lightgrey; }
 
 footer { 
 	margin-top: 20px; 
-	margin-left: 270px;
-
-}
-
-.footer-gold {
-	background-color: #fbb414;
-	padding:10px;
 }
 
 .footer-blue {
@@ -142,6 +135,7 @@ footer {
 	margin-top: 80px;
 	margin-left: 270px;
 	transition: 0.25s;
+	min-height: calc(100vh - 242.2px);
 }
 
 .side-navbar-container {
@@ -606,11 +600,17 @@ footer {
 	#image {
 		font-size: .9vw;
 	}
+	footer {
+		margin-left: 270px;
+	}
 }
 
 @media only screen and (max-device-width: 768px) {
 	.side-nav-close {
 		display: block;
+	}
+	footer {
+		margin-left: 0px;
 	}
 	footer small {
 		padding-left: 0;

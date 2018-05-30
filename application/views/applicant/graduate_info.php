@@ -17,9 +17,27 @@
 				<div class='card-body'>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Degree:</strong>
+						</p>
+						<p id='user_degree_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>College:</strong>
+						</p>
+						<p id='user_college_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>Date Graduated:</strong>
 						</p>
 						<p id='user_date_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Employment Status:</strong>
+						</p>
+						<p id='user_employment_stat' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
@@ -29,9 +47,21 @@
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Job Position:</strong>
+						</p>
+						<p id='user_job_position' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>Company Name:</strong>
 						</p>
 						<p id='user_company_name' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Company Address:</strong>
+						</p>
+						<p id='user_company_address' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
@@ -40,12 +70,15 @@
 						<p id='user_hr_person' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
-						<p class='col-md-12'>
-							<strong>HR Contact Info:</strong>
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>HR Contact No:</strong>
 						</p>
-						<p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Contact No.</p>
 						<p id='user_hr_contact_no' class='col-xs-12 col-sm-9 col-md-10'></p>
-						<p class='col-xs-12 col-sm-3 col-md-2' style="padding-left:20px;">Email</p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>HR Email:</strong>
+						</p>
 						<p id='user_hr_email' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 				</div>
