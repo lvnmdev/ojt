@@ -4,13 +4,6 @@ body { background-color: lightgrey; }
 
 footer { 
 	margin-top: 20px; 
-	margin-left: 270px;
-
-}
-
-.footer-gold {
-	background-color: #fbb414;
-	padding:10px;
 }
 
 .footer-blue {
@@ -142,6 +135,7 @@ footer {
 	margin-top: 80px;
 	margin-left: 270px;
 	transition: 0.25s;
+	min-height: calc(100vh - 242.2px);
 }
 
 .side-navbar-container {
@@ -384,7 +378,6 @@ footer {
 }
 
 /** ============== TOASTER STYLES START ============== **/
-
 #toaster {
     visibility: hidden;
     min-width: 230px;
@@ -396,6 +389,7 @@ footer {
     left: 26%;
     top: 138px;
     background: #fff ;
+
 }
 
 #toaster.t_register { left: 76%; }
@@ -409,13 +403,22 @@ footer {
 	height: 100%;
 	color: #1a1751;
     background-image: linear-gradient(to left, transparent 50%, #fbb414 50%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
 }
+#toaster span.danger { background-image: linear-gradient(to left, transparent 50%, red 50%); }
+
 #toaster.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 3s;
-    animation: fadein 0.5s, fadeout 0.5s 3s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;
+    animation: fadein 0.5s, fadeout 0.5s 2.7s;
 }
 
+#toaster.show span {
+    animation: loadinglike 3s;
+}
+
+	
 @-webkit-keyframes fadein {
     from {top: 0; opacity: 0;} 
     to {top: 127px; opacity: 1;}
@@ -427,13 +430,18 @@ footer {
 }
 
 @-webkit-keyframes fadeout {
-    from {top: 127px; opacity: 1;} 
-    to {top: 0; opacity: 0;}
+    from {top: 127px; opacity: 1; visibility: hidden;} 
+    to {top: 0; opacity: 0; visibility: hidden;}
 }
 
 @keyframes fadeout {
     from {top: 127px; opacity: 1;}
     to {top: 0; opacity: 0;}
+}
+
+@keyframes loadinglike {
+	from { background-size: 1% 100%; }
+	to { background-size: 200% 100%; color: white; }
 }
 
 /** ==============  TOASTER STYLES END  ============== **/
@@ -606,11 +614,17 @@ footer {
 	#image {
 		font-size: .9vw;
 	}
+	footer {
+		margin-left: 270px;
+	}
 }
 
 @media only screen and (max-device-width: 768px) {
 	.side-nav-close {
 		display: block;
+	}
+	footer {
+		margin-left: 0px;
 	}
 	footer small {
 		padding-left: 0;

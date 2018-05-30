@@ -12,11 +12,21 @@ $(function () {
 			success: function (response) {
 				if (response.success == 'added') {
 					$('#toaster span').html('Succesfully Registered!');
+					
 					$('input').val('');
+					
+					
 					toaster_register();
 
 				} else if (response.success == 'existing') {
-					$('#toaster span').html('Username is already taken!');
+					//var taken = $('#toaster span').html('shit');
+					//taken.addClass('danger');
+
+					var taken = document.querySelector('#toaster span');
+					taken.innerText = "shit";
+					taken.className = "danger";
+	
+
 					toaster_register();
 
 				} else if (response.success == 'mismatch') {
