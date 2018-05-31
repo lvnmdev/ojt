@@ -74,11 +74,6 @@ $(function () {
 				}
 				if (response.data1 != null) {
 					if (response.data != null) {
-						console.log(response.data1.jobs_posted)
-
-						console.log(response.data.pending_applicant)
-
-
 						$('#jobs_count').html(response.data1.jobs_posted - response.data.pending_applicant);
 					}
 					else {
@@ -96,10 +91,10 @@ $(function () {
 	}
 	var image = 0;
 	$('.btn-default').attr('disabled', 'disabled');
-	$('#image').click(function () {
+	$('#image_attach').click(function () {
 		$('.btn-default').removeAttr('disabled');
 		setInterval(function () {
-			if ($('#image').val().length < 1) {
+			if ($('#image_attach').val().length < 1) {
 				$('.btn-default').attr('disabled', 'disabled');
 			} else {
 				$('.btn-default').removeAttr('disabled');
@@ -137,10 +132,10 @@ $(function () {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
 					} else {
-
+						$('#prof_pic').attr('src', '../../ojt/assets/img/icons/default-profile.png');
+						$('#prof_pic1').attr('src', '../../ojt/assets/img/icons/default-profile.png');
 					}
 					$('#user_profile_name').html(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
-
 				}
 			},
 			error: function () {

@@ -387,51 +387,52 @@ class Applicant_m extends CI_Model {
 
     public function upload_photo(){
         if (isset($_FILES['image'])) {
-           $info = pathinfo($_FILES['image']['name']);
-            $ext = $info['extension']; // get the extension of the file or the file type
-            $newname = $_SESSION['id'].'_pic.'.$ext; 
-
-            $maxsize = 2097152;
-            $file_types = array(
-                'image/jpeg',
-                'image/jpg',
-                'image/png'
-            );
-            
-            $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
-            $link = 'assets/img/profile_pics/'.$newname;
-
-            $field = array(
-                'user_id' => $this->session->userdata('id'),
-                'photo_path' => $link
+            $image_info = pathinfo($_FILES['image']['name']);                    // Uploaded Image Info
+            $maxsize = 2097152;             // Restricts 2MB images only
+            $bool_image_size;               // Stores boolean value for image size
+            $bool_image_type;               // Stores boolean value for image type/format
+            $errors[0]="";$errors[1]="";    // Stores string value of error/s
+            $file_types = array(            //
+                'image/jpeg',               //  Restricts other formats
+                'image/jpg',                //  except for jpeg,jpg,png
+                'image/png'                 //
             );
 
-            $bool_image_upload;
-            $errors = array();
-            if(($_FILES['image']['size'] > $maxsize) && ($_FILES['image']['size'] == 0) ) {
-                $errors[] = 'File too large. File must be less than 2 megabytes.';
-                $bool_image_upload = false;
+            if(($_FILES['image']['size'] > $maxsize) || ($_FILES['image']['size'] === 0) ) {
+                $errors[0] = 'File too large. File must be less than 2 megabytes.';              //Checks if the image 
+                $bool_image_size = false;                                                       //uploaded size is 2MB
             }
             else {
-                $bool_image_upload = true;
+                $bool_image_size = true;
             }
 
             if(!in_array($_FILES['image']['type'], $file_types) && (!empty($_FILES['image']['type'])) ) {
-                $errors[] = 'Invalid file type. Only JPG, JPEG, and PNG types are accepted.';
-                $bool_image_upload = false;
+                $errors[1] = 'Invalid file type. Only JPG, JPEG, and PNG types are accepted.';           //Checks if the image
+                $bool_image_type = false;                                                               //type or format is acceptable
             }
             else {
-                $bool_image_upload = true;
+                $bool_image_type = true;
             }
 
-            if($bool_image_upload) {
+            if($bool_image_size && $bool_image_type) {
+                $ext = $image_info['extension']; // get the extension of the file or the file type
+                $newname = $_SESSION['id'].'_pic.'.$ext; 
+                $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
+                $link = 'assets/img/profile_pics/'.$newname;
+
+                $field = array(
+                    'user_id' => $this->session->userdata('id'),
+                    'photo_path' => $link
+                );
+
                 $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
                 if($query->num_rows()>0){
-                    unlink($target);
+                    if(!$bool_image_size && !$bool_image_type) {
+                        unlink($target);
+                    }
                     $this->db->where('user_id',$field['user_id']);
                     $this->db->update('tbl_photo_upload',$field);
-                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);             
-                                
+                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);                           
                 }
                 else{
                     $this->db->insert('tbl_photo_upload',$field);
@@ -439,32 +440,32 @@ class Applicant_m extends CI_Model {
                 }
             } 
             else {
-                foreach($errors as $error) {
-                    echo '<script>console.log("'.$error.'");</script>';
-                }
+                $_SESSION['error_image_upload'] = $errors[0].' '.$errors[1];
+                redirect('Applicant/user_settings');
+                //echo json_encode($errors);
             }
         }
     }
         
 
 /////////////////////////////////////////////////////CHANGE Login Credentials Baby!
-        public function change_username(){
-            $user = $this->session->userdata('username');
-            $user_name = $this->input->post('user_name');
-            $this->db->set('user_name',$user_name);
-            $this->db->where('user_name',$user);
-            $this->db->update('tbl_users');
-            return true;
-        
-        }
+    public function change_username(){
+        $user = $this->session->userdata('username');
+        $user_name = $this->input->post('user_name');
+        $this->db->set('user_name',$user_name);
+        $this->db->where('user_name',$user);
+        $this->db->update('tbl_users');
+        return true;
+    
+    }
 
-        public function change_password(){
-            $user = $this->session->userdata('username');
-            $user_pass = $this->input->post('pass_new');
-            $this->db->set('user_pass',$user_pass);
-            $this->db->where('user_name',$user);
-            $this->db->update('tbl_users');
-            return true;
-        
-        }
+    public function change_password(){
+        $user = $this->session->userdata('username');
+        $user_pass = $this->input->post('pass_new');
+        $this->db->set('user_pass',$user_pass);
+        $this->db->where('user_name',$user);
+        $this->db->update('tbl_users');
+        return true;
+    
+    }
 }

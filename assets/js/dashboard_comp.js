@@ -51,10 +51,9 @@ $(function () {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#user_profile_name').html(response.data.comp_name);
-
-
 					} else {
-
+						$('#prof_pic').attr('src', '../../ojt/assets/img/icons/default-profile.png');
+						$('#prof_pic1').attr('src', '../../ojt/assets/img/icons/default-profile.png');
 					}
 				}
 			},
