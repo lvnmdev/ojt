@@ -12,35 +12,30 @@ $(function () {
 			success: function (response) {
 				if (response.success == 'added') {
 					$('#toaster span').html('Succesfully Registered!');
-					
 					$('input').val('');
-					
-					
 					toaster_register();
 
 				} else if (response.success == 'existing') {
-					//var taken = $('#toaster span').html('shit');
-					//taken.addClass('danger');
-
-					var taken = document.querySelector('#toaster span');
-					taken.innerText = "shit";
-					taken.className = "danger";
-	
-
+					msg = 'Username already exist';
+					toaster_error(msg);
 					toaster_register();
 
 				} else if (response.success == 'mismatch') {
-					$('#toaster span').html('Your password did not match');
+					msg = 'Your password did not match';
+					toaster_error(msg);
 					toaster_register();
 
 				} else if (response.success == 'invalid') {
-					$('#toaster span').html('Username contains invalid characters');
+					msg = 'Username contains invalid characters';
+					toaster_error(msg);
 					toaster_register();
 
 				}
 			},
 			error: function () {
-				$('#toaster span').html('OOPS! Something went wrong');
+
+				msg = 'OOPS! Something went wrong';
+				toaster_error(msg);
 				toaster_register();
 			}
 		});
@@ -62,16 +57,16 @@ $(function () {
 
 					$('#toaster span').html('Welcome! ' + response.user);
 					toaster_login();
-					setTimeout(() => {
-						location.reload();
-					}, 3000);
+					setTimeout(() => { location.reload(); }, 3000);
 				} else {
-					$('#toaster span').html('Wrong Login Credentials!');
+					msg = 'Wrong Login Credentials!';
+					toaster_error(msg);
 					toaster_login();
 				}
 			},
 			error: function () {
-				$('#toaster span').html('OOPS! Something went wrong');
+				msg = 'OOPS! Something went wrong';
+				toaster_error(msg);
 				toaster_login();
 			}
 		});
@@ -81,7 +76,7 @@ $(function () {
 
 function toaster_login() {
 	var x = document.getElementById("toaster");
-	x.className = "show";
+	x.className = "t_login show";
 	setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
 }
 
@@ -90,4 +85,11 @@ function toaster_register() {
 	x.className = "t_register show";
 	setTimeout(() => { x.className = x.className.replace("t_register show", "") }, 3000);
 
+}
+
+function toaster_error(msg) {
+	var err = document.querySelector('#toaster span');
+	err.innerText = msg;
+	err.className = "danger";
+	setTimeout(() => { err.className = ""; }, 3000);
 }

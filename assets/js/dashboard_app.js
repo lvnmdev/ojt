@@ -8,7 +8,11 @@ $(function () {
 	show_available_jobs();
 	show_graduate_info();
 
-	$('#graduate_form_info').submit(function () {
+	$('#graduate_form_info').submit(function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
 		var formData = $('#graduate_form_info').serialize();
 		$.ajax({
 			type: 'ajax',
@@ -20,9 +24,11 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.operation == 'insert') {
-					alert('data inserted');
+					msg = 'data inserted successfully';
+					toaster(msg);
 				} else if (response.operation == 'update') {
-					alert('data updated');
+					msg = 'data updated successfully';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -183,7 +189,12 @@ $(function () {
 		$('#edit_bio').modal('show');
 	})
 
-	$('#form_bio').submit(function () {
+	$('#form_bio').submit(function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload();
+		}, 3000);
+
 		var formData = $('#form_bio').serialize();
 		$.ajax({
 			type: 'ajax',
@@ -195,9 +206,11 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.operation == 'insert') {
-					alert('data inserted');
+					msg = 'data inserted successfully';
+					toaster(msg);
 				} else if (response.operation == 'update') {
-					alert('data updated');
+					msg = 'data updated successfully';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -584,7 +597,12 @@ $(function () {
 
 	})
 
-	$('#form_resume').submit(function () {
+	$('#form_resume').submit(function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		$("#btnsubmit_resume").attr("disabled", "disabled");
 		var formData = $('#form_resume').serialize();
 		console.log(formData);
@@ -598,8 +616,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					alert('inserted');
-					location.reload();
+					msg = 'data updated successfully';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -832,7 +850,11 @@ $(function () {
 
 	});
 
-	$('#confirm_app').click(function () {
+	$('#confirm_app').click(function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
 		var job_id = job_id_app;
 		console.log(job_id);
 		$.ajax({
@@ -847,8 +869,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					alert('inserted');
-					location.reload();
+					msg = 'data inserted successfully';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -856,7 +878,12 @@ $(function () {
 			}
 		});
 	})
-	$('#confirm_cancel').click(function () {
+	$('#confirm_cancel').click(function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var job_id = job_id_app;
 		console.log(job_id);
 		$.ajax({
@@ -871,8 +898,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					alert('JOB APPLICATION ABORTED');
-					location.reload()
+					msg = 'Job application aborted!';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -883,6 +910,11 @@ $(function () {
 
 
 	$(document).on('click', '.skill-delete', function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var id = $(e.currentTarget).val();
 		console.log(id);
 		$.ajax({
@@ -898,8 +930,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response) {
-					alert('deleted');
-					location.reload();
+					msg = 'data successfully updated';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -909,6 +941,11 @@ $(function () {
 
 	});
 	$(document).on('click', '.educ-delete', function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var id = $(e.currentTarget).val();
 		console.log(id);
 		$.ajax({
@@ -925,8 +962,8 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 
-					alert('deleted');
-					location.reload();
+					msg = 'Data successfully updated';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -936,6 +973,11 @@ $(function () {
 
 	});
 	$(document).on('click', '.work-delete', function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var id = $(e.currentTarget).val();
 		console.log(id);
 		$.ajax({
@@ -951,8 +993,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					alert('deleted');
-					location.reload();
+					msg = 'Data successfully updated';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -962,6 +1004,11 @@ $(function () {
 
 	});
 	$(document).on('click', '.semi-delete', function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var id = $(e.currentTarget).val();
 		console.log(id);
 		$.ajax({
@@ -978,8 +1025,8 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 
-					alert('deleted');
-					location.reload();
+					msg = 'Data successfully updated';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -989,6 +1036,11 @@ $(function () {
 
 	});
 	$(document).on('click', '.acc-delete', function (e) {
+		e.preventDefault();
+		setTimeout(() => {
+			location.reload()
+		}, 3000);
+
 		var id = $(e.currentTarget).val();
 		console.log(id);
 		$.ajax({
@@ -1005,8 +1057,9 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 
-					alert('deleted');
-					location.reload();
+
+					msg = 'Data successfully updated';
+					toaster(msg);
 				}
 			},
 			error: function () {
@@ -1161,3 +1214,19 @@ $(function () {
 		}
 	});
 });
+
+
+function toaster(msg) {
+			document.querySelector('#toaster span').innerText = msg;
+	var x = document.getElementById("toaster");
+	x.className = "show";
+	setTimeout(() => { x.className = x.className.replace("show", "") }, 3000);
+
+}
+
+function toaster_error(msg) {
+	var err = document.querySelector('#toaster span');
+	err.innerText = msg;
+	err.className = "danger";
+	setTimeout(() => { err.className = ""; }, 3000);
+}

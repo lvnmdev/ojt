@@ -41,6 +41,7 @@
 	</head>
 
 	<body>
+		<div id="toaster"><span></span></div>
 		<div class="folding-cube-wrapper">
 			<div class="folding-cube-body">
 				<div class="cube-1 cube"></div>

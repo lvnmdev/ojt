@@ -392,12 +392,12 @@ footer {
     text-align: center;
     position: fixed;
     z-index: 1;
-    left: 26%;
+    left: 50%;
     top: 138px;
     background: #fff ;
 
 }
-
+#toaster.t_login { left: 26%; }
 #toaster.t_register { left: 76%; }
 
 #toaster span {
@@ -417,7 +417,8 @@ footer {
 #toaster.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;
-    animation: fadein 0.5s, fadeout 0.5s 2.7s;
+	animation: fadein 0.5s, fadeout 0.5s 2.7s;
+	z-index: 99999;
 }
 
 #toaster.show span {
