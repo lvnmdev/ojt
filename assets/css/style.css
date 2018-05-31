@@ -84,6 +84,10 @@ footer {
 	padding-left: 0;
 }
 
+.user-settings {
+	margin-top: 14px;
+}
+
 .user-profile {
 	float: right;
 	padding: 15px 0;
@@ -357,6 +361,7 @@ footer {
 }
 
 .dashboard-badge {
+	margin: auto;
 	position: relative;
 	background-color: #1a1751;
 	border-radius: 100%;
@@ -365,7 +370,6 @@ footer {
 
 .dashboard-badge-label h4 {
 	position: relative;
-	text-align: right;
 }
 
 .dashboard-badge:hover {
@@ -620,6 +624,7 @@ footer {
 }
 
 @media only screen and (max-device-width: 768px) {
+
 	.side-nav-close {
 		display: block;
 	}
@@ -650,6 +655,16 @@ footer {
 }
 
 @media only screen and (max-device-width: 425px) {
+	.dashboard-badge {
+		height: 100px;
+		width: 100px;
+		padding: 20px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 3em;
+	}
+
 	#image {
 		font-size: 3vw;
 	}
