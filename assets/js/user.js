@@ -66,8 +66,13 @@ $(function () {
 						location.reload();
 					}, 3000);
 				} else {
-					$('#toaster span').html('Wrong Login Credentials!');
-					toaster_login();
+					if(response.message=="3"){
+						$('#toaster span').html('STAHP! YOU ARE BLOCKED FOREVER!');
+						toaster_login();
+					}else{
+						$('#toaster span').html('Wrong Login Credentials!');
+						toaster_login();
+					}
 				}
 			},
 			error: function () {

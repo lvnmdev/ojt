@@ -49,11 +49,51 @@ class MainModel extends CI_Model {
 		$query = $this->db->get('tbl_users');		
 		
 		if($query->num_rows()==1){
+			$field = array(
+				'user_ip' => $_SERVER['REMOTE_ADDR'],
+				'login_attempt' => 1,
+				'login_status' => "1"
+			);
+			$this->db->insert('tbl_login_logs',$field);
 			$result[0] = $query->row();
 			$result[1] = true;
 			return $result;
+
 		}else{
-			return false;
+
+			$this->db->select('user_ip');
+			$this->db->from('tbl_login_logs');
+			$this->db->where('user_ip', $_SERVER['REMOTE_ADDR']);
+
+			$query_ip =  $this->db->get();
+
+			if($query_ip->num_rows() > 0){
+				
+			}else {
+				$field = array(
+					'user_ip' => $_SERVER['REMOTE_ADDR'],
+					'login_attempt' => 0,
+					'login_status' => "0"
+				);
+				$this->db->insert('tbl_login_logs',$field);
+			}
+
+			$latest='SELECT MAX(tbl_login_logs.login_date) AS LatestLog,login_attempt FROM tbl_login_logs WHERE user_ip = "'.$_SERVER['REMOTE_ADDR'].'"';
+			$query_latest = $this->db->query($latest);
+			$dets = $query_latest->row()->LatestLog;
+			$attempts = (int)$query_latest->row()->login_attempt;
+			if ($attempts == 3){
+				$result[0] = "3";
+				$result[1] = false;
+			}else{
+				$result[0] = "You have failed";
+				$result[1] = false;
+				$attempts++;
+				$this->db->where('login_date',$dets);
+				$this->db->set('login_attempt',$attempts);
+				$this->db->update('tbl_login_logs');
+			}
+			return $result;
 		}
 	}
 
