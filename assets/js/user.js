@@ -69,7 +69,7 @@ $(function () {
 					}, 3000);
 				} else {
 					if (response.message == "3") {
-						$('#toaster span').html('You have exceeded the maximum number of attempts. You are locked-out for 1 minute');
+						$('#toaster span').html("You've benn locked-out. Come back after 30 minutes");
 						lockout = true;
 
 						toaster_login();
@@ -94,7 +94,6 @@ $(function () {
 				url: 'main/locktimer',
 				dataType: 'json',
 				success: function (response) {
-					console.log(response);
 					if (response.lock) {
 						lockout = true;
 
@@ -108,7 +107,6 @@ $(function () {
 				url: 'main/locktimer',
 				dataType: 'json',
 				success: function (response) {
-					console.log(response);
 					if (response.lockout == 0) {
 						lockout = false;
 						$.ajax({
