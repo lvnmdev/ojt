@@ -4,6 +4,7 @@ $(function () {
 	show_comp_info();
 	show_job_postings();
 	show_pending_applications();
+	limit_posted_jobs();
 
 	$.ajax({
 		type: 'ajax',
@@ -140,9 +141,34 @@ $(function () {
 							'<td>' + response.data[i].requirements + '</td>' +
 							'<td>' + response.data[i].date_posted + '</td>' +
 							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '"><i class="fa fa-edit"></i> Edit</button>&nbsp<button value="' + response.data[i].job_id + '" class="btn btn-danger delete"><i class="fa fa-times-circle"></i> End</button></td>' +
-							'</tr>'
+							'</tr>';
 					}
 					$('#show_jobs').html(html)
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
+
+	function limit_posted_jobs() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'limit_posted_jobs',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					if (response.count_posted_jobs[0].count_posted_jobs >= response.max_posted_jobs) {
+						$('#btnpost_job').attr('disabled', 'disabled');
+						$('#limit_post_job').html('(10) Maximum number of posted jobs reached.');
+					}
+					else {
+						$('#btnpost_job').removeAttr('disabled');
+					}
 				}
 			},
 			error: function () {

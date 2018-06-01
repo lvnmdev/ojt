@@ -12,7 +12,7 @@
 					redirect('Main/pending');
 				}
 				else {
-					redirect('Company/info_form');
+					redirect('Company/require_form');
 				}
 			}
 		}

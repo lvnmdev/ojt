@@ -440,10 +440,11 @@ class Applicant_m extends CI_Model {
                 }
             } 
             else {
-                $_SESSION['error_image_upload'] = $errors[0].' '.$errors[1];
+                $_SESSION['error_image_upload'] = $errors[0].'\n'.$errors[1];
                 redirect('Applicant/user_settings');
                 //echo json_encode($errors);
             }
+            redirect('Applicant/user_settings');
         }
     }
         

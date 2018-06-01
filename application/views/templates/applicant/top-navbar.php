@@ -1,10 +1,10 @@
 <?php
 	$query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
     if (isset($_SESSION['username'])){
-        if ($_SESSION['usertype']==0){
+        if ($_SESSION['usertype'] == 0){
             redirect('Admin/dashboard');
 		}
-		else if($_SESSION['usertype']==1){
+		else if($_SESSION['usertype'] == 1){
             redirect('Company/dashboard');
 		}
 		else {
@@ -13,14 +13,14 @@
 					redirect('Main/pending');
 				}
 				else {
-					redirect('Company/info_form');
+					redirect('Applicant/require_form');
 				}
 			}
 		}
-    }else{
+	}
+	else{
 		redirect('/');
 	}
-
 ?>
 	<!DOCTYPE html>
 	<html>
