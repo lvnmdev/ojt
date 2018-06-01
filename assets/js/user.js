@@ -1,5 +1,4 @@
 var lockout = false;
-var locktime = 0;
 
 $(function () {
 	$('#regform').submit(function () {
@@ -15,10 +14,10 @@ $(function () {
 			success: function (response) {
 				if (response.success == 'added') {
 					$('#toaster span').html('Succesfully Registered!');
-					
+
 					$('input').val('');
-					
-					
+
+
 					toaster_register();
 
 				} else if (response.success == 'existing') {
@@ -28,7 +27,7 @@ $(function () {
 					var taken = document.querySelector('#toaster span');
 					taken.innerText = "shit";
 					taken.className = "danger";
-	
+
 
 					toaster_register();
 
@@ -69,12 +68,12 @@ $(function () {
 						location.reload();
 					}, 3000);
 				} else {
-					if(response.message=="3"){
-						$('#toaster span').html('You have exceeded the maximum number of attempts. You are locked-out for 1 minute');
+					if (response.message == "3") {
+						$('#toaster span').html("You've benn locked-out. Come back after 30 minutes");
 						lockout = true;
-						locktime = response.lock;
+
 						toaster_login();
-					}else{
+					} else {
 						$('#toaster span').html('Wrong Login Credentials!');
 						toaster_login();
 					}
@@ -87,24 +86,54 @@ $(function () {
 		});
 		return false;
 	});
+	setInterval(function () {
+		if (!lockout) {
+			$('.button').removeAttr('disabled');
+			$.ajax({
+				method: 'post',
+				url: 'main/locktimer',
+				dataType: 'json',
+				success: function (response) {
+					if (response.lock) {
+						lockout = true;
+
+					}
+				}
+			});
+		} else if(lockout){
+			$('.button').attr('disabled','disabled');
+			$.ajax({
+				method: 'post',
+				url: 'main/locktimer',
+				dataType: 'json',
+				success: function (response) {
+					if (response.lockout == 0) {
+						lockout = false;
+						$.ajax({
+							url: 'main/unlock'
+						})
+					}
+				}
+			});
+
+		}
+	}, 1000)
 });
 
 function toaster_login() {
 	var x = document.getElementById("toaster");
 	x.className = "show";
-	setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
-	if (lockout){
-		setInterval(function(){
-			$.ajax({
-				url: 'main/locktimer'
-			});
-		})
-	}
+	setTimeout(() => {
+		x.className = x.className.replace("show", "");
+	}, 3000);
+
 }
 
 function toaster_register() {
 	var x = document.getElementById("toaster");
 	x.className = "t_register show";
-	setTimeout(() => { x.className = x.className.replace("t_register show", "") }, 3000);
+	setTimeout(() => {
+		x.className = x.className.replace("t_register show", "")
+	}, 3000);
 
 }

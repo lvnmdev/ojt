@@ -60,7 +60,7 @@ class MainModel extends CI_Model {
 				$query_latest = $this->db->query($latest);
 				$dets = $query_latest->row()->LatestLog;
 				$this->db->where('login_date',$dets);
-				$this->db->set('login_attempt',1);
+				$this->db->set('login_attempt',0);
 				$this->db->set('login_status',"1");
 				$this->db->update('tbl_login_logs');
 			}else {
@@ -96,12 +96,16 @@ class MainModel extends CI_Model {
 
 			$latest='SELECT MAX(tbl_login_logs.login_date) AS LatestLog,login_attempt FROM tbl_login_logs WHERE user_ip = "'.$_SERVER['REMOTE_ADDR'].'"';
 			$query_latest = $this->db->query($latest);
+			$maxattempts = 'SELECT maxattempts FROM tbl_super_settings'; 
+			$query_max = $this->db->query($maxattempts);
+
 			$dets = $query_latest->row()->LatestLog;
+			$max =  $query_max->row()->maxattempts;
 			$attempts = (int)$query_latest->row()->login_attempt;
-			if ($attempts == 3){
+			if ($attempts == $max){
 				$result[0] = "3";
 				$result[1] = false;
-				$_SESSION['lockout'] = 60000;
+				$_SESSION['lockout'] = 60;
 			}else{
 				$result[0] = "You have failed";
 				$result[1] = false;
