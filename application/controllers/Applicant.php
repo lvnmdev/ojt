@@ -58,7 +58,6 @@ class Applicant extends CI_Controller {
 	
 	public function upload(){
 		$this->applicant->upload_photo();
-		redirect('Applicant/user_settings');
 	}
 
 	//Functionals (Biodata)

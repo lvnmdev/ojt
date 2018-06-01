@@ -37,17 +37,22 @@
 							<div class="row" style="padding-left:10px;">
 								<div class="col-xs-12 col-sm-12 col-md-5">
 									<div class="user-change-profile">
-										<form action="upload" method="post" enctype="multipart/form-data">
+										<?php if (isset($_SESSION['error_image_upload'])) {
+												echo '<script>alert("'.$_SESSION['error_image_upload'].'")</script>';
+												unset($_SESSION['error_image_upload']);
+											} 
+										?>
+										<form action="upload "method="post" enctype="multipart/form-data">
 											<label>Select image to upload:</label>
 											<div class="input-group" style="z-index:0;">
 												<div class="input-group-addon">
 													<i class="fa fa-paperclip"></i>
 												</div>
 												<div class="form-control">
-													<input type="file" name="image" id="image" style="position:absolute;width:100%;">
+													<input type="file" name="image" id="image_attach" style="position:absolute;width:100%;">
 												</div>
 												<div class="input-group-btn">
-													<button type="submit" name="submit" class="btn btn-default">
+													<button id="image_upload" type="submit" name="submit" class="btn btn-default">
 														<i class="fa fa-upload"></i> Upload</button>
 												</div>
 											</div>
