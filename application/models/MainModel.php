@@ -60,7 +60,7 @@ class MainModel extends CI_Model {
 				$query_latest = $this->db->query($latest);
 				$dets = $query_latest->row()->LatestLog;
 				$this->db->where('login_date',$dets);
-				$this->db->set('login_attempt',1);
+				$this->db->set('login_attempt',0);
 				$this->db->set('login_status',"1");
 				$this->db->update('tbl_login_logs');
 			}else {
@@ -101,7 +101,7 @@ class MainModel extends CI_Model {
 			if ($attempts == 3){
 				$result[0] = "3";
 				$result[1] = false;
-				$_SESSION['lockout'] = 60000;
+				$_SESSION['lockout'] = 60;
 			}else{
 				$result[0] = "You have failed";
 				$result[1] = false;
