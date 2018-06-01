@@ -211,7 +211,7 @@ form input, form select, form button{
 						<input type="text" name="username" placeholder="Username" required>
 						<input type="password" name="password" placeholder="Password" required>
             <div class="form-group"></div>
-						<button class="button">login</button>
+						<button id="loginbtn" class="button">login</button>
 					</form>
 				</div>
 			</div>

@@ -1,3 +1,6 @@
+var lockout = false;
+var locktime = 0;
+
 $(function () {
 	$('#regform').submit(function () {
 		var formData = $('#regform').serialize();
@@ -67,7 +70,9 @@ $(function () {
 					}, 3000);
 				} else {
 					if(response.message=="3"){
-						$('#toaster span').html('STAHP! YOU ARE BLOCKED FOREVER!');
+						$('#toaster span').html('You have exceeded the maximum number of attempts. You are locked-out for 1 minute');
+						lockout = true;
+						locktime = response.lock;
 						toaster_login();
 					}else{
 						$('#toaster span').html('Wrong Login Credentials!');
@@ -88,6 +93,13 @@ function toaster_login() {
 	var x = document.getElementById("toaster");
 	x.className = "show";
 	setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
+	if (lockout){
+		setInterval(function(){
+			$.ajax({
+				url: 'main/locktimer'
+			});
+		})
+	}
 }
 
 function toaster_register() {

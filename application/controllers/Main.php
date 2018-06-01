@@ -59,6 +59,7 @@ class Main extends CI_Controller {
 	
 
 	public function loginUser(){
+		$_SESSION['lockout'] = 0;
 		$return=$this->model->login();
 		$msg['success'] = false;
 		if($return[1]){
@@ -77,11 +78,17 @@ class Main extends CI_Controller {
 			$msg['status'] = $this->session->userdata('userstatus');
 		}
 		$msg['message'] = $return[0];
+		$msg['lock'] = $_SESSION['lockout'];		
 		echo json_encode($msg);
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('/');
+	}
+
+
+	public function locktimer(){
+
 	}
 }
