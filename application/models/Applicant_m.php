@@ -213,8 +213,13 @@ class Applicant_m extends CI_Model {
      public function edit_graduate_info(){
         $field = array(
             'user_name' => $this->session->userdata('username'),
-            'date_graduated' => $this->input->post('g_date_graduated'),
             'is_employed' => $this->input->post('g_employment'),
+            'date_graduated' => $this->input->post('g_date_graduated'),
+            'degree_graduated' => $this->input->post('g_degree_graduated'),
+            'college_graduated' => $this->input->post('g_college_graduated'),
+            'job_position' => $this->input->post('g_job_position'),
+            'business_nature' => $this->input->post('g_business_nature'),
+            'company_address' => $this->input->post('g_company_address'),
             'date_hired' => $this->input->post('g_date_hired'),
             'company_name' => $this->input->post('g_company_name'),
             'hr_person' => $this->input->post('g_hr_person'),
@@ -238,6 +243,9 @@ class Applicant_m extends CI_Model {
             $result[0] = true;
             return $result;
         }
+
+        echo $field;
+        die();
     }
 
     public function show_graduate_info() {

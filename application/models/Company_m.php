@@ -10,7 +10,7 @@ class Company_m extends CI_Model {
         $user = $this->session->userdata('username');
         $count_posted_jobs =  $this->db->select('count(*) as `count_posted_jobs`')->from('tbl_job_posting')->where('user_name',$user)->where('status','1')->get();
 
-        $GLOBALS['max_posted_jobs'] = 4;
+        $GLOBALS['max_posted_jobs'] = 10;
         $max_posted_jobs = $GLOBALS['max_posted_jobs'];
 
         $result[0] = false;

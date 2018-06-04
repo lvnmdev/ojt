@@ -17,15 +17,15 @@
 				<div class='card-body'>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
-							<strong>Degree:</strong>
-						</p>
-						<p id='user_degree_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
-					</div>
-					<div class="row">
-						<p class='col-xs-12 col-sm-3 col-md-2'>
 							<strong>College:</strong>
 						</p>
 						<p id='user_college_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Degree:</strong>
+						</p>
+						<p id='user_degree_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
@@ -56,6 +56,12 @@
 							<strong>Company Name:</strong>
 						</p>
 						<p id='user_company_name' class='col-xs-12 col-sm-9 col-md-10'></p>
+					</div>
+					<div class="row">
+						<p class='col-xs-12 col-sm-3 col-md-2'>
+							<strong>Business Nature:</strong>
+						</p>
+						<p id='user_business_nature' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
@@ -105,6 +111,25 @@
 			<div class="modal-body">
 				<form id="graduate_form_info" class="form-horizontal" method="post">
 					<div class="form-group">
+						<label for="name" class="label-control col-md-4">College</label>
+						<div class="col-md-8">
+							<select id='e_g_college_graduated' type="text" name="g_college_graduated" class="form-control" required>
+								<option value="College of Engineering and Architecture">College of Engineering and Architecture</option>
+								<option value="College of Information Technology and Computing">College of Information Technology and Computing</option>
+								<option value="College of Science and Mathematics">College of Science and Mathematics</option>
+								<option value="College of Science and Technology Education">College of Science and Technology Education</option>
+								<option value="College of Technology">College of Technology</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="label-control col-md-4">Degree</label>
+						<div class="col-md-8">
+							<select id='e_g_degree_graduated' type="text" name="g_degree_graduated" class="form-control" required>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="name" class="label-control col-md-4">Date Graduated</label>
 						<div class="col-md-8">
 							<input id='e_g_date_graduated' type="date" name="g_date_graduated" class="form-control" value="" required>
@@ -113,17 +138,17 @@
 					<div class="form-group">
 						<label for="name" class="label-control col-md-4">Employment</label>
 						<div class="col-md-8">
-							<div class="col-md-6" style="padding-left:0;">
-								<input id="isEmployed" type="radio" name="g_employment" value="1" checked>&nbsp
-								<label>Employed</label>
-							</div>
 							<div class="col-md-6">
-								<input id="isNotEmployed" type="radio" name="g_employment" value="0">&nbsp
+								<input id="isNotEmployed" type="radio" name="g_employment" value="0" checked>&nbsp
 								<label>Unemployed</label>
+							</div>
+							<div class="col-md-6" style="padding-left:0;">
+								<input id="isEmployed" type="radio" name="g_employment" value="1">&nbsp
+								<label>Employed</label>
 							</div>
 						</div>
 					</div>
-					<div id="employed_inputs">
+					<div id="employed_inputs" style="display:none">
 						<div class="form-group">
 							<label for="name" class="label-control col-md-4">Date Hired</label>
 							<div class="col-md-8">
@@ -131,9 +156,27 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="name" class="label-control col-md-4">Job Position</label>
+							<div class="col-md-8">
+								<input id='e_g_job_position' type="text" name="g_job_position" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="name" class="label-control col-md-4">Company Name</label>
 							<div class="col-md-8">
 								<input id='e_g_company_name' type="text" name="g_company_name" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="label-control col-md-4">Business Nature</label>
+							<div class="col-md-8">
+								<input id='e_g_business_nature' type="text" name="g_business_nature" class="form-control" value="" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="label-control col-md-4">Company Address</label>
+							<div class="col-md-8">
+								<input id='e_g_company_address' type="text" name="g_company_address" class="form-control" value="" required>
 							</div>
 						</div>
 						<div class="form-group">

@@ -105,7 +105,7 @@ $(function () {
             type: 'ajax',
             method: 'get',
             url: 'show_company',
-            async: false,
+            async: true,
             dataType: 'json',
             success: function (response) {
                 var html = '';
@@ -141,7 +141,7 @@ $(function () {
             type: 'ajax',
             method: 'get',
             url: 'show_applicant',
-            async: false,
+            async: true,
             dataType: 'json',
             success: function (response) {   
                 var html = '';
@@ -177,7 +177,7 @@ $(function () {
             type: 'ajax',
             method: 'get',
             url: 'show_pending_applicant',
-            async: false,
+            async: true,
             dataType: 'json',
             success: function (response) {
                 var html = '';
@@ -205,7 +205,7 @@ $(function () {
         	type: 'ajax',
         	method: 'get',
         	url: 'show_pending_company',
-        	async: false,
+        	async: true,
         	dataType: 'json',
         	success: function (response) {
         		var html = '';

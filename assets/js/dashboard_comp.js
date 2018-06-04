@@ -101,7 +101,7 @@ $(function () {
 			method: 'post',
 			url: 'edit_info',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -125,7 +125,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_jobs',
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				var html = '';
@@ -163,8 +163,8 @@ $(function () {
 				console.log(response);
 				if (response.success) {
 					if (response.count_posted_jobs[0].count_posted_jobs >= response.max_posted_jobs) {
-						$('#btnpost_job').attr('disabled', 'disabled');
-						$('#limit_post_job').html('(10) Maximum number of posted jobs reached.');
+						$('#btnpost_job').attr('disabled', 'disabled');									//Disables the button when it reaches
+						$('#limit_post_job').html('(10) Maximum number of posted jobs reached.');		//its maximum number of post
 					}
 					else {
 						$('#btnpost_job').removeAttr('disabled');
@@ -203,7 +203,7 @@ $(function () {
 			method: 'post',
 			url: 'post_job_hiring',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -227,7 +227,7 @@ $(function () {
 			data: {
 				job_id: id
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -292,7 +292,7 @@ $(function () {
 			method: 'post',
 			data: formData,
 			url: 'edit_job',
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				if (response.success) {
@@ -313,7 +313,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_pending_applications',
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -348,7 +348,7 @@ $(function () {
 			data:{
 				name:name
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
