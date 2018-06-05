@@ -321,7 +321,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				if (data.skills) {
@@ -397,7 +397,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_workxp = '';
@@ -465,7 +465,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_accomplishment = '';
@@ -531,7 +531,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_education = '';
@@ -602,7 +602,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_seminars = '';
@@ -656,7 +656,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
@@ -761,7 +761,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_available_jobs',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response.data);
@@ -796,7 +796,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_ongoing_applications',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response.data);
@@ -849,7 +849,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_available_jobs',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response.data);
@@ -1101,7 +1101,6 @@ $(function () {
 				}
 
 			},
-
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(textStatus + " " + errorThrown);
 			}
@@ -1148,9 +1147,7 @@ $(function () {
 					$('#success_user1').removeAttr('style');
 					$('#success_user1').html('Password Updated');
 				}
-
 			},
-
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(textStatus + " " + errorThrown);
 			}

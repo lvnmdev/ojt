@@ -125,7 +125,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_jobs',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				var html = '';
@@ -313,7 +313,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_pending_applications',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
