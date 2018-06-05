@@ -114,6 +114,7 @@
 						<label for="name" class="label-control col-md-4">College</label>
 						<div class="col-md-8">
 							<select id='e_g_college_graduated' type="text" name="g_college_graduated" class="form-control" required>
+								<option>--Select--</option>
 								<option value="College of Engineering and Architecture">College of Engineering and Architecture</option>
 								<option value="College of Information Technology and Computing">College of Information Technology and Computing</option>
 								<option value="College of Science and Mathematics">College of Science and Mathematics</option>
@@ -126,6 +127,7 @@
 						<label for="name" class="label-control col-md-4">Degree</label>
 						<div class="col-md-8">
 							<select id='e_g_degree_graduated' type="text" name="g_degree_graduated" class="form-control" required>
+								<option>--Select--</option>
 							</select>
 						</div>
 					</div>

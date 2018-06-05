@@ -1,4 +1,5 @@
 var lockout = false;
+var locked = false;
 
 $(function () {
 	$('#regform').submit(function () {
@@ -49,46 +50,51 @@ $(function () {
 		return false;
 	});
 	$('#loginform').submit(function () {
-		var formData = $('#loginform').serialize();
-		console.log(formData);
-		$.ajax({
-			type: 'ajax',
-			method: 'post',
-			url: 'main/loginUser',
-			data: formData,
-			async: false,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response.success) {
+		if (locked){
+			$('#toaster span').html("You've been locked-out. Come back after 30 minutes");
+			toaster_login();
 
-					$('#toaster span').html('Welcome! ' + response.user);
-					toaster_login();
-					setTimeout(() => {
-						location.reload();
-					}, 3000);
-				} else {
-					if (response.message == "3") {
-						$('#toaster span').html("You've benn locked-out. Come back after 30 minutes");
-						lockout = true;
+		}else{
+			var formData = $('#loginform').serialize();
+			console.log(formData);
+			$.ajax({
+				type: 'ajax',
+				method: 'post',
+				url: 'main/loginUser',
+				data: formData,
+				async: false,
+				dataType: 'json',
+				success: function (response) {
+					console.log(response);
+					if (response.success) {
 
+						$('#toaster span').html('Welcome! ' + response.user);
 						toaster_login();
+						setTimeout(() => {
+							location.reload();
+						}, 3000);
 					} else {
-						$('#toaster span').html('Wrong Login Credentials!');
-						toaster_login();
+						if (response.message == "3") {
+							$('#toaster span').html("You've been locked-out. Come back after 30 minutes");
+							lockout = true;
+
+							toaster_login();
+						} else {
+							$('#toaster span').html('Wrong Login Credentials!');
+							toaster_login();
+						}
 					}
+				},
+				error: function () {
+					$('#toaster span').html('OOPS! Something went wrong');
+					toaster_login();
 				}
-			},
-			error: function () {
-				$('#toaster span').html('OOPS! Something went wrong');
-				toaster_login();
-			}
-		});
+			});
+		}
 		return false;
 	});
 	setInterval(function () {
 		if (!lockout) {
-			$('.button').removeAttr('disabled');
 			$.ajax({
 				method: 'post',
 				url: 'main/locktimer',
@@ -101,7 +107,7 @@ $(function () {
 				}
 			});
 		} else if(lockout){
-			$('.button').attr('disabled','disabled');
+			locked = true;
 			$.ajax({
 				method: 'post',
 				url: 'main/locktimer',
@@ -123,17 +129,19 @@ $(function () {
 function toaster_login() {
 	var x = document.getElementById("toaster");
 	x.className = "show";
+	$(".button").attr('disabled', 'disabled');
 	setTimeout(() => {
 		x.className = x.className.replace("show", "");
+		$(".button").removeAttr('disabled');
 	}, 3000);
-
 }
 
 function toaster_register() {
 	var x = document.getElementById("toaster");
 	x.className = "t_register show";
 	setTimeout(() => {
+		$(".button").attr('disabled', 'disabled');		
 		x.className = x.className.replace("t_register show", "")
 	}, 3000);
-
+	$(".button").removeAttr('disabled');	
 }
