@@ -77,14 +77,17 @@ class Admin_m extends CI_Model {
         $count_company = $this->db->query('SELECT COUNT(user_id) as "count_company" FROM tbl_users WHERE `user_type` = "1" GROUP BY user_type');
         $count_p_applicant = $this->db->query('SELECT COUNT(user_id) as "count_p_applicant" FROM tbl_users WHERE `user_type` = "2" AND `user_status` = "1" GROUP BY user_type ');
         $count_p_company = $this->db->query('SELECT COUNT(user_id) as "count_p_company" FROM tbl_users WHERE `user_type` = "1" AND `user_status` = "1" GROUP BY user_type');
-
-        if ($count_applicant && $count_company && $count_p_applicant && $count_p_company) {
+        $count_employed = $this->db->query('SELECT COUNT(*) as "count_employed" FROM tbl_graduate_info WHERE `is_employed` = "1"');
+        $count_unemployed = $this->db->query('SELECT COUNT(*) as "count_unemployed" FROM tbl_graduate_info WHERE `is_employed` = "0"');
+        
+        if ($count_applicant && $count_company && $count_p_applicant && $count_p_company && $count_employed && $count_unemployed) {
             $result[0] = true;
             $result[1] = $count_applicant->result();
             $result[2] = $count_company->result();
             $result[3] = $count_p_applicant->result();
             $result[4] = $count_p_company->result();
-
+            $result[5] = $count_employed->result();
+            $result[6] = $count_unemployed->result();
             return $result;
         }
     }

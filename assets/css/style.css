@@ -381,6 +381,14 @@ footer {
 	text-decoration: none;
 }
 
+.percent_notify {
+	font-size: 4em;
+}
+
+.percent_label {
+	margin: 0 !important;
+}
+
 /** ============== TOASTER STYLES START ============== **/
 #toaster {
     visibility: hidden;

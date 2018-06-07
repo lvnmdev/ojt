@@ -98,7 +98,7 @@ $(function () {
 					$("#user_business_nature").html(response.data[0].business_nature);
 					$("#user_degree_graduated").html(response.data[0].degree_graduated);
 					$("#user_college_graduated").html(response.data[0].college_graduated);
-					$("#user_date_graduated").html(response.data[0].date_graduated);
+					$("#user_year_graduated").html(response.data[0].year_graduated);
 					$("#user_date_hired").html(response.data[0].date_hired);
 					$("#user_company_name").html(response.data[0].company_name);
 					$("#user_hr_person").html(response.data[0].hr_person);
