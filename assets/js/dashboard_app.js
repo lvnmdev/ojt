@@ -919,19 +919,9 @@ $(function () {
 				alert('Error');
 			}
 		});
-<<<<<<< HEAD
-	})
-	$('#confirm_cancel').click(function (e) {
-		e.preventDefault();
-		setTimeout(() => {
-			location.reload()
-		}, 3000);
-
-=======
 	});
 
 	$('#confirm_cancel').click(function () {
->>>>>>> 39067baf291a948fa80de3c66103b61ece89c339
 		var job_id = job_id_app;
 		console.log(job_id);
 		$.ajax({
@@ -946,13 +936,8 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-<<<<<<< HEAD
-					msg = 'Job application aborted!';
-					toaster(msg);
-=======
 					alert('JOB APPLICATION ABORTED');
 					location.reload();
->>>>>>> 39067baf291a948fa80de3c66103b61ece89c339
 				}
 			},
 			error: function () {
