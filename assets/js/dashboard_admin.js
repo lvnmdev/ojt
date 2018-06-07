@@ -2,9 +2,9 @@ $(function () {
 	show_company();
 	show_applicant();
 	show_pending_company();
-    show_pending_applicant();
-    notification();
-    
+	show_pending_applicant();
+	notification();
+
 	//Notification
 	function notification() {
 		$.ajax({
@@ -14,12 +14,18 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
+				console.log(response)
 				var applicant;
 				var company;
 				var pending_applicant;
 				var pending_company;
 				var employed;
 				var unemployed;
+				var years = [];
+				var employed_per_year = [];
+				var unemployed_per_year = [];
+
+
 
 				if (response.count_applicant[0] != null) {
 					applicant = response.count_applicant[0].count_applicant;
@@ -65,6 +71,35 @@ $(function () {
 				$('#percentage_unemployed').html(percentage_unemployed);
 				$('#percentage_applicant').html(percentage_applicant);
 				$('#percentage_company').html(percentage_company);
+
+				var i;
+				var j;
+				for (i = 0; i < response.count_employed_per_year.length; i++) {
+					if (jQuery.inArray(response.count_employed_per_year[i].year, years) < 0) {
+						years.push(response.count_employed_per_year[i].year);
+					}
+				}
+				for (i = 0; i < response.count_unemployed_per_year.length; i++) {
+					if (jQuery.inArray(response.count_unemployed_per_year[i].year, years) < 0) {
+						years.push(response.count_unemployed_per_year[i].year);
+					}
+
+				}
+
+				for (i = 0; i < years.length; i++) {
+					for (j = 0; j < response.count_employed_per_year.length; j++) {
+						if (response.count_employed_per_year[j].year === years[i]) {
+							employed_per_year.push(parseInt(response.count_employed_per_year[j].count_employed));
+						}
+					}
+				}
+				for (i = 0; i < years.length; i++) {
+					for (j = 0; j < response.count_employed_per_year.length; j++) {
+						if (response.count_unemployed_per_year[j].year === years[i]) {
+							unemployed_per_year.push(parseInt(response.count_unemployed_per_year[j].count_unemployed));
+						}
+					}
+				}
 
 				//Charts
 				if (response.success) {
@@ -112,22 +147,20 @@ $(function () {
 					new Chart($("#annual_employment_stat"), {
 						type: 'line',
 						data: {
-							labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-								"November", "December"
-							],
+							labels: years,
 							datasets: [{
-								label: '# of Applicants',
-								data: [13, 19, 25, 17, 22, 15, 34, 63, 43, 22, 8, 28],
+								label: 'Employed Graduates',
+								data: employed_per_year,
 								backgroundColor: ['rgb(251, 180, 20, 0.25)'],
 								borderColor: ['#fbb414'],
 								borderWidth: 2
-							}, {
-								label: '# of Company',
-								data: [21, 43, 1, 35, 6, 51, 25, 25, 53, 23, 62, 11],
-								backgroundColor: ['rgb(26, 23, 81, 0.25)'],
-								borderColor: ['#1a1751'],
-								borderWidth: 2
-							}]
+								}, {
+									label: 'Unemployed Graduates',
+									data: unemployed_per_year,
+									backgroundColor: ['rgb(26, 23, 81, 0.25)'],
+									borderColor: ['#1a1751'],
+									borderWidth: 2
+								}]
 						},
 						options: {
 							scales: {
