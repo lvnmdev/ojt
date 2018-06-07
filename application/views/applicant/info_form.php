@@ -1,14 +1,7 @@
 <?php
 $query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
-if ($_SESSION['userstatus'] == 1){
-	if ($query_app->num_rows() > 0) {
-		redirect('Main/pending');
-	}
-}
-else if ($_SESSION['userstatus'] == 2) {
-	if ($query_app->num_rows() > 0) {
-        redirect('Applicant/dashboard');
-	}
+if ($_SESSION['userstatus'] == 1 && $query_app->num_rows() > 0) {
+    redirect('Applicant/graduate_form');
 }
 ?>
 	<!DOCTYPE html>
@@ -25,33 +18,35 @@ else if ($_SESSION['userstatus'] == 2) {
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
 		<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/fontawesome-all.min.css')?>">
 	</head>
-
+	
 	<body class="require-form">
+		<div class="form-banner"></div>
 		<div class="page-wrapper">
 			<div class="container">
-				<div class="card-content" style="margin-bottom:20px;">
+				<div class="form-strip"></div>
+				<div class="card-content form-body" style="margin-bottom:20px;">
 					<div class="card-title">
-						<h1>Biodata</h1>
-						<h4 style="color:red;">Please fill all fields. You are required to.</h4>
+						<h1>Biodata | Form</h1>
+						<p style="color:red;">You are required to fill all fields.</p>
 					</div>
 					<div class="card-body">
 						<form id="form_bio" method='post'>
 							<div class='row'>
 								<div class='col-xs-12 col-sm-4 col-md-4'>
 									<div class="form-group ">
-										<label for="name" class="label-control">First Name</label>
+										<label for="name" class="label-control">First Name <span class="required-form">*</span></label>
 										<input id='bio_fname' type="text" name="fname" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-4'>
 									<div class="form-group">
-										<label for="name" class="label-control">Middle Name</label>
+										<label for="name" class="label-control">Middle Name <span class="required-form">*</span></label>
 										<input id='bio_mname' type="text" name="mname" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-4'>
 									<div class="form-group">
-										<label for="name" class="label-control">Last Name</label>
+										<label for="name" class="label-control">Last Name <span class="required-form">*</span></label>
 										<input id='bio_lname' type="text" name="lname" class="form-control" value="" required>
 									</div>
 								</div>
@@ -59,7 +54,7 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-3 col-md-2'>
 									<div class="form-group">
-										<label for="name" class="label-control">Sex</label>
+										<label for="name" class="label-control">Sex <span class="required-form">*</span></label>
 										<br>
 										<select name="sex" class="form-control" required>
 											<option value="Male">Male</option>
@@ -69,25 +64,25 @@ else if ($_SESSION['userstatus'] == 2) {
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-2'>
 									<div class="form-group ">
-										<label for="name" class="label-control">Birthdate</label>
+										<label for="name" class="label-control">Birthdate <span class="required-form">*</span></label>
 										<input id='bio_bday' type="date" name="birthdate" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-5 col-md-2'>
 									<div class="form-group ">
-										<label for="name" class="label-control">Contact No.</label>
+										<label for="name" class="label-control">Contact No. <span class="required-form">*</span></label>
 										<input id='bio_contact_no' type="tel" name="contact_no" class="form-control" value="" maxlength="11" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-3'>
 									<div class="form-group">
-										<label for="name" class="label-control">Nationality</label>
+										<label for="name" class="label-control">Nationality <span class="required-form">*</span></label>
 										<input id='bio_nationality' type="text" name="nationality" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-3'>
 									<div class="form-group">
-										<label for="name" class="label-control">Religion</label>
+										<label for="name" class="label-control">Religion <span class="required-form">*</span></label>
 										<input id='bio_religion' type="text" name="religion" class="form-control" value="" required>
 									</div>
 								</div>
@@ -95,7 +90,7 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-12 col-md-12'>
 									<div class="form-group">
-										<label for="name" class="label-control">Home Address</label>
+										<label for="name" class="label-control">Home Address <span class="required-form">*</span></label>
 										<input id='bio_h' type="text" name="haddress" class="form-control" value="" required>
 									</div>
 								</div>
@@ -103,7 +98,7 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-12 col-md-12'>
 									<div class="form-group">
-										<label for="name" class="label-contro">Current Address</label>
+										<label for="name" class="label-contro">Current Address <span class="required-form">*</span></label>
 										<input id='bio_c' type="text" name="caddress" class="form-control" value="" required>
 									</div>
 								</div>
@@ -112,7 +107,7 @@ else if ($_SESSION['userstatus'] == 2) {
 								<hr style='width:100%;'>
 								<div class='col-xs-12 col-sm-12 col-md-12'>
 									<div class="form-group">
-										<label for="name" class="label-control">Mother Maiden Name</label>
+										<label for="name" class="label-control">Mother Maiden Name <span class="required-form">*</span></label>
 										<input id='bio_momfname' type="text" name="momfname" class="form-control" value="" required>
 									</div>
 								</div>
@@ -120,13 +115,13 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-3 col-md-3'>
 									<div class="form-group ">
-										<label for="name" class="label-control">Mother Birthdate</label>
+										<label for="name" class="label-control">Mother Birthdate <span class="required-form">*</span></label>
 										<input id='bio_mombday' type="date" name="mombday" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-4'>
 									<div class="form-group ">
-										<label for="name" class="label-control">Mother Occupation</label>
+										<label for="name" class="label-control">Mother Occupation <span class="required-form">*</span></label>
 										<input id='bio_momwork' type="text" name="momwork" class="form-control" value="" required>
 									</div>
 								</div>
@@ -134,7 +129,7 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-12 col-md-12'>
 									<div class="form-group">
-										<label for="name" class="label-control">Father Full Name</label>
+										<label for="name" class="label-control">Father Full Name <span class="required-form">*</span></label>
 										<input id='bio_dadfname' type="text" name="dadfname" class="form-control" value="" required>
 									</div>
 								</div>
@@ -142,13 +137,13 @@ else if ($_SESSION['userstatus'] == 2) {
 							<div class="row">
 								<div class='col-xs-12 col-sm-3 col-md-3'>
 									<div class="form-group">
-										<label for="name" class="label-control">Father Birthdate</label>
+										<label for="name" class="label-control">Father Birthdate <span class="required-form">*</span></label>
 										<input id='bio_dadbday' type="date" name="dadbday" class="form-control" value="" required>
 									</div>
 								</div>
 								<div class='col-xs-12 col-sm-4 col-md-4'>
 									<div class="form-group ">
-										<label for="name" class="label-control">Father Occupation</label>
+										<label for="name" class="label-control">Father Occupation <span class="required-form">*</span></label>
 										<input id='bio_dadwork' type="text" name="dadwork" class="form-control" value="" required>
 									</div>
 								</div>

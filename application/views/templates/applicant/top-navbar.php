@@ -1,6 +1,7 @@
 <?php
 	$query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
-    if (isset($_SESSION['username'])){
+	$query_graduate_form = $this->db->select('*')->from('tbl_graduate_info')->where('user_name',$_SESSION['username'])->get();
+	if (isset($_SESSION['username'])){
         if ($_SESSION['usertype'] == 0){
             redirect('Admin/dashboard');
 		}
@@ -9,12 +10,12 @@
 		}
 		else {
 			if ($_SESSION['userstatus'] == 1){
-				if ($query_app->num_rows() > 0) {
-					redirect('Main/pending');
-				}
-				else {
+				if ($query_app->num_rows() == 0){
 					redirect('Applicant/require_form');
+				}else if ($query_graduate_form->num_rows() == 0) {
+					redirect('Applicant/graduate_form');
 				}
+				
 			}
 		}
 	}

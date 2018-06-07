@@ -113,8 +113,6 @@ footer {
 	text-decoration: none;
 }
 
-.user-info-opt li:hover {}
-
 .user-info-opt a:active {
 	text-decoration: none;
 }
@@ -284,6 +282,32 @@ footer {
 
 .biodata-form input {
 	color: #333;
+}
+
+/* Form Body */
+
+.form-banner {
+	height: 250px;
+	background-color: #1a1751;
+	z-index: 0;
+	
+}
+
+.form-strip {
+	height: 10px;
+	background-color: #fbb414;
+	margin-top: -160PX;
+}
+
+.require-form .form-body {
+	box-shadow: 0px 10px 8px #888888;
+	z-index: 1;
+	margin: 0;
+	border-radius: 0;
+}
+
+.required-form {
+	color: red;
 }
 
 /*MODAL BODY OVERRIDE */
