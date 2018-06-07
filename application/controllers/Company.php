@@ -52,7 +52,6 @@ class Company extends CI_Controller {
 
 	public function upload(){
 		$this->company->upload_photo();
-		redirect('Company/user_settings');
 	}
 
 
@@ -156,7 +155,18 @@ class Company extends CI_Controller {
 			$msg['success'] = true;
 			$msg['data'] = $result[1];
 		}
+		echo json_encode($msg);
+	}
 
+	public function limit_posted_jobs(){
+		$result = $this->company->limit_posted_jobs();
+		$msg['success'] = false;
+
+		if ($result[0]) {
+			$msg['success'] = true;
+			$msg['count_posted_jobs'] = $result[1];
+			$msg['max_posted_jobs'] = $result[2];
+		}
 		echo json_encode($msg);
 	}
 }

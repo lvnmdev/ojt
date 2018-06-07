@@ -59,6 +59,7 @@ class Main extends CI_Controller {
 	
 
 	public function loginUser(){
+		$_SESSION['lockout'] = 0;
 		$return=$this->model->login();
 		$msg['success'] = false;
 		if($return[1]){
@@ -77,11 +78,50 @@ class Main extends CI_Controller {
 			$msg['status'] = $this->session->userdata('userstatus');
 		}
 		$msg['message'] = $return[0];
+		$msg['lock'] = $_SESSION['lockout'];		
 		echo json_encode($msg);
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('/');
+	}
+
+
+	public function locktimer(){
+		$msg['lock'] = false;		
+		if($_SESSION['lockout'] > 0){
+			$_SESSION['lockout'] = $_SESSION['lockout'] - 1;
+			$msg['lockout'] = $_SESSION['lockout'];
+			$_SESSION['lock'] = true;
+			$msg['lock'] = $_SESSION['lock'];		
+		}else{	
+			$msg['lock'] = false;		
+		}		
+		echo json_encode($msg);
+	}
+
+	public function unlock(){
+		$this->db->select('user_ip');
+		$this->db->from('tbl_login_logs');
+		$this->db->where('user_ip', $_SERVER['REMOTE_ADDR']);
+
+		$query_ip =  $this->db->get();
+
+		if($query_ip->num_rows() > 0){
+			$latest='SELECT MAX(tbl_login_logs.login_date) AS LatestLog,login_attempt FROM tbl_login_logs WHERE user_ip = "'.$_SERVER['REMOTE_ADDR'].'"';
+			$query_latest = $this->db->query($latest);
+			$dets = $query_latest->row()->LatestLog;
+			$this->db->where('login_date',$dets);
+			$this->db->set('login_attempt',0);
+			$this->db->update('tbl_login_logs');
+		}else {
+			$field = array(
+				'user_ip' => $_SERVER['REMOTE_ADDR'],
+				'login_attempt' => 1,
+				'login_status' => "1"
+			);
+			$this->db->insert('tbl_login_logs',$field);
+		}
 	}
 }

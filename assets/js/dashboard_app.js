@@ -19,7 +19,7 @@ $(function () {
 			method: 'post',
 			url: 'edit_graduate_info',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -37,6 +37,46 @@ $(function () {
 		});
 	});
 
+	$(document).on('click', '.graduate_edit', function (e) {
+		var id = $(e.currentTarget).val();
+
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'show_graduate_info',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					if (response.data[0].is_employed == 1) {
+						$("#user_employement_stat").val('Employed');
+					} else {
+						$("#user_employement_stat").val('Unemployed');
+					}
+					$("#e_g_job_position").val(response.data[0].job_position);
+					$("#e_g_company_address").val(response.data[0].company_address);
+					$("#e_g_business_nature").val(response.data[0].business_nature);
+					$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
+					$("#e_g_college_graduated").val(response.data[0].college_graduated);
+					$("#e_g_date_graduated").val(response.data[0].date_graduated);
+					$("#e_g_date_hired").val(response.data[0].date_hired);
+					$("#e_g_company_name").val(response.data[0].company_name);
+					$("#e_g_hr_person").val(response.data[0].hr_person);
+					$("#e_g_hr_no").val(response.data[0].hr_contact_no);
+					$("#e_g_hr_email").val(response.data[0].hr_email);
+					
+					course_list();
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+		$('#graduate_edit_info').modal('show');
+	});
+
+
 	function show_graduate_info() {
 		$.ajax({
 			type: 'ajax',
@@ -47,6 +87,17 @@ $(function () {
 			success: function (response) {	
 				console.log(response);
 				if (response.success) {
+					if (response.data[0].is_employed == 1) {
+						$("#user_employment_stat").html('Employed');
+					}
+					else{
+						$("#user_employment_stat").html('Unemployed');
+					}
+					$("#user_job_position").html(response.data[0].job_position);
+					$("#user_company_address").html(response.data[0].company_address);
+					$("#user_business_nature").html(response.data[0].business_nature);
+					$("#user_degree_graduated").html(response.data[0].degree_graduated);
+					$("#user_college_graduated").html(response.data[0].college_graduated);
 					$("#user_date_graduated").html(response.data[0].date_graduated);
 					$("#user_date_hired").html(response.data[0].date_hired);
 					$("#user_company_name").html(response.data[0].company_name);
@@ -61,7 +112,6 @@ $(function () {
 		});
 	}
 
-
 	function count_dashboard() {
 		var html = '';
 		var i;
@@ -69,7 +119,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'count_dashboard',
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -80,11 +130,6 @@ $(function () {
 				}
 				if (response.data1 != null) {
 					if (response.data != null) {
-						console.log(response.data1.jobs_posted)
-
-						console.log(response.data.pending_applicant)
-
-
 						$('#jobs_count').html(response.data1.jobs_posted - response.data.pending_applicant);
 					}
 					else {
@@ -97,23 +142,22 @@ $(function () {
 			error: function () {
 				alert('Error');
 			}
-
 		});
 	}
 	var image = 0;
 	$('.btn-default').attr('disabled', 'disabled');
-	$('#image').click(function () {
+	$('#image_attach').click(function () {
 		$('.btn-default').removeAttr('disabled');
 		setInterval(function () {
-			if ($('#image').val().length < 1) {
+			if ($('#image_attach').val().length < 1) {
 				$('.btn-default').attr('disabled', 'disabled');
 			} else {
 				$('.btn-default').removeAttr('disabled');
 			}
-		}, 0)
-	})
-	//For Biodata Functions Start HERE!
+		}, 0);
+	});
 
+	//For Biodata Functions Start HERE!
 	function show_bio_data() {
 		$.ajax({
 			type: 'ajax',
@@ -143,10 +187,10 @@ $(function () {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
 					} else {
-
+						$('#prof_pic').attr('src', '../../ojt/assets/img/icons/default-profile.png');
+						$('#prof_pic1').attr('src', '../../ojt/assets/img/icons/default-profile.png');
 					}
 					$('#user_profile_name').html(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
-
 				}
 			},
 			error: function () {
@@ -187,7 +231,7 @@ $(function () {
 			}
 		});
 		$('#edit_bio').modal('show');
-	})
+	});
 
 	$('#form_bio').submit(function (e) {
 		e.preventDefault();
@@ -201,7 +245,7 @@ $(function () {
 			method: 'post',
 			url: 'edit_bio',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -250,7 +294,7 @@ $(function () {
 		'<div class="col-md-8">' +
 		'<input id="input3" name="" class="form-control" >' +
 		'</div>' +
-		'</div>'
+		'</div>';
 	var checker;
 	var checker1;
 	$('#addqual').click(function () {
@@ -290,7 +334,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				if (data.skills) {
@@ -309,8 +353,8 @@ $(function () {
 			error: function (data) {
 
 			}
-		})
-	})
+		});
+	});
 
 
 
@@ -366,7 +410,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_workxp = '';
@@ -389,8 +433,8 @@ $(function () {
 			error: function (data) {
 
 			}
-		})
-	})
+		});
+	});
 
 	$('#addacco').click(function () {
 		$('#edit_form_resume').html('');
@@ -434,7 +478,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_accomplishment = '';
@@ -455,7 +499,7 @@ $(function () {
 			error: function (data) {
 
 			}
-		})
+		});
 	});
 	$('#addeduc').click(function () {
 		$('#edit_form_resume').html('');
@@ -500,7 +544,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_education = '';
@@ -524,9 +568,9 @@ $(function () {
 			error: function (data) {
 
 			}
-		})
+		});
 
-	})
+	});
 
 	$('#addsemi').click(function () {
 		$('#edit_form_resume').html('');
@@ -571,7 +615,7 @@ $(function () {
 			type: 'ajax',
 			method: 'get',
 			url: 'show_resume',
-			async: true,
+			async: false,
 			dataType: 'json',
 			success: function (data) {
 				var edit_seminars = '';
@@ -593,9 +637,8 @@ $(function () {
 			error: function (data) {
 
 			}
-		})
-
-	})
+		});
+	});
 
 	$('#form_resume').submit(function (e) {
 		e.preventDefault();
@@ -611,7 +654,7 @@ $(function () {
 			method: 'post',
 			url: 'edit_resume',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -624,7 +667,7 @@ $(function () {
 				alert('Error');
 			}
 		});
-	})
+	});
 
 	function show_resume() {
 		$.ajax({
@@ -644,7 +687,7 @@ $(function () {
 					});
 					$("ul.side-navbar").children().click(function (e) {
 						e.preventDefault();
-					})
+					});
 				}
 				var skills = '';
 				var xp = '';
@@ -728,7 +771,7 @@ $(function () {
 					});
 				}
 			}
-		})
+		});
 	}
 
 	function show_available_jobs() {
@@ -755,11 +798,11 @@ $(function () {
 								'<td>' + response.data[i].requirements + '</td>' +
 								'<td>' + response.data[i].date_posted + '</td>' +
 								'<td><button class="btn btn-success apply" value="' + response.data[i].job_id + '">Apply </button></td>' +
-								'</tr>'
+								'</tr>';
 						}
 					}
 				}
-				$('#show_jobs').html(html)
+				$('#show_jobs').html(html);
 			}
 		});
 	}
@@ -786,34 +829,35 @@ $(function () {
 							'<td>' + response.data[i].position + '</td>' +
 							'<td>' + response.data[i].requirements + '</td>' +
 							'<td>' + response.data[i].date_posted + '</td>' +
-							'<td>' + response.data[i].date_applied + '</td>'
+							'<td>' + response.data[i].date_applied + '</td>';
 						if (response.data[i].app_status == "1") {
 							html += '<td><button class="btn btn-danger cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Cancel</button></td>' +
-								'</tr>'
+								'</tr>';
 						} else if (response.data[i].app_status == "0") {
 							html += '<td><button class="btn btn-primary cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Reapply</button></td>' +
-								'</tr>'
+								'</tr>';
 
 						} else {
 							html += '<td>Denied</td>' +
-								'</tr>'
+								'</tr>';
 						}
 
 					}
-					$('#show_ongoing_application').html(html)
+					$('#show_ongoing_application').html(html);
 				}
-				$('#show_ongoing_application').html(html)
+				$('#show_ongoing_application').html(html);
 			}
 		});
 		job_ids = job_id;
 		console.log(job_ids);
 	}
+
 	$(document).on('click', '.cancel', function (e) {
 		$('#cancel_application').modal('show');
 		$('.modal-title').text('Cancel Application?');
 		job_id_app = $(e.currentTarget).val();
 		console.log(job_id_app);
-	})
+	});
 
 	$(document).on('click', '.apply', function (e) {
 		$('#apply_job').modal('show');
@@ -839,15 +883,13 @@ $(function () {
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Civil Status</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_civstat + '</div></div>' +
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Preferred Education Attained</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].pref_educ + '</div></div>' +
 								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Requirements</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].requirements + '</div></div>' +
-								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Date Posted</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].date_posted + '</div></div>'
+								'<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><strong>Date Posted</strong></div><div class="col-xs-8 col-sm-8 col-md-8">:&nbsp' + response.data[i].date_posted + '</div></div>';
 						}
 					}
 				}
-				$('#job_desc').html(html)
+				$('#job_desc').html(html);
 			}
-		})
-
-
+		});
 	});
 
 	$('#confirm_app').click(function (e) {
@@ -864,7 +906,7 @@ $(function () {
 			data: {
 				id: job_id
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -877,6 +919,7 @@ $(function () {
 				alert('Error');
 			}
 		});
+<<<<<<< HEAD
 	})
 	$('#confirm_cancel').click(function (e) {
 		e.preventDefault();
@@ -884,6 +927,11 @@ $(function () {
 			location.reload()
 		}, 3000);
 
+=======
+	});
+
+	$('#confirm_cancel').click(function () {
+>>>>>>> 39067baf291a948fa80de3c66103b61ece89c339
 		var job_id = job_id_app;
 		console.log(job_id);
 		$.ajax({
@@ -893,20 +941,25 @@ $(function () {
 			data: {
 				id: job_id
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
+<<<<<<< HEAD
 					msg = 'Job application aborted!';
 					toaster(msg);
+=======
+					alert('JOB APPLICATION ABORTED');
+					location.reload();
+>>>>>>> 39067baf291a948fa80de3c66103b61ece89c339
 				}
 			},
 			error: function () {
 				alert('Error');
 			}
 		});
-	})
+	});
 
 
 	$(document).on('click', '.skill-delete', function (e) {
@@ -925,7 +978,7 @@ $(function () {
 				id: id,
 				field: 'skill'
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -938,8 +991,8 @@ $(function () {
 				alert('Error');
 			}
 		});
-
 	});
+
 	$(document).on('click', '.educ-delete', function (e) {
 		e.preventDefault();
 		setTimeout(() => {
@@ -956,7 +1009,7 @@ $(function () {
 				id: id,
 				field: 'education'
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -970,8 +1023,8 @@ $(function () {
 				alert('Error');
 			}
 		});
-
 	});
+
 	$(document).on('click', '.work-delete', function (e) {
 		e.preventDefault();
 		setTimeout(() => {
@@ -988,7 +1041,7 @@ $(function () {
 				id: id,
 				field: 'work'
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -1001,8 +1054,8 @@ $(function () {
 				alert('Error');
 			}
 		});
-
 	});
+
 	$(document).on('click', '.semi-delete', function (e) {
 		e.preventDefault();
 		setTimeout(() => {
@@ -1019,7 +1072,7 @@ $(function () {
 				id: id,
 				field: 'seminar'
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -1033,8 +1086,8 @@ $(function () {
 				alert('Error');
 			}
 		});
-
 	});
+
 	$(document).on('click', '.acc-delete', function (e) {
 		e.preventDefault();
 		setTimeout(() => {
@@ -1051,7 +1104,7 @@ $(function () {
 				id: id,
 				field: 'accomplishment'
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -1066,7 +1119,6 @@ $(function () {
 				alert('Error');
 			}
 		});
-
 	});
 
 	///////////////////////////////Change Functionalities
@@ -1102,7 +1154,7 @@ $(function () {
 			url: 'change_username',
 			method: 'POST',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -1112,12 +1164,10 @@ $(function () {
 				}
 
 			},
-
 			error: function (jqXHR, textStatus, errorThrown) {
-				alert(textStatus + " " + errorThrown)
+				alert(textStatus + " " + errorThrown);
 			}
 		});
-
 	});
 
 	$('#prof_pic1').load(function () {
@@ -1139,36 +1189,9 @@ $(function () {
 				$('#change_pass').attr('disabled', 'disabled');
 
 			}
-		}, 0)
+		}, 0);
 	});
 
-
-	$(document).on('click', '.graduate_edit', function (e) {
-		var id = $(e.currentTarget).val();
-
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: 'show_graduate_info',
-			async: true,
-			dataType: 'json',
-			success: function (response) {
-				console.log(response);
-				if (response.success) {
-					$("#e_g_date_graduated").val(response.data[0].date_graduated);
-					$("#e_g_date_hired").val(response.data[0].date_hired);
-					$("#e_g_company_name").val(response.data[0].company_name);
-					$("#e_g_hr_person").val(response.data[0].hr_person);
-					$("#e_g_hr_no").val(response.data[0].hr_contact_no);
-					$("#e_g_hr_email").val(response.data[0].hr_email);
-				}
-			},
-			error: function () {
-				alert('Error');
-			}
-		});
-		$('#graduate_edit_info').modal('show');
-	});
 
 	$("#form_change_password").submit(function () {
 		var formData = $('#form_change_password').serializeArray();
@@ -1179,7 +1202,7 @@ $(function () {
 			url: 'change_password',
 			method: 'POST',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -1187,15 +1210,12 @@ $(function () {
 					$('#success_user1').removeAttr('style');
 					$('#success_user1').html('Password Updated');
 				}
-
 			},
-
 			error: function (jqXHR, textStatus, errorThrown) {
-				alert(textStatus + " " + errorThrown)
+				alert(textStatus + " " + errorThrown);
 			}
 		});
-
-	})
+	});
 
 	//Checks the radio button for employment
 	$('#isEmployed').click(function () {
@@ -1208,11 +1228,60 @@ $(function () {
 		if ($('#isNotEmployed').is(':checked')) {
 			$('#employed_inputs').css({'display': 'none'}); //hides the employed exclusive inputs
 
-			$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no').val('N/A'); // this sets the inputs
-			$('#e_g_date_hired').val('0001-01-01');						 // with default values
-			$('#e_g_hr_email').val('default@default.com');				 // to prevent null values
+			$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val('N/A'); // this sets the inputs
+			$('#e_g_date_hired').val('0001-01-01');						 															 // with default values
+			$('#e_g_hr_email').val('default@default.com');				 															 // to prevent null values
 		}
 	});
+
+	$('#e_g_college_graduated').click(function () {
+		course_list();
+	});
+	
+	function course_list () {
+		var courses;
+		var selected_college = $("#e_g_college_graduated option:selected").val();
+		if (selected_college == 'College of Engineering and Architecture') {
+			courses = "<option value='Bachelor of Science in Architecture (BSARCH)'>Bachelor of Science in Architecture (BSARCH)</option>"+
+					  "<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Civil Engineering (BSCE)</option>" +
+					  "<option value='Bachelor of Science in Electrical Engineering (BSEE)'>Bachelor of Science in Electrical Engineering (BSEE)</option>"+
+					  "<option value='Bachelor of Science in Electronics Engineering (BSECE)'>Bachelor of Science in Electronics Engineering (BSECE)</option>"+
+					  "<option value='Bachelor of Science in Mechanical Engineering (BSME)'>Bachelor of Science in Mechanical Engineering (BSME)</option>";
+			$('#e_g_degree_graduated').html(courses);
+		}
+		else if (selected_college == 'College of Information Technology and Computing') {
+			courses = "<option value='Bachelor of Science in Information Technology (BSIT)'>Bachelor of Science in Information Technology (BSIT)</option>" +
+					  "<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Computer Engineering (BSCpE)</option>" +
+					  "<option value='Bachelor of Science in Technology Communication Management (BSTCM)'>Bachelor of Science in Technology Communication Management (BSTCM)</option>" +
+					  "<option value='Bachelor of Science in Data Science (BSDS)'>Bachelor of Science in Data Science (BSDS)</option>";
+			$('#e_g_degree_graduated').html(courses);
+		}
+		else if (selected_college == 'College of Science and Mathematics') {
+			courses = "<option value='Bachelor of Science in Applied Mathematics'>Bachelor of Science in Applied Mathematics</option>" +
+					  "<option value='Bachelor of Science in Applied Physics'>Bachelor of Science in Applied Physics</option>" +
+					  "<option value='Bachelor of Science in Chemistry '>Bachelor of Science in Chemistry</option>" +
+					  "<option value='Bachelor of Science in Environmental Science'>Bachelor of Science in Environmental Science </option>"+
+					  "<option value='Bachelor of Science in Food Technology'>Bachelor of Science in Food Technology</option>";
+			$('#e_g_degree_graduated').html(courses);
+		}
+		else if (selected_college == 'College of Science and Technology Education') {
+			courses = "<option value='Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)'>Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)</option>" +
+					  "<option value='Bachelor of Public Administration(BPA)'>Bachelor of Public Administration(BPA)</option>" +
+					  "<option value='Bachelor of Science in Mathematics Education(BSMathEd)'>Bachelor of Science in Mathematics Education(BSMathEd)</option>" +
+					  "<option value='Bachelor of Science in Sciences Education (Bachelor of ScienceiED)'>Bachelor of Science in Sciences Education (Bachelor of ScienceiED)</option>"+
+					  "<option value='Bachelor of Technical Teacher Education (BTTE)'>Bachelor of Technical Teacher Education (BTTE)</option>"+
+					  "<option value='Bachelor of Technolgy and Livelyhood Education (BTLED)'>Bachelor of Technolgy and Livelyhood Education (BTLED)</option>";
+			$('#e_g_degree_graduated').html(courses);
+		}
+		else if (selected_college == 'College of Technology') {
+			courses = "<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology</option>" +
+					  "<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology</option>" +
+					  "<option value='Bachelor of Science in Electrical and Technology Management(BSETM)'>Bachelor of Science in Electrical and Technology Management(BSETM)</option>" +
+					  "<option value='Bachelor of Science in Electro-Mechanical Technology (BSEMT)'>Bachelor of Science in Electro-Mechanical Technology (BSEMT)</option>"+
+					  "<option value='Bachelor of Science in Electronics and Communication Technology (BSECT)'>Bachelor of Science in Electronics and Communication Technology (BSECT)</option>";
+			$('#e_g_degree_graduated').html(courses);
+		}
+	}
 });
 
 

@@ -4,6 +4,7 @@ $(function () {
 	show_comp_info();
 	show_job_postings();
 	show_pending_applications();
+	limit_posted_jobs();
 
 	$.ajax({
 		type: 'ajax',
@@ -51,10 +52,9 @@ $(function () {
 						$('#prof_pic').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#prof_pic1').attr('src', '../../ojt/' + response.pic.photo_path);
 						$('#user_profile_name').html(response.data.comp_name);
-
-
 					} else {
-
+						$('#prof_pic').attr('src', '../../ojt/assets/img/icons/default-profile.png');
+						$('#prof_pic1').attr('src', '../../ojt/assets/img/icons/default-profile.png');
 					}
 				}
 			},
@@ -101,7 +101,7 @@ $(function () {
 			method: 'post',
 			url: 'edit_info',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -141,9 +141,34 @@ $(function () {
 							'<td>' + response.data[i].requirements + '</td>' +
 							'<td>' + response.data[i].date_posted + '</td>' +
 							'<td><button class="btn btn-success edit" value="' + response.data[i].job_id + '"><i class="fa fa-edit"></i> Edit</button>&nbsp<button value="' + response.data[i].job_id + '" class="btn btn-danger delete"><i class="fa fa-times-circle"></i> End</button></td>' +
-							'</tr>'
+							'</tr>';
 					}
 					$('#show_jobs').html(html)
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
+
+	function limit_posted_jobs() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'limit_posted_jobs',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					if (response.count_posted_jobs[0].count_posted_jobs >= response.max_posted_jobs) {
+						$('#btnpost_job').attr('disabled', 'disabled');									//Disables the button when it reaches
+						$('#limit_post_job').html('(10) Maximum number of posted jobs reached.');		//its maximum number of post
+					}
+					else {
+						$('#btnpost_job').removeAttr('disabled');
+					}
 				}
 			},
 			error: function () {
@@ -178,7 +203,7 @@ $(function () {
 			method: 'post',
 			url: 'post_job_hiring',
 			data: formData,
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -202,7 +227,7 @@ $(function () {
 			data: {
 				job_id: id
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				console.log(response);
@@ -267,7 +292,7 @@ $(function () {
 			method: 'post',
 			data: formData,
 			url: 'edit_job',
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (response) {
 				if (response.success) {
@@ -323,7 +348,7 @@ $(function () {
 			data:{
 				name:name
 			},
-			async: false,
+			async: true,
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);

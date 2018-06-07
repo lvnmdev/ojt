@@ -16,7 +16,7 @@
 				<div class='card-body'>
 					<button value="1" id='btnpost_job' class="btn btn-success">
 						<i class='fa fa-plus'></i> Add Post</button>
-					<br>
+					<p id="limit_post_job" style="color:red"></p>
 					<br>
 					<div id='hirings'>
 						<div class='table-responsive'>

@@ -53,6 +53,12 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/admin/content', $data);
 	}
 
+	public function user_settings() {
+		$data['content'] = 'user_settings';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+
 	//Functionals
 
 	public function show_company() {

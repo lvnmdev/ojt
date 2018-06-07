@@ -5,13 +5,12 @@ if ($_SESSION['userstatus'] == 1){
 		redirect('Main/pending');
 	}
 }
-else {
+else if ($_SESSION['userstatus'] == 2) {
 	if ($query_app->num_rows() > 0) {
         redirect('Applicant/dashboard');
-    }
+	}
 }
 ?>
-
 	<!DOCTYPE html>
 	<html>
 

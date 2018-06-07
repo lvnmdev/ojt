@@ -6,6 +6,24 @@ class Company_m extends CI_Model {
 		parent::__construct();
     }
 
+    public function limit_posted_jobs() {
+        $user = $this->session->userdata('username');
+        $count_posted_jobs =  $this->db->select('count(*) as `count_posted_jobs`')->from('tbl_job_posting')->where('user_name',$user)->where('status','1')->get();
+
+        $GLOBALS['max_posted_jobs'] = 10;
+        $max_posted_jobs = $GLOBALS['max_posted_jobs'];
+
+        $result[0] = false;
+
+        if (isset($count_posted_jobs)) {
+            $result[0] = true;
+            $result[1] = $count_posted_jobs->result();
+            $result[2] = $max_posted_jobs;
+        }
+
+        return $result;
+    }
+
     public function notification() {
         $user = $this->session->userdata('username');
         $count_p_jobs =  $this->db->select('count(*) as `count_p_jobs`')->from('tbl_job_posting')->where('user_name',$user)->where('status','1')->get();
@@ -124,7 +142,7 @@ class Company_m extends CI_Model {
         $result[1] = 'insert';
         $result[0] = true;
         return $result;
-        }
+    }
 
     public function edit_job(){
             $field = array(
@@ -173,26 +191,65 @@ class Company_m extends CI_Model {
     }
 
     public function upload_photo(){
-        $info = pathinfo($_FILES['image']['name']);
-        $ext = $info['extension']; // get the extension of the file
-        $newname = $_SESSION['id'].'_pic.'.$ext; 
+        if (isset($_FILES['image'])) {
+            $image_info = pathinfo($_FILES['image']['name']);                    // Uploaded Image Info
+            $maxsize = 2097152;             // Restricts 2MB images only
+            $bool_image_size;               // Stores boolean value for image size
+            $bool_image_type;               // Stores boolean value for image type/format
+            $errors[0]="";$errors[1]="";    // Stores string value of error/s
+            $file_types = array(            //
+                'image/jpeg',               //  Restricts other formats
+                'image/jpg',                //  except for jpeg,jpg,png
+                'image/png'                 //
+            );
 
-        $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
-        $link = 'assets/img/profile_pics/'.$newname;
+            if(($_FILES['image']['size'] > $maxsize) || ($_FILES['image']['size'] === 0) ) {
+                $errors[0] = 'File too large. File must be less than 2 megabytes.';              //Checks if the image 
+                $bool_image_size = false;                                                       //uploaded size is 2MB
+            }
+            else {
+                $bool_image_size = true;
+            }
 
-        $field = array(
-            'user_id' => $this->session->userdata('id'),
-            'photo_path' => $link
-        );
-        $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
-        if($query->num_rows()>0){
-            $this->db->where('user_id',$field['user_id']);
-            $this->db->update('tbl_photo_upload',$field);
-            unlink($target);
-            move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
-        }else{
-            $this->db->insert('tbl_photo_upload',$field);
-            move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+            if(!in_array($_FILES['image']['type'], $file_types) && (!empty($_FILES['image']['type'])) ) {
+                $errors[1] = 'Invalid file type. Only JPG, JPEG, and PNG types are accepted.';           //Checks if the image
+                $bool_image_type = false;                                                               //type or format is acceptable
+            }
+            else {
+                $bool_image_type = true;
+            }
+
+            if($bool_image_size && $bool_image_type) {
+                $ext = $image_info['extension']; // get the extension of the file or the file type
+                $newname = $_SESSION['id'].'_pic.'.$ext; 
+                $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
+                $link = 'assets/img/profile_pics/'.$newname;
+
+                $field = array(
+                    'user_id' => $this->session->userdata('id'),
+                    'photo_path' => $link
+                );
+
+                $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
+                if($query->num_rows()>0){
+                    if(!$bool_image_size && !$bool_image_type) {
+                        unlink($target);
+                    }
+                    $this->db->where('user_id',$field['user_id']);
+                    $this->db->update('tbl_photo_upload',$field);
+                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);                           
+                }
+                else{
+                    $this->db->insert('tbl_photo_upload',$field);
+                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+                }
+            } 
+            else {
+                $_SESSION['error_image_upload'] = $errors[0].'\n'.$errors[1];
+                redirect('Company/user_settings');
+                //echo json_encode($errors);
+            }
+            redirect('Company/user_settings');
         }
     }
 }
