@@ -80,7 +80,11 @@ class Admin_m extends CI_Model {
         $count_employed = $this->db->query('SELECT COUNT(*) as "count_employed" FROM tbl_graduate_info WHERE `is_employed` = "1"');
         $count_unemployed = $this->db->query('SELECT COUNT(*) as "count_unemployed" FROM tbl_graduate_info WHERE `is_employed` = "0"');
         
-        if ($count_applicant && $count_company && $count_p_applicant && $count_p_company && $count_employed && $count_unemployed) {
+        $count_employed_per_year = $this->db->query('SELECT year_graduated as "year",COUNT(*) as "count_employed" FROM tbl_graduate_info WHERE `is_employed` = "1" GROUP BY `year_graduated`');
+        $count_unemployed_per_year = $this->db->query('SELECT year_graduated as "year", COUNT(*) as "count_unemployed" FROM tbl_graduate_info WHERE `is_employed` = "0" GROUP BY `year_graduated`');
+
+        
+        if ($count_applicant && $count_company && $count_p_applicant && $count_p_company && $count_employed && $count_unemployed && $count_employed_per_year && $count_unemployed_per_year) {
             $result[0] = true;
             $result[1] = $count_applicant->result();
             $result[2] = $count_company->result();
@@ -88,6 +92,9 @@ class Admin_m extends CI_Model {
             $result[4] = $count_p_company->result();
             $result[5] = $count_employed->result();
             $result[6] = $count_unemployed->result();
+            $result[7] = $count_employed_per_year->result();
+            $result[8] = $count_unemployed_per_year->result();
+
             return $result;
         }
     }

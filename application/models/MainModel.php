@@ -13,9 +13,11 @@ class MainModel extends CI_Model {
 
 	public function isAccountExist(){
 		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$this->db->select('*');
 		$this->db->from('tbl_users');
 		$this->db->where('user_name', $username);
+		$this->db->or_where('user_email', $email);
 
 		$result =  $this->db->get();
 		
@@ -31,7 +33,7 @@ class MainModel extends CI_Model {
 				'user_name' =>  $this->input->post('username'),
 				'user_pass' =>  $this->input->post('password'),
 				'user_email' => $this->input->post('repassword'),
-				'user_type' =>  $this->input->post('email')
+				'user_type' =>  $this->input->post('user_type')
 			);
 
 		$field = $this->security->xss_clean($field);

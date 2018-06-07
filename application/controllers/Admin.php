@@ -112,6 +112,8 @@ class Admin extends CI_Controller {
 			$msg['count_p_company'] = $result[4];
 			$msg['count_employed'] = $result[5];
 			$msg['count_unemployed'] = $result[6];
+			$msg['count_employed_per_year'] = $result[7];
+			$msg['count_unemployed_per_year'] = $result[8];
 		}
 		echo json_encode($msg);
 	}
