@@ -59,9 +59,17 @@ $(function () {
 					toaster_login();
 					setTimeout(() => { location.reload(); }, 3000);
 				} else {
-					msg = 'Wrong Login Credentials!';
-					toaster_error(msg);
-					toaster_login();
+
+					if(response.message=="3"){
+						var msg = 'STAHP! YOU ARE BLOCKED FOREVER!';
+						toaster_error(msg);
+						toaster_login();
+					}else{
+						msg = 'Wrong Login Credentials!';
+						toaster_error(msg);
+						toaster_login();
+					}
+
 				}
 			},
 			error: function () {

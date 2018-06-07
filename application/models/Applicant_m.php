@@ -386,29 +386,66 @@ class Applicant_m extends CI_Model {
     }
 
     public function upload_photo(){
-        $info = pathinfo($_FILES['image']['name']);
-        $ext = $info['extension']; // get the extension of the file
-        $newname = $_SESSION['id'].'_pic.'.$ext; 
+        if (isset($_FILES['image'])) {
+           $info = pathinfo($_FILES['image']['name']);
+            $ext = $info['extension']; // get the extension of the file or the file type
+            $newname = $_SESSION['id'].'_pic.'.$ext; 
 
-        $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
-        $link = 'assets/img/profile_pics/'.$newname;
+            $maxsize = 2097152;
+            $file_types = array(
+                'image/jpeg',
+                'image/jpg',
+                'image/png'
+            );
+            
+            $target = 'C:/xampp/htdocs/ojt/assets/img/profile_pics/'.$newname;
+            $link = 'assets/img/profile_pics/'.$newname;
 
-        $field = array(
-            'user_id' => $this->session->userdata('id'),
-            'photo_path' => $link
-        );
-        $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
-        if($query->num_rows()>0){
-            unlink($target);
-            $this->db->where('user_id',$field['user_id']);
-            $this->db->update('tbl_photo_upload',$field);
-            move_uploaded_file( $_FILES['image']['tmp_name'], $target);             
-                           
-        }else{
-            $this->db->insert('tbl_photo_upload',$field);
-            move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+            $field = array(
+                'user_id' => $this->session->userdata('id'),
+                'photo_path' => $link
+            );
+
+            $bool_image_upload;
+            $errors = array();
+            if(($_FILES['image']['size'] > $maxsize) && ($_FILES['image']['size'] == 0) ) {
+                $errors[] = 'File too large. File must be less than 2 megabytes.';
+                $bool_image_upload = false;
+            }
+            else {
+                $bool_image_upload = true;
+            }
+
+            if(!in_array($_FILES['image']['type'], $file_types) && (!empty($_FILES['image']['type'])) ) {
+                $errors[] = 'Invalid file type. Only JPG, JPEG, and PNG types are accepted.';
+                $bool_image_upload = false;
+            }
+            else {
+                $bool_image_upload = true;
+            }
+
+            if($bool_image_upload) {
+                $query = $this->db->select('*')->from('tbl_photo_upload')->where('user_id',$field['user_id'])->get();
+                if($query->num_rows()>0){
+                    unlink($target);
+                    $this->db->where('user_id',$field['user_id']);
+                    $this->db->update('tbl_photo_upload',$field);
+                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);             
+                                
+                }
+                else{
+                    $this->db->insert('tbl_photo_upload',$field);
+                    move_uploaded_file( $_FILES['image']['tmp_name'], $target);                
+                }
+            } 
+            else {
+                foreach($errors as $error) {
+                    echo '<script>console.log("'.$error.'");</script>';
+                }
+            }
         }
     }
+        
 
 /////////////////////////////////////////////////////CHANGE Login Credentials Baby!
         public function change_username(){

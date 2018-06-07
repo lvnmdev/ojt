@@ -241,6 +241,7 @@ form input, form select, form button{
 		</div>
 		<script src="<?= base_url('assets/js/jquery.js')?>"></script>
 		<script src="<?= base_url('assets/js/user.js');?>"></script>
+		<script src="<?= base_url('assets/js/style.js');?>"></script>
 		<script>
 			const left = document.querySelector(".left");
 			const right = document.querySelector(".right");

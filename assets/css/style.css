@@ -4,13 +4,6 @@ body { background-color: lightgrey; }
 
 footer { 
 	margin-top: 20px; 
-	margin-left: 270px;
-
-}
-
-.footer-gold {
-	background-color: #fbb414;
-	padding:10px;
 }
 
 .footer-blue {
@@ -91,6 +84,10 @@ footer {
 	padding-left: 0;
 }
 
+.user-settings {
+	margin-top: 14px;
+}
+
 .user-profile {
 	float: right;
 	padding: 15px 0;
@@ -142,6 +139,7 @@ footer {
 	margin-top: 80px;
 	margin-left: 270px;
 	transition: 0.25s;
+	min-height: calc(100vh - 242.2px);
 }
 
 .side-navbar-container {
@@ -363,6 +361,7 @@ footer {
 }
 
 .dashboard-badge {
+	margin: auto;
 	position: relative;
 	background-color: #1a1751;
 	border-radius: 100%;
@@ -371,7 +370,6 @@ footer {
 
 .dashboard-badge-label h4 {
 	position: relative;
-	text-align: right;
 }
 
 .dashboard-badge:hover {
@@ -621,11 +619,18 @@ footer {
 	#image {
 		font-size: .9vw;
 	}
+	footer {
+		margin-left: 270px;
+	}
 }
 
 @media only screen and (max-device-width: 768px) {
+
 	.side-nav-close {
 		display: block;
+	}
+	footer {
+		margin-left: 0px;
 	}
 	footer small {
 		padding-left: 0;
@@ -651,6 +656,16 @@ footer {
 }
 
 @media only screen and (max-device-width: 425px) {
+	.dashboard-badge {
+		height: 100px;
+		width: 100px;
+		padding: 20px;
+	}
+
+	.dashboard-badge-no {
+		font-size: 3em;
+	}
+
 	#image {
 		font-size: 3vw;
 	}

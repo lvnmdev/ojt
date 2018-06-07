@@ -76,6 +76,7 @@ class Main extends CI_Controller {
 			$msg['user'] = $this->session->userdata('username');
 			$msg['status'] = $this->session->userdata('userstatus');
 		}
+		$msg['message'] = $return[0];
 		echo json_encode($msg);
 	}
 
