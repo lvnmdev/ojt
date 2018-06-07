@@ -83,14 +83,50 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="card-content">
-						<canvas id="user_stat_chart" class="graph-canvas"></canvas>
+						<div class="row">
+							<div class="col-md-6">
+								<canvas id="user_stat_chart" class="graph-canvas"></canvas>
+							</div>
+							<div class="col-md-6">
+								Users
+								<div class="row">
+									<div class="col-md-6">
+										<span>80%</span>
+										<h1>Applicant</h1>
+									</div>
+									<div class="col-md-6">
+										<span>20%</span>
+										<h1>Company</h1>
+									</div>
+								</div>
+								Percentage
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class='col-md-6'>
+				<div class='col-md-12'>
 					<div class="card-content">
-						<canvas id="pending_user_stat_chart" class="graph-canvas"></canvas>
+						<div class="row">
+							<div class="col-md-6">
+								<canvas id="pending_user_stat_chart" class="graph-canvas"></canvas>
+							</div>
+							<div class="col-md-6">
+								Employment Status
+								<div class="row">
+									<div class="col-md-6">
+										<span>80%</span>
+										<h1>Employed</h1>
+									</div>
+									<div class="col-md-6">
+										<span>20%</span>
+										<h1>Unemployed</h1>
+									</div>
+								</div>
+								Percentage
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -98,48 +134,11 @@
 				<div class='col-md-12'>
 					<div class="card-content">
 						<div style="overflow-x:auto">
-							<canvas id="myChart" class="graph-canvas"></canvas>
+							<canvas id="annual_employment_stat" class="graph-canvas"></canvas>
 						</div>
 					</div>
 				</div>
-			</div> 
-		</div>	
+			</div>
+		</div>
 	</div>
 </div>
-
-<script>
-	$(function () {
-		var ctx = $("#myChart");
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-					"November", "December"
-				],
-				datasets: [{
-					label: '# of Applicants',
-					data: [13, 19, 25, 17, 22, 15, 34, 63, 43, 22, 8, 28],
-					backgroundColor: ['rgb(251, 180, 20, 0.25)'],
-					borderColor: ['#fbb414'],
-					borderWidth: 2
-				}, {
-					label: '# of Company',
-					data: [21, 43, 1, 35, 6, 51, 25, 25, 53, 23, 62, 11],
-					backgroundColor: ['rgb(26, 23, 81, 0.25)'],
-					borderColor: ['#1a1751'],
-					borderWidth: 2
-				}]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				}
-			}
-		});
-	});
-
-</script>

@@ -71,15 +71,15 @@ $(function () {
                             text: 'Users'
                         }
                     }
-                })
+                });
 
                 new Chart($("#pending_user_stat_chart"), {
                     type: 'doughnut',
                     data: {
-                        labels: ["Pending Applicant", "Pending Company"],
+                        labels: ["Employed", "Unemployed"],
                         datasets: [
                             {
-                                label: "Pending Users",
+                                label: "Employment Status",
                                 backgroundColor: ["#2ecc71", "#e67e22"],
                                 data: [pending_applicant, pending_company]
                             }
@@ -88,16 +88,47 @@ $(function () {
                     options: {
                         title: {
                             display: true,
-                            text: 'Pending Users'
+                            text: 'Employment Status'
                         }
                     }
-                })
+                });
+
+                new Chart($("#annual_employment_stat"), {
+                type: 'line',
+                data: {
+                	labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+                		"November", "December"
+                	],
+                	datasets: [{
+                		label: '# of Applicants',
+                		data: [13, 19, 25, 17, 22, 15, 34, 63, 43, 22, 8, 28],
+                		backgroundColor: ['rgb(251, 180, 20, 0.25)'],
+                		borderColor: ['#fbb414'],
+                		borderWidth: 2
+                	}, {
+                		label: '# of Company',
+                		data: [21, 43, 1, 35, 6, 51, 25, 25, 53, 23, 62, 11],
+                		backgroundColor: ['rgb(26, 23, 81, 0.25)'],
+                		borderColor: ['#1a1751'],
+                		borderWidth: 2
+                	}]
+                },
+                options: {
+                	scales: {
+                		yAxes: [{
+                			ticks: {
+                				beginAtZero: true
+                			}
+                		}]
+                	}
+                }
+                });
             }
         },
         error: function(){
             alert('error');
         }
-    })
+    });
     //-------------------------------------------------------------------------------------
 
     function show_company() {
