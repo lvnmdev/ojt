@@ -58,7 +58,6 @@ $(function () {
 					$("#e_g_company_address").val(response.data[0].company_address);
 					$("#e_g_year_graduated").val(response.data[0].year_graduated);
 					$("#e_g_business_nature").val(response.data[0].business_nature);
-					$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
 					$("#e_g_college_graduated").val(response.data[0].college_graduated);
 					$("#e_g_date_graduated").val(response.data[0].date_graduated);
 					$("#e_g_date_hired").val(response.data[0].date_hired);
@@ -66,8 +65,9 @@ $(function () {
 					$("#e_g_hr_person").val(response.data[0].hr_person);
 					$("#e_g_hr_no").val(response.data[0].hr_contact_no);
 					$("#e_g_hr_email").val(response.data[0].hr_email);
-					
-					course_list();
+					$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
+
+						course_list();
 				}
 			},
 			error: function () {
@@ -1229,7 +1229,6 @@ $(function () {
 					  "<option value='Bachelor of Science in Electrical Engineering (BSEE)'>Bachelor of Science in Electrical Engineering (BSEE)</option>"+
 					  "<option value='Bachelor of Science in Electronics Engineering (BSECE)'>Bachelor of Science in Electronics Engineering (BSECE)</option>"+
 					  "<option value='Bachelor of Science in Mechanical Engineering (BSME)'>Bachelor of Science in Mechanical Engineering (BSME)</option>";
-			$('#e_g_degree_graduated').html(courses);
 		}
 		else if (selected_college == 'College of Information Technology and Computing') {
 			courses = "<option value =''>-- Select --</option>" +
@@ -1237,7 +1236,6 @@ $(function () {
 					  "<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Computer Engineering (BSCpE)</option>" +
 					  "<option value='Bachelor of Science in Technology Communication Management (BSTCM)'>Bachelor of Science in Technology Communication Management (BSTCM)</option>" +
 					  "<option value='Bachelor of Science in Data Science (BSDS)'>Bachelor of Science in Data Science (BSDS)</option>";
-			$('#e_g_degree_graduated').html(courses);
 		}
 		else if (selected_college == 'College of Science and Mathematics') {
 			courses = "<option value =''>-- Select --</option>" +
@@ -1246,7 +1244,6 @@ $(function () {
 					  "<option value='Bachelor of Science in Chemistry '>Bachelor of Science in Chemistry</option>" +
 					  "<option value='Bachelor of Science in Environmental Science'>Bachelor of Science in Environmental Science </option>"+
 					  "<option value='Bachelor of Science in Food Technology'>Bachelor of Science in Food Technology</option>";
-			$('#e_g_degree_graduated').html(courses);
 		}
 		else if (selected_college == 'College of Science and Technology Education') {
 			courses = "<option value =''>-- Select --</option>" +
@@ -1256,7 +1253,6 @@ $(function () {
 					  "<option value='Bachelor of Science in Sciences Education (Bachelor of ScienceiED)'>Bachelor of Science in Sciences Education (Bachelor of ScienceiED)</option>"+
 					  "<option value='Bachelor of Technical Teacher Education (BTTE)'>Bachelor of Technical Teacher Education (BTTE)</option>"+
 					  "<option value='Bachelor of Technolgy and Livelyhood Education (BTLED)'>Bachelor of Technolgy and Livelyhood Education (BTLED)</option>";
-			$('#e_g_degree_graduated').html(courses);
 		}
 		else if (selected_college == 'College of Technology') {
 			courses = "<option value =''>-- Select --</option>" +
@@ -1265,13 +1261,11 @@ $(function () {
 					  "<option value='Bachelor of Science in Electrical and Technology Management(BSETM)'>Bachelor of Science in Electrical and Technology Management(BSETM)</option>" +
 					  "<option value='Bachelor of Science in Electro-Mechanical Technology (BSEMT)'>Bachelor of Science in Electro-Mechanical Technology (BSEMT)</option>"+
 					  "<option value='Bachelor of Science in Electronics and Communication Technology (BSECT)'>Bachelor of Science in Electronics and Communication Technology (BSECT)</option>";
-			$('#e_g_degree_graduated').html(courses);
 		}
 		else {
 			courses = "<option value =''>-- Select --</option>";
-
-			$('#e_g_degree_graduated').html(courses);
 		}
+			$('#e_g_degree_graduated').html(courses);
 	}
 });
 
