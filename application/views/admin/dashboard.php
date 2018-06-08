@@ -83,63 +83,51 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="card-content">
-						<canvas id="user_stat_chart" class="graph-canvas"></canvas>
-					</div>
-				</div>
-				<div class='col-md-6'>
-					<div class="card-content">
-						<canvas id="pending_user_stat_chart" class="graph-canvas"></canvas>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class='col-md-12'>
-					<div class="card-content">
-						<div style="overflow-x:auto">
-							<canvas id="myChart" class="graph-canvas"></canvas>
+						<div class="row">
+							<div class="col-md-6">
+								<canvas id="user_stat_chart" class="graph-canvas"></canvas>
+							</div>
+							<div class="col-md-6">
+								Users Percentage
+								<div class="row">
+									<div class="col-md-6">
+										<span id="percentage_applicant" class="percent_notify"></span>
+										<h3 class="percent_label">Applicant</h3>
+									</div>
+									<div class="col-md-6">
+										<span id="percentage_company" class="percent_notify"></span>
+										<h3 class="percent_label">Company</h3>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div> 
-		</div>	
+				<div class='col-md-12'>
+					<div class="card-content">
+						<div class="row">
+							<div class="col-md-6">
+								<canvas id="pending_user_stat_chart" class="graph-canvas"></canvas>
+							</div>
+							<div class="col-md-6">
+								Employment Status Percentage
+								<div class="row">
+									<div class="col-md-6">
+										<span id="percentage_employed" class="percent_notify"></span>
+										<h3 class="percent_label">Employed</h3>
+									</div>
+									<div class="col-md-6">
+										<span id="percentage_unemployed" class="percent_notify"></span>
+										<h3 class="percent_label">Unemployed</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-
-<script>
-	$(function () {
-		var ctx = $("#myChart");
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-					"November", "December"
-				],
-				datasets: [{
-					label: '# of Applicants',
-					data: [13, 19, 25, 17, 22, 15, 34, 63, 43, 22, 8, 28],
-					backgroundColor: ['rgb(251, 180, 20, 0.25)'],
-					borderColor: ['#fbb414'],
-					borderWidth: 2
-				}, {
-					label: '# of Company',
-					data: [21, 43, 1, 35, 6, 51, 25, 25, 53, 23, 62, 11],
-					backgroundColor: ['rgb(26, 23, 81, 0.25)'],
-					borderColor: ['#1a1751'],
-					borderWidth: 2
-				}]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				}
-			}
-		});
-	});
-
-</script>

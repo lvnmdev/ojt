@@ -15,6 +15,10 @@ class Applicant extends CI_Controller {
 		$this->load->view('applicant/info_form');
 	}
 
+	public function graduate_form() {
+		$this->load->view('applicant/graduate_form');
+	}
+
 	public function dashboard(){
         $data['content'] = 'applicant/dashboard';
         

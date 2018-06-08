@@ -13,9 +13,11 @@ class MainModel extends CI_Model {
 
 	public function isAccountExist(){
 		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$this->db->select('*');
 		$this->db->from('tbl_users');
 		$this->db->where('user_name', $username);
+		$this->db->or_where('user_email', $email);
 
 		$result =  $this->db->get();
 		

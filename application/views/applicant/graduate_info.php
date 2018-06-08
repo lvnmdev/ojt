@@ -29,9 +29,9 @@
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
-							<strong>Date Graduated:</strong>
+							<strong>Year Graduated:</strong>
 						</p>
-						<p id='user_date_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
+						<p id='user_year_graduated' class='col-xs-12 col-sm-9 col-md-10'></p>
 					</div>
 					<div class="row">
 						<p class='col-xs-12 col-sm-3 col-md-2'>
@@ -134,7 +134,7 @@
 					<div class="form-group">
 						<label for="name" class="label-control col-md-4">Date Graduated</label>
 						<div class="col-md-8">
-							<input id='e_g_date_graduated' type="date" name="g_date_graduated" class="form-control" value="" required>
+							<input id='e_g_year_graduated' type="number" name="g_year_graduated" class="form-control" placeholder="YYYY" min="2000" max="9999" required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -144,7 +144,7 @@
 								<input id="isNotEmployed" type="radio" name="g_employment" value="0" checked>&nbsp
 								<label>Unemployed</label>
 							</div>
-							<div class="col-md-6" style="padding-left:0;">
+							<div class="col-md-6">
 								<input id="isEmployed" type="radio" name="g_employment" value="1">&nbsp
 								<label>Employed</label>
 							</div>
@@ -212,3 +212,10 @@
 		<!-- /.modal-dialog -->
 	</div>
 </div>
+<script>
+	document.getElementById("e_g_year_graduated").oninput = function () {
+		if (this.value.length > 4) {
+			this.value = this.value.slice(0,4); 
+		}
+	}
+</script>

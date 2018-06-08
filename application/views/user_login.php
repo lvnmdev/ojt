@@ -2,7 +2,8 @@
     if (isset($_SESSION['username'])){
 		$query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
 		$query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
-        if ($_SESSION['usertype']==0){ 				//Admin Access Level
+		$query_graduate_form = $this->db->select('*')->from('tbl_graduate_info')->where('user_name',$_SESSION['username'])->get();
+		if ($_SESSION['usertype']==0){ 				//Admin Access Level
             redirect('Admin/dashboard');
 		}
 		else if ($_SESSION['usertype']==1){ 		//Company Access Level
@@ -28,7 +29,7 @@
 		}
 		else {  									//Applicant Access Level
 			if ($_SESSION['userstatus'] == 2) { 			//Status is active
-				if ($query_app->num_rows() > 0) {
+				if ($query_app->num_rows() > 0 && $query_graduate_form->num_rows() > 0) {
 					redirect('Applicant/dashboard');
 				}
 				else {
@@ -36,11 +37,14 @@
 				}
 			}
 			else if ($_SESSION['userstatus'] == 1){ 		//Status is pending and not yet activated.
-				if ($query_app->num_rows() > 0) {
-					redirect('Main/pending');
+				if($query_app->num_rows() == 0){
+					redirect('Applicant/require_form');
+				}
+				else if($query_graduate_form->num_rows() == 0){
+					redirect('Applicant/graduate_form');
 				}
 				else {
-					redirect('Applicant/require_form');
+					redirect('Main/pending');
 				}
 			}
 			else { 											//Status is inactive
@@ -141,7 +145,7 @@ h1 { font-size: 4rem; color: #fff; text-align: center; white-space: nowrap; marg
 .hover-right .left        {  width: var(--other-width); }
 .hover-right .left:before { z-index: 2; }
 
-strong { 
+.header-title { 
 	position: absolute;
 	color: #fff;
   top: 10%;
@@ -150,22 +154,22 @@ strong {
   text-align: center;
   font-size: 36px;transition: all 0.5s;
  }
-strong span { position: relative; display: inline-block; transition: 0.5s; }
-strong span:after, strong span:before {
+.header-title span { position: relative; display: inline-block; transition: 0.5s; }
+.header-title span:after, .header-title span:before {
     position: absolute;
     font-size: 70px;
     top: -30px;
     transition: 0.5s; 
     opacity: 0; 
 }
-strong span:after { content: '\00bb'; right: -30px; }
-strong span:before { content: "\00ab"; left: -30px; }
+.header-title span:after { content: '\00bb'; right: -30px; }
+.header-title span:before { content: "\00ab"; left: -30px; }
 
 
-.hover-left strong span 		  { padding-right: 35px; right: 12%; }
-.hover-left strong span:after { right: 0; opacity: 1;}
-.hover-right strong span 			  { padding-left: 35px; left: 12%; }
-.hover-right strong span:before { left: 0; opacity: 1;}
+.hover-left .header-title span 		  { padding-right: 35px; right: 12%; }
+.hover-left .header-title span:after { right: 0; opacity: 1;}
+.hover-right .header-title span 			  { padding-left: 35px; left: 12%; }
+.hover-right .header-title span:before { left: 0; opacity: 1;}
 
 .hover-left #toaster 		  { left: 40%; }
 .hover-right #toaster 		{ left: 64%; }
@@ -198,12 +202,91 @@ form input, form select, form button{
 
   }
 
+	.header-title.instruction {
+	  top: inherit;
+	  bottom: 5%;
+	}
+
+	.instruction h4 {
+		margin:0;
+		padding: 10px;
+		border: 2px solid white;
+		border-radius: 5px;
+		color: white;
+	}
+
+	.instruction button {
+		background-color: transparent;
+		border: none;
+	}
+
+	#overlay-instruction-container {
+		position: fixed;
+		display: none;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.85);
+		z-index: 99998;
+	}
+
+	#overlay-instruction {
+		z-index: 99999;
+		color: white;
+		font-size: 1.2em;
+	}
+
+	.close-overlay {
+		background-color: transparent;
+		border: none;
+		color: white;
+		padding: 15px;
+		font-size: 3em;
+		width: 100%;
+		float: right;
+		text-align: right;
+	}
+	
+	.close-overlay:hover {
+		color: #f92c2c;
+	}
 </style>
 
 	<body>
+		<div id="overlay-instruction-container">
+			<div class="container">
+				<button class="close-overlay" onclick="overlay_off()">x</button>
+				<div id="overlay-instruction">
+					<h3>Please follow the steps below. Carefully.</h3>
+					<label>Students:</label>
+					<ol>
+						<li>Create your account in the registration panel.</li>
+						<li>Use your ID Number as your username.</li>
+						<li>Complete the rest of the fields.</li>
+						<li>Go to the login panel and log in your account.</li>
+						<li>Complete the Biodata Form.</li>
+						<li>Complete the Graduate Form.</li>
+						<li>After all the steps, your account is pending and wait for the approval.</li>
+					</ol>
+					<label>Company:</label>
+					<ol>
+						<li>Create your account in the registration panel.</li>
+						<li>Use your company name as username.</li>
+						<li>Complete the rest of the fields.</li>
+						<li>Go to the login panel and log in your account.</li>
+						<li>Complete the Company Form.</li>
+						<li>After all the steps, your account is pending and wait for the approval.</li>
+					</ol>
+				</div>
+			</div>
+		</div>
 		<div class="custom-container">
 		<div id="toaster"><span></span></div>	
-			<strong><span>USTP | Graduate Tracer</span></strong>
+			<strong class="header-title"><span>USTP | Graduate Tracer</span></strong>
+			<strong class="header-title instruction"><span><button onclick="overlay_on()"><h4>INSTRUCTIONS</h4></button></span></strong>
 			<div class="split left">
 				<div class="split-inner">
 					<h1>Login</h1>
@@ -262,6 +345,14 @@ form input, form select, form button{
 			right.addEventListener("mouseleave", () => {
 				container.classList.remove("hover-right");
 			});
+
+			function overlay_on() {
+				document.getElementById("overlay-instruction-container").style.display = "block";
+			}
+
+			function overlay_off() {
+				document.getElementById("overlay-instruction-container").style.display = "none";
+			}
 
 		</script>
 	</body>

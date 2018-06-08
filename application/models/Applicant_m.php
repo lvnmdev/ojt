@@ -214,7 +214,7 @@ class Applicant_m extends CI_Model {
         $field = array(
             'user_name' => $this->session->userdata('username'),
             'is_employed' => $this->input->post('g_employment'),
-            'date_graduated' => $this->input->post('g_date_graduated'),
+            'year_graduated' => $this->input->post('g_year_graduated'),
             'degree_graduated' => $this->input->post('g_degree_graduated'),
             'college_graduated' => $this->input->post('g_college_graduated'),
             'job_position' => $this->input->post('g_job_position'),
@@ -316,9 +316,9 @@ class Applicant_m extends CI_Model {
             return true;
         }else{
             return false;
-        }
-        
+        }   
     }
+    
     public function delete_seminars(){
         $id = $this->input->post('id');
         $this->db->where('seminar_id', $id);
@@ -330,8 +330,6 @@ class Applicant_m extends CI_Model {
         }
         
     }
-
-
 
     public function show_available_jobs(){
         $sql = 'SELECT tbl_company_info.comp_name,tbl_job_posting.* From tbl_job_posting INNER JOIN tbl_company_info on tbl_company_info.user_name = tbl_job_posting.user_name WHERE tbl_job_posting.status = 1;';

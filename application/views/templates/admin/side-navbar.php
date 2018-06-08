@@ -30,13 +30,13 @@
 			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_applicants') { echo 'active'; } ?>">
 				<i class='fa fa-file-alt nav-icon'></i>Pending Applicants</li>
 		</a>
-		<a href="<?= base_url('Admin/hirings');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/hirings') { echo 'active'; } ?>">
-				<i class='fa nav-icon'></i>Hirings</li>
+		<a href="<?= base_url('Admin/employment');?>">
+			<li class="<?php if($this->uri->uri_string() == 'Admin/employment') { echo 'active'; } ?>">
+				<i class='fa fa-thumbs-up nav-icon'></i>Employed Graduates</li>
 		</a>
-		<a href="<?= base_url('Admin/pending_hirings');?>">
-			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_hirings') { echo 'active'; } ?>">
-				<i class='fa nav-icon'></i>Pending Hirings</li>
+		<a href="<?= base_url('Admin/unemployment');?>">
+			<li class="<?php if($this->uri->uri_string() == 'Admin/pending_unemployment') { echo 'active'; } ?>">
+				<i class='fa fa-search nav-icon'></i>Unemployed Graduates</li>
 		</a>
 	</ul>
 </nav>
