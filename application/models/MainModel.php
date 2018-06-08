@@ -31,7 +31,7 @@ class MainModel extends CI_Model {
 				'user_name' =>  $this->input->post('username'),
 				'user_pass' =>  $this->input->post('password'),
 				'user_email' => $this->input->post('repassword'),
-				'user_type' =>  $this->input->post('email')
+				'user_type' =>  $this->input->post('usertype')
 			);
 
 		$field = $this->security->xss_clean($field);
