@@ -282,8 +282,12 @@ form input, form select, form button{
 					</ol>
 
 					<br>
+					<p style="color:red;">Note: Not following the steps above may lead to invalidation.</p>
 					<br>
-					<p>Note: Not following the steps above may lead to invalidation.</p>
+					<blockquote>
+						<p>We learned about honesty and integrity - that the truth matters... that you don't take shortcuts or play by your own set of rules... and success doesn't count unless you earn it fair and square.</p>
+						<footer style="margin-left:0;">Former First Lady of the United States -<cite> Michelle Obama</cite></footer>
+					</blockquote>
 				</div>
 			</div>
 		</div>

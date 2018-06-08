@@ -49,25 +49,60 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-					if (response.data[0].is_employed == 1) {
-						$("#user_employement_stat").val('Employed');
-					} else {
-						$("#user_employement_stat").val('Unemployed');
-					}
-					$("#e_g_job_position").val(response.data[0].job_position);
-					$("#e_g_company_address").val(response.data[0].company_address);
-					$("#e_g_year_graduated").val(response.data[0].year_graduated);
-					$("#e_g_business_nature").val(response.data[0].business_nature);
-					$("#e_g_college_graduated").val(response.data[0].college_graduated);
-					$("#e_g_date_graduated").val(response.data[0].date_graduated);
-					$("#e_g_date_hired").val(response.data[0].date_hired);
-					$("#e_g_company_name").val(response.data[0].company_name);
-					$("#e_g_hr_person").val(response.data[0].hr_person);
-					$("#e_g_hr_no").val(response.data[0].hr_contact_no);
-					$("#e_g_hr_email").val(response.data[0].hr_email);
-					$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
+					//Checks the radio button for employment
+					$('#isEmployed').click(function () {
+						if ($('#isEmployed').is(':checked')) {
+							$('#employed_inputs').css({
+								'display': 'block'
+							}); //shows the employed exclusive inputs
 
-						course_list();
+							if(response.data[0] == null) {
+								$('#e_g_hr_email,#e_g_date_hired,#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val(''); // this resets the inputs	
+							}
+						}
+					});
+
+					$('#isNotEmployed').click(function () {
+						if ($('#isNotEmployed').is(':checked')) {
+							$('#employed_inputs').css({
+								'display': 'none'
+							}); //hides the employed exclusive inputs
+
+							if (response.data[0] == null) {
+								$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val('N/A'); // this sets the inputs
+								$('#e_g_date_hired').val('0001-01-01'); // with default values
+								$('#e_g_hr_email').val('default@default.com'); // to prevent null values
+							}
+						}
+					});
+
+					grad_info();
+					course_list();
+					grad_info();
+
+					console.log(response.data[0].degree_graduated);
+
+					function grad_info() {
+						if (response.data[0].is_employed == 1) {
+							$("#isEmployed").prop("checked", true);
+							$('#employed_inputs').css({'display': 'block'});
+
+							$("#e_g_job_position").val(response.data[0].job_position);
+							$("#e_g_company_address").val(response.data[0].company_address);
+							$("#e_g_year_graduated").val(response.data[0].year_graduated);
+							$("#e_g_business_nature").val(response.data[0].business_nature);
+							$("#e_g_college_graduated").val(response.data[0].college_graduated);
+							$("#e_g_date_graduated").val(response.data[0].date_graduated);
+							$("#e_g_date_hired").val(response.data[0].date_hired);
+							$("#e_g_company_name").val(response.data[0].company_name);
+							$("#e_g_hr_person").val(response.data[0].hr_person);
+							$("#e_g_hr_no").val(response.data[0].hr_contact_no);
+							$("#e_g_hr_email").val(response.data[0].hr_email);
+							$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
+						} else {
+							$("#isNotEmployed").prop("checked", true);
+						}
+					}
 				}
 			},
 			error: function () {
@@ -77,6 +112,81 @@ $(function () {
 		$('#graduate_edit_info').modal('show');
 	});
 
+	$('#e_g_college_graduated').click(function () {
+		course_list();
+	});
+
+	function course_list() {
+		var courses;
+		var selected_college = $("#e_g_college_graduated option:selected").val();
+		if (selected_college == 'College of Engineering and Architecture') {
+			courses = "<option value =''>-- Select --</option>" +
+				"<option value='Bachelor of Science in Architecture (BSARCH)'>Bachelor of Science in Architecture (BSARCH)</option>" +
+				"<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Civil Engineering (BSCE)</option>" +
+				"<option value='Bachelor of Science in Electrical Engineering (BSEE)'>Bachelor of Science in Electrical Engineering (BSEE)</option>" +
+				"<option value='Bachelor of Science in Electronics Engineering (BSECE)'>Bachelor of Science in Electronics Engineering (BSECE)</option>" +
+				"<option value='Bachelor of Science in Mechanical Engineering (BSME)'>Bachelor of Science in Mechanical Engineering (BSME)</option>";
+		} else if (selected_college == 'College of Information Technology and Computing') {
+			courses = "<option value =''>-- Select --</option>" +
+				"<option value='Bachelor of Science in Information Technology (BSIT)'>Bachelor of Science in Information Technology (BSIT)</option>" +
+				"<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Computer Engineering (BSCpE)</option>" +
+				"<option value='Bachelor of Science in Technology Communication Management (BSTCM)'>Bachelor of Science in Technology Communication Management (BSTCM)</option>" +
+				"<option value='Bachelor of Science in Data Science (BSDS)'>Bachelor of Science in Data Science (BSDS)</option>";
+		} else if (selected_college == 'College of Science and Mathematics') {
+			courses = "<option value =''>-- Select --</option>" +
+				"<option value='Bachelor of Science in Applied Mathematics'>Bachelor of Science in Applied Mathematics</option>" +
+				"<option value='Bachelor of Science in Applied Physics'>Bachelor of Science in Applied Physics</option>" +
+				"<option value='Bachelor of Science in Chemistry '>Bachelor of Science in Chemistry</option>" +
+				"<option value='Bachelor of Science in Environmental Science'>Bachelor of Science in Environmental Science </option>" +
+				"<option value='Bachelor of Science in Food Technology'>Bachelor of Science in Food Technology</option>";
+		} else if (selected_college == 'College of Science and Technology Education') {
+			courses = "<option value =''>-- Select --</option>" +
+				"<option value='Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)'>Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)</option>" +
+				"<option value='Bachelor of Public Administration(BPA)'>Bachelor of Public Administration(BPA)</option>" +
+				"<option value='Bachelor of Science in Mathematics Education(BSMathEd)'>Bachelor of Science in Mathematics Education(BSMathEd)</option>" +
+				"<option value='Bachelor of Science in Sciences Education (Bachelor of ScienceiED)'>Bachelor of Science in Sciences Education (Bachelor of ScienceiED)</option>" +
+				"<option value='Bachelor of Technical Teacher Education (BTTE)'>Bachelor of Technical Teacher Education (BTTE)</option>" +
+				"<option value='Bachelor of Technolgy and Livelyhood Education (BTLED)'>Bachelor of Technolgy and Livelyhood Education (BTLED)</option>";
+		} else if (selected_college == 'College of Technology') {
+			courses = "<option value =''>-- Select --</option>" +
+				"<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology</option>" +
+				"<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology</option>" +
+				"<option value='Bachelor of Science in Electrical and Technology Management(BSETM)'>Bachelor of Science in Electrical and Technology Management(BSETM)</option>" +
+				"<option value='Bachelor of Science in Electro-Mechanical Technology (BSEMT)'>Bachelor of Science in Electro-Mechanical Technology (BSEMT)</option>" +
+				"<option value='Bachelor of Science in Electronics and Communication Technology (BSECT)'>Bachelor of Science in Electronics and Communication Technology (BSECT)</option>";
+		} else {
+			courses = "<option value =''>-- Select --</option>";
+		}
+		$('#e_g_degree_graduated').html(courses);
+	}
+
+
+	if (window.location.pathname == "/ojt/Applicant/graduate_form") {
+		$('#isEmployed').click(function () {
+			if ($('#isEmployed').is(':checked')) {
+				$('#employed_inputs').css({
+					'display': 'block'
+				}); //shows the employed exclusive inputs
+
+				$('#e_g_hr_email,#e_g_date_hired,#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val(''); // this resets the inputs	
+
+			}
+		});
+
+		$('#isNotEmployed').click(function () {
+			if ($('#isNotEmployed').is(':checked')) {
+				$('#employed_inputs').css({
+					'display': 'none'
+				}); //hides the employed exclusive inputs
+
+
+				$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val('N/A'); // this sets the inputs
+				$('#e_g_date_hired').val('0001-01-01'); 																				 // with default values
+				$('#e_g_hr_email').val('default@default.com'); 																			 // to prevent null values
+			}
+		});
+	}
+		
 
 	function show_graduate_info() {
 		$.ajax({
@@ -1190,83 +1300,6 @@ $(function () {
 			}
 		});
 	});
-
-	//Checks the radio button for employment
-	$('#isEmployed').click(function () {
-		if ($('#isEmployed').is(':checked')) {
-			$('#employed_inputs').css({'display': 'block'}); //shows the employed exclusive inputs
-
-			$('#e_g_hr_email,#e_g_date_hired,#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val(''); // this resets the inputs	
-		}
-	});
-
-	function null_not_employed() {
-		if ($('#isNotEmployed').is(':checked')) {
-			$('#employed_inputs').css({'display': 'none'}); //hides the employed exclusive inputs
-
-			$('#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val('N/A'); // this sets the inputs
-			$('#e_g_date_hired').val('0001-01-01');						 															 // with default values
-			$('#e_g_hr_email').val('default@default.com');				 															 // to prevent null values
-		}
-	}
-
-	null_not_employed();
-	$('#isNotEmployed').click(function () {
-		null_not_employed();
-	});
-
-	$('#e_g_college_graduated').click(function () {
-		course_list();
-	});
-	
-	function course_list () {
-		var courses;
-		var selected_college = $("#e_g_college_graduated option:selected").val();
-		if (selected_college == 'College of Engineering and Architecture') {
-			courses = "<option value =''>-- Select --</option>" +
-					  "<option value='Bachelor of Science in Architecture (BSARCH)'>Bachelor of Science in Architecture (BSARCH)</option>"+
-					  "<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Civil Engineering (BSCE)</option>" +
-					  "<option value='Bachelor of Science in Electrical Engineering (BSEE)'>Bachelor of Science in Electrical Engineering (BSEE)</option>"+
-					  "<option value='Bachelor of Science in Electronics Engineering (BSECE)'>Bachelor of Science in Electronics Engineering (BSECE)</option>"+
-					  "<option value='Bachelor of Science in Mechanical Engineering (BSME)'>Bachelor of Science in Mechanical Engineering (BSME)</option>";
-		}
-		else if (selected_college == 'College of Information Technology and Computing') {
-			courses = "<option value =''>-- Select --</option>" +
-					  "<option value='Bachelor of Science in Information Technology (BSIT)'>Bachelor of Science in Information Technology (BSIT)</option>" +
-					  "<option value='Bachelor of Science in Civil Engineering (BSCE)'>Bachelor of Science in Computer Engineering (BSCpE)</option>" +
-					  "<option value='Bachelor of Science in Technology Communication Management (BSTCM)'>Bachelor of Science in Technology Communication Management (BSTCM)</option>" +
-					  "<option value='Bachelor of Science in Data Science (BSDS)'>Bachelor of Science in Data Science (BSDS)</option>";
-		}
-		else if (selected_college == 'College of Science and Mathematics') {
-			courses = "<option value =''>-- Select --</option>" +
-					  "<option value='Bachelor of Science in Applied Mathematics'>Bachelor of Science in Applied Mathematics</option>" +
-					  "<option value='Bachelor of Science in Applied Physics'>Bachelor of Science in Applied Physics</option>" +
-					  "<option value='Bachelor of Science in Chemistry '>Bachelor of Science in Chemistry</option>" +
-					  "<option value='Bachelor of Science in Environmental Science'>Bachelor of Science in Environmental Science </option>"+
-					  "<option value='Bachelor of Science in Food Technology'>Bachelor of Science in Food Technology</option>";
-		}
-		else if (selected_college == 'College of Science and Technology Education') {
-			courses = "<option value =''>-- Select --</option>" +
-					  "<option value='Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)'>Bachelor of Elementary Education, Major in Special Education (BEEd-SpEd)</option>" +
-					  "<option value='Bachelor of Public Administration(BPA)'>Bachelor of Public Administration(BPA)</option>" +
-					  "<option value='Bachelor of Science in Mathematics Education(BSMathEd)'>Bachelor of Science in Mathematics Education(BSMathEd)</option>" +
-					  "<option value='Bachelor of Science in Sciences Education (Bachelor of ScienceiED)'>Bachelor of Science in Sciences Education (Bachelor of ScienceiED)</option>"+
-					  "<option value='Bachelor of Technical Teacher Education (BTTE)'>Bachelor of Technical Teacher Education (BTTE)</option>"+
-					  "<option value='Bachelor of Technolgy and Livelyhood Education (BTLED)'>Bachelor of Technolgy and Livelyhood Education (BTLED)</option>";
-		}
-		else if (selected_college == 'College of Technology') {
-			courses = "<option value =''>-- Select --</option>" +
-					  "<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Automotive Technology</option>" +
-					  "<option value='Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology'>Bachelor of Science in Automotive Mechanical Technology (BSAMT) Major in Mechanical Technology</option>" +
-					  "<option value='Bachelor of Science in Electrical and Technology Management(BSETM)'>Bachelor of Science in Electrical and Technology Management(BSETM)</option>" +
-					  "<option value='Bachelor of Science in Electro-Mechanical Technology (BSEMT)'>Bachelor of Science in Electro-Mechanical Technology (BSEMT)</option>"+
-					  "<option value='Bachelor of Science in Electronics and Communication Technology (BSECT)'>Bachelor of Science in Electronics and Communication Technology (BSECT)</option>";
-		}
-		else {
-			courses = "<option value =''>-- Select --</option>";
-		}
-			$('#e_g_degree_graduated').html(courses);
-	}
 });
 
 
