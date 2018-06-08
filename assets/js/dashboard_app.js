@@ -56,6 +56,7 @@ $(function () {
 					}
 					$("#e_g_job_position").val(response.data[0].job_position);
 					$("#e_g_company_address").val(response.data[0].company_address);
+					$("#e_g_year_graduated").val(response.data[0].year_graduated);
 					$("#e_g_business_nature").val(response.data[0].business_nature);
 					$("#e_g_degree_graduated").val(response.data[0].degree_graduated);
 					$("#e_g_college_graduated").val(response.data[0].college_graduated);
@@ -173,6 +174,7 @@ $(function () {
 					$("#user_sex").val(response.data.sex);
 					$("#user_birthdate").val(response.data.birthdate);
 					$("#user_nationality").val(response.data.nationality);
+					$("#user_civil_status").val(response.data.civil_status);
 					$("#user_contact_no").val(response.data.contact_no);
 					$("#user_religion").val(response.data.religion);
 					$("#user_home_address").val(response.data.haddress);
@@ -212,6 +214,8 @@ $(function () {
 					$("#bio_fname").val(response.data.fname);
 					$("#bio_mname").val(response.data.mname);
 					$("#bio_lname").val(response.data.lname);
+					$("#bio_sex").val(response.data.sex);
+					$("#bio_civil_status").val(response.data.civil_status);
 					$("#bio_contact_no").val(response.data.contact_no);
 					$("#bio_nationality").val(response.data.nationality);
 					$("#bio_religion").val(response.data.religion);
@@ -552,7 +556,6 @@ $(function () {
 					for (i = 0; i < data.education.length; i++) {
 						edit_education += '<div class="col-xs-11 col-sm-11 col-md-11"><ul class="resume-list">' +
 							'<li>' + data.education[i].level + '</li>' +
-
 							'<li>' + data.education[i].school + '</li>' +
 							'<li>' + data.education[i].start + '</li>' +
 							'<li>' + data.education[i].graduated + '</li>' +
@@ -560,7 +563,6 @@ $(function () {
 							'<div class="col-xs-1 col-sm-1 col-md-1">' +
 							'<button class="resume-delete educ-delete" id="' + i + '" value="' + data.education[i].educ_id + '"><i class="fa fa-times"></i></button>' +
 							'</div>';
-
 					}
 					$('#edit_form_resume').html(edit_education);
 				}
@@ -679,16 +681,6 @@ $(function () {
 			success: function (data) {
 				console.log(data);
 				info = data;
-				if (!data.success) {
-					$('#ze_question').modal('show');
-					$(".btn-info").attr("disabled", "disabled");
-					$(".btn-info").click(function(e){
-						e.preventDefault();						
-					});
-					$("ul.side-navbar").children().click(function (e) {
-						e.preventDefault();
-					});
-				}
 				var skills = '';
 				var xp = '';
 				var accomplishments = '';
@@ -836,7 +828,6 @@ $(function () {
 						} else if (response.data[i].app_status == "0") {
 							html += '<td><button class="btn btn-primary cancel" value="' + response.data[i].pending_id + '"><i class="fa fa-times"></i> Reapply</button></td>' +
 								'</tr>';
-
 						} else {
 							html += '<td>Denied</td>' +
 								'</tr>';
@@ -1094,8 +1085,6 @@ $(function () {
 			success: function (response) {
 				console.log(response);
 				if (response.success) {
-
-
 					msg = 'Data successfully updated';
 					toaster(msg);
 				}
@@ -1206,10 +1195,12 @@ $(function () {
 	$('#isEmployed').click(function () {
 		if ($('#isEmployed').is(':checked')) {
 			$('#employed_inputs').css({'display': 'block'}); //shows the employed exclusive inputs
+
+			$('#e_g_hr_email,#e_g_date_hired,#e_g_company_name,#e_g_hr_person,#e_g_hr_no,#e_g_company_address,#e_g_job_position,#e_g_business_nature').val(''); // this resets the inputs	
 		}
 	});
 
-	$('#isNotEmployed').click(function () {
+	function null_not_employed() {
 		if ($('#isNotEmployed').is(':checked')) {
 			$('#employed_inputs').css({'display': 'none'}); //hides the employed exclusive inputs
 
@@ -1217,6 +1208,11 @@ $(function () {
 			$('#e_g_date_hired').val('0001-01-01');						 															 // with default values
 			$('#e_g_hr_email').val('default@default.com');				 															 // to prevent null values
 		}
+	}
+
+	null_not_employed();
+	$('#isNotEmployed').click(function () {
+		null_not_employed();
 	});
 
 	$('#e_g_college_graduated').click(function () {
@@ -1281,7 +1277,7 @@ $(function () {
 
 
 function toaster(msg) {
-			document.querySelector('#toaster span').innerText = msg;
+	document.querySelector('#toaster span').innerText = msg;
 	var x = document.getElementById("toaster");
 	x.className = "show";
 	setTimeout(() => { x.className = x.className.replace("show", "") }, 3000);

@@ -52,11 +52,12 @@ if ($_SESSION['userstatus'] == 1 && $query_app->num_rows() > 0) {
 								</div>
 							</div>
 							<div class="row">
-								<div class='col-xs-12 col-sm-3 col-md-2'>
+								<div class='col-xs-12 col-sm-4 col-md-2'>
 									<div class="form-group">
 										<label for="name" class="label-control">Sex <span class="required-form">*</span></label>
 										<br>
-										<select name="sex" class="form-control" required>
+										<select id="bio_sex" name="sex" class="form-control" required>
+											<option value="">-- Select --</option>
 											<option value="Male">Male</option>
 											<option value="Female">Female</option>
 										</select>
@@ -68,19 +69,33 @@ if ($_SESSION['userstatus'] == 1 && $query_app->num_rows() > 0) {
 										<input id='bio_bday' type="date" name="birthdate" class="form-control" value="" required>
 									</div>
 								</div>
-								<div class='col-xs-12 col-sm-5 col-md-2'>
+								<div class='col-xs-12 col-sm-4 col-md-2'>
+									<div class="form-group ">
+										<label for="name" class="label-control">Civil Status <span class="required-form">*</span></label>
+										<br>
+										<select id="bio_civil_status" name="civil_status" class="form-control" required>
+											<option value="">-- Select --</option>
+											<option value="Single">Single</option>
+											<option value="Married">Married</option>
+											<option value="Widowed">Widowed</option>
+											<option value="Separated">Separated</option>
+											<option value="Divorced">Divorced</option>
+										</select>
+									</div>
+								</div>
+								<div class='col-xs-12 col-sm-4 col-md-2'>
 									<div class="form-group ">
 										<label for="name" class="label-control">Contact No. <span class="required-form">*</span></label>
 										<input id='bio_contact_no' type="tel" name="contact_no" class="form-control" value="" maxlength="11" required>
 									</div>
 								</div>
-								<div class='col-xs-12 col-sm-4 col-md-3'>
+								<div class='col-xs-12 col-sm-4 col-md-2'>
 									<div class="form-group">
 										<label for="name" class="label-control">Nationality <span class="required-form">*</span></label>
 										<input id='bio_nationality' type="text" name="nationality" class="form-control" value="" required>
 									</div>
 								</div>
-								<div class='col-xs-12 col-sm-4 col-md-3'>
+								<div class='col-xs-12 col-sm-4 col-md-2'>
 									<div class="form-group">
 										<label for="name" class="label-control">Religion <span class="required-form">*</span></label>
 										<input id='bio_religion' type="text" name="religion" class="form-control" value="" required>

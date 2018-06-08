@@ -35,6 +35,7 @@ class Applicant_m extends CI_Model {
             'fname' => $this->input->post('fname'),
             'mname' => $this->input->post('mname'),
             'lname' => $this->input->post('lname'),
+            'civil_status' => $this->input->post('civil_status'),
             'nationality' => $this->input->post('nationality'),
             'religion' => $this->input->post('religion'),
             'sex' => $this->input->post('sex'),

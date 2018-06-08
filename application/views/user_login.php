@@ -3,10 +3,10 @@
 		$query_app = $this->db->select('*')->from('tbl_applicant_bio')->where('user_name',$_SESSION['username'])->get();
 		$query_comp = $this->db->select('*')->from('tbl_company_info')->where('user_name',$_SESSION['username'])->get();
 		$query_graduate_form = $this->db->select('*')->from('tbl_graduate_info')->where('user_name',$_SESSION['username'])->get();
-		if ($_SESSION['usertype']==0){ 				//Admin Access Level
+		if ($_SESSION['usertype'] == 0){ 				//Admin Access Level
             redirect('Admin/dashboard');
 		}
-		else if ($_SESSION['usertype']==1){ 		//Company Access Level
+		else if ($_SESSION['usertype'] == 1){ 		//Company Access Level
           	if ($_SESSION['userstatus'] == 2) { 			//Status is active
 				if ($query_comp->num_rows() > 0) {
 					redirect('Company/dashboard');
@@ -280,6 +280,10 @@ form input, form select, form button{
 						<li>Complete the Company Form.</li>
 						<li>After all the steps, your account is pending and wait for the approval.</li>
 					</ol>
+
+					<br>
+					<br>
+					<p>Note: Not following the steps above may lead to invalidation.</p>
 				</div>
 			</div>
 		</div>
@@ -302,11 +306,10 @@ form input, form select, form button{
 				<div class="split-inner">
 					<h1>Register</h1>
 					<form id="regform" method="post">
-
-						<input type="text" name="username" placeholder="Username" required>
+						<input type="text" name="username" placeholder="Username" required pattern="[A-Za-z0-9_]{4,}" title="Must contain only alphabets and numbers, and at least 4 or more characters.">
 						<input type="email" name="email" placeholder="Email" required>
-						<input type="password" name="password" placeholder="Password" required>
-						<input type="password" name="repassword" placeholder="Confirm Password" required>
+						<input type="password" name="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+						<input type="password" name="repassword" placeholder="Confirm Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 						<br>
 						<br>
 						<div class="form-group">

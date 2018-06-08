@@ -28,12 +28,14 @@ else {
 </head>
 
 <body class="require-form">
+	<div class="form-banner"></div>
 	<div class="page-wrapper">
 		<div class="container">
-			<div class="card-content" style="margin-bottom:20px;">
+			<div class="form-strip"></div>
+			<div class="card-content form-body" style="margin-bottom:20px;">
 				<div class="card-title">
 					<h1 class="modal-title" style="color:black !important;">Company Information</h1>
-                    <h4 style="color:red;">Please fill all fields. You are required to.</h4>
+					<p style="color:red;">You are required to fill all fields.</p>
 				</div>
 				<div class="card-body">
 					<form id="form_info" class="form-horizontal">
@@ -74,7 +76,7 @@ else {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="name" class="label-control col-md-4">Operational Data</label>
+							<label for="name" class="label-control col-md-4">Operational Date</label>
 							<div class="col-md-8">
 								<input id='comp_info_opdate' type="date" name="opdate" class="form-control" value="" required>
 							</div>
@@ -98,13 +100,14 @@ else {
 							</div>
 						</div>
 						<div class="card-footer" style="padding-left:0;">
-							<button type="submit" id="btnsubmit_info" class="btn btn-primary"><i class="fa fa-location-arrow btn-icon"></i>Submit</button>
+							<button type="submit" id="btnsubmit_info" class="btn btn-primary">
+								<i class="fa fa-location-arrow btn-icon"></i>Submit</button>
 						</div>
 					</form>
 				</div>
 			</div>
-
 		</div>
+	</div>
 </body>
 
 </html>
