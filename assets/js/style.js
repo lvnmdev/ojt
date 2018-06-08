@@ -1,47 +1,61 @@
-$(document).ready(function() {
-    //Preloader Start
-    $(window).on("load", function() {
-        preloaderFadeOutTime = 2000;
-        function hidePreloader() {
-            var preloader = $('.folding-cube-wrapper');
-            preloader.fadeOut(preloaderFadeOutTime);
-        }
+$(document).ready(function () {
+	//Preloader Start
+	$(window).on("load", function () {
+		preloaderFadeOutTime = 2000;
 
-        hidePreloader();
-    });
+		function hidePreloader() {
+			var preloader = $('.folding-cube-wrapper');
+			preloader.fadeOut(preloaderFadeOutTime);
+		}
 
-    //Initialization of Datatable 
-    $('#table_id').dataTable();
+		hidePreloader();
+	});
 
-    //Side Navigation Bar Slide
-    $("#openNav").click(function () {
-        $(".side-navbar-container").css({"width":"270px"});
-    });
+	//Initialization of Datatable 
+	$('#table_id').dataTable();
 
-    $("#closeNav").click(function () {
-        $(".side-navbar-container").css({"width":"0"});
-        $(".main-container").css({"margin-left":"0"});
-    });
 
-    //Scroll Up Button Function
-    window.onscroll = function () { scrollFunction() };
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            $("#scrollup-btn").css({"display":"block"});
-        } else {
-            $("#scrollup-btn").css({"display": "none"});
-        }
-    }
+	//Side Navigation Bar Slide
+	$("#openNav").click(function () {
+		$(".side-navbar-container").css({
+			"width": "270px"
+		});
+	});
 
-    // When the user clicks on the button, it scrolls to the top of the document
+	$("#closeNav").click(function () {
+		$(".side-navbar-container").css({
+			"width": "0"
+		});
+		$(".main-container").css({
+			"margin-left": "0"
+		});
+	});
 
-    $("#scrollup-btn").click(function () {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-        $('body,html').animate({
-            scrollTop: 0
-        }, 800);
-    });
+	//Scroll Up Button Function
+	window.onscroll = function () {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			$("#scrollup-btn").css({
+				"display": "block"
+			});
+		} else {
+			$("#scrollup-btn").css({
+				"display": "none"
+			});
+		}
+	}
+
+	// When the user clicks on the button, it scrolls to the top of the document
+
+	$("#scrollup-btn").click(function () {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+		$('body,html').animate({
+			scrollTop: 0
+		}, 800);
+	});
 })
-

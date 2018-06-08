@@ -3,6 +3,8 @@ $(function () {
 	show_applicant();
 	show_pending_company();
 	show_pending_applicant();
+	show_employed();
+	show_unemployed();
 	notification();
 
 	//Notification
@@ -140,35 +142,6 @@ $(function () {
 							title: {
 								display: true,
 								text: 'Employment Status'
-							}
-						}
-					});
-
-					new Chart($("#annual_employment_stat"), {
-						type: 'line',
-						data: {
-							labels: years,
-							datasets: [{
-								label: 'Employed Graduates',
-								data: employed_per_year,
-								backgroundColor: ['rgb(251, 180, 20, 0.25)'],
-								borderColor: ['#fbb414'],
-								borderWidth: 2
-								}, {
-									label: 'Unemployed Graduates',
-									data: unemployed_per_year,
-									backgroundColor: ['rgb(26, 23, 81, 0.25)'],
-									borderColor: ['#1a1751'],
-									borderWidth: 2
-								}]
-						},
-						options: {
-							scales: {
-								yAxes: [{
-									ticks: {
-										beginAtZero: true
-									}
-								}]
 							}
 						}
 					});
@@ -493,3 +466,67 @@ $(function () {
 		})
 	});
 })
+
+function show_employed() {
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'show_employed_graduates',
+		async: false,
+		dataType: 'json',
+		success: function (response) {
+			var html = '';
+			if (response.success) {
+				console.log(response);
+				for (i = 0; i < response.data.length; i++) {
+					html += '<tr>' +
+						'<td>' + response.data[i].name + '</td>' +
+						'<td>' + response.data[i].sex + '</td>' +
+						'<td>' + response.data[i].college_graduated + '</td>' +
+						'<td>' + response.data[i].degree_graduated + '</td>' +
+						'<td>' + response.data[i].year_graduated + '</td>' +
+						'<td>' + response.data[i].company_name + '</td>' +
+						'<td>' + response.data[i].job_position + '</td>' +
+						'<td>' + response.data[i].date_hired + '</td>' +
+						'</tr>';
+				}
+				$('#employed_graduates').html(html)
+			}
+		},
+		error: function (response) {
+			alert('error');
+		}
+	})
+
+}
+function show_unemployed() {
+	$.ajax({
+		type: 'ajax',
+		method: 'get',
+		url: 'show_unemployed_graduates',
+		async: false,
+		dataType: 'json',
+		success: function (response) {
+			var html = '';
+			if (response.success) {
+				console.log(response);
+				for (i = 0; i < response.data.length; i++) {
+					html += '<tr>' +
+						'<td>' + response.data[i].name + '</td>' +
+						'<td>' + response.data[i].sex + '</td>' +
+						'<td>' + response.data[i].college_graduated + '</td>' +
+						'<td>' + response.data[i].degree_graduated + '</td>' +
+						'<td>' + response.data[i].year_graduated + '</td>' +
+						'</tr>';
+				}
+				$('#unemployed_graduates').html(html)
+			}
+		},
+		error: function (response) {
+			alert('error');
+		}
+	})
+
+}
+
+

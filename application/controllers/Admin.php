@@ -58,6 +58,16 @@ class Admin extends CI_Controller {
         
 		$this->load->view('templates/admin/content', $data);
 	}
+	public function employment() {
+		$data['content'] = 'admin/employment';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
+	public function unemployment() {
+		$data['content'] = 'admin/unemployment';
+        
+		$this->load->view('templates/admin/content', $data);
+	}
 
 	//Functionals
 
@@ -100,6 +110,7 @@ class Admin extends CI_Controller {
 		}
 		echo json_encode($msg);
 	}
+
 
 	public function notification() {
 		$result = $this->admin->notification();
@@ -144,6 +155,25 @@ class Admin extends CI_Controller {
 		if($result){
 			$msg['success'] = true;
 			$msg['status'] = 'success';
+		}
+		echo json_encode($msg);
+	}
+
+	public function show_employed_graduates() {
+		$result = $this->admin->show_employed_graduates();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
+		}
+		echo json_encode($msg);
+	}
+	public function show_unemployed_graduates() {
+		$result = $this->admin->show_unemployed_graduates();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['data'] = $result[1];
 		}
 		echo json_encode($msg);
 	}

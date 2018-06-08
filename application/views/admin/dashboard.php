@@ -128,15 +128,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class='col-md-12'>
-					<div class="card-content">
-						<div style="overflow-x:auto">
-							<canvas id="annual_employment_stat" class="graph-canvas"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>

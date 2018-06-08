@@ -142,5 +142,30 @@ class Admin_m extends CI_Model {
         $this->db->update('tbl_users');
         return true;
     }
+
+    public function show_employed_graduates() {
+        $sql = "SELECT concat(tbl_applicant_bio.fname,' ',tbl_applicant_bio.mname,' ',tbl_applicant_bio.lname) as name, tbl_applicant_bio.sex, tbl_graduate_info.college_graduated, tbl_graduate_info.degree_graduated,tbl_graduate_info.year_graduated,tbl_graduate_info.company_name,tbl_graduate_info.job_position,tbl_graduate_info.date_hired FROM tbl_applicant_bio INNER JOIN tbl_graduate_info on tbl_applicant_bio.user_name = tbl_graduate_info.user_name WHERE tbl_graduate_info.is_employed = '1'";
+        $query = $this->db->query($sql);
+
+        if($query){
+            $result[0] = true;
+            $result[1] = $query->result();  
+        }else{
+            $result[0] = false;
+        }
+        return $result;
+    }
+    public function show_unemployed_graduates() {
+        $sql = "SELECT concat(tbl_applicant_bio.fname,' ',tbl_applicant_bio.mname,' ',tbl_applicant_bio.lname) as name, tbl_applicant_bio.sex, tbl_graduate_info.college_graduated, tbl_graduate_info.degree_graduated,tbl_graduate_info.year_graduated FROM tbl_applicant_bio INNER JOIN tbl_graduate_info on tbl_applicant_bio.user_name = tbl_graduate_info.user_name WHERE tbl_graduate_info.is_employed = '0'";
+        $query = $this->db->query($sql);
+
+        if($query){
+            $result[0] = true;
+            $result[1] = $query->result();  
+        }else{
+            $result[0] = false;
+        }
+        return $result;
+    }
 }
 ?>
