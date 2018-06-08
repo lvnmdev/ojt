@@ -30,7 +30,7 @@ class MainModel extends CI_Model {
 		$field = array(
 				'user_name' =>  $this->input->post('username'),
 				'user_pass' =>  $this->input->post('password'),
-				'user_email' => $this->input->post('repassword'),
+				'user_email' => $this->input->post('email'),
 				'user_type' =>  $this->input->post('usertype')
 			);
 
