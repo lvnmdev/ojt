@@ -8,7 +8,9 @@
 					<?= $this->session->userdata('username')?>!</h1>
 				<p>Here is today's newsletter!</p>
 				<ul>
-					<li>Last time signed in: 4/22/18 2:31pm</li>
+					<li><strong>Date registered: </strong><span id="u_date_registered"></span></li>
+					<li><strong>Last time you have updated your biodata: </strong> <span id="u_date_biodata"></span></li>
+					<li><strong>Last time you have updated your graduate info: </strong><span id="u_date_graduate_info"></span></li>
 				</ul>
 			</div>
 

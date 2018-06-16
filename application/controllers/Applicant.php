@@ -65,6 +65,18 @@ class Applicant extends CI_Controller {
 	}
 
 	//Functionals (Biodata)
+	public function newsletter() {
+		$result = $this->applicant->newsletter();
+		$msg['success'] = false;
+		if($result[0]){
+			$msg['success'] = true;
+			$msg['date_registered'] = $result[1];
+			$msg['date_biodata'] = $result[2];
+			$msg['date_graduate_info'] = $result[3];
+		}
+		echo json_encode($msg);
+	}
+	
 	public function has_resume(){
 		$result = $this->applicant->has_resume();
 		

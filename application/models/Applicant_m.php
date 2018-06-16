@@ -1,10 +1,36 @@
  
- <?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Applicant_m extends CI_Model {
     public function __construct(){
 		parent::__construct();
+    }
+
+    public function newsletter() {
+        $user = $this->session->userdata('username');
+        $query1 = $this->db->select('date_registered')->from('tbl_users')->where('user_name',$user)->get();
+        $query2 = $this->db->select('date')->from('tbl_applicant_bio')->where('user_name',$user)->get();
+        $query3 = $this->db->select('date')->from('tbl_graduate_info')->where('user_name',$user)->get();
+
+        $result[0] = false;
+
+        if ($query1->num_rows() > 0) {
+            $result[0] = true;
+            $result[1] = $query1->result();
+        }
+
+        if ($query2->num_rows() > 0) {
+            $result[0] = true;
+            $result[2] = $query2->result();
+        }
+
+        if ($query3->num_rows() > 0) {
+            $result[0] = true;
+            $result[3] = $query3->result();
+        }
+
+        return $result;
     }
 
     public function has_resume() {

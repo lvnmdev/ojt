@@ -8,6 +8,28 @@ $(function () {
 	show_available_jobs();
 	show_graduate_info();
 	has_resume();
+	newsletter();
+
+	function newsletter() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'newsletter',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					$('#u_date_registered').html(response.date_registered[0].date_registered);
+					$('#u_date_biodata').html(response.date_biodata[0].date);
+					$('#u_date_graduate_info').html(response.date_graduate_info[0].date);
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
 
 	function has_resume() {
 		$.ajax({
@@ -17,13 +39,11 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
-					console.log('NIGANA SYA BAI');
-					$('#has_resume').html('<i class="fa fa-check" title="You have your resume completed."></i>');
+					$('#has_resume').html('<i class="fa fa-check" title="You have completed your resume."></i>');
 				}
 				else {
-					$('#has_resume').html('<i class="fa fa-times" title="You dont have your resume completed."></i>');
+					$('#has_resume').html('<i class="fa fa-times" title="You havent completed your resume."></i>');
 				}
 			},
 			error: function () {
@@ -243,8 +263,6 @@ $(function () {
 	}
 
 	function count_dashboard() {
-		var html = '';
-		var i;
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
@@ -273,7 +291,7 @@ $(function () {
 			}
 		});
 	}
-	var image = 0;
+
 	$('.btn-default').attr('disabled', 'disabled');
 	$('#image_attach').click(function () {
 		$('.btn-default').removeAttr('disabled');
