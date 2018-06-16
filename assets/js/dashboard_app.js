@@ -7,6 +7,30 @@ $(function () {
 	count_dashboard();
 	show_available_jobs();
 	show_graduate_info();
+	has_resume();
+
+	function has_resume() {
+		$.ajax({
+			type: 'ajax',
+			method: 'get',
+			url: 'has_resume',
+			async: true,
+			dataType: 'json',
+			success: function (response) {
+				console.log(response);
+				if (response.success) {
+					console.log('NIGANA SYA BAI');
+					$('#has_resume').html('<i class="fa fa-check" title="You have your resume completed."></i>');
+				}
+				else {
+					$('#has_resume').html('<i class="fa fa-times" title="You dont have your resume completed."></i>');
+				}
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+	}
 
 	$('#graduate_form_info').submit(function (e) {
 		e.preventDefault();
@@ -22,7 +46,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.operation == 'insert') {
 					msg = 'data inserted successfully';
 					toaster(msg);
@@ -47,7 +70,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					//Checks the radio button for employment
 					$('#isEmployed').click(function () {
@@ -79,8 +101,6 @@ $(function () {
 					grad_info();
 					course_list();
 					grad_info();
-
-					console.log(response.data[0].degree_graduated);
 
 					function grad_info() {
 						if (response.data[0].is_employed == 1) {
@@ -196,7 +216,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {	
-				console.log(response);
 				if (response.success) {
 					if (response.data[0].is_employed == 1) {
 						$("#user_employment_stat").html('Employed');
@@ -233,7 +252,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.data != null) {
 					$('#applications_count').html(response.data.pending_applicant);
 				} else {
@@ -278,7 +296,6 @@ $(function () {
 			dataType: 'json',
 			success: function (response) {
 				var html = '';
-				console.log(response);
 				if (response.success) {
 					$("#user_fullname").val(response.data.fname + ' ' + response.data.mname + ' ' + response.data.lname);
 					$("#user_sex").val(response.data.sex);
@@ -319,7 +336,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					$("#bio_fname").val(response.data.fname);
 					$("#bio_mname").val(response.data.mname);
@@ -362,7 +378,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.operation == 'insert') {
 					msg = 'data inserted successfully';
 					toaster(msg);
@@ -760,7 +775,6 @@ $(function () {
 
 		$("#btnsubmit_resume").attr("disabled", "disabled");
 		var formData = $('#form_resume').serialize();
-		console.log(formData);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -769,7 +783,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					msg = 'data updated successfully';
 					toaster(msg);
@@ -789,7 +802,6 @@ $(function () {
 			async: false,
 			dataType: 'json',
 			success: function (data) {
-				console.log(data);
 				info = data;
 				var skills = '';
 				var xp = '';
@@ -884,7 +896,6 @@ $(function () {
 			async: false,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response.data);
 				var html = '';
 				var i;
 				if (response.data) {
@@ -919,7 +930,6 @@ $(function () {
 			async: false,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response.data);
 				var html = '';
 				var i;
 				if (response.data) {
@@ -950,14 +960,12 @@ $(function () {
 			}
 		});
 		job_ids = job_id;
-		console.log(job_ids);
 	}
 
 	$(document).on('click', '.cancel', function (e) {
 		$('#cancel_application').modal('show');
 		$('.modal-title').text('Cancel Application?');
 		job_id_app = $(e.currentTarget).val();
-		console.log(job_id_app);
 	});
 
 	$(document).on('click', '.apply', function (e) {
@@ -971,7 +979,6 @@ $(function () {
 			async: false,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response.data);
 				var html = '';
 				var i;
 				if (response.data) {
@@ -999,7 +1006,7 @@ $(function () {
 			location.reload()
 		}, 3000);
 		var job_id = job_id_app;
-		console.log(job_id);
+
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1010,7 +1017,7 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
+
 				if (response.success) {
 					msg = 'data inserted successfully';
 					toaster(msg);
@@ -1024,7 +1031,7 @@ $(function () {
 
 	$('#confirm_cancel').click(function () {
 		var job_id = job_id_app;
-		console.log(job_id);
+
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1035,7 +1042,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					alert('JOB APPLICATION ABORTED');
 					location.reload();
@@ -1055,7 +1061,6 @@ $(function () {
 		}, 3000);
 
 		var id = $(e.currentTarget).val();
-		console.log(id);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1067,7 +1072,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response) {
 					msg = 'data successfully updated';
 					toaster(msg);
@@ -1086,7 +1090,6 @@ $(function () {
 		}, 3000);
 
 		var id = $(e.currentTarget).val();
-		console.log(id);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1098,7 +1101,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 
 					msg = 'Data successfully updated';
@@ -1118,7 +1120,6 @@ $(function () {
 		}, 3000);
 
 		var id = $(e.currentTarget).val();
-		console.log(id);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1130,7 +1131,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					msg = 'Data successfully updated';
 					toaster(msg);
@@ -1149,7 +1149,6 @@ $(function () {
 		}, 3000);
 
 		var id = $(e.currentTarget).val();
-		console.log(id);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1161,7 +1160,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 
 					msg = 'Data successfully updated';
@@ -1181,7 +1179,6 @@ $(function () {
 		}, 3000);
 
 		var id = $(e.currentTarget).val();
-		console.log(id);
 		$.ajax({
 			type: 'ajax',
 			method: 'post',
@@ -1193,7 +1190,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					msg = 'Data successfully updated';
 					toaster(msg);
@@ -1231,7 +1227,6 @@ $(function () {
 
 	$("#form_change_user").submit(function () {
 		var formData = $('#form_change_user').serializeArray();
-		console.log(formData);
 
 		$.ajax({
 			type: 'ajax',
@@ -1241,7 +1236,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					$('#success_user').removeAttr('style');
 					$('#success_user').html('Username Updated');
@@ -1279,7 +1273,6 @@ $(function () {
 
 	$("#form_change_password").submit(function () {
 		var formData = $('#form_change_password').serializeArray();
-		console.log(formData);
 
 		$.ajax({
 			type: 'ajax',
@@ -1289,7 +1282,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					$('#success_user1').removeAttr('style');
 					$('#success_user1').html('Password Updated');

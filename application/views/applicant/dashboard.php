@@ -50,14 +50,14 @@
 				<div class='col-xs-12 col-sm-4 col-md-4'>
 					<div class='card-content'>
 						<div class='dashboard-notify'>
-							<a href='<?= base_url("Applicant/")?>'>
+							<a href='<?= base_url("Applicant/resume")?>'>
 								<div class='dashboard-badge'>
-									<span id='' class='dashboard-badge-no'></span>
+									<span id='has_resume' class='dashboard-badge-no'></span>
 								</div>
 							</a>
 							<div class="text-center">
 								<div class="dashboard-badge-label">
-									<h4>???</h4>
+									<h4>Resume</h4>
 								</div>
 							</div>
 						</div>

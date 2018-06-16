@@ -7,7 +7,22 @@ class Applicant_m extends CI_Model {
 		parent::__construct();
     }
 
+    public function has_resume() {
+        $user = $this->session->userdata('username');
+        $query1 = $this->db->select('*')->from('tbl_resume_skills')->where('user_name',$user)->get();
+        $query2 = $this->db->select('*')->from('tbl_resume_accomplishment')->where('user_name',$user)->get();
+        $query3 = $this->db->select('*')->from('tbl_resume_education')->where('user_name',$user)->get();
+        $query4 = $this->db->select('*')->from('tbl_resume_seminars')->where('user_name',$user)->get();
+        $query5 = $this->db->select('*')->from('tbl_resume_workxp')->where('user_name',$user)->get();
 
+        if($query1->num_rows()>0 && $query2->num_rows()>0 && $query3->num_rows()>0 && $query4->num_rows()>0 && $query5->num_rows()>0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public function show_bio(){
         $user = $this->session->userdata('username');
         $id = $this->session->userdata('id');

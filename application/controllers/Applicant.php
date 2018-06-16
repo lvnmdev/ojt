@@ -65,6 +65,15 @@ class Applicant extends CI_Controller {
 	}
 
 	//Functionals (Biodata)
+	public function has_resume(){
+		$result = $this->applicant->has_resume();
+		
+		$msg['success'] = false;
+		if($result){
+			$msg['success'] = true;
+		}
+		echo json_encode($msg);
+	}
 
 	public function show_bio(){
 		$result = $this->applicant->show_bio();
