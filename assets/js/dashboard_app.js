@@ -18,7 +18,6 @@ $(function () {
 			async: true,
 			dataType: 'json',
 			success: function (response) {
-				console.log(response);
 				if (response.success) {
 					$('#u_date_registered').html(response.date_registered[0].date_registered);
 					$('#u_date_biodata').html(response.date_biodata[0].date);
